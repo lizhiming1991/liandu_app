@@ -1,0 +1,1 @@
+<view class="content" bind:__l="__l"><button class="get-vcode" disabled="{{disabled}}" data-event-opts="{{[['tap',[['getCode',['$event']]]]]}}" bindtap="__e">{{''+countdown+''}}<text hidden="{{!(timestatus)}}">秒重获</text></button></view>

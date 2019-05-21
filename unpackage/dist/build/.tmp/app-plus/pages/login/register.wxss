@@ -1,0 +1,217 @@
+
+view.data-v-584ac82f {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	/* 	font-size: 28upx;
+	margin: 10upx;
+	border: #8F8F94 solid 1px; */
+}
+.clearfloat.data-v-584ac82f:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0
+}
+.register_content .phone_row.data-v-584ac82f {
+	position: relative;
+	width: 612rpx;
+	margin:134rpx 0 0 66rpx;
+	padding-bottom: 14rpx;
+	border-bottom: 1px solid #eee;
+}
+.register_content .phone_icon.data-v-584ac82f {
+	position: absolute;
+	top: 0rpx;
+	left: 0;
+	width: 35rpx;
+	height: 49rpx;
+}
+.register_content .register_title.data-v-584ac82f {
+	display: inline-block;
+	margin-top: 238rpx;
+	margin-left: 65rpx;
+	font-size: 50rpx;
+	font-weight: 600;
+}
+.register_content .verify_row.data-v-584ac82f{
+	width: 612rpx;
+	margin: 64rpx 0 0 66rpx;
+	padding-bottom: 14rpx;
+	border-bottom: 1px solid #eee;
+}
+.register_content .verify_row .send_verify_content.data-v-584ac82f{
+	color: #ccc;
+}
+.register_content .verify_row .send_verify.data-v-584ac82f{
+	padding: 0 6rpx;
+	height: 57rpx;
+	line-height: 57rpx;
+	font-size: 24rpx;
+	border: 1rpx solid #A8A7A7;
+}
+.register_content .verify_row .acquire_verify.data-v-584ac82f{
+	padding: 0 6rpx;
+	height: 57rpx;
+	color: #333;
+	line-height: 57rpx;
+	font-size: 24rpx;
+	background: #01b18d;
+}
+.register_content .password_row.data-v-584ac82f{
+	width: 612rpx;
+	margin: 64rpx 0 0 66rpx;
+	padding-bottom: 14rpx;
+	border-bottom: 1px solid #eee;
+}
+.register_content .password_row .show_password.data-v-584ac82f{
+	padding-top: 24rpx;
+}
+.register_content .password_row .show_password image.data-v-584ac82f{
+	width: 38rpx;
+	height: 14rpx;
+}
+.register_content .register_row.data-v-584ac82f{
+	margin-left: 66rpx;
+	margin-top: 129rpx;
+	width: 610rpx;
+	height: 80rpx;
+	color: #888;
+	line-height: 80rpx;
+	font-size: 30rpx;
+	border-radius: 4px;
+	background: rgba(238, 238, 238, 1);
+	border-style: none;
+}
+.register_content .to_login_row.data-v-584ac82f{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	margin-top: 37rpx;
+	color: #888;
+	font-size: 22rpx;
+}
+.register_content .direct_login .login_text.data-v-584ac82f {
+	margin-left: 10rpx;
+}
+.register_content .direct_login .login.data-v-584ac82f {
+	margin-left: 10rpx;
+	color: #000;
+}
+
+/* .register_content {
+	width: 750upx;
+}
+.zxc{
+	background-color: red;
+}
+.register_content .register_title {
+	display: inline-block;
+	margin-top: 238upx;
+	margin-left: 65upx;
+	font-size: 50upx;
+	font-weight: 600;
+}
+
+.register_content .input_group .phone_number {
+	position: relative;
+}
+
+.register_content .input_group .input_row {
+	margin-left: 66upx;
+	width: 612upx;
+	height: 94upx;
+	box-sizing: border-box;
+}
+
+.phone_icon {
+	position: absolute;
+	top: 20upx;
+	left: 0;
+	width: 35upx;
+	height: 49upx;
+}
+
+.register_content .input_group .input_row .register_accout,
+.register_content .input_group .input_row .register_password,
+.register_content .input_group .input_row .phone_verify {
+	height: 94upx;
+	border-bottom: 1px solid #ccc;
+}
+
+.register_content .input_group .input_row .register_accout {
+	margin-top: 125upx;
+}
+
+.register_content .input_group .verify_box {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	
+} 
+
+.register_content .input_group .input_row .phone_verify {
+	margin-top: 65upx;
+}
+
+ .register_content .input_group .input_row .acquire_verify {
+	position: absolute;
+	top: 20upx;
+	right: 0; 
+	float: right;
+	width: 149upx;
+	height: 57upx;
+	line-height: 57upx;
+	text-align: center;
+	font-size: 24upx;
+	border:2upx solid rgba(168,167,167,1);
+} 
+
+.register_content .input_group .input_row .register_password {
+	margin-top: 65upx;
+}
+
+.register_content .input_group .input_password {
+	margin-top: 31upx;
+}
+
+.register_content .register_box .register_button {
+	margin-top: 129upx;
+	width: 610upx;
+	height: 80upx;
+	line-height: 80upx;
+	font-size: 30upx;
+	border-radius: 4px;
+	background: rgba(238, 238, 238, 1);
+	border-style: none;
+}
+
+.register_content .direct_login {
+	display: flex;
+	justify-content: center;
+	margin-top: 37upx;
+	color: #888;
+	font-size: 22upx;
+}
+
+.register_content .direct_login .login_text {
+	margin-left: 10upx;
+}
+
+.register_content .direct_login .login {
+	margin-left: 10upx;
+	color: #000;
+} */
+

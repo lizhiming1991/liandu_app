@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*每个页面公共css */
+
+  
+
+page{
+    padding-top: 60rpx;
+}
+
+  
+
+
+  
+
+
+  
+  /* APP-PLUS || MP-WEIXIN || MP-BAIDU 
+  *  MP-ALIPAY || MP-TOUTIAO || H5
+  * 
+  * */
+

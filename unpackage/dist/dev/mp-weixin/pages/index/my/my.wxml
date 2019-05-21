@@ -1,0 +1,1 @@
+<view bind:__l="__l"><navigator url="/pages/login/register">注册</navigator><navigator url="/pages/login/logout">to logout</navigator></view>

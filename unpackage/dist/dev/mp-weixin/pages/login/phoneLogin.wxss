@@ -1,0 +1,105 @@
+
+view {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+.login_content{
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column; 
+	-webkit-box-flex: 1; 
+	-webkit-flex: 1; 
+	    -ms-flex: 1; 
+	        flex: 1;
+}
+/* .login_content {
+	position: relative;
+	width: 750upx;
+}
+.login_content .input_group{
+}
+.to_register{
+	position: absolute;
+	top: 0;
+	right: 87upx;
+	color: #000000;
+	font-size: 22upx;
+}
+.login_content .input_group .login_title {
+	display: inline-block;
+	margin-left: 65upx;
+	font-size: 50upx;
+	font-weight: 600;
+}
+
+.login_content .input_group .login_title_box {
+	padding-top: 238upx;
+}
+
+.login_content .input_group .input_row {
+	margin-left: 66upx;
+	width: 612upx;
+	height: 94upx;
+	box-sizing: border-box;
+}
+
+.login_content .input_group .input_row .login_accout,
+.login_content .input_group .input_row .phone_verify {
+	height: 94upx;
+	border-bottom: 1px solid #ccc;
+}
+
+.login_content .input_group .input_row .login_accout {
+	margin-top: 125upx;
+}
+
+.login_content .input_group .input_row .phone_verify {
+	margin-top: 65upx;
+}
+
+.login_content .login_box .login_button {
+	margin-top: 44upx;
+	width: 610upx;
+	height: 80upx;
+	line-height: 80upx;
+	font-size: 30upx;
+	border-radius: 4px;
+	color: #888;
+	background: rgba(238, 238, 238, 1);
+	border-style: none;
+}
+
+.login_content .input_group .verify_box {
+	position: relative;
+}
+
+.login_content .input_group .verify_box .acquire_verify {
+	position: absolute;
+	top: 20upx;
+	right: 0;
+	width: 149upx;
+	height: 57upx;
+	line-height: 57upx;
+	text-align: center;
+	font-size: 24upx;
+	border: 1px solid rgba(168, 167, 167, 1);
+}
+.login_content .to_password_login{
+	display: flex;
+	justify-content: center;
+}
+.login_content .to_password_login .password_login{
+	margin-top: 91upx;
+	font-size: 24upx;
+	color: #333;
+} */
+
