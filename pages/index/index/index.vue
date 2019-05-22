@@ -157,6 +157,7 @@
 	/* import {uniBadge} from '@dcloudio/uni-ui' */
 	import {ImgUrl} from '@/common/common.js'
 	import Icon from '@/components/uni-icon/uni-icon.vue'
+	import {get,post} from '@/common/methods.js'
 	export default {
 		data() {
 			return {
@@ -173,52 +174,38 @@
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad:function(e){
-			 uni.request({
-			   url: 'http://localhost:9999/banner/query',
-			   data: {'type' : 1, 'terminal' : 2},
-			   method:"POST",
-			   header : {'content-type':'application/json'},
-			   success: res => {
-				   this.picArr = res.data.data.picinfo;
-			   }
-		   });
-		    uni.request({
-				 url: 'http://localhost:9999/recommend',
-				 data: {'book_length' : this.b_length, 'maganize_length' : this.m_length},
-				 method:"GET",
-				 header : {'content-type':'application/json'},
-				 success: res => {
-					this.bookList = res.data.data.recomment_books;
-					var list = res.data.data.recomment_magazines;
-					if(list.length<=3){
-						this.magList1 = list;
-					}else if(list.length<=6){
-						this.magList1 = list.splice(0,3);
-						this.magList2 = list.splice(3,6);
-					}else{
-						this.magList1 = list.splice(0,3);
-						this.magList2 = list.splice(3,6);
-						this.magList3 = list.splice(6,9);
-					}
-					
-						
-					console.log(this)
-							
-				 }
-		   	});
-		   console.log();
+			post('/banner/query',{'type' : 1, 'terminal' : 2}).then(data=>{
+				let [error,res] = data;
+				this.picArr = res.data.data.picinfo;
+			},err=>{
+				//异步错误处理
+			});	
+			get('/recommend',{'book_length' : this.b_length, 'maganize_length' : this.m_length}).then(data=>{
+				let [error,res] = data;
+				this.bookList = res.data.data.recomment_books;
+				var list = res.data.data.recomment_magazines;
+				if(list.length<=3){
+					this.magList1 = list;
+				}else if(list.length<=6){
+					this.magList1 = list.splice(0,3);
+					this.magList2 = list.splice(3,6);
+				}else{
+					this.magList1 = list.splice(0,3);
+					this.magList2 = list.splice(3,6);
+					this.magList3 = list.splice(6,9);
+				}
+			})
+		   
 		},
 		
 		onShow(){
-			console.log(11)
+			
 		},
 		onReady(){
-			console.log(22)
 			this.imgurl = ImgUrl;
 		},
 		methods: {
 			imgerr(){
-				console.log(33)
 				return "/static/image/sta_zazhi.png";
 			}
 			

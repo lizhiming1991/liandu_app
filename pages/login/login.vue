@@ -9,15 +9,16 @@
 			<text class="login_title">密码登录</text>
 			<view class="input_row">
 				<input class="login_accout" v-model="phoneNumber" style="font-size: 30upx;" maxlength="11"
-				 placeholder="请输入手机号码" />
+				 placeholder="请输入手机号码" @blur="checkphone()" />
 			</view>
 			<view class="input_row input_password">
 				<input class="login_password" v-model="password" password="true" style="font-size: 30upx;" maxlength="16"
 				 placeholder="请输入密码" />
 			</view>
-			<!-- <view class="input_row input_password">
-				<input class="login_password" v-model="password" password="true" style="font-size: 30upx;" maxlength="16" placeholder="请输入密码" />
-	        </view> -->
+			<view class="input_row input_password" v-show="number >=3 ">
+				<input class="login_password" v-model="passyzm"  style="font-size: 30upx;" maxlength="16" placeholder="请输入验证码" />
+				<image src="" id="passyzm"></image>
+	        </view>
 		</view>
 		<view class="find_password" style="display: flex; justify-content: flex-end;">
 			<navigator url="/pages/login/changePasswordVerification">忘记了?找回密码</navigator>
@@ -37,34 +38,72 @@
 <script>
 	import Search from '@/components/header/header.vue'
 	import toRegister from '@/components/toRegister/toRegister.vue'
+	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
 				phoneNumber: '',
 				password: '',
-				chars: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
+				passyzm: '',
+				chars: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
+				number: 0,
+				yzmstr:'',
 			}
 		},
+		computed: {
+			...mapState([
+				"userid"
+			])
+		},
 		onLoad() {
-			// uni.request({
-			// 	url: 'http://192.168.0.185:9999/auth/login?token=13914612020&password=w.22083400',
-			// 	method: 'GET',
-			// 	// header: {
-			// 	//"Authorization" : "Basic YWRtaW46YWRtaW4="
-			// 	// 	},
-			// 	success: res => {
-			// 		//console.log(res);
-			// 	}
-			// });
-			uni.request({
-				url: 'http://192.168.0.185:9999/code/image?randomStr=123123',
-				method: 'GET',
-				success: res => {
-					//console.log(res);
-				}
-			});
+			this.getImgcode();
+		},
+		watch:{
+			number(){
+				this.getImgcode();
+			}
 		},
 		methods: {
+			checkphone(){
+				uni.request({
+					url: 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber,
+					method:'GET',
+					success: (res)=>{
+						uni.showToast({
+							title: res.data.message,
+							duration: 1500,
+							icon: 'none'
+						});
+						
+					}
+				})
+			},
+			getImgcode(){
+				var xhr = new XMLHttpRequest();
+					this.yzmstr = this.randomWord(false,4);
+					var yzm = this.yzmstr;
+					xhr.open('GET', "http://192.168.0.185:9999/code/image"+"?randomStr="+yzm, true);    //也可以使用POST方式，根据接口
+					xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+					xhr.responseType = "blob";   //返回类型blob
+					xhr.onload = function () {
+						//定义请求完成的处理函数
+						if (this.status === 200) {
+								var blob = this.response;
+								if(blob.size>0){
+									var reader = new FileReader();
+									reader.readAsDataURL(blob);   // 转换为base64，可以直接放入a标签href
+									reader.onload = function (e) {
+										// 转换完成，创建一个a标签用于下载
+										var ele = document.querySelector("#passyzm img");
+										var dle = document.querySelector("#passyzm div");
+										ele.setAttribute("src",e.target.result);
+										dle.style.backgroundImage = "url("+e.target.result+")";
+									}
+								}
+						}
+					};
+					xhr.send();
+			},
 			randomWord(randomFlag, min, max) {
 				let str = "",
 					range = min,
@@ -82,28 +121,58 @@
 				return str;
 			},
 			passwordLogin() {
+				let nowstr = this.yzmstr;
+				console.log(nowstr)
+				let url = 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + nowstr;
+				this.number = this.number +1;
+				if(this.phoneNumber == "" || this.phoneNumber == null){
+					uni.showToast({
+						title: '用户名不能为空!',
+						duration: 1500,
+						icon: 'none'
+					});
+					return false;
+				}
+				if(this.password == "" || this.password == null){
+					uni.showToast({
+						title: '密码不能为空!',
+						duration: 1500,
+						icon: 'none'
+					});
+					return false;
+				}
+				if(this.number>=3){
+					if(this.passyzm == "" || this.passyzm == null || this.passyzm != nowstr){
+						uni.showToast({
+							title: '验证码不正确!',
+							duration: 1500,
+							icon: 'none'
+						});
+						return false;
+					}
+				}
 				uni.request({
-					url: 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber + '&&password='+ this.password +'&&randomStr=' + this.randomWord(false, 4),
+					url: url,
 					method: 'GET',
 					success: res => {
 						console.log(res);
 						if (res.data.message == '登录成功') {
-							// this.$router.push('/page/index/index/index');
-							// console.log('登录成功');
-							//  uni.navigateTo({
-							// 	url: '../index/index/index',
-							// }); 
-							
+							uni.showToast({
+								title: '登录成功!',
+								duration: 1500,
+								icon: 'none'
+							});
+							this.$store.dispatch("changeUserid",res.data.data);
 							uni.reLaunch({
 								url: '../index/index/index'
 							});
+							
 						} else {
 							uni.showToast({
 								title: '密码错误',
 								duration: 2000,
 								icon: 'none',
 							});
-							console.log('登录失败');
 						}
 					}
 				});
@@ -119,8 +188,16 @@
 <style>
 	.login_content {
 		width: 750upx;
+	}\
+	
+	#passyzm{
+		position: fixed;
+		right: 100upx;
+		bottom: 340upx;
+		width: 200upx;
+		height: 100upx;
+		z-index: 100;
 	}
-
 	.login_content .input_group {
 		position: relative;
 	}
