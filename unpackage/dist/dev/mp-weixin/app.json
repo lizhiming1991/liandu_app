@@ -6,6 +6,7 @@
     "pages/index/my/my",
     "pages/searchIndex/searchIndex",
     "pages/books/bookList",
+    "pages/books/bookDetails",
     "pages/magazine/magazine",
     "pages/video/video",
     "pages/audio/audio",
@@ -60,5 +61,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

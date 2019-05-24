@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<Header></Header>
+		<Header :titles="title"></Header>
 	</view>
 </template>
 
@@ -9,7 +9,7 @@
 	export default {
 		data() {
 			return {
-				
+				title: "图书"
 			};
 		},
 		methods:{

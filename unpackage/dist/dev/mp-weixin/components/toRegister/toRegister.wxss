@@ -1,0 +1,21 @@
+
+view.data-v-5c3c084e {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+.to_register.data-v-5c3c084e{
+	margin-right: 87rpx;
+	color: #000;
+	font-size: 22rpx;
+}
+.to_register .register_url.data-v-5c3c084e{
+	border-bottom: 2rpx solid #000;
+}
+

@@ -1,1 +1,1 @@
-<view class="content" bind:__l="__l"><header></header></view>
+<view class="content" bind:__l="__l"><header titles="{{title}}"></header></view>

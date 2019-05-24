@@ -11,31 +11,74 @@
 			<!-- #endif -->
 		</view>
 		
-		<view class="h_title" @tap="showname()">标题</view>
+		<view class="h_title" @tap="showname()">{{titles}}</view>
 		<view class="h_more"></view>
 	</view>
 </template>
 
 <script>
-	import { mapState } from 'vuex'
 	export default{
 		data(){
 			return{
-				number: 1
+				
 			}
 		},
-		computed: {
-			...mapState([
-				"userid"
-			])
+		onLoad(){
+			console.log(111)
+		},
+		onShow(){
+			console.log(222)
+		},
+		onReady(){
+			console.log(333)
+		},
+		onHide(){
+			console.log(444)
+		},
+		onUnload(){
+			console.log(555)
+		},
+		onPullDownRefresh(){
+			console.log(666)
+		},
+		onReachBottom(){
+			console.log(777)
+		},
+		onTabItemTap(){
+			console.log(888)
+		},
+		onShareAppMessage(){
+			console.log(999)
+		},
+		onPageScroll(){
+			console.log(10)
+		},
+		onNavigationBarButtonTap(){
+			console.log(11)
+		},
+		onBackPress(){
+			console.log(12)
+		},
+		onNavigationBarSearchInputChanged(){
+			console.log(13)
+		},
+		onNavigationBarSearchInputConfirmed(){
+			console.log(14)
+		},
+		onNavigationBarSearchInputClicked(){
+			console.log(15)
 		},
 		methods: {
 			goback(){
 				this.$router.go(-1);
-				// Window.history.back();
 			},
 			showname(){
-				console.log(this.userid)
+				alert(this.title)
+			}
+		},
+		props:{
+			"titles":{
+				default: "今日链读"
 			}
 		}
 	}

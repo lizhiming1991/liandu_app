@@ -1,5 +1,5 @@
 import * as config from '@/common/config.js'
-const baseUrl = "http://localhost:9999"
+const baseUrl = "http://192.168.0.210:9999"
 
 function obj2params(obj) {
   var result = '';
@@ -20,7 +20,12 @@ export function get(url,params){
 		data: params,
 		method:"GET",
 		header : {'content-type':'application/json'},
-    }).then(res=>{
+    }).then(data=>{
+			let [error,suc] = data;
+			let res = suc.data;
+			if(suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS")>=0){
+				res.status = 200;
+			}
       resolve(res);
     },err=>{
       console.info(err);
@@ -37,7 +42,12 @@ export function post(url,params){
 			data: params,
 			method:"POST",
 			header : {'content-type':'application/json'},
-		}).then(res=>{
+		}).then(data=>{
+			let [error,suc] = data;
+			let res = suc.data;
+			if(suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS")>=0){
+				res.status = 200;
+			}
       resolve(res);
     },err=>{
       console.info(err);
