@@ -8,7 +8,8 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
+Object.defineProperty(exports, "__esModule", { value: true });exports.onlineURL = exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
+var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
 
 /***/ }),
 
@@ -50,6 +51,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 
+<<<<<<< HEAD
 
 /***/ }),
 
@@ -135,8 +137,95 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../item-vue/liandu/liandu_app/App.vue"));
 
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../item-vue/liandu/liandu_app/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+=======
 
+/***/ }),
+>>>>>>> master
 
+/***/ "../../../../item-vue/liandu/liandu_app/common/methods.js":
+/*!*******************************************************!*\
+  !*** D:/item-vue/liandu/liandu_app/common/methods.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "../../../../item-vue/liandu/liandu_app/common/config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}
+var baseUrl = "http://192.168.0.210:9999";
+
+function obj2params(obj) {
+  var result = '';
+  var item;
+  for (item in obj) {
+    result += '&' + item + '=' + encodeURIComponent(obj[item]);
+  }
+  if (result) {
+    result = result.slice(1);
+  }
+  return result;
+}
+// 封装get方法
+function get(url, params) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: baseUrl + url,
+      data: params,
+      method: "GET",
+      header: { 'content-type': 'application/json' } }).
+    then(function (data) {var _data = _slicedToArray(
+      data, 2),error = _data[0],suc = _data[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
+      resolve(res);
+    }, function (err) {
+      console.info(err);
+      reject(err);
+    });
+  });
+}
+
+//封装post方法
+function post(url, params) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: baseUrl + url,
+      data: params,
+      method: "POST",
+      header: { 'content-type': 'application/json' } }).
+    then(function (data) {var _data2 = _slicedToArray(
+      data, 2),error = _data2[0],suc = _data2[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
+      resolve(res);
+    }, function (err) {
+      console.info(err);
+      reject(err);
+    });
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "../../../../item-vue/liandu/liandu_app/main.js":
+/*!*********************************************!*\
+  !*** D:/item-vue/liandu/liandu_app/main.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../item-vue/liandu/liandu_app/App.vue"));
+
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../item-vue/liandu/liandu_app/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+_vue.default.prototype.$store = _store.default;
 
 _vue.default.config.productionTip = false;
 
@@ -496,10 +585,9 @@ createPage(_video.default);
   !*** D:/item-vue/liandu/liandu_app/pages.json ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nSyntaxError: Unexpected token < in JSON at position 3438\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\json.js:17:20)\n    at parsePagesJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\pages.js:28:27)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index-new.js:34:21)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index.js:25:35)");
 
 /***/ }),
 
@@ -522,7 +610,13 @@ var store = new _vuex.default.Store({
     loginProvider: "",
     openid: null,
     userid: null,
+<<<<<<< HEAD
     title: "今日链读" },
+=======
+    title: "今日链读",
+    phone: "",
+    modifyRandomNumbers: "" },
+>>>>>>> master
 
   mutations: {
     login: function login(state, provider) {
@@ -541,6 +635,15 @@ var store = new _vuex.default.Store({
     },
     updateTitle: function updateTitle(state, bool) {
       state.title = bool;
+<<<<<<< HEAD
+=======
+    },
+    modifyPhoneNumber: function modifyPhoneNumber(state, phone) {
+      state.phone = phone;
+    },
+    modifyRandomNumber: function modifyRandomNumber(state, modifyRandomNumbers) {
+      state.modifyRandomNumbers = modifyRandomNumbers;
+>>>>>>> master
     } },
 
   actions: {
@@ -550,6 +653,15 @@ var store = new _vuex.default.Store({
     changeUserid: function changeUserid(context, bool) {
       context.commit("updateUserid", bool);
     },
+<<<<<<< HEAD
+=======
+    modifyPhoneNumber: function modifyPhoneNumber(ctx, phone) {
+      ctx.commit('modifyPhoneNumber', phone);
+    },
+    modifyRandomNumber: function modifyRandomNumber(ctx, modifyRandomNumbers) {
+      ctx.commit('modifyRandomNumber', modifyRandomNumbers);
+    },
+>>>>>>> master
     // lazy loading openid
     getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 commit = _ref.commit,

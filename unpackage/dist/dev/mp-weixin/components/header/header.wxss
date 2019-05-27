@@ -46,7 +46,11 @@
       height: 37rpx;
 }
 .header .h_back .h_goback.data-v-fc78d10e {
+<<<<<<< HEAD
       width: 30rpx;
+=======
+      width: 20rpx;
+>>>>>>> master
       height: 37rpx;
 }
 .header .h_title.data-v-fc78d10e {

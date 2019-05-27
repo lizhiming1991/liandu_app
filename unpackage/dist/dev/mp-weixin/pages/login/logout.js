@@ -80,44 +80,55 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniSegmentedControl = function uniSegmentedControl() {return __webpack_require__.e(/*! import() | components/uni-segmented-control/uni-segmented-control */ "components/uni-segmented-control/uni-segmented-control").then(__webpack_require__.bind(null, /*! @/components/uni-segmented-control/uni-segmented-control.vue */ "../../../../item-vue/liandu/liandu_app/components/uni-segmented-control/uni-segmented-control.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: { uniSegmentedControl: uniSegmentedControl },
   data: function data() {
     return {
-      code: '',
-      countdown: '获取验证码',
-      disabled: false,
-      timestatus: false,
-      clear: '' };
+      items: ['选项卡1', '选项卡2', '选项卡3'],
+      current: 0 };
 
   },
-  onLoad: function onLoad() {},
+  onLoad: function onLoad() {
+    uni.showModal({
+      title: '提示',
+      confirmText: '免费申请',
+      cancelText: '我先看看',
+      content: '为了更好的享受企业服务,请先申请为企业会员',
+      success: function success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      } });
+
+  },
   methods: {
-    // 获取input内容
-    getCode: function getCode() {
-      this.countdown = 3;
-      this.timestatus = true;
-      this.clear = setInterval(this.countDown, 1000);
-    },
-    countDown: function countDown() {
-      if (!this.countdown) {
-        this.disabled = false;
-        this.timestatus = false;
-        this.countdown = '获取验证码';
-        clearInterval(this.clear);
-        this.countdown = '再次获取验证码';
-      } else {
-        --this.countdown;
+    onClickItem: function onClickItem(index) {
+      if (this.current !== index) {
+        this.current = index;
       }
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

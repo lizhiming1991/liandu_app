@@ -155,30 +155,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+<<<<<<< HEAD
 var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var _default =
 {
   data: function data() {
     return {
       verifyNumber: '',
       phoneNumber: '',
+=======
+var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js"));
+var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var _default =
+{
+  data: function data() {
+    return {
+      randomString: '',
+      registerPhoneId: '',
+      verifyNumber: '',
+      phoneNumber: '',
+      password: '',
+>>>>>>> master
       code: '',
       countdown: '获取验证码',
       disabled: false,
       timestatus: false,
       timestatus2: true,
       clear: '',
+      verifyStatus: '',
+      phoneStatus: '',
+      registerStatus: '',
       countown_style: {
-        // 	width: '149upx',
-        //zIndex: 2,
-        // 	background: '#71D3BF',
-        // 	border:''
-        // 	// border: 1px solid rgba(168, 167, 167, 1);
-      },
-      //content: '获取验证码', // 按钮里显示的内容
-      totalTime: 60 //记录具体倒计时时间 
-    };
+        zIndex: '' } };
+
+
   },
   onLoad: function onLoad() {
+<<<<<<< HEAD
     console.log(_commonFunction.default.randomWord(false, 4));
   },
   methods: {
@@ -213,6 +224,62 @@ var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/co
             console.log('获取验证码失败');
           }
         } });
+=======
+    this.randomString = _commonFunction.default.randomWord(false, 4);
+    console.log(this.randomString);
+  },
+  methods: {
+    registerPhone: function registerPhone() {
+
+    },
+    getCode: function getCode() {
+
+      var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+
+      if (regPhone.test(this.phoneNumber)) {
+
+        this.countdown = 10;
+        this.timestatus2 = false;
+        this.timestatus = true;
+        this.clear = setInterval(this.countDown, 1000);
+        this.countown_style.zIndex = -1;
+        uni.request({
+          url: _common.onlineURL + '/code/phone/register?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber,
+          method: 'GET',
+          success: function success(res) {
+            console.log(res);
+            if (res.data.message == '验证码已发送') {
+              // this.$router.push('/page/index/index/index');
+              // console.log('登录成功');
+              //  uni.navigateTo({
+              // 	url: '../index/index/index',
+              // }); 
+              // uni.reLaunch({
+              // 	url: '../index/index/index'
+              // });
+              uni.showToast({
+                title: '发送成功',
+                duration: 2000,
+                icon: 'success' });
+
+              console.log('获取验证码成功');
+            } else {
+              console.log('获取验证码失败');
+            }
+          } });
+
+
+      } else {
+
+        uni.showToast({
+          title: '请输入正确的手机号码',
+          duration: 2000,
+          icon: 'none' });
+
+        return false;
+      }
+
+>>>>>>> master
 
     },
     countDown: function countDown() {
@@ -226,12 +293,97 @@ var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/co
         this.countdown = '重新获取';
         this.countown_style.zIndex = 2;
       } else {
-
         --this.countdown;
       }
+<<<<<<< HEAD
     }
     // 验证码倒计时 end 
   },
+=======
+    },
+    // 验证码倒计时 end 
+    //注册
+    registerID: function registerID() {var _this = this;
+
+      uni.request({
+        url: _common.onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString,
+        method: 'GET',
+        success: function success(res) {
+          console.log(res);
+
+          _this.phoneStatus = res.data.status.split('-')[1];
+          console.log(_this.phoneStatus);
+        } });
+
+      uni.request({
+        url: _common.onlineURL + '/auth/register?code=' + this.verifyNumber + '&&randomStr=' + this.randomString,
+        method: 'GET',
+        success: function success(res) {
+          console.log(res);
+          _this.verifyStatus = res.data.status.split('-')[1];
+          console.log(_this.verifyStatus);
+        } });
+
+      setTimeout(function () {
+        //console.log(this)
+        console.log(_this.phoneStatus);
+        if (_this.phoneStatus == 'FAILED') {
+          uni.showToast({
+            title: '手机号码已被使用',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.phoneStatus == 'ERROR') {
+          uni.showToast({
+            title: '手机号码格式不正确',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.verifyStatus == 'FAILED') {
+          uni.showToast({
+            title: '验证码错误',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.verifyStatus == 'ERROR') {
+          uni.showToast({
+            title: '请输入验证码',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else {
+          uni.request({
+            url: _common.onlineURL + '/auth/register?phone=' + _this.phoneNumber + '&&randomStr=' + _this.randomString + '&&password=' + _this.password,
+            method: 'GET',
+            success: function success(res) {
+              // let register = res.data.status;
+              // this.registerStatus = register.split('-')[1];
+              uni.showToast({
+                title: '注册成功',
+                duration: 2000,
+                icon: 'success' });
+
+              setTimeout(function () {
+                uni.reLaunch({
+                  url: '../index/index/index' });
+
+              }, 1000);
+            } });
+
+
+        }
+      }, 1000);
+
+
+
+
+    } },
+
+>>>>>>> master
   components: {
     Search: Search } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

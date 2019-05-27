@@ -1,44 +1,53 @@
 <template>
-	    <view class="content">
-			            <button @click="getCode" :disabled="disabled" class="get-vcode">
-				                {{countdown}} <text v-show="timestatus">秒重获</text>
-				          </button>
-		</view>
+	    <view>
+        <uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#4cd964"></uni-segmented-control>
+        <view class="content">
+            <view v-show="current === 0">
+                选项卡1的内容
+            </view>
+            <view v-show="current === 1">
+                选项卡2的内容
+            </view>
+            <view v-show="current === 2">
+                选项卡3的内容
+            </view>
+        </view>
+    </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				code: '',
-				countdown: '获取验证码',
-				disabled: false,
-				timestatus: false,
-				clear: '',
-			}
-		},
-		onLoad() {},
-		methods: {
-			// 获取input内容
-			getCode() {
-				this.countdown = 3;
-				this.timestatus = true;
-				this.clear = setInterval(this.countDown, 1000);
+	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
+export default {
+    components: {uniSegmentedControl},
+    data() {
+        return {
+            items: ['选项卡1','选项卡2','选项卡3'],
+            current: 0
+        }
+    },
+		onLoad() {
+		uni.showModal({
+	    title: '提示',
+		confirmText:'免费申请',
+		cancelText:'我先看看',
+	    content: '为了更好的享受企业服务,请先申请为企业会员',
+	    success: function (res) {
+	        if (res.confirm) {
+	            console.log('用户点击确定');
+	        } else if (res.cancel) {
+	            console.log('用户点击取消');
+	        }
+	    }
+	});
 			},
-			countDown() {
-				if (!this.countdown) {
-					this.disabled = false;
-					this.timestatus = false;
-					this.countdown = '获取验证码';
-					clearInterval(this.clear);
-					this.countdown = '再次获取验证码';
-				} else {
-					-- this.countdown;
-				}
-			}
-
-		},
-	}
+    methods: {
+        onClickItem(index) {
+            if (this.current !== index) {
+                this.current = index;
+            }
+        }
+    }
+}
 </script>
 
 <style>

@@ -1,11 +1,11 @@
 <template>
 	<view>
-		<Header></Header>
+		<Search></Search>
 	</view>
 </template>
 
 <script>
-	import Header from '@/components/header/header.vue'
+	import Search from '@/components/header/header.vue'
 	export default {
 		data() {
 			return {
@@ -13,7 +13,7 @@
 			};
 		},
 		components:{
-			Header
+			Search
 		}
 	}
 </script>

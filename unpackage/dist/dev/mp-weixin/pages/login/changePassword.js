@@ -98,7 +98,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+>>>>>>> master
 
 
 
@@ -123,21 +127,96 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
+>>>>>>> master
 {
   data: function data() {
-    return {};
+    return {
+      newPassword: '',
+      newPasswordAgain: '',
+      requiredInfo: {
+        "phone": "",
+        "newPSD": "",
+        "randomStr": "" } };
 
 
   },
-  onLoad: function onLoad() {
-
+  onLoad: function onLoad(e) {
+    //console.log(e.nextid)
+    this.requiredInfo.phone = this.$store.state.phone;
+    this.requiredInfo.randomStr = this.$store.state.modifyRandomNumbers;
   },
+<<<<<<< HEAD
   methods: {},
 
+=======
+  methods: {
+    modification: function modification() {
+      if (this.newPassword == '') {
+        uni.showToast({
+          title: '密码不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+        return false;
+      } else if (this.newPasswordAgain == '') {
+        uni.showToast({
+          title: '密码不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+        return false;
+      } else if (this.newPassword != this.newPasswordAgain) {
+        uni.showToast({
+          title: '密码两次输入不一致',
+          duration: 2000,
+          icon: 'none' });
+
+        return false;
+      } else {
+        this.requiredInfo.newPSD = this.newPassword;
+        uni.request({
+          url: _common.onlineURL + '/auth/password/reset',
+          method: 'PUT',
+          data: this.requiredInfo,
+          header: {
+            'content-type': 'application/json' },
+
+          success: function success(res) {
+            console.log(res);
+            uni.showToast({
+              title: '修改成功',
+              duration: 2000,
+              icon: 'success' });
+
+            setTimeout(function () {
+              uni.reLaunch({
+                url: '../index/index/index' });
+
+            }, 1000);
+          } });
+
+
+      }
+    } },
+>>>>>>> master
 
   components: {
     Search: Search,
     toRegister: toRegister } };exports.default = _default;
+<<<<<<< HEAD
+=======
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+>>>>>>> master
 
 /***/ }),
 

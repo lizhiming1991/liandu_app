@@ -95,8 +95,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!D:/item-vue/liandu/liandu_app/pages/login/login.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
+<<<<<<< HEAD
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
@@ -273,6 +274,9 @@ var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-
     Header: Header,
     toRegister: toRegister } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+=======
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nSyntaxError: Unexpected token (39:0)\n    at _class.raise (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:4051:15)\n    at _class.unexpected (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5382:16)\n    at _class.parseExprAtom (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6541:20)\n    at _class.parseExprSubscripts (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6104:21)\n    at _class.parseMaybeUnary (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:6083:21)\n    at _class.parseMaybeUnary (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10675:54)\n    at _class.parseExprOps (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5968:21)\n    at _class.parseMaybeConditional (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5940:21)\n    at _class.parseMaybeAssign (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5887:21)\n    at _class.parseMaybeAssign (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10631:87)\n    at _class.parseExpression (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:5840:21)\n    at _class.parseStatementContent (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7619:21)\n    at _class.parseStatementContent (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:10378:58)\n    at _class.parseStatement (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:7505:17)\n    at _class.parseBlockOrModuleBlockBody (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8073:23)\n    at _class.parseBlockBody (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@babel\\parser\\lib\\index.js:8060:10)");
+>>>>>>> master
 
 /***/ }),
 

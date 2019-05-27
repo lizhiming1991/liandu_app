@@ -98,7 +98,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+>>>>>>> master
 //
 //
 //
@@ -154,13 +158,27 @@ var _default =
   },
   methods: {
     goDetail: function goDetail() {
+<<<<<<< HEAD
       this.$emit("goDetail", {});
+=======
+      /* this.$emit("goDetail",{}); */
+      uni.showToast({
+        title: this.ImgUrls,
+        duration: 1500,
+        icon: 'none' });
+
+>>>>>>> master
     } },
 
   props: [
   "bookdata",
   "typedata",
+<<<<<<< HEAD
   "ImgUrl"] };exports.default = _default;
+=======
+  "ImgUrls"] };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+>>>>>>> master
 
 /***/ }),
 

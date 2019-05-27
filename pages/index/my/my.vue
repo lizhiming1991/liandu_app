@@ -127,8 +127,8 @@
 		onReady(){
 			
 			uni.showToast({
-				title: plus,
-				duration: 1500,
+				title: this.userid,
+				duration: 2000,
 				icon: 'none'
 			});
 			if(this.userid == null){

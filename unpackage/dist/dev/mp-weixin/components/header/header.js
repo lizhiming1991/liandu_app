@@ -116,6 +116,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+>>>>>>> master
 var _default =
 {
   data: function data() {
@@ -173,7 +181,11 @@ var _default =
       this.$router.go(-1);
     },
     showname: function showname() {
+<<<<<<< HEAD
       alert(this.title);
+=======
+      alert(this.titles);
+>>>>>>> master
     } },
 
   props: {

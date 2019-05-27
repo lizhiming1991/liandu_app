@@ -3,7 +3,7 @@
 		<Search></Search>
 		<view class="phone_row">
 			<view style="flex: 1;">
-				<input class="register_accout" v-model="phoneNumber" type="number" style="padding-left:80upx; font-size: 30upx;"
+				<input class="register_accout" v-model="phoneNumber" @blur="registerPhone" type="number" style="padding-left:80upx; font-size: 30upx;"
 				 maxlength="11" placeholder="请输入手机号码" />
 			</view>
 			<view>
@@ -17,7 +17,7 @@
 				</view>
 			</view>
 			<view class="send_verify_content">
-				<view @tap="getCode" :disabled="disabled" class="acquire_verify" :style="countown_style" v-if="timestatus2">
+				<view @tap="getCode" :disabled="disabled" class="acquire_verify" v-if="timestatus2">
 					{{countdown}}
 				</view>
 				<view class="send_verify" style="font-size: 24upx;" v-if="timestatus">
@@ -28,7 +28,7 @@
 		<view class="password_row">
 			<view style="flex: 1;">
 				<view class="input_row input_password">
-					<input class="register_password" style="font-size: 30upx;" password="true" maxlength="20" placeholder="密码长度6-20位" />
+					<input class="register_password" v-model="password" style="font-size: 30upx;" password="true" maxlength="20" placeholder="密码长度6-20位" />
 				</view>
 			</view>
 			<view class="show_password">
@@ -36,8 +36,8 @@
 			</view>
 		</view>
 		<view class="register_row" style="justify-content: center;">
-			<view style="flex: 1; justify-content: center;">
-				<view class="register_box">
+			<view style="flex: 1; justify-content: center;" @tap="registerID">
+				<view class="register_box"  >
 					<view class="register_button">注册</view>
 				</view>
 			</view>
@@ -54,66 +54,87 @@
 </template>
 
 <script>
-	import Search from '@/components/header/header.vue'
-	import acquireString from '@/common/commonFunction.js'
+	import Search from '@/components/header/header.vue';
+	import acquireString from '@/common/commonFunction.js';
+	import { onlineURL } from '@/common/common.js';
 	export default {
 		data() {
 			return {
+				randomString: '',
+				registerPhoneId:'',
 				verifyNumber:'',
 				phoneNumber: '',
+				password:'',
 				code: '',
 				countdown: '获取验证码',
 				disabled: false,
 				timestatus: false,
-				timestatus2: true,
+				timestatus2: true, 
 				clear: '',
-				countown_style: {
-					// 	width: '149upx',
-					//zIndex: 2,
-					// 	background: '#71D3BF',
-					// 	border:''
-					// 	// border: 1px solid rgba(168, 167, 167, 1);
-				},
-				//content: '获取验证码', // 按钮里显示的内容
-				totalTime: 60 //记录具体倒计时时间 
+				verifyStatus:'',
+				phoneStatus:'',
+				registerStatus:'',
+				countown_style:{
+					zIndex:''
+				}
 			}
 		},
 		onLoad() {
-			console.log(acquireString.randomWord(false, 4))
+			this.randomString = acquireString.randomWord(false, 4);
+			console.log(this.randomString);
 		},
 		methods: {
+			registerPhone() {
+				
+			},
 			getCode() {
-				this.countdown = 3;
-				this.timestatus2 = false;
-				this.timestatus = true;
-				this.clear = setInterval(this.countDown, 1000);
-				this.countown_style.zIndex = -1;
-				uni.request({
+				
+				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+				
+				if(regPhone.test(this.phoneNumber)){
+				
+						this.countdown = 10;
+						this.timestatus2 = false;
+						this.timestatus = true;
+						this.clear = setInterval(this.countDown, 1000);
+						this.countown_style.zIndex = -1;
+						uni.request({
+							url: onlineURL+'/code/phone/register?randomStr='+ this.randomString +'&&phone='+ this.phoneNumber,
+							method: 'GET',
+							success: res => {
+								console.log(res);
+								if (res.data.message == '验证码已发送') {
+									// this.$router.push('/page/index/index/index');
+									// console.log('登录成功');
+									//  uni.navigateTo({
+									// 	url: '../index/index/index',
+									// }); 
+									// uni.reLaunch({
+									// 	url: '../index/index/index'
+									// });
+									uni.showToast({
+										title: '发送成功',
+										duration: 2000,
+										icon: 'success',
+									});
+									console.log('获取验证码成功');
+								} else {
+									console.log('获取验证码失败');
+								}
+							}
+						});
 					
-					url: 'http://192.168.0.185:9999/code/phone/register?randomStr='+acquireString.randomWord(false, 4)+'&&phone='+13914612020,
-					method: 'GET',
-					success: res => {
-						console.log(res);
-						if (res.data.message == '验证码已发送') {
-							// this.$router.push('/page/index/index/index');
-							// console.log('登录成功');
-							//  uni.navigateTo({
-							// 	url: '../index/index/index',
-							// }); 
-							// uni.reLaunch({
-							// 	url: '../index/index/index'
-							// });
-							uni.showToast({
-								title: '发送成功',
-								duration: 1000,
-								icon: 'success',
-							});
-							console.log('获取验证码成功');
-						} else {
-							console.log('获取验证码失败');
-						}
-					}
-				});
+				}else{
+					
+					uni.showToast({
+						title: '请输入正确的手机号码',
+						duration: 2000,
+						icon: 'none',
+					});
+					return false;
+				}
+			
+				
 			},
 			countDown() {
 				if (!this.countdown) {
@@ -126,11 +147,90 @@
 					this.countdown = '重新获取';
 					this.countown_style.zIndex = 2;
 				} else {
-
 					--this.countdown;
 				}
-			}
+			},
 			// 验证码倒计时 end 
+			//注册
+			registerID() {
+				
+				uni.request({
+					url: onlineURL+'/auth/register?phone='+this.phoneNumber+'&&randomStr='+this.randomString,
+					method: 'GET',
+					success: res => {
+						console.log(res)
+						
+						this.phoneStatus = res.data.status.split('-')[1];
+						console.log(this.phoneStatus)
+					}
+				});
+				uni.request({
+					url: onlineURL+'/auth/register?code='+this.verifyNumber+'&&randomStr=' + this.randomString,
+					method: 'GET',
+					success: res => {
+						console.log(res)
+						this.verifyStatus = res.data.status.split('-')[1];
+						console.log(this.verifyStatus)
+					}
+				});
+				setTimeout(()=>{
+					//console.log(this)
+					console.log(this.phoneStatus)
+					if(this.phoneStatus == 'FAILED'){
+						uni.showToast({
+							title: '手机号码已被使用',
+							duration: 2000,
+							icon: 'none',
+						});
+						return false;
+					}else if(this.phoneStatus == 'ERROR'){
+						uni.showToast({
+							title: '手机号码格式不正确',
+							duration: 2000,
+							icon: 'none',
+						});
+						return false;
+					}else if(this.verifyStatus == 'FAILED'){
+						uni.showToast({
+							title: '验证码错误',
+							duration: 2000,
+							icon: 'none',
+						});
+						return false;
+					}else if(this.verifyStatus == 'ERROR'){
+						uni.showToast({
+							title: '请输入验证码',
+							duration: 2000,
+							icon: 'none',
+						});
+						return false;
+					}else{
+						uni.request({
+							url: onlineURL + '/auth/register?phone='+this.phoneNumber+'&&randomStr='+this.randomString+'&&password='+this.password,
+							method: 'GET',
+							success: res => {
+								// let register = res.data.status;
+								// this.registerStatus = register.split('-')[1];
+								uni.showToast({
+									title: '注册成功',
+									duration: 2000,
+									icon: 'success',
+								});
+								setTimeout(()=>{
+									uni.reLaunch({
+										url: '../index/index/index'
+									});
+								},1000);
+							}
+						});
+					
+					}
+					},1000)
+					
+	
+				
+				
+			}
 		},
 		components: {
 			Search

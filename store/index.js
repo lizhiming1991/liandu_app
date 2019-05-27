@@ -10,16 +10,10 @@ const store = new Vuex.Store({
 		openid: null,
 		userid: null,
 		title: "今日链读",
+		phone:"",
+		modifyRandomNumbers:"",
 	},
 	mutations: {
-		login(state, provider) {
-			state.hasLogin = true;
-			state.loginProvider = provider;
-		},
-		logout(state) {
-			state.hasLogin = false
-			state.openid = null
-		},
 		setOpenid(state, openid) {
 			state.openid = openid
 		},
@@ -28,6 +22,12 @@ const store = new Vuex.Store({
 		},
 		updateTitle(state,bool){
 			state.title = bool;
+		},
+		modifyPhoneNumber(state, phone) {
+			state.phone = phone
+		},
+		modifyRandomNumber(state,modifyRandomNumbers){
+			state.modifyRandomNumbers = modifyRandomNumbers
 		}
 	},
 	actions: {
@@ -36,6 +36,12 @@ const store = new Vuex.Store({
 		},
 		changeUserid(context,bool){
 			context.commit("updateUserid",bool);
+		},
+		modifyPhoneNumber (ctx, phone){
+			ctx.commit('modifyPhoneNumber', phone)
+		},
+		modifyRandomNumber(ctx,modifyRandomNumbers){
+			ctx.commit('modifyRandomNumber', modifyRandomNumbers)
 		},
 		// lazy loading openid
 		getUserOpenId: async function ({

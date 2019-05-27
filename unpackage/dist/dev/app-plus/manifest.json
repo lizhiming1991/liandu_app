@@ -79,6 +79,7 @@
         }
       }
     },
+    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#F8F8F8",
@@ -87,7 +88,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "1.9.8",
+      "compilerVersion": "1.9.9",
       "control": "v8"
     },
     "secondwebview": {
