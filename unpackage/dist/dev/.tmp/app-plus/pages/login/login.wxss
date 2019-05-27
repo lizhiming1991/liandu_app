@@ -1,8 +1,7 @@
 
 .login_content {
 	width: 750rpx;
-}\
-
+}
 #passyzm{
 	position: fixed;
 	right: 100rpx;
@@ -10,31 +9,39 @@
 	width: 200rpx;
 	height: 100rpx;
 	z-index: 100;
-}.login_content .input_group {
+}
+.login_content .input_group {
 	position: relative;
-}.login_content .input_group .login_title {
+}
+.login_content .input_group .login_title {
 	display: inline-block;
 	margin-top: 238rpx;
 	margin-left: 65rpx;
 	font-size: 50rpx;
 	font-weight: 600;
-}.login_content .input_group .input_row {
+}
+.login_content .input_group .input_row {
 	margin-left: 66rpx;
 	width: 612rpx;
 	height: 94rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-}.login_content .input_group .input_row .login_accout,
+}
+.login_content .input_group .input_row .login_accout,
 .login_content .input_group .input_row .login_password {
 	height: 94rpx;
 	border-bottom: 1px solid #ccc;
-}.login_content .input_group .input_row .login_accout {
+}
+.login_content .input_group .input_row .login_accout {
 	margin-top: 125rpx;
-}.login_content .input_group .input_row .login_password {
+}
+.login_content .input_group .input_row .login_password {
 	margin-top: 65rpx;
-}.login_content .input_group .input_password {
+}
+.login_content .input_group .input_password {
 	margin-top: 31rpx;
-}.login_content .find_password {
+}
+.login_content .find_password {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -46,7 +53,8 @@
 	margin: 21rpx 72rpx 0 0;
 	color: #333;
 	font-size: 20rpx;
-}.login_content .login_box .login_button {
+}
+.login_content .login_box .login_button {
 	margin-top: 129rpx;
 	width: 610rpx;
 	height: 80rpx;

@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {return Promise.all(/*! import() | components/header/header */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/header/header")]).then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
 
 
 

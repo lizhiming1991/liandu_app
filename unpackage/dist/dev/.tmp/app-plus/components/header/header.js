@@ -98,45 +98,87 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
 {
   data: function data() {
-    return {
-      number: 1 };
+    return {};
+
 
   },
-  computed: _objectSpread({},
-  (0, _vuex.mapState)([
-  "userid"])),
-
-
+  onLoad: function onLoad() {
+    console.log(111, " at components\\header\\header.vue:27");
+  },
+  onShow: function onShow() {
+    console.log(222, " at components\\header\\header.vue:30");
+  },
+  onReady: function onReady() {
+    console.log(333, " at components\\header\\header.vue:33");
+  },
+  onHide: function onHide() {
+    console.log(444, " at components\\header\\header.vue:36");
+  },
+  onUnload: function onUnload() {
+    console.log(555, " at components\\header\\header.vue:39");
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    console.log(666, " at components\\header\\header.vue:42");
+  },
+  onReachBottom: function onReachBottom() {
+    console.log(777, " at components\\header\\header.vue:45");
+  },
+  onTabItemTap: function onTabItemTap() {
+    console.log(888, " at components\\header\\header.vue:48");
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    console.log(999, " at components\\header\\header.vue:51");
+  },
+  onPageScroll: function onPageScroll() {
+    console.log(10, " at components\\header\\header.vue:54");
+  },
+  onNavigationBarButtonTap: function onNavigationBarButtonTap() {
+    console.log(11, " at components\\header\\header.vue:57");
+  },
+  onBackPress: function onBackPress() {
+    console.log(12, " at components\\header\\header.vue:60");
+  },
+  onNavigationBarSearchInputChanged: function onNavigationBarSearchInputChanged() {
+    console.log(13, " at components\\header\\header.vue:63");
+  },
+  onNavigationBarSearchInputConfirmed: function onNavigationBarSearchInputConfirmed() {
+    console.log(14, " at components\\header\\header.vue:66");
+  },
+  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {
+    console.log(15, " at components\\header\\header.vue:69");
+  },
   methods: {
     goback: function goback() {
       this.$router.go(-1);
-      // Window.history.back();
     },
     showname: function showname() {
-      console.log(this.userid, " at components\\header\\header.vue:38");
-    } } };exports.default = _default;
+      alert(this.title);
+    } },
+
+  props: {
+    "titles": {
+      default: "今日链读" } } };exports.default = _default;
 
 /***/ }),
 

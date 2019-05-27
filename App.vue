@@ -10,7 +10,12 @@
 			console.log('App Hide')
 		}
 	}
+	 // #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO 
 	
+	  // #endif 
+	 // #ifdef H5 
+	
+	  // #endif 
 </script>
 
 <style>

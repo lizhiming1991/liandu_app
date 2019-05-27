@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return Promise.all(/*! import() | components/header/header */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/header/header")]).then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -107,92 +107,90 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-vue/liandu/liandu_app/common/methods.js");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var bkList = function bkList() {return __webpack_require__.e(/*! import() | components/bookList/bkList */ "components/bookList/bkList").then(__webpack_require__.bind(null, /*! @/components/bookList/bkList.vue */ "../../../../item-vue/liandu/liandu_app/components/bookList/bkList.vue"));};var _default =
 {
   data: function data() {
-    return {};
+    return {
+      bookList: [],
+      typeList: [],
+      searchContent: "",
+      pageNum: 1,
+      pageSize: 10,
+      ImgUrl: "",
+      title: "图书" };
 
+  },
+  computed: {},
+
+
+
+
+
+
+
+
+
+
+
+  onShow: function onShow() {
+    // this.$store.dispatch("changeTitle","图书");
+    console.log(2, " at pages\\books\\bookList.vue:40");
+  },
+  onReady: function onReady() {
+
+    var h = wx.getSystemInfoSync().windowHeight;
+
+
+
+
+
+
+
+
+
+
+    console.log(3, " at pages\\books\\bookList.vue:55");
+  },
+  onLoad: function onLoad() {var _this = this;
+    this.ImgUrl = _common.ImgUrl;
+    this.getBooklist("", "", 1, 10);
+    console.log(1, " at pages\\books\\bookList.vue:60");
+    (0, _methods.get)("/book//book/category/all", {}).then(function (res) {
+      if (res.status == 200) {
+        _this.typeList = res.data;
+      }
+    });
 
   },
   methods: {
-    goDetail: function goDetail() {
+    goDetails: function goDetails() {
       uni.navigateTo({
         url: "./bookDetails" });
 
+    },
+    getBooklist: function getBooklist(content, tid, pagenum, pagesize) {var _this2 = this;
+      (0, _methods.post)("/book/book/page", {
+        "fuzzy": content,
+        "category_id": tid,
+        "page_index": pagenum,
+        "page_size": pagesize,
+        "tp": "",
+        "table_id": "",
+        "resource_type": 1 }).
+      then(function (res) {
+        console.log(res, " at pages\\books\\bookList.vue:84");
+        if (res.status == 200) {
+          _this2.bookList = res.data.pageBooks;
+        }
+      });
     } },
 
   components: {
-    Header: Header } };exports.default = _default;
+    Header: Header,
+    bkList: bkList } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

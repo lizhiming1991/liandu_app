@@ -257,61 +257,164 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");
 
-var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-vue/liandu/liandu_app/common/methods.js");function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}var Icon = function Icon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../item-vue/liandu/liandu_app/components/uni-icon/uni-icon.vue"));};var _default =
-{
-  data: function data() {
-    return {
-      picArr: [],
-      staPic: "/static/image/sta_lunbo.png",
-      magList1: [],
-      magList2: [],
-      magList3: [],
-      bookList: [],
-      imgurl: "",
-      imgerror: "/static/image/sta_zazhi.png",
-      b_length: 3,
-      m_length: 3 };
-
-  }, //http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
-  onLoad: function onLoad(e) {var _this = this;
-    (0, _methods.post)('/banner/query', { 'type': 1, 'terminal': 2 }).then(function (data) {var _data = _slicedToArray(
-      data, 2),error = _data[0],res = _data[1];
-      _this.picArr = res.data.data.picinfo;
-    }, function (err) {
-      //异步错误处理
-    });
-    (0, _methods.get)('/recommend', { 'book_length': this.b_length, 'maganize_length': this.m_length }).then(function (data) {var _data2 = _slicedToArray(
-      data, 2),error = _data2[0],res = _data2[1];
-      _this.bookList = res.data.data.recomment_books;
-      var list = res.data.data.recomment_magazines;
-      if (list.length <= 3) {
-        _this.magList1 = list;
-      } else if (list.length <= 6) {
-        _this.magList1 = list.splice(0, 3);
-        _this.magList2 = list.splice(3, 6);
-      } else {
-        _this.magList1 = list.splice(0, 3);
-        _this.magList2 = list.splice(3, 6);
-        _this.magList3 = list.splice(6, 9);
-      }
-    });
-
-  },
-
-  onShow: function onShow() {
-
-  },
-  onReady: function onReady() {
-    this.imgurl = _common.ImgUrl;
-  },
-  methods: {
-    imgerr: function imgerr() {
-      return "/static/image/sta_zazhi.png";
-    } },
-
-
-  components: {
-    // uniBadge,
+var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-vue/liandu/liandu_app/common/methods.js"); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* import {uniBadge} from '@dcloudio/uni-ui' */var Icon = function Icon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../item-vue/liandu/liandu_app/components/uni-icon/uni-icon.vue"));};var _default = { data: function data() {return { picArr: [], staPic: "/static/image/sta_lunbo.png", magList1: [], magList2: [], magList3: [], bookList: [], imgurl: "", imgerror: "/static/image/sta_zazhi.png", b_length: 3, m_length: 3 };}, //http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
+  onLoad: function onLoad(e) {var _this = this;(0, _methods.post)('/book/banner/query', { 'type': 1, 'terminal': 2 }).then(function (res) {if (res.status == 200) {_this.picArr = res.data.picinfo;}}, function (err) {//异步错误处理
+    });(0, _methods.get)('/book/recommend', { 'book_length': this.b_length, 'maganize_length': this.m_length }).then(function (res) {if (res.status == 200) {_this.bookList = res.data.recomment_books;var list = res.data.recomment_magazines;if (list.length <= 3) {_this.magList1 = list;} else if (list.length <= 6) {_this.magList1 = list.splice(0, 3);_this.magList2 = list.splice(3, 6);} else {_this.magList1 = list.splice(0, 3);_this.magList2 = list.splice(3, 6);_this.magList3 = list.splice(6, 9);}}});}, onShow: function onShow() {}, onReady: function onReady() {this.imgurl = _common.ImgUrl;}, methods: { imgerr: function imgerr() {return "/static/image/sta_zazhi.png";} }, components: { // uniBadge,
     Icon: Icon } };exports.default = _default;
 
 /***/ }),

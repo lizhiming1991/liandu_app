@@ -61,8 +61,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "../../../../item-vue/liandu/liandu_app/common/config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}
-var baseUrl = "http://localhost:9999";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "../../../../item-vue/liandu/liandu_app/common/config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}
+var baseUrl = "http://192.168.0.210:9999";
 
 function obj2params(obj) {
   var result = '';
@@ -83,10 +83,15 @@ function get(url, params) {
       data: params,
       method: "GET",
       header: { 'content-type': 'application/json' } }).
-    then(function (res) {
+    then(function (data) {var _data = _slicedToArray(
+      data, 2),error = _data[0],suc = _data[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:26");
+      console.info(err, " at common\\methods.js:31");
       reject(err);
     });
   });
@@ -100,10 +105,15 @@ function post(url, params) {
       data: params,
       method: "POST",
       header: { 'content-type': 'application/json' } }).
-    then(function (res) {
+    then(function (data) {var _data2 = _slicedToArray(
+      data, 2),error = _data2[0],suc = _data2[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:43");
+      console.info(err, " at common\\methods.js:53");
       reject(err);
     });
   });
@@ -511,7 +521,8 @@ var store = new _vuex.default.Store({
     hasLogin: false,
     loginProvider: "",
     openid: null,
-    userid: null },
+    userid: null,
+    title: "今日链读" },
 
   mutations: {
     login: function login(state, provider) {
@@ -524,9 +535,21 @@ var store = new _vuex.default.Store({
     },
     setOpenid: function setOpenid(state, openid) {
       state.openid = openid;
+    },
+    updateUserid: function updateUserid(state, bool) {
+      state.userid = bool;
+    },
+    updateTitle: function updateTitle(state, bool) {
+      state.title = bool;
     } },
 
   actions: {
+    changeTitle: function changeTitle(context, bool) {
+      context.commit("updateTitle", bool);
+    },
+    changeUserid: function changeUserid(context, bool) {
+      context.commit("updateUserid", bool);
+    },
     // lazy loading openid
     getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 commit = _ref.commit,
@@ -541,13 +564,13 @@ var store = new _vuex.default.Store({
                           commit('login');
                           setTimeout(function () {//模拟异步请求服务器获取 openid
                             var openid = '123456789';
-                            console.log('uni.request mock openid[' + openid + ']', " at store\\index.js:41");
+                            console.log('uni.request mock openid[' + openid + ']', " at store\\index.js:54");
                             commit('setOpenid', openid);
                             resolve(openid);
                           }, 1000);
                         },
                         fail: function fail(err) {
-                          console.log('uni.login 接口调用失败，将无法正常使用开放接口等服务', err, " at store\\index.js:47");
+                          console.log('uni.login 接口调用失败，将无法正常使用开放接口等服务', err, " at store\\index.js:60");
                           reject(err);
                         } });
 

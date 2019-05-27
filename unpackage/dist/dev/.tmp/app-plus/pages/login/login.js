@@ -138,7 +138,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Search = function Search() {return Promise.all(/*! import() | components/header/header */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/header/header")]).then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-vue/liandu/liandu_app/common/methods.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
 {
   data: function data() {
     return {
@@ -147,26 +148,30 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
       passyzm: '',
       chars: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
       number: 0,
-      yzmstr: '' };
+      yzmstr: '',
+      imagePath: '' };
 
   },
   computed: _objectSpread({},
   (0, _vuex.mapState)([
-  "userid"])),
+  "userid"]), {
 
+    numbers: function numbers() {
+
+      return this.number;
+
+    } }),
 
   onLoad: function onLoad() {
     this.getImgcode();
   },
-  watch: {
-    number: function number() {
-      this.getImgcode();
-    } },
+  onReady: function onReady() {
 
+  },
   methods: {
-    checkphone: function checkphone() {
+    checkphone: function checkphone() {//18136085708 123456
       uni.request({
-        url: 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber,
+        url: 'http://192.168.0.134:9999/auth/login?token=' + this.phoneNumber + 'randomStr=' + this.yzmstr,
         method: 'GET',
         success: function success(res) {
           uni.showToast({
@@ -179,30 +184,15 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
     },
     getImgcode: function getImgcode() {
-      var xhr = new XMLHttpRequest();
       this.yzmstr = this.randomWord(false, 4);
       var yzm = this.yzmstr;
-      xhr.open('GET', "http://192.168.0.185:9999/code/image" + "?randomStr=" + yzm, true); //也可以使用POST方式，根据接口
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.responseType = "blob"; //返回类型blob
-      xhr.onload = function () {
-        //定义请求完成的处理函数
-        if (this.status === 200) {
-          var blob = this.response;
-          if (blob.size > 0) {
-            var reader = new FileReader();
-            reader.readAsDataURL(blob); // 转换为base64，可以直接放入a标签href
-            reader.onload = function (e) {
-              // 转换完成，创建一个a标签用于下载
-              var ele = document.querySelector("#passyzm img");
-              var dle = document.querySelector("#passyzm div");
-              ele.setAttribute("src", e.target.result);
-              dle.style.backgroundImage = "url(" + e.target.result + ")";
-            };
-          }
-        }
-      };
-      xhr.send();
+      this.imagePath = "http://192.168.0.134:9999/code/image?randomStr=" + yzm;
+
+
+
+
+
+
     },
     randomWord: function randomWord(randomFlag, min, max) {
       var str = "",
@@ -221,10 +211,8 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
       return str;
     },
     passwordLogin: function passwordLogin() {var _this = this;
-      var nowstr = this.yzmstr;
-      console.log(nowstr, " at pages\\login\\login.vue:125");
-      var url = 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber + '&&password=' + this.password + '&&randomStr=' + nowstr;
       this.number = this.number + 1;
+      this.getImgcode();
       if (this.phoneNumber == "" || this.phoneNumber == null) {
         uni.showToast({
           title: '用户名不能为空!',
@@ -242,7 +230,8 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         return false;
       }
       if (this.number >= 3) {
-        if (this.passyzm == "" || this.passyzm == null || this.passyzm != nowstr) {
+        // console.log(this.passyzm)
+        if (this.passyzm == "" || this.passyzm == null) {
           uni.showToast({
             title: '验证码不正确!',
             duration: 1500,
@@ -250,12 +239,14 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
           return false;
         }
+      } else {
+        this.passyzm = this.yzmstr;
       }
       uni.request({
-        url: url,
+        url: 'http://192.168.0.134:9999/auth/login?token=' + this.phoneNumber + '&&password=' + this.password + '&&randomStr=' + this.passyzm,
         method: 'GET',
         success: function success(res) {
-          console.log(res, " at pages\\login\\login.vue:158");
+          console.log(res, " at pages\\login\\login.vue:149");
           if (res.data.message == '登录成功') {
             uni.showToast({
               title: '登录成功!',
@@ -279,7 +270,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
     } },
 
   components: {
-    Search: Search,
+    Header: Header,
     toRegister: toRegister } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

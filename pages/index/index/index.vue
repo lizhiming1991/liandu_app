@@ -174,25 +174,28 @@
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad:function(e){
-			post('/banner/query',{'type' : 1, 'terminal' : 2}).then(data=>{
-				let [error,res] = data;
-				this.picArr = res.data.data.picinfo;
+			post('/book/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
+				if(res.status == 200){
+					this.picArr = res.data.picinfo;
+				}
+				
 			},err=>{
 				//异步错误处理
 			});	
-			get('/recommend',{'book_length' : this.b_length, 'maganize_length' : this.m_length}).then(data=>{
-				let [error,res] = data;
-				this.bookList = res.data.data.recomment_books;
-				var list = res.data.data.recomment_magazines;
-				if(list.length<=3){
-					this.magList1 = list;
-				}else if(list.length<=6){
-					this.magList1 = list.splice(0,3);
-					this.magList2 = list.splice(3,6);
-				}else{
-					this.magList1 = list.splice(0,3);
-					this.magList2 = list.splice(3,6);
-					this.magList3 = list.splice(6,9);
+			get('/book/recommend',{'book_length' : this.b_length, 'maganize_length' : this.m_length}).then(res=>{
+				if(res.status == 200){
+					this.bookList = res.data.recomment_books;
+					var list = res.data.recomment_magazines;
+					if(list.length<=3){
+						this.magList1 = list;
+					}else if(list.length<=6){
+						this.magList1 = list.splice(0,3);
+						this.magList2 = list.splice(3,6);
+					}else{
+						this.magList1 = list.splice(0,3);
+						this.magList2 = list.splice(3,6);
+						this.magList3 = list.splice(6,9);
+					}
 				}
 			})
 		   

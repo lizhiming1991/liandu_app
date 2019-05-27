@@ -9,6 +9,7 @@ const store = new Vuex.Store({
 		loginProvider: "",
 		openid: null,
 		userid: null,
+		title: "今日链读",
 	},
 	mutations: {
 		login(state, provider) {
@@ -21,9 +22,21 @@ const store = new Vuex.Store({
 		},
 		setOpenid(state, openid) {
 			state.openid = openid
+		},
+		updateUserid(state,bool){
+			state.userid = bool;
+		},
+		updateTitle(state,bool){
+			state.title = bool;
 		}
 	},
 	actions: {
+		changeTitle(context,bool){
+			context.commit("updateTitle",bool);
+		},
+		changeUserid(context,bool){
+			context.commit("updateUserid",bool);
+		},
 		// lazy loading openid
 		getUserOpenId: async function ({
 			commit,

@@ -155,7 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return Promise.all(/*! import() | components/header/header */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/header/header")]).then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var _default =
+var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var _default =
 {
   data: function data() {
     return {
