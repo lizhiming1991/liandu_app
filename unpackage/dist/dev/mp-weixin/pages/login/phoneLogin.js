@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -146,39 +146,57 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js"));
+var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var toRegister = function toRegister() {return __webpack_require__.e(/*! import() | components/toRegister/toRegister */ "components/toRegister/toRegister").then(__webpack_require__.bind(null, /*! @/components/toRegister/toRegister.vue */ "../../../../item-vue/liandu/liandu_app/components/toRegister/toRegister.vue"));};var _default =
 {
   data: function data() {
     return {
-      phone_numbers: '',
+      verifyStatus: '',
+      phoneStatus: '',
+      loginStatus: '',
+      randomString: '',
+      verifyNumber: '',
+      phoneNumber: '',
       code: '',
       countdown: '获取验证码',
       disabled: false,
       timestatus: false,
       timestatus_two: true,
       clear: '',
-      countown_style: {
-        // 	width: '149upx',
-        //zIndex: 2,
-        // 	background: '#71D3BF',
-        // 	border:''
-        // 	// border: 1px solid rgba(168, 167, 167, 1);
-      },
-      //content: '获取验证码', // 按钮里显示的内容
-      totalTime: 60 //记录具体倒计时时间 
-    };
+      countown_style: {} };
+
+
   },
   onLoad: function onLoad() {
-
+    this.randomString = _commonFunction.default.randomWord(false, 4);
+    console.log(this.randomString);
   },
   methods: {
-
-    // 获取input内容
+    // 获取验证码
     getCode: function getCode() {
-      this.countdown = 5;
-      this.timestatus_two = false;
-      this.timestatus = true;
-      this.clear = setInterval(this.countDown, 1000);
-      this.countown_style.zIndex = -1;
+      var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
+      if (regPhone.test(this.phoneNumber)) {
+        this.countdown = 5;
+        this.timestatus_two = false;
+        this.timestatus = true;
+        this.clear = setInterval(this.countDown, 1000);
+        uni.request({
+          url: _common.onlineURL + '/code/phone/register?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber,
+          method: 'GET',
+          success: function success(res) {
+            console.log(res);
+
+          } });
+
+      } else {
+
+        uni.showToast({
+          title: '请输入正确的手机号码',
+          duration: 2000,
+          icon: 'none' });
+
+        return false;
+      }
     },
     countDown: function countDown() {
       if (!this.countdown) {
@@ -195,27 +213,111 @@ __webpack_require__.r(__webpack_exports__);
         --this.countdown;
       }
     },
-    login: function login() {
+    login: function login() {var _this = this;
       uni.request({
-        url: 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber + '&&password=' + this.password + '&&randomStr=' + this.randomWord(false, 4),
+        url: _common.onlineURL + '/auth/login?token=' + this.phoneNumber + '&&randomStr=' + this.randomString,
         method: 'GET',
         success: function success(res) {
+          _this.phoneStatus = res.data.status.split('-')[1];
+          //console.log(res);
+        } });
+
+      uni.request({
+        url: _common.onlineURL + '/check/code?code=' + this.verifyNumber + '&&randomStr=' + this.randomString,
+        method: 'GET',
+        success: function success(res) {
+          _this.verifyStatus = res.data.status.split('-')[1];
           console.log(res);
-          if (res.data.message == '登录成功') {
+        } });
+
+      setTimeout(function () {
+        //	console.log(this)
+        if (_this.phoneStatus == 'ERROR') {
+          uni.showToast({
+            title: '请输入正确的手机号',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.phoneStatus == 'FAILED') {
+          uni.showToast({
+            title: '账号不存在',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.verifyStatus == 'ERROR') {
+          uni.showToast({
+            title: '验证码错误',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.verifyStatus == 'FAILED') {
+          uni.showToast({
+            title: '验证码错误',
+            duration: 2000,
+            icon: 'none' });
+
+          return false;
+        } else if (_this.verifyStatus == 'SUCCESS') {
+          uni.showToast({
+            title: '登录成功',
+            duration: 2000,
+            icon: 'success' });
+
+          setTimeout(function () {
             uni.reLaunch({
               url: '../index/index/index' });
 
-            console.log('登录成功');
-          } else {
-            uni.showToast({
-              title: '密码错误',
-              duration: 2000,
-              icon: 'none' });
-
-            console.log('登录失败');
-          }
-        } });
-
+          }, 1000);
+          // uni.request({
+          // 	url: onlineURL+'/auth/login?token=' + this.phoneNumber+'&&password=' + '&&randomStr=' + this.randomString,
+          // 	method: 'GET',
+          // 	success: res => {
+          // 		console.log(res);
+          // 		// if (res.data.message == '登录成功') {
+          // 		// 	uni.reLaunch({
+          // 		// 		url: '../index/index/index'
+          // 		// 	});
+          // 		// 	console.log('登录成功');
+          // 		// } else {
+          // 		// 	uni.showToast({
+          // 		// 		title: '密码错误',
+          // 		// 		duration: 2000,
+          // 		// 		icon: 'none',
+          // 		// 	});
+          // 		// 	console.log('登录失败');
+          // 		// }
+          // 	}
+          // });
+        }
+      }, 1000);
+      // if(this.phoneStatus == 'ERROR'){
+      // 	console.log('111')
+      // }else{
+      // 	console.log('222')
+      // }
+      // uni.request({
+      // 	url: onlineURL+'/auth/login?token=' + this.phoneNumber + '&&randomStr=' + this.randomString,
+      // 	method: 'GET',
+      // 	success: res => {
+      // 		console.log(res);
+      // 		// if (res.data.message == '登录成功') {
+      // 		// 	uni.reLaunch({
+      // 		// 		url: '../index/index/index'
+      // 		// 	});
+      // 		// 	console.log('登录成功');
+      // 		// } else {
+      // 		// 	uni.showToast({
+      // 		// 		title: '密码错误',
+      // 		// 		duration: 2000,
+      // 		// 		icon: 'none',
+      // 		// 	});
+      // 		// 	console.log('登录失败');
+      // 		// }
+      // 	}
+      // });
     } },
 
   components: {

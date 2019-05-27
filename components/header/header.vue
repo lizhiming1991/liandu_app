@@ -10,7 +10,6 @@
 			<image  @tap="goback()" class="h_img" src="../../static/images/icon_back.png"></image>
 			<!-- #endif -->
 		</view>
-		
 		<view class="h_title" @tap="showname()">{{titles}}</view>
 		<view class="h_more"></view>
 	</view>
@@ -97,7 +96,7 @@
 				height: 37upx;
 			}
 			.h_goback{
-				width: 30upx;
+				width: 20upx;
 				height: 37upx;
 			}
 		}

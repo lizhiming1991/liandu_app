@@ -8,7 +8,8 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
+Object.defineProperty(exports, "__esModule", { value: true });exports.onlineURL = exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
+var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
 
 /***/ }),
 
@@ -496,10 +497,9 @@ createPage(_video.default);
   !*** D:/item-vue/liandu/liandu_app/pages.json ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nSyntaxError: Unexpected token < in JSON at position 3438\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\json.js:17:20)\n    at parsePagesJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\pages.js:28:27)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index-new.js:34:21)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index.js:25:35)");
 
 /***/ }),
 
@@ -522,7 +522,9 @@ var store = new _vuex.default.Store({
     loginProvider: "",
     openid: null,
     userid: null,
-    title: "今日链读" },
+    title: "今日链读",
+    phone: "",
+    modifyRandomNumbers: "" },
 
   mutations: {
     login: function login(state, provider) {
@@ -541,6 +543,12 @@ var store = new _vuex.default.Store({
     },
     updateTitle: function updateTitle(state, bool) {
       state.title = bool;
+    },
+    modifyPhoneNumber: function modifyPhoneNumber(state, phone) {
+      state.phone = phone;
+    },
+    modifyRandomNumber: function modifyRandomNumber(state, modifyRandomNumbers) {
+      state.modifyRandomNumbers = modifyRandomNumbers;
     } },
 
   actions: {
@@ -549,6 +557,12 @@ var store = new _vuex.default.Store({
     },
     changeUserid: function changeUserid(context, bool) {
       context.commit("updateUserid", bool);
+    },
+    modifyPhoneNumber: function modifyPhoneNumber(ctx, phone) {
+      ctx.commit('modifyPhoneNumber', phone);
+    },
+    modifyRandomNumber: function modifyRandomNumber(ctx, modifyRandomNumbers) {
+      ctx.commit('modifyRandomNumber', modifyRandomNumbers);
     },
     // lazy loading openid
     getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:

@@ -106,6 +106,7 @@
 				<image class="m_right" src="../../../static/images/arr_right.png"></image>
 			</view>
 		</view>
+
 	</view>
 </template>
 

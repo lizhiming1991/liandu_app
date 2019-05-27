@@ -40,6 +40,8 @@
 	import toRegister from '@/components/toRegister/toRegister.vue'
 	import {mapState} from 'vuex'
 	import {get} from '@/common/methods.js'
+	import { onlineURL } from '@/common/common.js';
+
 	export default {
 		data() {
 			return {
@@ -57,13 +59,12 @@
 				"userid"
 			]),
 			numbers:function(){
-				
 				return this.number
-				
 			}
 		},
 		onLoad() {
 			this.getImgcode();
+			this.yzmstr = this.randomWord(false,4);
 		},
 		onReady(){
 			
@@ -71,7 +72,7 @@
 		methods: {
 			checkphone(){//18136085708 123456
 				uni.request({
-					url: 'http://192.168.0.134:9999/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
+					url: onlineURL + '/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
 					method:'GET',
 					success: (res)=>{
 						uni.showToast({
@@ -84,9 +85,8 @@
 				})
 			},
 			getImgcode(){
-				this.yzmstr = this.randomWord(false,4);
 				var yzm = this.yzmstr;
-				this.imagePath = "http://192.168.0.134:9999/code/image?randomStr="+yzm;
+				this.imagePath = "http://192.168.0.185:9999/code/image?randomStr="+yzm;
 				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
 					
 				// #endif 
@@ -143,7 +143,7 @@
 					this.passyzm = this.yzmstr;
 				}
 				uni.request({
-					url: 'http://192.168.0.134:9999/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
+					url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
 					method: 'GET',
 					success: res => {
 						console.log(res);
@@ -153,7 +153,7 @@
 								duration: 1500,
 								icon: 'none'
 							});
-							this.$store.dispatch("changeUserid",res.data.data);
+							// this.$store.dispatch("changeUserid",res.data.data);
 							uni.reLaunch({
 								url: '../index/index/index'
 							});

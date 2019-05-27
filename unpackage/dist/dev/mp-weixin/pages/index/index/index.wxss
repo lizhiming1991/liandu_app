@@ -35,8 +35,8 @@
   padding-bottom: 120rpx;
 }
 .index_content .lg_head.data-v-5ad3d5fa {
-    height: 86rpx;
-    margin-top: 60rpx;
+    height: 146rpx;
+    line-height: 146rpx;
 }
 .index_content .lg_head .lg_title.data-v-5ad3d5fa {
       font-size: 44rpx;
@@ -45,15 +45,10 @@
 .index_content .lg_head .lg_right.data-v-5ad3d5fa {
       float: right;
 }
-.index_content .lg_head .lg_right .lg_searchs.data-v-5ad3d5fa {
-        width: 51rpx;
-        height: 51rpx;
-        display: inline-block;
-        margin-right: 37rpx;
-}
 .index_content .lg_head .lg_right .lg_search.data-v-5ad3d5fa {
         width: 51rpx;
         height: 51rpx;
+        margin-right: 37rpx;
 }
 .index_content .lg_head .lg_right .lg_ewm.data-v-5ad3d5fa {
         width: 49rpx;
@@ -116,10 +111,6 @@
           height: 22rpx;
           background-color: #71D3BF;
 }
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_navbar_link.data-v-5ad3d5fa {
-          width: 100%;
-          height: 124rpx;
-}
 .index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-5ad3d5fa:nth-child(1) {
         margin-left: 0;
 }
@@ -140,10 +131,9 @@
 .index_content .lg_hots .lg_scrollbox.data-v-5ad3d5fa {
       width: 100%;
       height: 245rpx;
-      overflow-y: scroll;
 }
 .index_content .lg_hots .lg_lt_scroll.data-v-5ad3d5fa {
-      height: 245rpx;
+      height: 1245rpx;
       width: 1575rpx;
 }
 .index_content .lg_hots .lg_lt_scroll .lg_lt_item.data-v-5ad3d5fa {
@@ -295,10 +285,6 @@
           width: 77rpx;
           height: 34rpx;
           background-color: #FF546C;
-          font-size: 24rpx;
-          text-align: center;
-          line-height: 34rpx;
-          color: #fff;
 }
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro.data-v-5ad3d5fa {
         -webkit-box-flex: 1;
