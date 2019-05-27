@@ -10,10 +10,7 @@
 			<image  @tap="goback()" class="h_img" src="../../static/images/icon_back.png"></image>
 			<!-- #endif -->
 		</view>
-<<<<<<< HEAD
-		
-=======
->>>>>>> master
+
 		<view class="h_title" @tap="showname()">{{titles}}</view>
 		<view class="h_more"></view>
 	</view>
@@ -76,11 +73,7 @@
 				this.$router.go(-1);
 			},
 			showname(){
-<<<<<<< HEAD
-				alert(this.title)
-=======
 				alert(this.titles)
->>>>>>> master
 			}
 		},
 		props:{

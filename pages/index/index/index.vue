@@ -183,10 +183,7 @@
 				if(res.status == 200){
 					this.bookList = res.data.recomment_books;
 					var list = res.data.recomment_magazines;
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 					if(list.length<=3){
 						this.magList1 = list;
 					}else if(list.length<=6){
