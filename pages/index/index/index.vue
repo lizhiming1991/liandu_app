@@ -152,6 +152,7 @@
 
 <script>
 	/* import {uniBadge} from '@dcloudio/uni-ui' */
+	import {get,post} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
 	import Icon from '@/components/uni-icon/uni-icon.vue'
 	export default {
