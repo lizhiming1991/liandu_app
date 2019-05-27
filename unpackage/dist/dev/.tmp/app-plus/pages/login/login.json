@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "search": "/components/header/header",
+    "header": "/components/header/header",
     "to-register": "/components/toRegister/toRegister"
   }
 }

@@ -5,12 +5,11 @@
 		
 		<view class="lg_head">
 			<text class="lg_title">首页</text>
+			<!-- #ifdef APP-PLUS -->
 			
+			<!-- #endif -->
 			<view class="lg_right">
-				<navigator url="/pages/searchIndex/searchIndex" class="lg_searchs">
-					<image class="lg_search" src="/static/images/icon_search.png"></image>
-				</navigator>
-				
+				<image class="lg_search" src="/static/images/icon_search.png"></image>
 				<image class="lg_ewm" src="/static/images/icon_erweima.png"></image>
 			</view>
 		</view>
@@ -18,7 +17,7 @@
 			<swiper class="swiper lg_lunbo"  indicator-dots="true" autoplay="true" interval="3000" duration="300" >
 				
 			    <swiper-item v-for="(item,index) in picArr" :key="index">
-			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerror"  ></image>
+			    	<image class="lg_lb_pic swiper-item"  :src="imgurl+item.photo"  ></image>
 			    </swiper-item>
 			            
 			</swiper>
@@ -26,11 +25,9 @@
 		<view class="lg_navbar">
 			<view class="lg_navbars">
 				<view class="lg_navbar_item">
-					<navigator class="lg_navbar_link" url="/pages/books/bookList">
-						<text class="lg_tname">书籍专栏</text>
-						<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
-						<text class="lg_line"></text>
-					</navigator>
+					<text class="lg_tname">书籍专栏</text>
+					<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
+					<text class="lg_line"></text>
 				</view>
 				<view class="lg_navbar_item">
 					<text class="lg_tname">休闲杂志</text>
@@ -64,7 +61,7 @@
 		<view class="lg_hots">
 			<text class="lg_hots_title">热门专题</text>
 			<view class="lg_scrollbox">
-				<scroll-view  scroll-x="true"  class="scroll-view_H lg_lt_scroll">
+				<scroll-view  scroll-x="true" scroll-y="true" class="scroll-view_H lg_lt_scroll">
                     <view class="lg_lt_item">
 						<image class="lg_hots_pic" src="/static/image/sta_zhuanti.png"></image>
 						<text class="lg_hots_hot">HOT</text>
@@ -157,7 +154,6 @@
 	/* import {uniBadge} from '@dcloudio/uni-ui' */
 	import {ImgUrl} from '@/common/common.js'
 	import Icon from '@/components/uni-icon/uni-icon.vue'
-	import {get,post} from '@/common/methods.js'
 	export default {
 		data() {
 			return {
@@ -174,38 +170,52 @@
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad:function(e){
-			post('/banner/query',{'type' : 1, 'terminal' : 2}).then(data=>{
-				let [error,res] = data;
-				this.picArr = res.data.data.picinfo;
-			},err=>{
-				//异步错误处理
-			});	
-			get('/recommend',{'book_length' : this.b_length, 'maganize_length' : this.m_length}).then(data=>{
-				let [error,res] = data;
-				this.bookList = res.data.data.recomment_books;
-				var list = res.data.data.recomment_magazines;
-				if(list.length<=3){
-					this.magList1 = list;
-				}else if(list.length<=6){
-					this.magList1 = list.splice(0,3);
-					this.magList2 = list.splice(3,6);
-				}else{
-					this.magList1 = list.splice(0,3);
-					this.magList2 = list.splice(3,6);
-					this.magList3 = list.splice(6,9);
-				}
-			})
-		   
+			 uni.request({
+			   url: 'http://localhost:9999/banner/query',
+			   data: {'type' : 1, 'terminal' : 2},
+			   method:"POST",
+			   header : {'content-type':'application/json'},
+			   success: res => {
+				   this.picArr = res.data.data.picinfo;
+			   }
+		   });
+		    uni.request({
+				 url: 'http://localhost:9999/recommend',
+				 data: {'book_length' : this.b_length, 'maganize_length' : this.m_length},
+				 method:"GET",
+				 header : {'content-type':'application/json'},
+				 success: res => {
+					this.bookList = res.data.data.recomment_books;
+					var list = res.data.data.recomment_magazines;
+					if(list.length<=3){
+						this.magList1 = list;
+					}else if(list.length<=6){
+						this.magList1 = list.splice(0,3);
+						this.magList2 = list.splice(3,6);
+					}else{
+						this.magList1 = list.splice(0,3);
+						this.magList2 = list.splice(3,6);
+						this.magList3 = list.splice(6,9);
+					}
+					
+						
+					console.log(this)
+							
+				 }
+		   	});
+		   console.log();
 		},
 		
 		onShow(){
-			
+			console.log(11)
 		},
 		onReady(){
+			console.log(22)
 			this.imgurl = ImgUrl;
 		},
 		methods: {
 			imgerr(){
+				console.log(33)
 				return "/static/image/sta_zazhi.png";
 			}
 			
@@ -225,24 +235,18 @@
 		color: $title-color;
 		padding-bottom: 120upx;
 		.lg_head{
-			height: 86upx;
-			margin-top: 60upx;
+			height: 146upx;
+			line-height: 146upx;
 			.lg_title{
 				font-size: $title-size;
 				font-weight: 700;
 			}
 			.lg_right{
 				float: right;
-				.lg_searchs{
-					width: 51upx;
-					height: 51upx;
-					display: inline-block;
-					margin-right: 37upx;
-				}
 				.lg_search{
 					width: 51upx;
 					height: 51upx;
-					
+					margin-right: 37upx;
 				}
 				.lg_ewm{
 					width: 49upx;
@@ -299,10 +303,6 @@
 						height: 22upx;
 						background-color: #71D3BF;
 					}
-					.lg_navbar_link{
-						width: 100%;
-						height: 124upx;
-					}
 				}
 				.lg_navbar_item:nth-child(1){
 					margin-left: 0;
@@ -326,10 +326,10 @@
 				width: 100%;
 				height: 245upx;
 				// overflow: hidden;
-				overflow-y: scroll;
+				// overflow-y: scroll;
 			}
 			.lg_lt_scroll{
-				height: 245upx;
+				height: 1245upx;
 				width: 1575upx;//计算值
 				.lg_lt_item{
 					display: inline-block;
@@ -476,10 +476,6 @@
 							width: 77upx;
 							height: 34upx;
 							background-color: #FF546C;
-							font-size: 24upx;
-							text-align: center;
-							line-height: 34upx;
-							color: #fff;
 						}
 					}
 					.lg_bk_pro{

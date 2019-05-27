@@ -1,0 +1,1 @@
+<view class="t0_register data-v-b9fccc9c" style="flex-direction:column;flex:1;" bind:__l="__l"><view class="data-v-b9fccc9c"><view style="flex:1;" class="data-v-b9fccc9c"></view><view class="to_register data-v-b9fccc9c"><navigator class="register_url data-v-b9fccc9c" url="/pages/login/register">前往注册</navigator>></view></view></view>

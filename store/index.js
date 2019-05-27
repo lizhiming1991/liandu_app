@@ -9,6 +9,8 @@ const store = new Vuex.Store({
 		loginProvider: "",
 		openid: null,
 		userid: null,
+		phone:"",
+		modifyRandomNumbers:"",
 	},
 	mutations: {
 		login(state, provider) {
@@ -21,9 +23,23 @@ const store = new Vuex.Store({
 		},
 		setOpenid(state, openid) {
 			state.openid = openid
+		},
+		modifyPhoneNumber(state, phone) {
+			state.phone = phone
+		},
+		modifyRandomNumber(state,modifyRandomNumbers){
+			state.modifyRandomNumbers = modifyRandomNumbers
 		}
 	},
 	actions: {
+		
+		modifyPhoneNumber (ctx, phone){
+			console.log('phone')
+			ctx.commit('modifyPhoneNumber', phone)
+		},
+		modifyRandomNumber(ctx,modifyRandomNumbers){
+			ctx.commit('modifyRandomNumber', modifyRandomNumbers)
+		},
 		// lazy loading openid
 		getUserOpenId: async function ({
 			commit,

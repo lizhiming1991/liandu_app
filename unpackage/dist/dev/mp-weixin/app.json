@@ -1,11 +1,16 @@
 {
   "pages": [
     "pages/index/index/index",
+    "pages/login/logout",
+    
     "pages/index/friendship/friendship",
     "pages/index/enterprise/enterprise",
+    "pages/enterpriseDetails/applyMember",
+    "pages/enterpriseDetails/submitted",
+    "pages/enterpriseDetails/enterpriseInfo",
     "pages/index/my/my",
     "pages/searchIndex/searchIndex",
-    "pages/books/bookList",
+    "pages/books/books",
     "pages/magazine/magazine",
     "pages/video/video",
     "pages/audio/audio",
@@ -14,7 +19,7 @@
     "pages/art_training/art_training",
     "pages/readings/readings",
     "pages/login/login",
-    "pages/login/logout",
+   
     "pages/login/register",
     "pages/login/changePassword",
     "pages/login/phoneLogin",
@@ -60,5 +65,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap39.json"
 }

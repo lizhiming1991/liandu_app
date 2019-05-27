@@ -10,8 +10,8 @@
 			<image  @tap="goback()" class="h_img" src="../../static/images/icon_back.png"></image>
 			<!-- #endif -->
 		</view>
-		
-		<view class="h_title" @tap="showname()">标题</view>
+		<view class="h_title" @tap="showname()"></view>
+		<!-- <view class="h_title" @tap="showname()">标题</view> -->
 		<view class="h_more"></view>
 	</view>
 </template>
@@ -54,7 +54,7 @@
 				height: 37upx;
 			}
 			.h_goback{
-				width: 30upx;
+				width: 20upx;
 				height: 37upx;
 			}
 		}

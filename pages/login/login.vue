@@ -1,6 +1,6 @@
 <template>
 	<view class="login_content">
-		<Search></Search>
+		<Header></Header>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -15,9 +15,9 @@
 				<input class="login_password" v-model="password" password="true" style="font-size: 30upx;" maxlength="16"
 				 placeholder="请输入密码" />
 			</view>
-			<view class="input_row input_password" v-show="number >=3 ">
+			<view class="input_row input_password" v-if="number>=3">
 				<input class="login_password" v-model="passyzm"  style="font-size: 30upx;" maxlength="16" placeholder="请输入验证码" />
-				<image src="" id="passyzm"></image>
+				<image :src="imagePath" id="passyzm"></image>
 	        </view>
 		</view>
 		<view class="find_password" style="display: flex; justify-content: flex-end;">
@@ -36,9 +36,11 @@
 </template>
 
 <script>
-	import Search from '@/components/header/header.vue'
-	import toRegister from '@/components/toRegister/toRegister.vue'
-	import {mapState} from 'vuex'
+	import Header from '@/components/header/header.vue';
+	import toRegister from '@/components/toRegister/toRegister.vue'; 
+	import { onlineURL } from '@/common/common.js';
+	// import {mapState} from 'vuex'
+	// import {get} from '@/common/methods.js'
 	export default {
 		data() {
 			return {
@@ -48,25 +50,30 @@
 				chars: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
 				number: 0,
 				yzmstr:'',
+				imagePath:''
 			}
 		},
 		computed: {
-			...mapState([
-				"userid"
-			])
+			// ...mapState([
+			// 	"userid"
+			// ]),
+			numbers:function(){
+				
+				return this.number
+				
+			}
 		},
 		onLoad() {
 			this.getImgcode();
+			this.yzmstr = this.randomWord(false,4);
 		},
-		watch:{
-			number(){
-				this.getImgcode();
-			}
+		onReady(){
+			
 		},
 		methods: {
-			checkphone(){
+			checkphone(){//18136085708 123456
 				uni.request({
-					url: 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber,
+					url: onlineURL + '/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
 					method:'GET',
 					success: (res)=>{
 						uni.showToast({
@@ -79,30 +86,15 @@
 				})
 			},
 			getImgcode(){
-				var xhr = new XMLHttpRequest();
-					this.yzmstr = this.randomWord(false,4);
-					var yzm = this.yzmstr;
-					xhr.open('GET', "http://192.168.0.185:9999/code/image"+"?randomStr="+yzm, true);    //也可以使用POST方式，根据接口
-					xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-					xhr.responseType = "blob";   //返回类型blob
-					xhr.onload = function () {
-						//定义请求完成的处理函数
-						if (this.status === 200) {
-								var blob = this.response;
-								if(blob.size>0){
-									var reader = new FileReader();
-									reader.readAsDataURL(blob);   // 转换为base64，可以直接放入a标签href
-									reader.onload = function (e) {
-										// 转换完成，创建一个a标签用于下载
-										var ele = document.querySelector("#passyzm img");
-										var dle = document.querySelector("#passyzm div");
-										ele.setAttribute("src",e.target.result);
-										dle.style.backgroundImage = "url("+e.target.result+")";
-									}
-								}
-						}
-					};
-					xhr.send();
+				
+				var yzm = this.yzmstr;
+				this.imagePath = "http://192.168.0.185:9999/code/image?randomStr="+yzm;
+				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
+					
+				// #endif 
+					// #ifdef H5 
+					
+					 // #endif 
 			},
 			randomWord(randomFlag, min, max) {
 				let str = "",
@@ -121,10 +113,8 @@
 				return str;
 			},
 			passwordLogin() {
-				let nowstr = this.yzmstr;
-				console.log(nowstr)
-				let url = 'http://192.168.0.185:9999/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + nowstr;
 				this.number = this.number +1;
+				this.getImgcode();
 				if(this.phoneNumber == "" || this.phoneNumber == null){
 					uni.showToast({
 						title: '用户名不能为空!',
@@ -142,7 +132,8 @@
 					return false;
 				}
 				if(this.number>=3){
-					if(this.passyzm == "" || this.passyzm == null || this.passyzm != nowstr){
+					// console.log(this.passyzm)
+					if(this.passyzm == "" || this.passyzm == null ){
 						uni.showToast({
 							title: '验证码不正确!',
 							duration: 1500,
@@ -150,9 +141,11 @@
 						});
 						return false;
 					}
+				}else{
+					this.passyzm = this.yzmstr;
 				}
 				uni.request({
-					url: url,
+					url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
 					method: 'GET',
 					success: res => {
 						console.log(res);
@@ -162,7 +155,7 @@
 								duration: 1500,
 								icon: 'none'
 							});
-							this.$store.dispatch("changeUserid",res.data.data);
+							// this.$store.dispatch("changeUserid",res.data.data);
 							uni.reLaunch({
 								url: '../index/index/index'
 							});
@@ -179,7 +172,7 @@
 			}
 		},
 		components: {
-			Search,
+			Header,
 			toRegister
 		}
 	}
@@ -188,7 +181,7 @@
 <style>
 	.login_content {
 		width: 750upx;
-	}\
+	}
 	
 	#passyzm{
 		position: fixed;

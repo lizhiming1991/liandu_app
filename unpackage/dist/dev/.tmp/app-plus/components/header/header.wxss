@@ -26,7 +26,7 @@
 /* 文章场景相关 */
 /* add */
 /* 常用尺寸颜色变量 */
-.header.data-v-3c9b5f9e {
+.header.data-v-f471c35c {
   padding: 0 40rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -35,28 +35,28 @@
   display: -ms-flexbox;
   display: flex;
 }
-.header .h_back.data-v-3c9b5f9e {
+.header .h_back.data-v-f471c35c {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
 }
-.header .h_back .h_img.data-v-3c9b5f9e {
+.header .h_back .h_img.data-v-f471c35c {
       width: 20rpx;
       height: 37rpx;
 }
-.header .h_back .h_goback.data-v-3c9b5f9e {
-      width: 30rpx;
+.header .h_back .h_goback.data-v-f471c35c {
+      width: 20rpx;
       height: 37rpx;
 }
-.header .h_title.data-v-3c9b5f9e {
+.header .h_title.data-v-f471c35c {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     text-align: center;
 }
-.header .h_more.data-v-3c9b5f9e {
+.header .h_more.data-v-f471c35c {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
