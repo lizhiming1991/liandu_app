@@ -180,6 +180,7 @@ page {
 	display: flex;
 	margin-left: -100rpx;
 }
+
 /* 图书列表 start*/
 .journal_content .list_content .content_list {
 	display: -webkit-box;
@@ -292,17 +293,15 @@ page {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
 }
+
 /* 图书列表 end*/
+
 /* 杂志 start */
 .journal_content .list_content .journal_list {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
@@ -355,7 +354,9 @@ page {
 	color: #333;
 	font-size: 32rpx;
 }
+
 /* 杂志 end */
+
 /* 课程列表 start*/
 .journal_content .list_content .content_list .course_cover {
 	margin-top: 33rpx;
@@ -421,5 +422,6 @@ page {
 	color: #888;
 	font-size: 26rpx;
 }
+
 /* 课程列表 end*/
 

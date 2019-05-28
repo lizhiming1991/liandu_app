@@ -14,15 +14,7 @@
 
 
 
-<<<<<<< HEAD
 
-
-
-
-
-	/*每个页面公共css */
-=======
->>>>>>> master
 
 
 
@@ -37,6 +29,6 @@ page{
 
   /* APP-PLUS || MP-WEIXIN || MP-BAIDU 
   *  MP-ALIPAY || MP-TOUTIAO || H5
-  * 类型
+  * 
   * */
 

@@ -1,13 +1,5 @@
 
-<<<<<<< HEAD
-view.data-v-5c3c084e {
-=======
-<<<<<<< HEAD
-view.data-v-5c3c084e {
-=======
-view.data-v-b9fccc9c {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+view.data-v-a0d37f76 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -18,28 +10,12 @@ view.data-v-b9fccc9c {
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-<<<<<<< HEAD
-.to_register.data-v-5c3c084e{
-=======
-<<<<<<< HEAD
-.to_register.data-v-5c3c084e{
-=======
-.to_register.data-v-b9fccc9c{
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.to_register.data-v-a0d37f76{
 	margin-right: 87rpx;
 	color: #000;
 	font-size: 22rpx;
 }
-<<<<<<< HEAD
-.to_register .register_url.data-v-5c3c084e{
-=======
-<<<<<<< HEAD
-.to_register .register_url.data-v-5c3c084e{
-=======
-.to_register .register_url.data-v-b9fccc9c{
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.to_register .register_url.data-v-a0d37f76{
 	border-bottom: 2rpx solid #000;
 }
 

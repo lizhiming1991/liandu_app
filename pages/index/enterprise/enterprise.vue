@@ -1,47 +1,67 @@
 <template>
 	<view class="enterprise" style="">
 		<view class="enterprise_title" style="">
-			<view class="title_text">企业</view>
+			<view class="title_text">企业1</view>
 			<view class="title_sousuo"><image class="sousuo_icon" src="/static/images/sousuo.png" mode=""></image></view>
 		</view>
 		<view class="select_label">
-			<view class="label_one"><text>行业</text><image class="xiala_icon" src="/static/images/xiala.png" mode=""></image></view>
-			<view class="label_two"><text>地区</text><image class="xiala_icon" src="/static/images/xiala.png" mode=""></image></view>
+			<view class="label_one">
+				<view class="uni-list">
+					<view class="uni-list-cell">
+						<view class="uni-list-cell-db">
+							<picker @change="tradeChange" :value="tradeIndex" :range="trade">
+								<view class="uni-input">{{trade[tradeIndex]}}</view>
+							</picker>
+						</view> 
+					</view>
+				</view>
+					<image class="xiala_icon" src="/static/images/xiala.png" mode=""></image>
+				</view>
+
+			<view class="label_two">
+				<view class="uni-list">
+					<view class="uni-list-cell">
+						<view class="uni-list-cell-db">
+							<picker @change="regionChange" :value="regionIndex" :range="region">
+								<view class="uni-input" v-html="region[regionIndex]"></view>
+							</picker>
+						</view> 
+					</view>
+				</view>
+				<image class="xiala_icon" src="/static/images/xiala.png" mode=""></image>
+			</view>
 		</view>
-	<block class="enterprise_list_content">
-		<view class="">
-			
-		
-		<view class="enterprise_list"  v-for="(item , index) in enterpriseList" :key="index">
-			<view class="enterprise_list_center" @tap="nextPage">
+	<block class="enterprise_list_content" v-for="(item , index) in enterpriseList" :key="index">
+		<view class="enterprise_list">
+			<view class="enterprise_list_center" @tap="nextPage" :data-enterpriseid="item.id" :data-joinedState="item.joinedState">
 				<view class="list_img_box"><image class="list_img" src="/static/image/qiye_left.png" mode=""></image></view>
 				<view class="enterprise_details">
 					 <view class="" style="flex-direction:column;">
 						 <view class="enterprise_name">
-								首都艺术节协会		
+								{{item.name}}	
 						</view>
 						<view class="enterprise_info">
-								这里是简介这里是简介这里是简介这里是简介这里是这里是简介这里是简介这里是																	
+								{{item.cont}}																		
 						</view>
 						<view class="enterprise_content" >
 							<view class="list_lable_one">
-								<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">艺术培训</text>
+								<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.trade}}</text>
 							</view>
 							<view class="list_lable_two">
-								<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">北京</text>
+								<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.address.split('市').length == 1 ? item.address.split('市')[0] : item.address.split('市')[0] + '市'}}</text>
 							</view>
-						</view>
+						</view> 
 					 </view>
 				</view>
 			</view>
 			<view class="apply_vip">
-				<view class="apply_vip_text" v-if="isVip == 0"><navigator url="../../enterpriseDetails/applyMember">申请会员</navigator></view>
-				<view class="under_review" v-else-if ="isVip == 0">会员审核中</view>
-				<view class="vip_added" v-else-if= "isVip == 1">已加入</view>
+				<view class="apply_vip_text" v-if=" item.joinedState == null "><navigator url="../../enterpriseDetails/applyMember">申请会员</navigator></view>
+				<view class="under_review" v-else-if ="item.joinedState == 'init'">会员审核中</view>
+				<view class="vip_added" v-else-if= "item.joinedState == 'pass'">已加入</view>
 			</view>
 		</view>
-		</view>
 		</block>
+		<navigator url="../../login/logout">logut</navigator>
 	</view>
 </template>
 
@@ -50,29 +70,74 @@
 	export default {
 		data() {
 			return {
-				isVip:'1',
+				isVip:'',
 				enterpriseList:[],
-				list:[{a:1},{b:2}]
+				list:[],
+				trade: ['行业'],
+				region:['地区'],
+				tradeIndex: 0,
+				regionIndex:0
 			};
 		},
 		onLoad() {
 			uni.request({
-				url:onlineURL + '/enterprise/company/all?userId=1',
+				url: 'http://192.168.0.185:9999/enterprise/company/trade/all',
 				method: 'GET',
-				success(res) {
+				success:(res)=> {
+					console.log(res.data.data);
+					for (let data of res.data.data) {
+						this.trade.push(data);
+					}
 					
+				}
+			});
+			uni.request({
+				url: 'http://192.168.0.185:9999/enterprise/company/region/all',
+				method: 'GET',
+				success:(res)=> {
+					console.log(res.data.data);
+					for (let data of res.data.data) {
+						console.log(data)
+						let area = data.split("市");
+						if(area.length == 1){
+							this.region.push(area[0])
+						}else if(area.length ==2){
+							this.region.push( area[0] + '市')
+						}
+					}
+					// this.region = res.data.data;
+				}
+			});
+			uni.request({
+				url:onlineURL + '/enterprise/company/all?userId=1340',
+				method: 'GET',
+				success:(res)=> {
 					this.enterpriseList = res.data.data;
 					console.log(this.enterpriseList);
 				}
-			})
+			});
 		},
 		methods:{
-			nextPage() {
+			tradeChange: function(e) {
+				console.log(e)
+				console.log('1picker发送选择改变，携带值为', e.target.value)
+				this.tradeIndex = e.target.value
+			},
+			regionChange: function(e) {
+				console.log('2picker发送选择改变，携带值为', e.target.value)
+				this.regionIndex = e.target.value
+			},
+			nextPage(e) {
+				let enterpriseid = e.currentTarget.dataset.enterpriseid;
+				let joinedState = e.currentTarget.dataset.joinedstate;
+				if(joinedState === undefined || joinedState == undefined){
+					// console.log('123')
+					joinedState = 'notVip';
+				}
+				//console.log(joinedState)
 				uni.navigateTo({
-					url: '../../enterpriseDetails/enterpriseInfo',
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
+					url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
+					success: res => {}
 				});
 			}
 		}
@@ -125,6 +190,7 @@
 		height: 16upx;
 	}
 	.enterprise .enterprise_list{
+		margin-top: 47upx;
 		flex-direction: column; 
 		flex: 1;
 	}
@@ -137,7 +203,7 @@
 	}
 	.enterprise>view:nth-child(3){
 		padding-top: 50upx;
-		border-radius:50px 0px 0px 0px;
+		border-radius:50upx 0px 0px 0px;
 		//border: 1px solid red;
 		box-shadow:-7px -8px 17px -7px rgba(108,109,110,0.1);
 	}

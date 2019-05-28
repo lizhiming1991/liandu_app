@@ -1,6 +1,5 @@
 
 view {
-	/* display: flex; */
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
@@ -12,7 +11,7 @@ page {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558865021550&di=d3272d23b00da10316346a314f2710b7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201605%2F08%2F20160508224829_JPf8Q.jpeg');
+	background-image: url('http://192.168.0.210/attached/image/2019-images/20190527.png');
 	background-repeat: no-repeat;
 	background-position-y: -250rpx;
 }
@@ -303,10 +302,6 @@ page {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;

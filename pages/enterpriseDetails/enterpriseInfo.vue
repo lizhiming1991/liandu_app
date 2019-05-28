@@ -28,8 +28,8 @@
 				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">北京</text>
 			</view>
 		</view>
-		<uni-segmented-control style="justify-content: center;" :current="current" activeColor="#01B18D"
-		 :values="items" @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
+		<uni-segmented-control style="justify-content: center;" :current="current" activeColor="#01B18D" :values="items"
+		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
 			<view v-show="current === 0">
 				<view style="margin: 200upx 200upx; font-size: 28upx;">
@@ -39,145 +39,45 @@
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
 				<view class="content_list">
-					<view class="book_info">
-						<view class="book_cover_content">
-							<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="book_cover_info">
-							<view class="">
-								<view class="book_title_content">
-									<view class="book_title">冰与火之歌</view>
-									<view class="book_price">￥9.9</view>
-								</view>
+					<block v-for="(item,index) in bookList" :key="index">
+						<view class="book_info">
+							<view class="book_cover_content">
+								<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
 							</view>
-							<view class="book_author" style="">
+							<view class="book_cover_info">
 								<view class="">
-									乔治.R.R.马丁
+									<view class="book_title_content">
+										<view class="book_title">{{item.name}}</view>
+										<view class="book_price">￥19</view>
+									</view>
+								</view>
+								<view class="book_author" style="">
+									<view class="">
+										{{item.authorname}}
+									</view>
+								</view>
+								<view class="book_brief_info">
+									这是简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
 								</view>
 							</view>
-							<view class="book_brief_info">
-								这是简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-							</view>
 						</view>
-					</view>
-					<view class="book_info">
-						<view class="book_cover_content">
-							<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="book_cover_info">
-							<view class="">
-								<view class="book_title_content">
-									<view class="book_title">冰与火之歌</view>
-									<view class="book_price">￥9.9</view>
-								</view>
-							</view>
-							<view class="book_author" style="">
-								<view class="">
-									乔治.R.R.马丁
-								</view>
-							</view>
-							<view class="book_brief_info">
-								这是简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-							</view>
-						</view>
-					</view>
-					<view class="book_info">
-						<view class="book_cover_content">
-							<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="book_cover_info">
-							<view class="">
-								<view class="book_title_content">
-									<view class="book_title">冰与火之歌</view>
-									<view class="book_price">￥9.9</view>
-								</view>
-							</view>
-							<view class="book_author" style="">
-								<view class="">
-									乔治.R.R.马丁
-								</view>
-							</view>
-							<view class="book_brief_info">
-								这是简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-							</view>
-						</view>
-					</view>
-					<view class="book_info">
-						<view class="book_cover_content">
-							<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="book_cover_info">
-							<view class="">
-								<view class="book_title_content">
-									<view class="book_title">冰与火之歌</view>
-									<view class="book_price">￥9.9</view>
-								</view>
-							</view>
-							<view class="book_author" style="">
-								<view class="">
-									乔治.R.R.马丁
-								</view>
-							</view>
-							<view class="book_brief_info">
-								这是简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-							</view>
-						</view>
-					</view>
+					</block>
 				</view>
-
 			</view>
 			<!-- 图书列表 end -->
 			<!-- 杂志列表 start -->
 			<view v-show="current === 2">
 				<view class="journal_list">
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+					<block v-for="(item, index) in journalList" :key="index">
+						<view class="journal_cover">
+							<view>
+								<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+							</view>
+							<view class="journal_cover_title">
+								{{item.name}}
+							</view>
 						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
-					<view class="journal_cover">
-						<view>
-							<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
-						</view>
-						<view class="journal_cover_title">
-							冰与火之歌
-						</view>
-					</view>
+					</block>
 				</view>
 			</view>
 			<!-- 杂志列表 end-->
@@ -279,29 +179,92 @@
 		},
 		data() {
 			return {
+				bookList: [],
+				journalList: [],
 				items: ['主页', '图书', '杂志', '课程'],
-				current: 0
+				current: 0,
+				requiredBooks: {
+					"page_index": 1,
+					"page_size": 10,
+					"table_id": "13"
+				},
+				requiredJournal: {
+					"page_index": 1,
+					"page_size": 10,
+					"table_id": "13",
+					"resource_type": 2
+				}
 			}
 		},
-		onLoad() {
+		onLoad(e) {
+			let isVip = e.joinedState;
+			if (isVip == 'init') {
 				uni.showModal({
-			    title: '提示',
-				confirmText:'免费申请',
-				cancelText:'我先看看',
-			    content: '为了更好的享受企业服务,请先申请为企业会员',
-			    success: function (res) {
-			        if (res.confirm) {
-			            console.log('用户点击确定');
-			        } else if (res.cancel) {
-			            console.log('用户点击取消');
-			        }
-			    }
-			});
+					title: '提示',
+					showCancel: false,
+					confirmText: '关闭',
+					content: '您已申请企业会员，请等待审核。',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击关闭');
+						}
+					}
+				});
+			} else if (isVip == 'notVip') {
+				uni.showModal({
+					title: '提示',
+					confirmText: '免费申请',
+					cancelText: '我先看看',
+					content: '为了更好的享受企业服务，请先申请为企业会员',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			} else if (isVip == 'pass') {
+				console.log('hello vip')
+			}
+
 		},
 		methods: {
 			onClickItem(index) {
+				//console.log(index)
 				if (this.current !== index) {
 					this.current = index;
+				}
+				if (index == 1) {
+					console.log('111')
+					uni.request({
+						url: 'http://192.168.0.210:9999/book/book/page',
+						method: 'POST',
+						data: this.requiredBooks,
+						header: {
+							'content-type': 'application/json'
+						},
+						success: res => {
+							this.bookList = res.data.data.pageBooks;
+						},
+
+					});
+				}else if(index == 2){
+						console.log('222')
+						uni.request({
+							url: 'http://192.168.0.210:9999/book/book/page',
+							method: 'POST',
+							data: this.requiredJournal,
+							header: {
+								'content-type': 'application/json'
+							},
+							success: res => {
+								console.log(res.data.data.pageBooks);
+								this.journalList = res.data.data.pageBooks;
+								
+							},
+						
+						});
 				}
 			},
 			toEnterprise() {
@@ -317,6 +280,7 @@
 	view {
 		flex-direction: row;
 	}
+
 	page {
 		display: flex;
 		background-image: url('http://192.168.0.210/attached/image/2019-images/20190527.png');
@@ -518,7 +482,6 @@
 	/* 杂志 start */
 	.journal_content .list_content .journal_list {
 		display: flex;
-		justify-content: center;
 		flex-direction: row;
 		flex-wrap: wrap;
 		margin: 66upx 0 0 22upx;

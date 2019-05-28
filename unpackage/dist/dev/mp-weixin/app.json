@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/index/index/index",
-    "pages/login/logout",
-    
     "pages/index/friendship/friendship",
     "pages/index/enterprise/enterprise",
     "pages/enterpriseDetails/applyMember",
@@ -10,15 +8,7 @@
     "pages/enterpriseDetails/enterpriseInfo",
     "pages/index/my/my",
     "pages/searchIndex/searchIndex",
-<<<<<<< HEAD
-    "pages/books/bookList",
-    "pages/books/bookDetails",
-<<<<<<< HEAD
-=======
-=======
     "pages/books/books",
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
     "pages/magazine/magazine",
     "pages/video/video",
     "pages/audio/audio",
@@ -27,7 +17,7 @@
     "pages/art_training/art_training",
     "pages/readings/readings",
     "pages/login/login",
-   
+    "pages/login/logout",
     "pages/login/register",
     "pages/login/changePassword",
     "pages/login/phoneLogin",
@@ -74,13 +64,5 @@
     ]
   },
   "usingComponents": {},
-<<<<<<< HEAD
-  "sitemapLocation": "sitemap.json"
-=======
-<<<<<<< HEAD
-  "sitemapLocation": "sitemap.json"
-=======
-  "sitemapLocation": "sitemap39.json"
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+  "sitemapLocation": "sitemap33.json"
 }

@@ -46,7 +46,7 @@
 			<view style="flex: 1; justify-content: center;">
 				<view class="direct_login">
 					<text>已有账号,<text class="login_text">直接</text></text>
-					<navigator class="login" url="/pages/login/phoneLogin">登录</navigator>
+					<text class="login" @tap="login">登录</text>
 				</view>
 			</view>
 		</view>
@@ -84,6 +84,11 @@
 			console.log(this.randomString);
 		},
 		methods: {
+			login() {
+				uni.reLaunch({
+					url: './login'
+				});
+			},
 			registerPhone() {
 				
 			},
