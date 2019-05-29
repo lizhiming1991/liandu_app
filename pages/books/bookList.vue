@@ -24,19 +24,19 @@
 			};
 		},
 		computed: {
+			...mapState([
+				"userid"
+			]),
 			// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO 
 			
 			 // #endif 
 			// #ifdef H5 
-			...mapState([
-				"userid"
-			]),
+			
 			 // #endif 
 			
 		
 		},
 		onShow(){
-			// this.$store.dispatch("changeTitle","图书");
 			console.log(2)
 		},
 		onReady(){
@@ -58,7 +58,7 @@
 			this.ImgUrl = ImgUrl;
 			this.getBooklist("","",1,10);
 			console.log(1)
-			get("/book//book/category/all",{}).then(res=>{
+			get("/book/book/category/all",{}).then(res=>{
 				if(res.status == 200){
 					this.typeList = res.data;
 				}
@@ -66,9 +66,9 @@
 			
 		},
 		methods:{
-			goDetails(){
+			goDetails(item){
 				uni.navigateTo({
-					url:"./bookDetails"
+					url:"./bookDetails?id="+item.id
 				})
 			},
 			getBooklist(content,tid,pagenum,pagesize){

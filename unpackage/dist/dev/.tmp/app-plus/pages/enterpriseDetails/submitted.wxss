@@ -1,5 +1,5 @@
 
-view.data-v-9b0f7e94 {
+view.data-v-5fa4236f {
 	font-size: 16px;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -11,26 +11,26 @@ view.data-v-9b0f7e94 {
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-.submit .success_img.data-v-9b0f7e94, .submit .success_text.data-v-9b0f7e94, .submit .success_button_content.data-v-9b0f7e94{
+.submit .success_img.data-v-5fa4236f, .submit .success_text.data-v-5fa4236f, .submit .success_button_content.data-v-5fa4236f{
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.submit .success_img.data-v-9b0f7e94{
+.submit .success_img.data-v-5fa4236f{
 	margin-top: 129rpx;
 }
-.submit .success_text.data-v-9b0f7e94{
+.submit .success_text.data-v-5fa4236f{
 	margin-top: 40rpx;
 }
-.success_button_content.data-v-9b0f7e94{
+.success_button_content.data-v-5fa4236f{
 	margin-top: 109rpx;
 }
-.submit .success_icon.data-v-9b0f7e94{
+.submit .success_icon.data-v-5fa4236f{
 	width: 56rpx;
 	height: 56rpx;
 }
-.submit .success_button.data-v-9b0f7e94{
+.submit .success_button.data-v-5fa4236f{
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;

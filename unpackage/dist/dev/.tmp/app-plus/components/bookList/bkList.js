@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -153,20 +153,14 @@ var _default =
     console.log(this.bookdata, " at components\\bookList\\bkList.vue:53");
   },
   methods: {
-    goDetail: function goDetail() {
-      /* this.$emit("goDetail",{}); */
-      uni.showToast({
-        title: this.ImgUrls,
-        duration: 1500,
-        icon: 'none' });
-
+    goDetail: function goDetail(bid) {
+      this.$emit("goDetail", { "id": bid });
     } },
 
   props: [
   "bookdata",
   "typedata",
   "ImgUrls"] };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

@@ -25,9 +25,11 @@
 		<view class="lg_navbar">
 			<view class="lg_navbars">
 				<view class="lg_navbar_item">
-					<text class="lg_tname">书籍专栏</text>
-					<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
-					<text class="lg_line"></text>
+					<navigator url="/pages/books/bookList">
+						<text class="lg_tname">书籍专栏</text>
+						<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
+						<text class="lg_line"></text>
+					</navigator>
 				</view>
 				<view class="lg_navbar_item">
 					<text class="lg_tname">休闲杂志</text>
@@ -61,7 +63,7 @@
 		<view class="lg_hots">
 			<text class="lg_hots_title">热门专题</text>
 			<view class="lg_scrollbox">
-				<scroll-view  scroll-x="true" scroll-y="true" class="scroll-view_H lg_lt_scroll">
+				<scroll-view  scroll-x="true"  class="scroll-view_H lg_lt_scroll">
                     <view class="lg_lt_item">
 						<image class="lg_hots_pic" src="/static/image/sta_zhuanti.png"></image>
 						<text class="lg_hots_hot">HOT</text>
@@ -171,7 +173,7 @@
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad:function(e){
-			post('/book/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
+			post('/ad/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
 				if(res.status == 200){
 					this.picArr = res.data.picinfo;
 				}
@@ -319,8 +321,8 @@
 			.lg_scrollbox{
 				width: 100%;
 				height: 245upx;
-				// overflow: hidden;
-				// overflow-y: scroll;
+				overflow: hidden;
+				overflow-x: scroll;
 			}
 			.lg_lt_scroll{
 				height: 1245upx;

@@ -8,20 +8,21 @@
     "pages/enterpriseDetails/enterpriseInfo",
     "pages/index/my/my",
     "pages/searchIndex/searchIndex",
-    "pages/books/books",
+    "pages/books/bookList",
+    "pages/books/bookDetails",
+    "pages/books/readBook",
     "pages/magazine/magazine",
     "pages/video/video",
     "pages/audio/audio",
-    "pages/lives/lives",
     "pages/psychological/psychological",
     "pages/art_training/art_training",
-    "pages/readings/readings",
     "pages/login/login",
     "pages/login/logout",
     "pages/login/register",
     "pages/login/changePassword",
     "pages/login/phoneLogin",
-    "pages/login/changePasswordVerification"
+    "pages/login/changePasswordVerification",
+    "pages/addComment/addComment"
   ],
   "subPackages": [],
   "window": {
@@ -68,6 +69,6 @@
     "autoclose": false
   },
   "appname": "今日链读",
-  "compilerVersion": "1.9.9",
+  "compilerVersion": "1.9.8",
   "usingComponents": {}
 }

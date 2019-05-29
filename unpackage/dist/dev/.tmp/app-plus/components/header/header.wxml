@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-<view class="header data-v-fc78d10e" bind:__l="__l"><view class="h_back data-v-fc78d10e"><navigator class="h_goback data-v-fc78d10e" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-fc78d10e" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-fc78d10e" bindtap="__e">{{titles}}</view><view class="h_more data-v-fc78d10e"></view></view>
-=======
-<<<<<<< HEAD
-<view class="header data-v-fc78d10e" bind:__l="__l"><view class="h_back data-v-fc78d10e"><navigator class="h_goback data-v-fc78d10e" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-fc78d10e" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-fc78d10e" bindtap="__e">{{titles}}</view><view class="h_more data-v-fc78d10e"></view></view>
-=======
-<view class="header data-v-f471c35c" bind:__l="__l"><view class="h_back data-v-f471c35c"><navigator class="h_goback data-v-f471c35c" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-f471c35c" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-f471c35c" bindtap="__e"></view><view class="h_more data-v-f471c35c"></view></view>
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+<view class="h_header data-v-fc78d10e" bind:__l="__l"><view class="h_back data-v-fc78d10e"><navigator class="h_goback data-v-fc78d10e" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-fc78d10e" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-fc78d10e" bindtap="__e">{{titles}}</view><view class="h_more data-v-fc78d10e"></view></view>

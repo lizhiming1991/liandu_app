@@ -26,78 +26,29 @@
 /* 文章场景相关 */
 /* add */
 /* 常用尺寸颜色变量 */
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .element.data-v-5ad3d5fa::-webkit-scrollbar {
   display: none;
 }
 .index_content.data-v-5ad3d5fa {
-<<<<<<< HEAD
-=======
-=======
-.element.data-v-b570dffe::-webkit-scrollbar {
-  display: none;
-}
-.index_content.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
   padding: 0 20rpx;
   color: #333333;
   padding-bottom: 120rpx;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .index_content .lg_head.data-v-5ad3d5fa {
-    height: 86rpx;
-    margin-top: 60rpx;
-}
-.index_content .lg_head .lg_title.data-v-5ad3d5fa {
-<<<<<<< HEAD
-      font-size: 44rpx;
-      font-weight: 700;
-}
-.index_content .lg_head .lg_right.data-v-5ad3d5fa {
-      float: right;
-}
-.index_content .lg_head .lg_right .lg_searchs.data-v-5ad3d5fa {
-=======
-      font-size: 44rpx;
-      font-weight: 700;
-}
-.index_content .lg_head .lg_right.data-v-5ad3d5fa {
-      float: right;
-}
-.index_content .lg_head .lg_right .lg_searchs.data-v-5ad3d5fa {
-=======
-.index_content .lg_head.data-v-b570dffe {
     height: 146rpx;
     line-height: 146rpx;
 }
-.index_content .lg_head .lg_title.data-v-b570dffe {
+.index_content .lg_head .lg_title.data-v-5ad3d5fa {
       font-size: 44rpx;
       font-weight: 700;
 }
-.index_content .lg_head .lg_right.data-v-b570dffe {
+.index_content .lg_head .lg_right.data-v-5ad3d5fa {
       float: right;
 }
-.index_content .lg_head .lg_right .lg_search.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
-        width: 51rpx;
-        height: 51rpx;
-        margin-right: 37rpx;
-}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .index_content .lg_head .lg_right .lg_search.data-v-5ad3d5fa {
         width: 51rpx;
         height: 51rpx;
+        margin-right: 37rpx;
 }
 .index_content .lg_head .lg_right .lg_ewm.data-v-5ad3d5fa {
         width: 49rpx;
@@ -115,42 +66,13 @@
     margin-top: 40rpx;
 }
 .index_content .lg_navbar .lg_navbars.data-v-5ad3d5fa {
-<<<<<<< HEAD
-=======
-=======
-.index_content .lg_head .lg_right .lg_ewm.data-v-b570dffe {
-        width: 49rpx;
-        height: 49rpx;
-}
-.index_content .lg_lunbo.data-v-b570dffe {
-    width: 100%;
-    height: 342rpx;
-}
-.index_content .lg_lunbo .lg_lb_pic.data-v-b570dffe {
-      width: 100%;
-}
-.index_content .lg_navbar.data-v-b570dffe {
-    width: 100%;
-    margin-top: 40rpx;
-}
-.index_content .lg_navbar .lg_navbars.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       margin-top: 26rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-5ad3d5fa {
-=======
-.index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         -webkit-box-flex: 1;
         -webkit-flex: 1;
             -ms-flex: 1;
@@ -166,29 +88,13 @@
         padding-left: 14rpx;
         position: relative;
 }
-<<<<<<< HEAD
 .index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tname.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tname.data-v-5ad3d5fa {
-=======
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tname.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           display: inline-block;
           font-size: 30rpx;
           width: 60rpx;
           margin-top: 10rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tpic.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tpic.data-v-5ad3d5fa {
-=======
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_tpic.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           width: 70rpx;
           height: 74rpx;
           transform: translateY(20rpx);
@@ -197,15 +103,7 @@
           -ms-transform: translateY(20rpx);
           margin-left: 44rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_line.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_line.data-v-5ad3d5fa {
-=======
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_line.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           position: absolute;
           left: 0;
           top: 20rpx;
@@ -213,41 +111,16 @@
           height: 22rpx;
           background-color: #71D3BF;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-.index_content .lg_navbar .lg_navbars .lg_navbar_item .lg_navbar_link.data-v-5ad3d5fa {
-          width: 100%;
-          height: 124rpx;
-}
 .index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-5ad3d5fa:nth-child(1) {
         margin-left: 0;
 }
 .index_content .lg_hots.data-v-5ad3d5fa {
-<<<<<<< HEAD
-=======
-=======
-.index_content .lg_navbar .lg_navbars .lg_navbar_item.data-v-b570dffe:nth-child(1) {
-        margin-left: 0;
-}
-.index_content .lg_hots.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
     width: 100%;
     height: 452rpx;
     background-color: #F5F6FA;
     margin-top: 56rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_hots .lg_hots_title.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_hots .lg_hots_title.data-v-5ad3d5fa {
-=======
-.index_content .lg_hots .lg_hots_title.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       width: 100%;
       height: 452rpx;
       line-height: 150rpx;
@@ -255,62 +128,26 @@
       font-weight: 700;
       letter-spacing: 4rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_hots .lg_scrollbox.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_hots .lg_scrollbox.data-v-5ad3d5fa {
-=======
-.index_content .lg_hots .lg_scrollbox.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       width: 100%;
       height: 245rpx;
+      overflow: hidden;
+      overflow-x: scroll;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .index_content .lg_hots .lg_lt_scroll.data-v-5ad3d5fa {
-      height: 245rpx;
-      width: 1575rpx;
-}
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item.data-v-5ad3d5fa {
-<<<<<<< HEAD
-        display: inline-block;
-        position: relative;
-}
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_pic.data-v-5ad3d5fa {
-=======
-        display: inline-block;
-        position: relative;
-}
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_pic.data-v-5ad3d5fa {
-=======
-.index_content .lg_hots .lg_lt_scroll.data-v-b570dffe {
       height: 1245rpx;
       width: 1575rpx;
 }
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item.data-v-b570dffe {
+.index_content .lg_hots .lg_lt_scroll .lg_lt_item.data-v-5ad3d5fa {
         display: inline-block;
         position: relative;
 }
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_pic.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_pic.data-v-5ad3d5fa {
           height: 245rpx;
           width: 285rpx;
           margin-right: 30rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_hot.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_hot.data-v-5ad3d5fa {
-=======
-.index_content .lg_hots .lg_lt_scroll .lg_lt_item .lg_hots_hot.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           position: absolute;
           right: 24rpx;
           top: 0;
@@ -322,53 +159,21 @@
           line-height: 35rpx;
           text-align: center;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
     width: 100%;
     background-color: #fff;
     padding-bottom: 70rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_top.data-v-5ad3d5fa {
       margin-top: 44rpx;
       position: relative;
 }
 .index_content .lg_Magazine .lg_mag_top .lg_mag_title.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_top.data-v-5ad3d5fa {
-      margin-top: 44rpx;
-      position: relative;
-}
-.index_content .lg_Magazine .lg_mag_top .lg_mag_title.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_top.data-v-b570dffe {
-      margin-top: 44rpx;
-      position: relative;
-}
-.index_content .lg_Magazine .lg_mag_top .lg_mag_title.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         letter-spacing: 4rpx;
         font-weight: 700;
         font-size: 44rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_top .lg_mag_more.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_top .lg_mag_more.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_top .lg_mag_more.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         position: absolute;
         font-size: 28rpx;
         color: #666;
@@ -376,30 +181,14 @@
         top: 0;
         cursor: pointer;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       margin-top: 54rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         -webkit-box-flex: 1;
         -webkit-flex: 1;
             -ms-flex: 1;
@@ -407,40 +196,16 @@
         text-align: center;
         margin-left: 50rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           width: 203rpx;
           height: 325rpx;
           position: relative;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pic.data-v-5ad3d5fa {
             width: 100%;
             height: 325rpx;
 }
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pay.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pic.data-v-5ad3d5fa {
-            width: 100%;
-            height: 325rpx;
-}
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pay.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pic.data-v-b570dffe {
-            width: 100%;
-            height: 325rpx;
-}
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_pay.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
             position: absolute;
             left: 0;
             top: 0;
@@ -453,15 +218,7 @@
             text-align: center;
             color: #fff;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_vip.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_vip.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_vip.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
             position: absolute;
             left: 0;
             top: 0;
@@ -474,15 +231,7 @@
             text-align: center;
             color: #fff;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_dingyue.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_dingyue.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_img .lg_mag_dingyue.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
             position: absolute;
             right: 0;
             bottom: 0;
@@ -495,101 +244,42 @@
             text-align: center;
             color: #fff;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_name.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_name.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part .lg_mag_name.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           width: 203rpx;
           text-align: center;
           font-size: 30rpx;
           margin-top: 24rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-5ad3d5fa:nth-child(1) {
         margin-left: 0;
 }
 .index_content .line.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-5ad3d5fa:nth-child(1) {
-        margin-left: 0;
-}
-.index_content .line.data-v-5ad3d5fa {
-=======
-.index_content .lg_Magazine .lg_mag_list .lg_mag_part.data-v-b570dffe:nth-child(1) {
-        margin-left: 0;
-}
-.index_content .line.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
     width: 100%;
     height: 8rpx;
     background-color: #F5F6FA;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .index_content .lg_vbook.data-v-5ad3d5fa {
     width: 100%;
 }
 .index_content .lg_vbook .lg_bk_title.data-v-5ad3d5fa {
-<<<<<<< HEAD
-=======
-=======
-.index_content .lg_vbook.data-v-b570dffe {
-    width: 100%;
-}
-.index_content .lg_vbook .lg_bk_title.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       margin-top: 73rpx;
       font-weight: 700;
       letter-spacing: 4rpx;
       font-size: 44rpx;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
       margin-top: 64rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         width: 203rpx;
         height: 327rpx;
         position: relative;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img .lg_bk_jx.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img .lg_bk_jx.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_img .lg_bk_jx.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           position: absolute;
           left: 0;
           top: 0;
@@ -598,40 +288,18 @@
           height: 34rpx;
           background-color: #FF546C;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         -webkit-box-flex: 1;
         -webkit-flex: 1;
             -ms-flex: 1;
                 flex: 1;
         padding-left: 30rpx;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_name.data-v-5ad3d5fa {
           font-size: 36rpx;
           font-weight: 700;
 }
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_name .col_red.data-v-5ad3d5fa {
-<<<<<<< HEAD
-=======
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_name.data-v-b570dffe {
-          font-size: 36rpx;
-          font-weight: 700;
-}
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_name .col_red.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
             font-weight: 400;
             display: inline-block;
             width: 131rpx;
@@ -643,27 +311,11 @@
             line-height: 32rpx;
             text-align: center;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_username.data-v-5ad3d5fa {
           font-size: 30rpx;
           margin: 36rpx 0 40rpx 0;
 }
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_text.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_username.data-v-5ad3d5fa {
-          font-size: 30rpx;
-          margin: 36rpx 0 40rpx 0;
-}
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_text.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_username.data-v-b570dffe {
-          font-size: 30rpx;
-          margin: 36rpx 0 40rpx 0;
-}
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_bk_pro .lg_bk_text.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
           font-size: 28rpx;
           letter-spacing: 4rpx;
           line-height: 1.5;
@@ -672,15 +324,7 @@
           -webkit-line-clamp: 3;
           overflow: hidden;
 }
-<<<<<<< HEAD
 .index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_mag_pic.data-v-5ad3d5fa {
-=======
-<<<<<<< HEAD
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_mag_pic.data-v-5ad3d5fa {
-=======
-.index_content .lg_vbook .lg_bk_cont .lg_bk_list .lg_mag_pic.data-v-b570dffe {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
         width: 100%;
         height: 100%;
 }

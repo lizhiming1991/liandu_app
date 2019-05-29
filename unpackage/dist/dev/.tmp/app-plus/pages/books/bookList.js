@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 var _methods = __webpack_require__(/*! @/common/methods.js */ "../../../../item-vue/liandu/liandu_app/common/methods.js");
 
 var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vue/liandu/liandu_app/common/common.js");
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var bkList = function bkList() {return __webpack_require__.e(/*! import() | components/bookList/bkList */ "components/bookList/bkList").then(__webpack_require__.bind(null, /*! @/components/bookList/bkList.vue */ "../../../../item-vue/liandu/liandu_app/components/bookList/bkList.vue"));};var _default =
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "../../../../item-vue/liandu/liandu_app/components/header/header.vue"));};var bkList = function bkList() {return __webpack_require__.e(/*! import() | components/bookList/bkList */ "components/bookList/bkList").then(__webpack_require__.bind(null, /*! @/components/bookList/bkList.vue */ "../../../../item-vue/liandu/liandu_app/components/bookList/bkList.vue"));};var _default =
 {
   data: function data() {
     return {
@@ -123,8 +123,9 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
       title: "图书" };
 
   },
-  computed: {},
-
+  computed: _objectSpread({},
+  (0, _vuex.mapState)([
+  "userid"])),
 
 
 
@@ -136,7 +137,6 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 
   onShow: function onShow() {
-    // this.$store.dispatch("changeTitle","图书");
     console.log(2, " at pages\\books\\bookList.vue:40");
   },
   onReady: function onReady() {
@@ -158,7 +158,7 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
     this.ImgUrl = _common.ImgUrl;
     this.getBooklist("", "", 1, 10);
     console.log(1, " at pages\\books\\bookList.vue:60");
-    (0, _methods.get)("/book//book/category/all", {}).then(function (res) {
+    (0, _methods.get)("/book/book/category/all", {}).then(function (res) {
       if (res.status == 200) {
         _this.typeList = res.data;
       }
@@ -166,9 +166,9 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   },
   methods: {
-    goDetails: function goDetails() {
+    goDetails: function goDetails(item) {
       uni.navigateTo({
-        url: "./bookDetails" });
+        url: "./bookDetails?id=" + item.id });
 
     },
     getBooklist: function getBooklist(content, tid, pagenum, pagesize) {var _this2 = this;

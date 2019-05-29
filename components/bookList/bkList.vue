@@ -15,7 +15,7 @@
 			</view>
 			
 			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" >
-			   <view class="part" @tap="goDetail()" v-for="(item,index) in bookdata" :key="index">
+			   <view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
 			   	<view class="bk_img">
 			   		<image class="bk_pic" :src="ImgUrls+item.photo"></image>
 			   		<!-- <text class="bk_jx">精选</text> -->
@@ -53,13 +53,8 @@
 			console.log(this.bookdata)
 		},
 		methods:{
-			goDetail(){
-				/* this.$emit("goDetail",{}); */
-				uni.showToast({
-					title: this.ImgUrls,
-					duration: 1500,
-					icon: 'none'
-				});
+			goDetail(bid){ 
+				this.$emit("goDetail",{"id":bid});
 			},
 		},
 		props:[

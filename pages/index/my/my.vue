@@ -123,19 +123,19 @@
 			])
 		},
 		onLoad(){
+			console.log(222)
 		},
-		onReady(){
-			
-			uni.showToast({
-				title: this.userid,
-				duration: 2000,
-				icon: 'none'
-			});
+		onShow(){
+			console.log(this.userid)
 			if(this.userid == null){
 				uni.redirectTo({
 					url: '/pages/login/phoneLogin'
 				});
 			}
+		},
+		onReady(){
+			
+			
 		}
 	}
 </script>
