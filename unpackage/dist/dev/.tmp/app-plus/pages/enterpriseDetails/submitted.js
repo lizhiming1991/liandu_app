@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
 
 
 
@@ -35,11 +35,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onLoad: function onLoad() {
 
   },
-  methods: {},
+  methods: {
+    close: function close() {
+      uni.reLaunch({
+        url: '../index/enterprise/enterprise' });
 
+    } },
 
   components: {
     Header: Header } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

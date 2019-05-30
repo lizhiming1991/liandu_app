@@ -183,12 +183,16 @@
 
 
 
+
+
+
 {
   components: {
     uniSegmentedControl: uniSegmentedControl },
 
   data: function data() {
     return {
+      a: 5,
       bookList: [],
       journalList: [],
       items: ['主页', '图书', '杂志', '课程'],
@@ -255,6 +259,7 @@
             'content-type': 'application/json' },
 
           success: function success(res) {
+            console.log(res);
             _this.bookList = res.data.data.pageBooks;
           } });
 

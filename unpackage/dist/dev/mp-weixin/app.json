@@ -6,6 +6,7 @@
     "pages/enterpriseDetails/applyMember",
     "pages/enterpriseDetails/submitted",
     "pages/enterpriseDetails/enterpriseInfo",
+    "pages/enterpriseDetails/enterpriseSearch",
     "pages/index/my/my",
     "pages/searchIndex/searchIndex",
     "pages/books/books",
@@ -63,6 +64,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap33.json"
+  "usingComponents": {}
 }

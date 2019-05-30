@@ -8,15 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -26,17 +18,60 @@ var _default =
 {
   data: function data() {
     return {
-      array: ['中国', '美国', '巴西', '日本'],
-      index: 0 };
+      dzcc: 'nihao 2020' };
 
   },
   computed: {},
 
   methods: {
-    bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为', e.target.value, " at pages\\login\\logout.vue:27");
-      this.index = e.target.value;
+    clickText: function clickText() {
+      // uni.chooseImage({
+      // 	success: (chooseImageRes) => {
+      // 		const tempFilePaths = chooseImageRes.tempFilePaths;
+      // 		uni.uploadFile({
+      // 			url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+      // 			filePath: tempFilePaths[0],
+      // 			name: 'file',
+      // 			formData: {
+      // 				'user': 'test'
+      // 			},
+      // 			success: (uploadFileRes) => {
+      // 				console.log(JSON.parse(uploadFileRes.data).data);
+      // 			}
+      // 		});
+      // 	}
+      // });
+      uni.chooseImage({
+        success: function success(chooseImageRes) {
+          var tempFilePaths = chooseImageRes.tempFilePaths;
+          var uploadTask = uni.uploadFile({
+            url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              'user': 'test' },
+
+            success: function success(uploadFileRes) {
+              console.log(uploadFileRes, " at pages\\login\\logout.vue:45");
+              console.log(uploadFileRes.data, " at pages\\login\\logout.vue:46");
+            } });
+
+
+          uploadTask.onProgressUpdate(function (res) {
+            console.log(res, " at pages\\login\\logout.vue:51");
+            console.log('上传进度' + res.progress, " at pages\\login\\logout.vue:52");
+            console.log('已经上传的数据长度' + res.totalBytesSent, " at pages\\login\\logout.vue:53");
+            console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend, " at pages\\login\\logout.vue:54");
+
+            // 测试条件，取消上传任务。
+            if (res.progress > 50) {
+              uploadTask.abort();
+            }
+          });
+        } });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

@@ -1,31 +1,65 @@
 <template>
 	<view>
-		<view class="uni-list">
-			<view class="uni-list-cell">
-				<view class="uni-list-cell-db">
-					<picker @change="bindPickerChange" :value="index" :range="array">
-						<view class="uni-input">{{array[index]}}</view>
-					</picker>
-				</view>
-			</view>
-		</view>
+		<view @tap="clickText">上传文件</view>
+		<input type="text" v-model="dzcc" value="" />
 	</view>
 </template>
-
 <script>
 	export default {
 		data() {
 			return {
-				array: ['中国', '美国', '巴西', '日本'],
-				index: 0,
+				dzcc:'nihao 2020'
 			}
 		},
-		computed: {
-		},
+		computed: {},
+
 		methods: {
-			bindPickerChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
-				this.index = e.target.value
+			clickText() {
+				// uni.chooseImage({
+				// 	success: (chooseImageRes) => {
+				// 		const tempFilePaths = chooseImageRes.tempFilePaths;
+				// 		uni.uploadFile({
+				// 			url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+				// 			filePath: tempFilePaths[0],
+				// 			name: 'file',
+				// 			formData: {
+				// 				'user': 'test'
+				// 			},
+				// 			success: (uploadFileRes) => {
+				// 				console.log(JSON.parse(uploadFileRes.data).data);
+				// 			}
+				// 		});
+				// 	}
+				// });
+				uni.chooseImage({
+					success: (chooseImageRes) => {
+						const tempFilePaths = chooseImageRes.tempFilePaths;
+						const uploadTask = uni.uploadFile({
+							url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+							filePath: tempFilePaths[0],
+							name: 'file',
+							formData: {
+								'user': 'test'
+							},
+							success: (uploadFileRes) => {
+								console.log(uploadFileRes)
+								console.log(uploadFileRes.data);
+							}
+						});
+
+						uploadTask.onProgressUpdate((res) => {
+							console.log(res)
+							console.log('上传进度' + res.progress);
+							console.log('已经上传的数据长度' + res.totalBytesSent);
+							console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+
+							// 测试条件，取消上传任务。
+							if (res.progress > 50) {
+								uploadTask.abort();
+							}
+						});
+					}
+				});
 			}
 		}
 	}

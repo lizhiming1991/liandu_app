@@ -1106,6 +1106,7 @@ __WXML_GLOBAL__.ops_cached.$gwx_8=[];
 Z([3,'__l'])
 Z([3,'apply_member data-v-42c58ea0'])
 Z([3,'data-v-42c58ea0'])
+Z([[2,'<'],[[6],[[7],[3,'imageList']],[3,'length']],[[7],[3,'imageLength']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_8);return __WXML_GLOBAL__.ops_cached.$gwx_8
 }
 function gz$gwx_9(){
@@ -1113,31 +1114,46 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_9)return __WXML_GLOBAL__.ops_cached.$gwx_9
 __WXML_GLOBAL__.ops_cached.$gwx_9=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
-Z([3,'journal_content'])
+Z([3,'journal_content data-v-e1961352'])
 Z([3,'flex-direction:column;flex:1;'])
 Z([3,'#4cd964'])
 Z([3,'#01B18D'])
 Z([3,'__e'])
+Z([3,'data-v-e1961352'])
 Z([[7],[3,'current']])
 Z([[4],[[5],[[4],[[5],[[5],[1,'^clickItem']],[[4],[[5],[[4],[[5],[1,'onClickItem']]]]]]]]])
 Z([3,'justify-content:center;'])
 Z([3,'text'])
 Z([[7],[3,'items']])
+Z([3,'index'])
+Z([3,'item'])
+Z([[7],[3,'bookList']])
+Z(z[12])
+Z([3,'book_title_content data-v-e1961352'])
+Z([[2,'&&'],[[2,'||'],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispay']],[1,'1']],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispay']],[1,1]]],[[2,'||'],[[2,'!='],[[6],[[7],[3,'item']],[3,'ispublic']],[1,'0']],[[2,'!='],[[6],[[7],[3,'item']],[3,'ispublic']],[1,0]]]])
+Z([[2,'&&'],[[2,'||'],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispay']],[1,'1']],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispay']],[1,1]]],[[2,'||'],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispublic0']],[1,'0']],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispublic']],[1,0]]]])
+Z([[2,'&&'],[[2,'||'],[[2,'!='],[[6],[[7],[3,'item']],[3,'ispay']],[1,'1']],[[2,'!='],[[6],[[7],[3,'item']],[3,'ispay']],[1,1]]],[[2,'||'],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispublic']],[1,'0']],[[2,'=='],[[6],[[7],[3,'item']],[3,'ispublic']],[1,0]]]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_9);return __WXML_GLOBAL__.ops_cached.$gwx_9
 }
 function gz$gwx_10(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_10)return __WXML_GLOBAL__.ops_cached.$gwx_10
 __WXML_GLOBAL__.ops_cached.$gwx_10=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'submit data-v-38786c83'])
-Z([3,'flex-direction:column;flex:1;'])
-Z([3,'data-v-38786c83'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_10);return __WXML_GLOBAL__.ops_cached.$gwx_10
 }
 function gz$gwx_11(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_11)return __WXML_GLOBAL__.ops_cached.$gwx_11
 __WXML_GLOBAL__.ops_cached.$gwx_11=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
+Z([3,'submit data-v-38786c83'])
+Z([3,'flex-direction:column;flex:1;'])
+Z([3,'data-v-38786c83'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_11);return __WXML_GLOBAL__.ops_cached.$gwx_11
+}
+function gz$gwx_12(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_12)return __WXML_GLOBAL__.ops_cached.$gwx_12
+__WXML_GLOBAL__.ops_cached.$gwx_12=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'enterprise data-v-851ba170'])
@@ -1149,29 +1165,23 @@ Z([3,'apply_vip data-v-851ba170'])
 Z([[2,'=='],[[6],[[6],[[7],[3,'item']],[3,'$orig']],[3,'joinedState']],[1,null]])
 Z([[2,'=='],[[6],[[6],[[7],[3,'item']],[3,'$orig']],[3,'joinedState']],[1,'init']])
 Z([[2,'=='],[[6],[[6],[[7],[3,'item']],[3,'$orig']],[3,'joinedState']],[1,'pass']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_11);return __WXML_GLOBAL__.ops_cached.$gwx_11
-}
-function gz$gwx_12(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_12)return __WXML_GLOBAL__.ops_cached.$gwx_12
-__WXML_GLOBAL__.ops_cached.$gwx_12=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_12);return __WXML_GLOBAL__.ops_cached.$gwx_12
 }
 function gz$gwx_13(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_13)return __WXML_GLOBAL__.ops_cached.$gwx_13
 __WXML_GLOBAL__.ops_cached.$gwx_13=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'index_content data-v-dfaeafe4'])
-Z([3,'lg_Magazine data-v-dfaeafe4'])
-Z([[7],[3,'magList2']])
-Z([[7],[3,'magList3']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_13);return __WXML_GLOBAL__.ops_cached.$gwx_13
 }
 function gz$gwx_14(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_14)return __WXML_GLOBAL__.ops_cached.$gwx_14
 __WXML_GLOBAL__.ops_cached.$gwx_14=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
+Z([3,'index_content data-v-dfaeafe4'])
+Z([3,'lg_Magazine data-v-dfaeafe4'])
+Z([[7],[3,'magList2']])
+Z([[7],[3,'magList3']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
 }
 function gz$gwx_15(){
@@ -1184,13 +1194,19 @@ function gz$gwx_16(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_16)return __WXML_GLOBAL__.ops_cached.$gwx_16
 __WXML_GLOBAL__.ops_cached.$gwx_16=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'chang_password_content'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_16);return __WXML_GLOBAL__.ops_cached.$gwx_16
 }
 function gz$gwx_17(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_17)return __WXML_GLOBAL__.ops_cached.$gwx_17
 __WXML_GLOBAL__.ops_cached.$gwx_17=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
+Z([3,'chang_password_content'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_17);return __WXML_GLOBAL__.ops_cached.$gwx_17
+}
+function gz$gwx_18(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_18)return __WXML_GLOBAL__.ops_cached.$gwx_18
+__WXML_GLOBAL__.ops_cached.$gwx_18=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'register_content data-v-4d2a8d86'])
@@ -1200,26 +1216,26 @@ Z([3,'send_verify_content data-v-4d2a8d86'])
 Z([3,'display:flex;'])
 Z([[7],[3,'timestatus_two']])
 Z([[7],[3,'timestatus']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_17);return __WXML_GLOBAL__.ops_cached.$gwx_17
-}
-function gz$gwx_18(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_18)return __WXML_GLOBAL__.ops_cached.$gwx_18
-__WXML_GLOBAL__.ops_cached.$gwx_18=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
-Z([3,'login_content'])
-Z([[2,'>='],[[7],[3,'number']],[1,3]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_18);return __WXML_GLOBAL__.ops_cached.$gwx_18
 }
 function gz$gwx_19(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_19)return __WXML_GLOBAL__.ops_cached.$gwx_19
 __WXML_GLOBAL__.ops_cached.$gwx_19=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
+Z([3,'login_content'])
+Z([[2,'>='],[[7],[3,'number']],[1,3]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_19);return __WXML_GLOBAL__.ops_cached.$gwx_19
 }
 function gz$gwx_20(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
 __WXML_GLOBAL__.ops_cached.$gwx_20=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
+}
+function gz$gwx_21(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_21)return __WXML_GLOBAL__.ops_cached.$gwx_21
+__WXML_GLOBAL__.ops_cached.$gwx_21=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'login_content data-v-f859250a'])
@@ -1228,11 +1244,11 @@ Z(z[2])
 Z([3,'send_verify_content data-v-f859250a'])
 Z([[7],[3,'timestatus_two']])
 Z([[7],[3,'timestatus']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
+})(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
 }
-function gz$gwx_21(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_21)return __WXML_GLOBAL__.ops_cached.$gwx_21
-__WXML_GLOBAL__.ops_cached.$gwx_21=[];
+function gz$gwx_22(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_22)return __WXML_GLOBAL__.ops_cached.$gwx_22
+__WXML_GLOBAL__.ops_cached.$gwx_22=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'__l'])
 Z([3,'register_content data-v-919d98fa'])
@@ -1241,12 +1257,6 @@ Z([3,'data-v-919d98fa'])
 Z([3,'send_verify_content data-v-919d98fa'])
 Z([[7],[3,'timestatus2']])
 Z([[7],[3,'timestatus']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
-}
-function gz$gwx_22(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_22)return __WXML_GLOBAL__.ops_cached.$gwx_22
-__WXML_GLOBAL__.ops_cached.$gwx_22=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_22);return __WXML_GLOBAL__.ops_cached.$gwx_22
 }
 function gz$gwx_23(){
@@ -1265,20 +1275,26 @@ function gz$gwx_25(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_25)return __WXML_GLOBAL__.ops_cached.$gwx_25
 __WXML_GLOBAL__.ops_cached.$gwx_25=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__l'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_25);return __WXML_GLOBAL__.ops_cached.$gwx_25
 }
 function gz$gwx_26(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_26)return __WXML_GLOBAL__.ops_cached.$gwx_26
 __WXML_GLOBAL__.ops_cached.$gwx_26=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'__l'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_26);return __WXML_GLOBAL__.ops_cached.$gwx_26
+}
+function gz$gwx_27(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_27)return __WXML_GLOBAL__.ops_cached.$gwx_27
+__WXML_GLOBAL__.ops_cached.$gwx_27=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_27);return __WXML_GLOBAL__.ops_cached.$gwx_27
 }
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./components/header/header.wxml','./components/toRegister/toRegister.wxml','./components/uni-icon/uni-icon.wxml','./components/uni-segmented-control/uni-segmented-control.wxml','./pages/art_training/art_training.wxml','./pages/audio/audio.wxml','./pages/books/books.wxml','./pages/enterpriseDetails/applyMember.wxml','./pages/enterpriseDetails/enterpriseInfo.wxml','./pages/enterpriseDetails/submitted.wxml','./pages/index/enterprise/enterprise.wxml','./pages/index/friendship/friendship.wxml','./pages/index/index/index.wxml','./pages/index/my/my.wxml','./pages/lives/lives.wxml','./pages/login/changePassword.wxml','./pages/login/changePasswordVerification.wxml','./pages/login/login.wxml','./pages/login/logout.wxml','./pages/login/phoneLogin.wxml','./pages/login/register.wxml','./pages/magazine/magazine.wxml','./pages/psychological/psychological.wxml','./pages/readings/readings.wxml','./pages/searchIndex/searchIndex.wxml','./pages/video/video.wxml'];d_[x[0]]={}
+var x=['./components/header/header.wxml','./components/toRegister/toRegister.wxml','./components/uni-icon/uni-icon.wxml','./components/uni-segmented-control/uni-segmented-control.wxml','./pages/art_training/art_training.wxml','./pages/audio/audio.wxml','./pages/books/books.wxml','./pages/enterpriseDetails/applyMember.wxml','./pages/enterpriseDetails/enterpriseInfo.wxml','./pages/enterpriseDetails/enterpriseSearch.wxml','./pages/enterpriseDetails/submitted.wxml','./pages/index/enterprise/enterprise.wxml','./pages/index/friendship/friendship.wxml','./pages/index/index/index.wxml','./pages/index/my/my.wxml','./pages/lives/lives.wxml','./pages/login/changePassword.wxml','./pages/login/changePasswordVerification.wxml','./pages/login/login.wxml','./pages/login/logout.wxml','./pages/login/phoneLogin.wxml','./pages/login/register.wxml','./pages/magazine/magazine.wxml','./pages/psychological/psychological.wxml','./pages/readings/readings.wxml','./pages/searchIndex/searchIndex.wxml','./pages/video/video.wxml'];d_[x[0]]={}
 var m0=function(e,s,r,gg){
 var z=gz$gwx_1()
 return r
@@ -1326,10 +1342,17 @@ var z=gz$gwx_8()
 cs.push("./pages/enterpriseDetails/applyMember.wxml:view:1:1")
 var cI=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
 cs.push("./pages/enterpriseDetails/applyMember.wxml:header:1:59")
-var oJ=_n('header')
-_rz(z,oJ,'class',2,e,s,gg)
+var lK=_n('header')
+_rz(z,lK,'class',2,e,s,gg)
 cs.pop()
+_(cI,lK)
+var oJ=_v()
 _(cI,oJ)
+if(_oz(z,3,e,s,gg)){oJ.wxVkey=1
+cs.push("./pages/enterpriseDetails/applyMember.wxml:block:1:1689")
+cs.pop()
+}
+oJ.wxXCkey=1
 cs.pop()
 _(r,cI)
 return r
@@ -1339,122 +1362,165 @@ d_[x[8]]={}
 var m8=function(e,s,r,gg){
 var z=gz$gwx_9()
 cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:view:1:1")
-var aL=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
-cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:uni-segmented-control:1:1162")
-var tM=_mz(z,'uni-segmented-control',['activeColor',3,'activeColor',1,'bind:clickItem',2,'current',3,'data-event-opts',4,'style',5,'styleType',6,'values',7],[],e,s,gg)
+var tM=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:uni-segmented-control:1:1531")
+var eN=_mz(z,'uni-segmented-control',['activeColor',3,'activeColor',1,'bind:clickItem',2,'class',3,'current',4,'data-event-opts',5,'style',6,'styleType',7,'values',8],[],e,s,gg)
 cs.pop()
-_(aL,tM)
+_(tM,eN)
+var bO=_v()
+_(tM,bO)
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:2715")
+var oP=function(oR,xQ,fS,gg){
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:view:1:3091")
+var hU=_n('view')
+_rz(z,hU,'class',16,oR,xQ,gg)
+var oV=_v()
+_(hU,oV)
+if(_oz(z,17,oR,xQ,gg)){oV.wxVkey=1
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:3201")
 cs.pop()
-_(r,aL)
+}
+else{oV.wxVkey=2
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:3369")
+var cW=_v()
+_(oV,cW)
+if(_oz(z,18,oR,xQ,gg)){cW.wxVkey=1
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:3384")
+cs.pop()
+}
+else{cW.wxVkey=2
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:3539")
+var oX=_v()
+_(cW,oX)
+if(_oz(z,19,oR,xQ,gg)){oX.wxVkey=1
+cs.push("./pages/enterpriseDetails/enterpriseInfo.wxml:block:1:3554")
+cs.pop()
+}
+oX.wxXCkey=1
+cs.pop()
+}
+cW.wxXCkey=1
+cs.pop()
+}
+oV.wxXCkey=1
+cs.pop()
+_(fS,hU)
+return fS
+}
+bO.wxXCkey=2
+_2z(z,14,oP,e,s,gg,bO,'item','index','index')
+cs.pop()
+cs.pop()
+_(r,tM)
 return r
 }
 e_[x[8]]={f:m8,j:[],i:[],ti:[],ic:[]}
 d_[x[9]]={}
 var m9=function(e,s,r,gg){
 var z=gz$gwx_10()
-cs.push("./pages/enterpriseDetails/submitted.wxml:view:1:1")
-var bO=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
-cs.push("./pages/enterpriseDetails/submitted.wxml:header:1:91")
-var oP=_n('header')
-_rz(z,oP,'class',3,e,s,gg)
-cs.pop()
-_(bO,oP)
-cs.pop()
-_(r,bO)
 return r
 }
 e_[x[9]]={f:m9,j:[],i:[],ti:[],ic:[]}
 d_[x[10]]={}
 var m10=function(e,s,r,gg){
 var z=gz$gwx_11()
-cs.push("./pages/index/enterprise/enterprise.wxml:view:1:1")
-var oR=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-var fS=_v()
-_(oR,fS)
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:1421")
-var cT=function(oV,hU,cW,gg){
-cs.push("./pages/index/enterprise/enterprise.wxml:view:1:2792")
-var lY=_n('view')
-_rz(z,lY,'class',6,oV,hU,gg)
-var aZ=_v()
-_(lY,aZ)
-if(_oz(z,7,oV,hU,gg)){aZ.wxVkey=1
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:2832")
+cs.push("./pages/enterpriseDetails/submitted.wxml:view:1:1")
+var t1=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
+cs.push("./pages/enterpriseDetails/submitted.wxml:header:1:91")
+var e2=_n('header')
+_rz(z,e2,'class',3,e,s,gg)
 cs.pop()
-}
-else{aZ.wxVkey=2
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3041")
-var t1=_v()
-_(aZ,t1)
-if(_oz(z,8,oV,hU,gg)){t1.wxVkey=1
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3056")
-cs.pop()
-}
-else{t1.wxVkey=2
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3179")
-var e2=_v()
 _(t1,e2)
-if(_oz(z,9,oV,hU,gg)){e2.wxVkey=1
-cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3194")
 cs.pop()
-}
-e2.wxXCkey=1
-cs.pop()
-}
-t1.wxXCkey=1
-cs.pop()
-}
-aZ.wxXCkey=1
-cs.pop()
-_(cW,lY)
-return cW
-}
-fS.wxXCkey=2
-_2z(z,4,cT,e,s,gg,fS,'item','index','index')
-cs.pop()
-cs.pop()
-_(r,oR)
+_(r,t1)
 return r
 }
 e_[x[10]]={f:m10,j:[],i:[],ti:[],ic:[]}
 d_[x[11]]={}
 var m11=function(e,s,r,gg){
 var z=gz$gwx_12()
+cs.push("./pages/index/enterprise/enterprise.wxml:view:1:1")
+var o4=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+var x5=_v()
+_(o4,x5)
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:1510")
+var o6=function(c8,f7,h9,gg){
+cs.push("./pages/index/enterprise/enterprise.wxml:view:1:2881")
+var cAB=_n('view')
+_rz(z,cAB,'class',6,c8,f7,gg)
+var oBB=_v()
+_(cAB,oBB)
+if(_oz(z,7,c8,f7,gg)){oBB.wxVkey=1
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:2921")
+cs.pop()
+}
+else{oBB.wxVkey=2
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3199")
+var lCB=_v()
+_(oBB,lCB)
+if(_oz(z,8,c8,f7,gg)){lCB.wxVkey=1
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3214")
+cs.pop()
+}
+else{lCB.wxVkey=2
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3337")
+var aDB=_v()
+_(lCB,aDB)
+if(_oz(z,9,c8,f7,gg)){aDB.wxVkey=1
+cs.push("./pages/index/enterprise/enterprise.wxml:block:1:3352")
+cs.pop()
+}
+aDB.wxXCkey=1
+cs.pop()
+}
+lCB.wxXCkey=1
+cs.pop()
+}
+oBB.wxXCkey=1
+cs.pop()
+_(h9,cAB)
+return h9
+}
+x5.wxXCkey=2
+_2z(z,4,o6,e,s,gg,x5,'item','index','index')
+cs.pop()
+cs.pop()
+_(r,o4)
 return r
 }
 e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
 d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
-cs.push("./pages/index/index/index.wxml:view:1:1")
-var x5=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/index/index/index.wxml:view:1:3610")
-var o6=_n('view')
-_rz(z,o6,'class',2,e,s,gg)
-var f7=_v()
-_(o6,f7)
-if(_oz(z,3,e,s,gg)){f7.wxVkey=1
-cs.push("./pages/index/index/index.wxml:block:1:4458")
-cs.pop()
-}
-var c8=_v()
-_(o6,c8)
-if(_oz(z,4,e,s,gg)){c8.wxVkey=1
-cs.push("./pages/index/index/index.wxml:block:1:5132")
-cs.pop()
-}
-f7.wxXCkey=1
-c8.wxXCkey=1
-cs.pop()
-_(x5,o6)
-cs.pop()
-_(r,x5)
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
 d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
+cs.push("./pages/index/index/index.wxml:view:1:1")
+var bGB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+cs.push("./pages/index/index/index.wxml:view:1:3610")
+var oHB=_n('view')
+_rz(z,oHB,'class',2,e,s,gg)
+var xIB=_v()
+_(oHB,xIB)
+if(_oz(z,3,e,s,gg)){xIB.wxVkey=1
+cs.push("./pages/index/index/index.wxml:block:1:4458")
+cs.pop()
+}
+var oJB=_v()
+_(oHB,oJB)
+if(_oz(z,4,e,s,gg)){oJB.wxVkey=1
+cs.push("./pages/index/index/index.wxml:block:1:5132")
+cs.pop()
+}
+xIB.wxXCkey=1
+oJB.wxXCkey=1
+cs.pop()
+_(bGB,oHB)
+cs.pop()
+_(r,bGB)
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
@@ -1467,166 +1533,166 @@ e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-cs.push("./pages/login/changePassword.wxml:view:1:1")
-var oBB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/login/changePassword.wxml:search:1:53")
-var lCB=_n('search')
-cs.pop()
-_(oBB,lCB)
-cs.push("./pages/login/changePassword.wxml:to-register:1:105")
-var aDB=_n('to-register')
-cs.pop()
-_(oBB,aDB)
-cs.pop()
-_(r,oBB)
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
-cs.push("./pages/login/changePasswordVerification.wxml:view:1:1")
-var eFB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/login/changePasswordVerification.wxml:search:1:63")
-var bGB=_n('search')
-_rz(z,bGB,'class',2,e,s,gg)
+cs.push("./pages/login/changePassword.wxml:view:1:1")
+var oNB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+cs.push("./pages/login/changePassword.wxml:search:1:53")
+var cOB=_n('search')
 cs.pop()
-_(eFB,bGB)
-cs.push("./pages/login/changePasswordVerification.wxml:to-register:1:187")
-var oHB=_n('to-register')
-_rz(z,oHB,'class',3,e,s,gg)
+_(oNB,cOB)
+cs.push("./pages/login/changePassword.wxml:to-register:1:105")
+var oPB=_n('to-register')
 cs.pop()
-_(eFB,oHB)
-cs.push("./pages/login/changePasswordVerification.wxml:view:1:1211")
-var xIB=_mz(z,'view',['class',4,'style',1],[],e,s,gg)
-var oJB=_v()
-_(xIB,oJB)
-if(_oz(z,6,e,s,gg)){oJB.wxVkey=1
-cs.push("./pages/login/changePasswordVerification.wxml:block:1:1283")
+_(oNB,oPB)
 cs.pop()
-}
-var fKB=_v()
-_(xIB,fKB)
-if(_oz(z,7,e,s,gg)){fKB.wxVkey=1
-cs.push("./pages/login/changePasswordVerification.wxml:block:1:1513")
-cs.pop()
-}
-oJB.wxXCkey=1
-fKB.wxXCkey=1
-cs.pop()
-_(eFB,xIB)
-cs.pop()
-_(r,eFB)
+_(r,oNB)
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
 d_[x[17]]={}
 var m17=function(e,s,r,gg){
 var z=gz$gwx_18()
-cs.push("./pages/login/login.wxml:view:1:1")
-var hMB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/login/login.wxml:header:1:44")
-var cOB=_n('header')
+cs.push("./pages/login/changePasswordVerification.wxml:view:1:1")
+var aRB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+cs.push("./pages/login/changePasswordVerification.wxml:search:1:63")
+var tSB=_n('search')
+_rz(z,tSB,'class',2,e,s,gg)
 cs.pop()
-_(hMB,cOB)
-cs.push("./pages/login/login.wxml:to-register:1:96")
-var oPB=_n('to-register')
+_(aRB,tSB)
+cs.push("./pages/login/changePasswordVerification.wxml:to-register:1:187")
+var eTB=_n('to-register')
+_rz(z,eTB,'class',3,e,s,gg)
 cs.pop()
-_(hMB,oPB)
-var oNB=_v()
-_(hMB,oNB)
-if(_oz(z,2,e,s,gg)){oNB.wxVkey=1
-cs.push("./pages/login/login.wxml:block:1:795")
+_(aRB,eTB)
+cs.push("./pages/login/changePasswordVerification.wxml:view:1:1208")
+var bUB=_mz(z,'view',['class',4,'style',1],[],e,s,gg)
+var oVB=_v()
+_(bUB,oVB)
+if(_oz(z,6,e,s,gg)){oVB.wxVkey=1
+cs.push("./pages/login/changePasswordVerification.wxml:block:1:1280")
 cs.pop()
 }
-oNB.wxXCkey=1
+var xWB=_v()
+_(bUB,xWB)
+if(_oz(z,7,e,s,gg)){xWB.wxVkey=1
+cs.push("./pages/login/changePasswordVerification.wxml:block:1:1510")
 cs.pop()
-_(r,hMB)
+}
+oVB.wxXCkey=1
+xWB.wxXCkey=1
+cs.pop()
+_(aRB,bUB)
+cs.pop()
+_(r,aRB)
 return r
 }
 e_[x[17]]={f:m17,j:[],i:[],ti:[],ic:[]}
 d_[x[18]]={}
 var m18=function(e,s,r,gg){
 var z=gz$gwx_19()
+cs.push("./pages/login/login.wxml:view:1:1")
+var fYB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+cs.push("./pages/login/login.wxml:header:1:44")
+var h1B=_n('header')
+cs.pop()
+_(fYB,h1B)
+cs.push("./pages/login/login.wxml:to-register:1:96")
+var o2B=_n('to-register')
+cs.pop()
+_(fYB,o2B)
+var cZB=_v()
+_(fYB,cZB)
+if(_oz(z,2,e,s,gg)){cZB.wxVkey=1
+cs.push("./pages/login/login.wxml:block:1:795")
+cs.pop()
+}
+cZB.wxXCkey=1
+cs.pop()
+_(r,fYB)
 return r
 }
 e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-cs.push("./pages/login/phoneLogin.wxml:view:1:1")
-var tSB=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
-cs.push("./pages/login/phoneLogin.wxml:search:1:60")
-var eTB=_n('search')
-_rz(z,eTB,'class',2,e,s,gg)
-cs.pop()
-_(tSB,eTB)
-cs.push("./pages/login/phoneLogin.wxml:to-register:1:184")
-var bUB=_n('to-register')
-_rz(z,bUB,'class',3,e,s,gg)
-cs.pop()
-_(tSB,bUB)
-cs.push("./pages/login/phoneLogin.wxml:view:1:1173")
-var oVB=_n('view')
-_rz(z,oVB,'class',4,e,s,gg)
-var xWB=_v()
-_(oVB,xWB)
-if(_oz(z,5,e,s,gg)){xWB.wxVkey=1
-cs.push("./pages/login/phoneLogin.wxml:block:1:1223")
-cs.pop()
-}
-var oXB=_v()
-_(oVB,oXB)
-if(_oz(z,6,e,s,gg)){oXB.wxVkey=1
-cs.push("./pages/login/phoneLogin.wxml:block:1:1460")
-cs.pop()
-}
-xWB.wxXCkey=1
-oXB.wxXCkey=1
-cs.pop()
-_(tSB,oVB)
-cs.pop()
-_(r,tSB)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
-cs.push("./pages/login/register.wxml:view:1:1")
-var cZB=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
-cs.push("./pages/login/register.wxml:search:1:101")
-var h1B=_n('search')
-_rz(z,h1B,'class',3,e,s,gg)
+cs.push("./pages/login/phoneLogin.wxml:view:1:1")
+var l5B=_mz(z,'view',['bind:__l',0,'class',1],[],e,s,gg)
+cs.push("./pages/login/phoneLogin.wxml:search:1:60")
+var a6B=_n('search')
+_rz(z,a6B,'class',2,e,s,gg)
 cs.pop()
-_(cZB,h1B)
-cs.push("./pages/login/register.wxml:view:1:1140")
-var o2B=_n('view')
-_rz(z,o2B,'class',4,e,s,gg)
-var c3B=_v()
-_(o2B,c3B)
-if(_oz(z,5,e,s,gg)){c3B.wxVkey=1
-cs.push("./pages/login/register.wxml:block:1:1190")
+_(l5B,a6B)
+cs.push("./pages/login/phoneLogin.wxml:to-register:1:184")
+var t7B=_n('to-register')
+_rz(z,t7B,'class',3,e,s,gg)
+cs.pop()
+_(l5B,t7B)
+cs.push("./pages/login/phoneLogin.wxml:view:1:1173")
+var e8B=_n('view')
+_rz(z,e8B,'class',4,e,s,gg)
+var b9B=_v()
+_(e8B,b9B)
+if(_oz(z,5,e,s,gg)){b9B.wxVkey=1
+cs.push("./pages/login/phoneLogin.wxml:block:1:1223")
 cs.pop()
 }
-var o4B=_v()
-_(o2B,o4B)
-if(_oz(z,6,e,s,gg)){o4B.wxVkey=1
-cs.push("./pages/login/register.wxml:block:1:1395")
+var o0B=_v()
+_(e8B,o0B)
+if(_oz(z,6,e,s,gg)){o0B.wxVkey=1
+cs.push("./pages/login/phoneLogin.wxml:block:1:1460")
 cs.pop()
 }
-c3B.wxXCkey=1
-o4B.wxXCkey=1
+b9B.wxXCkey=1
+o0B.wxXCkey=1
 cs.pop()
-_(cZB,o2B)
+_(l5B,e8B)
 cs.pop()
-_(r,cZB)
+_(r,l5B)
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
 d_[x[21]]={}
 var m21=function(e,s,r,gg){
 var z=gz$gwx_22()
+cs.push("./pages/login/register.wxml:view:1:1")
+var oBC=_mz(z,'view',['bind:__l',0,'class',1,'style',1],[],e,s,gg)
+cs.push("./pages/login/register.wxml:search:1:101")
+var fCC=_n('search')
+_rz(z,fCC,'class',3,e,s,gg)
+cs.pop()
+_(oBC,fCC)
+cs.push("./pages/login/register.wxml:view:1:1085")
+var cDC=_n('view')
+_rz(z,cDC,'class',4,e,s,gg)
+var hEC=_v()
+_(cDC,hEC)
+if(_oz(z,5,e,s,gg)){hEC.wxVkey=1
+cs.push("./pages/login/register.wxml:block:1:1135")
+cs.pop()
+}
+var oFC=_v()
+_(cDC,oFC)
+if(_oz(z,6,e,s,gg)){oFC.wxVkey=1
+cs.push("./pages/login/register.wxml:block:1:1340")
+cs.pop()
+}
+hEC.wxXCkey=1
+oFC.wxXCkey=1
+cs.pop()
+_(oBC,cDC)
+cs.pop()
+_(r,oBC)
 return r
 }
 e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
@@ -1645,24 +1711,30 @@ e_[x[23]]={f:m23,j:[],i:[],ti:[],ic:[]}
 d_[x[24]]={}
 var m24=function(e,s,r,gg){
 var z=gz$gwx_25()
-cs.push("./pages/searchIndex/searchIndex.wxml:view:1:1")
-var b9B=_n('view')
-_rz(z,b9B,'bind:__l',0,e,s,gg)
-cs.push("./pages/searchIndex/searchIndex.wxml:search:1:22")
-var o0B=_n('search')
-cs.pop()
-_(b9B,o0B)
-cs.pop()
-_(r,b9B)
 return r
 }
 e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
 d_[x[25]]={}
 var m25=function(e,s,r,gg){
 var z=gz$gwx_26()
+cs.push("./pages/searchIndex/searchIndex.wxml:view:1:1")
+var tKC=_n('view')
+_rz(z,tKC,'bind:__l',0,e,s,gg)
+cs.push("./pages/searchIndex/searchIndex.wxml:search:1:22")
+var eLC=_n('search')
+cs.pop()
+_(tKC,eLC)
+cs.pop()
+_(r,tKC)
 return r
 }
 e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
+d_[x[26]]={}
+var m26=function(e,s,r,gg){
+var z=gz$gwx_27()
+return r
+}
+e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 if(path&&e_[path]){
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
 var main=e_[path].f
@@ -1683,7 +1755,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/index/index/index","pages/index/friendship/friendship","pages/index/enterprise/enterprise","pages/enterpriseDetails/applyMember","pages/enterpriseDetails/submitted","pages/enterpriseDetails/enterpriseInfo","pages/index/my/my","pages/searchIndex/searchIndex","pages/books/books","pages/magazine/magazine","pages/video/video","pages/audio/audio","pages/lives/lives","pages/psychological/psychological","pages/art_training/art_training","pages/readings/readings","pages/login/login","pages/login/logout","pages/login/register","pages/login/changePassword","pages/login/phoneLogin","pages/login/changePasswordVerification"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"链读app","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8","navigationStyle":"custom"},"tabBar":{"color":"#7A7E83","selectedColor":"#007AFF","borderStyle":"black","backgroundColor":"#F8F8F8","list":[{"pagePath":"pages/index/index/index","iconPath":"static/images/pic_index2.png","selectedIconPath":"static/images/pic_index.png","text":"首页"},{"pagePath":"pages/index/friendship/friendship","iconPath":"static/images/pic_sq2.png","selectedIconPath":"static/images/pic_sq.png","text":"社圈"},{"pagePath":"pages/index/enterprise/enterprise","iconPath":"static/images/pic_zt2.png","selectedIconPath":"static/images/pic_zt.png","text":"企业"},{"pagePath":"pages/index/my/my","iconPath":"static/images/pic_my2.png","selectedIconPath":"static/images/pic_my.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"今日链读","compilerVersion":"1.9.9","usingComponents":{}};
+__wxAppCode__['app.json']={"pages":["pages/index/index/index","pages/index/friendship/friendship","pages/index/enterprise/enterprise","pages/enterpriseDetails/applyMember","pages/enterpriseDetails/submitted","pages/enterpriseDetails/enterpriseInfo","pages/enterpriseDetails/enterpriseSearch","pages/index/my/my","pages/searchIndex/searchIndex","pages/books/books","pages/magazine/magazine","pages/video/video","pages/audio/audio","pages/lives/lives","pages/psychological/psychological","pages/art_training/art_training","pages/readings/readings","pages/login/login","pages/login/logout","pages/login/register","pages/login/changePassword","pages/login/phoneLogin","pages/login/changePasswordVerification"],"subPackages":[],"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"链读app","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8","navigationStyle":"custom"},"tabBar":{"color":"#7A7E83","selectedColor":"#007AFF","borderStyle":"black","backgroundColor":"#F8F8F8","list":[{"pagePath":"pages/index/index/index","iconPath":"static/images/pic_index2.png","selectedIconPath":"static/images/pic_index.png","text":"首页"},{"pagePath":"pages/index/friendship/friendship","iconPath":"static/images/pic_sq2.png","selectedIconPath":"static/images/pic_sq.png","text":"社圈"},{"pagePath":"pages/index/enterprise/enterprise","iconPath":"static/images/pic_zt2.png","selectedIconPath":"static/images/pic_zt.png","text":"企业"},{"pagePath":"pages/index/my/my","iconPath":"static/images/pic_my2.png","selectedIconPath":"static/images/pic_my.png","text":"我的"}]},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"今日链读","compilerVersion":"1.9.9","usingComponents":{}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/header/header.json']={"usingComponents":{},"component":true};
@@ -1712,6 +1784,9 @@ __wxAppCode__['pages/enterpriseDetails/applyMember.wxml']=$gwx('./pages/enterpri
 
 __wxAppCode__['pages/enterpriseDetails/enterpriseInfo.json']={"usingComponents":{"uni-segmented-control":"/components/uni-segmented-control/uni-segmented-control"}};
 __wxAppCode__['pages/enterpriseDetails/enterpriseInfo.wxml']=$gwx('./pages/enterpriseDetails/enterpriseInfo.wxml');
+
+__wxAppCode__['pages/enterpriseDetails/enterpriseSearch.json']={"usingComponents":{}};
+__wxAppCode__['pages/enterpriseDetails/enterpriseSearch.wxml']=$gwx('./pages/enterpriseDetails/enterpriseSearch.wxml');
 
 __wxAppCode__['pages/enterpriseDetails/submitted.json']={"usingComponents":{"header":"/components/header/header"}};
 __wxAppCode__['pages/enterpriseDetails/submitted.wxml']=$gwx('./pages/enterpriseDetails/submitted.wxml');
@@ -2629,7 +2704,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8703,7 +8778,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8724,14 +8799,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8800,7 +8875,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -11037,10 +11112,7 @@ var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function randomWord(randomFlag, min, max) {
   var str = "",
   range = min,
-  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
+  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   if (randomFlag) {
     range = Math.round(Math.random() * (max - min)) + min;
   }
@@ -11096,16 +11168,29 @@ function get(url, params) {
       url: baseUrl + url,
       data: params,
       method: "GET",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data = _slicedToArray(
+      header: {
+        'content-type': 'application/json' } }).
+
+    then(function (data) {
+      console.log(data, " at common\\methods.js:26");var _data = _slicedToArray(
       data, 2),error = _data[0],suc = _data[1];
       var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+      if (suc.data.status == 200) {
         res.status = 200;
+      } else {
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        // 					res.status = 200;
+        // 
+        // 				}
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("FAILED") >= 0) {
+        // 					res.status = 400;
+        // 
+        // 				}
       }
+
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:31");
+      console.info(err, " at common\\methods.js:44");
       reject(err);
     });
   });
@@ -11118,7 +11203,9 @@ function post(url, params) {
       url: baseUrl + url,
       data: params,
       method: "POST",
-      header: { 'content-type': 'application/json' } }).
+      header: {
+        'content-type': 'application/json' } }).
+
     then(function (data) {var _data2 = _slicedToArray(
       data, 2),error = _data2[0],suc = _data2[1];
       var res = suc.data;
@@ -11127,7 +11214,7 @@ function post(url, params) {
       }
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:53");
+      console.info(err, " at common\\methods.js:68");
       reject(err);
     });
   });
@@ -11246,6 +11333,23 @@ createPage(_applyMember.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _enterpriseInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseInfo.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_enterpriseInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseSearch\"}":
+/*!********************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2FenterpriseSearch"} ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _enterpriseSearch = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseSearch.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_enterpriseSearch.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -13120,6 +13224,17 @@ define('pages/index/enterprise/enterprise.js',function(require, module, exports,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js"); //
 //
 //
@@ -13187,10 +13302,67 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
 //
 //
 //
-var _default = { data: function data() {return { isVip: '', enterpriseList: [], list: [], trade: ['行业'], region: ['地区'], tradeIndex: 0, regionIndex: 0 };}, onLoad: function onLoad() {var _this = this;uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/trade/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:87");var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = res.data.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var data = _step.value;_this.trade.push(data);}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}} });uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/region/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:98");var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {for (var _iterator2 = res.data.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var data = _step2.value;console.log(data, " at pages\\index\\enterprise\\enterprise.vue:100");var area = data.split("市");if (area.length == 1) {_this.region.push(area[0]);} else if (area.length == 2) {_this.region.push(area[0] + '市');}} // this.region = res.data.data;
-        } catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}} });uni.request({ url: _common.onlineURL + '/enterprise/company/all?userId=1340', method: 'GET', success: function success(res) {_this.enterpriseList = res.data.data;console.log(_this.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:116");} });}, methods: { tradeChange: function tradeChange(e) {console.log(e, " at pages\\index\\enterprise\\enterprise.vue:122");console.log('1picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:123");this.tradeIndex = e.target.value;}, regionChange: function regionChange(e) {console.log('2picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:127");this.regionIndex = e.target.value;}, nextPage: function nextPage(e) {var enterpriseid = e.currentTarget.dataset.enterpriseid;var joinedState = e.currentTarget.dataset.joinedstate;if (joinedState === undefined || joinedState == undefined) {// console.log('123')
-        joinedState = 'notVip';} //console.log(joinedState)
-      uni.navigateTo({ url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { isVip: '', enterpriseList: [], trade: ['行业'], region: ['地区'], tradeIndex: 0, regionIndex: 0, targetValue: '', tradeValue: '' };}, onLoad: function onLoad() {var _this = this; //首次加载行业列表
+    uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/trade/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:102");var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = res.data.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var data = _step.value;_this.trade.push(data);}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}} }); //首次加载地区列表
+    uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/region/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:114");var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {for (var _iterator2 = res.data.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var data = _step2.value;console.log(data, " at pages\\index\\enterprise\\enterprise.vue:116");var area = data.split("市");if (area.length == 1) {_this.region.push(area[0]);} else if (area.length == 2) {_this.region.push(area[0] + '市');}} // this.region = res.data.data;
+        } catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}} }); //首次加载列表数据
+    uni.request({ url: _common.onlineURL + '/enterprise/company/all?userId=1340', method: 'GET', success: function success(res) {_this.enterpriseList = res.data.data;console.log(_this.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:133");} });}, methods: { toApplyMember: function toApplyMember(e) {var enterpriseLid = e.currentTarget.dataset.enterpriselid;var enterpriseName = e.currentTarget.dataset.enterprisename;uni.navigateTo({ url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName=' + enterpriseName, success: function success(res) {} });}, tradeChange: function tradeChange(e) {var _this2 = this;console.log('1picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:148");this.tradeIndex = e.target.value;this.tradeValue = this.region[e.target.value];console.log(this.targetValue, " at pages\\index\\enterprise\\enterprise.vue:151");if (this.tradeValue != '地区') {uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340', method: 'GET', success: function success(res) {_this2.enterpriseList = res.data.data;} });} else {uni.request({
+          url: _common.onlineURL + '/enterprise/company/all?userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this2.enterpriseList = res.data.data;
+            console.log(_this2.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:167");
+          } });
+
+      }
+    },
+    regionChange: function regionChange(e) {var _this3 = this;
+      console.log('2picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:173");
+      this.regionIndex = e.target.value;
+      //console.log(this.region[e.target.value])
+      this.targetValue = this.region[e.target.value];
+      console.log(this.targetValue, " at pages\\index\\enterprise\\enterprise.vue:177");
+      if (this.targetValue != '地区') {
+        uni.request({
+          url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this3.enterpriseList = res.data.data;
+
+          } });
+
+      } else {
+        uni.request({
+          url: _common.onlineURL + '/enterprise/company/all?userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this3.enterpriseList = res.data.data;
+            console.log(_this3.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:193");
+          } });
+
+      }
+    },
+    nextPage: function nextPage(e) {
+      var enterpriseid = e.currentTarget.dataset.enterpriseid;
+      var joinedState = e.currentTarget.dataset.joinedstate;
+      if (joinedState === undefined || joinedState == undefined) {
+        // console.log('123')
+        joinedState = 'notVip';
+      }
+      //console.log(joinedState)
+      uni.navigateTo({
+        url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
         success: function success(res) {} });
 
     } } };exports.default = _default;
@@ -13357,7 +13529,7 @@ define('pages/enterpriseDetails/applyMember.js',function(require, module, export
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -13406,23 +13578,174 @@ define('pages/enterpriseDetails/applyMember.js',function(require, module, export
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+var _methods = __webpack_require__(/*! @/common/methods.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\methods.js");
+var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
 
 
 
 {
   data: function data() {
-    return {};
-
+    return {
+      enterpriseName: '',
+      cold: '',
+      name: '',
+      workNumber: '',
+      dept: '',
+      imageList: [], //保存图片路径集合
+      imageLength: 1, //限制图片张数
+      sourceTypeIndex: 2, //添加方式限制
+      sizeTypeIndex: 2, //图片尺寸限制
+      imgPath: '',
+      sourceType: [
+      ['camera'], //拍照
+      ['album'], //相册
+      ['camera', 'album'] //拍照或相册
+      ],
+      sizeType: [
+      ['compressed'], //压缩
+      ['original'], //原图
+      ['compressed', 'original'] //压缩或原图
+      ] };
 
   },
-  onLoad: function onLoad() {
+  computed: _objectSpread({},
+  (0, _vuex.mapState)([
+  "userid"])),
 
+
+  onLoad: function onLoad(e) {
+    this.enterpriseName = e.enterpriseName;
+    this.cold = e.enterpriseLid;
+    console.log(this.enterpriseName, " at pages\\enterpriseDetails\\applyMember.vue:107");
   },
   methods: {
     apply: function apply() {
-      uni.reLaunch({
-        url: './submitted' });
+      var requiredInfo = {
+        "associatorid": this.userid,
+        "coId": this.cold,
+        "name": this.name,
+        "dept": this.dept,
+        "code": this.workNumber,
+        "path": this.imgPath };
 
+      var namereg = /^[\u4e00-\u9fa5 ]{2,20}$/;
+      if (!namereg.test(this.name)) {
+        uni.showToast({
+          title: '真实姓名格式不正确',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.name == '') {
+        uni.showToast({
+          title: '真实姓名不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.workNumber == '') {
+        uni.showToast({
+          title: '工作证件不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.dept == '') {
+        uni.showToast({
+          title: '部门不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.imgPath == '') {
+        uni.showToast({
+          title: '请上传证件',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.userid == null) {
+        uni.showToast({
+          title: '请先登录',
+          duration: 2000,
+          icon: 'none' });
+
+      } else {
+        uni.request({
+          url: _common.onlineURL + '/enterprise/associator-company/add',
+          method: 'POST',
+          data: requiredInfo,
+          // header: {
+          // 	'content-type': 'application/json'
+          // },
+          success: function success(res) {
+            console.log(res, " at pages\\enterpriseDetails\\applyMember.vue:165");
+            uni.reLaunch({
+              url: './submitted' });
+
+          } });
+
+
+      }
+
+
+    },
+    //选择图片
+    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                uni.chooseImage({
+                  sourceType: this.sourceType[this.sourceTypeIndex],
+
+
+
+                  count: this.imageLength - this.imageList.length,
+                  success: function success(res) {
+                    console.log(res, " at pages\\enterpriseDetails\\applyMember.vue:185");
+                    _this.imageList = _this.imageList.concat(res.tempFilePaths);
+                    uni.uploadFile({
+                      url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+                      filePath: _this.imageList[0],
+                      name: 'file',
+                      formData: {
+                        'user': 'test' },
+
+                      success: function success(uploadFileRes) {
+                        console.log(JSON.parse(uploadFileRes.data).data, " at pages\\enterpriseDetails\\applyMember.vue:195");
+                        _this.imgPath = JSON.parse(uploadFileRes.data).data;
+                      } });
+
+                  } });case 1:case "end":return _context.stop();}}}, _callee, this);}));function chooseImage() {return _chooseImage.apply(this, arguments);}return chooseImage;}(),
+
+
+    //预览图片
+    previewImage: function previewImage(e) {
+      var current = e.target.dataset.src;
+      uni.previewImage({
+        current: current,
+        urls: this.imageList });
+
+    },
+    //删除图片
+    deleteImage: function deleteImage(e) {
+      var index = e.target.dataset.index;
+      var that = this;
+      var images = that.imageList;
+      images.splice(index, 1);
+      that.imageList = images;
+      this.imgPath = '';
     } },
 
   components: {
@@ -13571,7 +13894,7 @@ define('pages/enterpriseDetails/submitted.js',function(require, module, exports,
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
 
 
 
@@ -13598,11 +13921,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onLoad: function onLoad() {
 
   },
-  methods: {},
+  methods: {
+    close: function close() {
+      uni.reLaunch({
+        url: '../index/enterprise/enterprise' });
 
+    } },
 
   components: {
     Header: Header } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -13746,7 +14074,7 @@ define('pages/enterpriseDetails/enterpriseInfo.js',function(require, module, exp
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniSegmentedControl = function uniSegmentedControl() {return __webpack_require__.e(/*! import() | components/uni-segmented-control/uni-segmented-control */ "components/uni-segmented-control/uni-segmented-control").then(__webpack_require__.bind(null, /*! @/components/uni-segmented-control/uni-segmented-control.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\uni-segmented-control\\uni-segmented-control.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -13921,113 +14249,302 @@ define('pages/enterpriseDetails/enterpriseInfo.js',function(require, module, exp
 
 
 
-{
-  components: {
-    uniSegmentedControl: uniSegmentedControl },
 
-  data: function data() {
-    return {
-      bookList: [],
-      journalList: [],
-      items: ['主页', '图书', '杂志', '课程'],
-      current: 0,
-      requiredBooks: {
-        "page_index": 1,
-        "page_size": 10,
-        "table_id": "13" },
 
-      requiredJournal: {
-        "page_index": 1,
-        "page_size": 10,
-        "table_id": "13",
-        "resource_type": 2 } };
 
 
-  },
-  onLoad: function onLoad(e) {
-    var isVip = e.joinedState;
-    if (isVip == 'init') {
-      uni.showModal({
-        title: '提示',
-        showCancel: false,
-        confirmText: '关闭',
-        content: '您已申请企业会员，请等待审核。',
-        success: function success(res) {
-          if (res.confirm) {
-            console.log('用户点击关闭', " at pages\\enterpriseDetails\\enterpriseInfo.vue:209");
-          }
-        } });
 
-    } else if (isVip == 'notVip') {
-      uni.showModal({
-        title: '提示',
-        confirmText: '免费申请',
-        cancelText: '我先看看',
-        content: '为了更好的享受企业服务，请先申请为企业会员',
-        success: function success(res) {
-          if (res.confirm) {
-            console.log('用户点击确定', " at pages\\enterpriseDetails\\enterpriseInfo.vue:221");
-          } else if (res.cancel) {
-            console.log('用户点击取消', " at pages\\enterpriseDetails\\enterpriseInfo.vue:223");
-          }
-        } });
 
-    } else if (isVip == 'pass') {
-      console.log('hello vip', " at pages\\enterpriseDetails\\enterpriseInfo.vue:228");
-    }
 
-  },
-  methods: {
-    onClickItem: function onClickItem(index) {var _this = this;
-      //console.log(index)
-      if (this.current !== index) {
-        this.current = index;
-      }
-      if (index == 1) {
-        console.log('111', " at pages\\enterpriseDetails\\enterpriseInfo.vue:239");
-        uni.request({
-          url: 'http://192.168.0.210:9999/book/book/page',
-          method: 'POST',
-          data: this.requiredBooks,
-          header: {
-            'content-type': 'application/json' },
 
-          success: function success(res) {
-            _this.bookList = res.data.data.pageBooks;
-          } });
 
 
-      } else if (index == 2) {
-        console.log('222', " at pages\\enterpriseDetails\\enterpriseInfo.vue:253");
-        uni.request({
-          url: 'http://192.168.0.210:9999/book/book/page',
-          method: 'POST',
-          data: this.requiredJournal,
-          header: {
-            'content-type': 'application/json' },
 
-          success: function success(res) {
-            console.log(res.data.data.pageBooks, " at pages\\enterpriseDetails\\enterpriseInfo.vue:262");
-            _this.journalList = res.data.data.pageBooks;
 
-          } });
 
 
-      }
-    },
-    toEnterprise: function toEnterprise() {
-      uni.reLaunch({
-        url: '../index/enterprise/enterprise' });
 
-    } } };exports.default = _default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _methods = __webpack_require__(/*! @/common/methods.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\methods.js"); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var uniSegmentedControl = function uniSegmentedControl() {return __webpack_require__.e(/*! import() | components/uni-segmented-control/uni-segmented-control */ "components/uni-segmented-control/uni-segmented-control").then(__webpack_require__.bind(null, /*! @/components/uni-segmented-control/uni-segmented-control.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\uni-segmented-control\\uni-segmented-control.vue"));};var _default = { components: { uniSegmentedControl: uniSegmentedControl }, data: function data() {return { bookArray: ['上传时间', '阅读量'], journaArray: ['上架时间', '阅读量'], courseArray: ['上架时间', '阅读量'], bookIndex: 0, journaIndex: 0, courseIndex: 0, bookList: [], journalList: [], items: ['主页', '图书', '杂志', '课程'], current: 0, requiredBooks: { "page_index": 1, "page_size": 10, "table_id": "13", "sort": "createtime" }, requiredJournal: { "page_index": 1, "page_size": 10, "table_id": "13", "resource_type": 2, "sort": "createtime" } };}, onLoad: function onLoad(e) {var isVip = e.joinedState;if (isVip == 'init') {uni.showModal({ title: '提示', showCancel: false, confirmText: '关闭', content: '您已申请企业会员，请等待审核。', success: function success(res) {if (res.confirm) {console.log('用户点击关闭', " at pages\\enterpriseDetails\\enterpriseInfo.vue:274");}} });} else if (isVip == 'notVip') {uni.showModal({ title: '提示', confirmText: '免费申请', cancelText: '我先看看', content: '为了更好的享受企业服务，请先申请为企业会员', success: function success(res) {if (res.confirm) {console.log('用户点击确定', " at pages\\enterpriseDetails\\enterpriseInfo.vue:286");} else if (res.cancel) {console.log('用户点击取消', " at pages\\enterpriseDetails\\enterpriseInfo.vue:288");}} });} else if (isVip == 'pass') {console.log('hello vip', " at pages\\enterpriseDetails\\enterpriseInfo.vue:293");}}, methods: { bookSearchChange: function bookSearchChange(e) {console.log('picker发送选择改变，携带值为', e.target.value, " at pages\\enterpriseDetails\\enterpriseInfo.vue:299");this.bookIndex = e.target.value;if (e.target.value == '1' || e.target.value == 1) {this.requiredBooks.sort = 'hit';} else if (e.target.value == '0' || e.target.value == 0) {this.requiredBooks.sort = 'createtime';}(0, _methods.post)('/book/book/page', this.requiredBooks).then(function (res) {console.log(res, " at pages\\enterpriseDetails\\enterpriseInfo.vue:307");}, function (err) {//异步错误处理
+      });}, journaSearchChange: function journaSearchChange(e) {console.log('picker发送选择改变，携带值为', e.target.value, " at pages\\enterpriseDetails\\enterpriseInfo.vue:315");this.journaIndex = e.target.value;if (e.target.value == '1' || e.target.value == 1) {this.requiredJournal.sort = 'hit';} else if (e.target.value == '0' || e.target.value == 0) {this.requiredJournal.sort = 'createtime';}(0, _methods.post)('/book/book/page', this.requiredJournal).then(function (res) {console.log(res, " at pages\\enterpriseDetails\\enterpriseInfo.vue:323");}, function (err) {//异步错误处理
+      });}, courseSearchChange: function courseSearchChange(e) {console.log('picker发送选择改变，携带值为', e.target.value, " at pages\\enterpriseDetails\\enterpriseInfo.vue:330");this.courseIndex = e.target.value;}, onClickItem: function onClickItem(index) {var _this = this; //console.log(index)
+      if (this.current !== index) {this.current = index;}if (index == 1) {console.log('111', " at pages\\enterpriseDetails\\enterpriseInfo.vue:339");uni.request({ url: 'http://192.168.0.210:9999/book/book/page', method: 'POST', data: this.requiredBooks, header: { 'content-type': 'application/json' }, success: function success(res) {console.log(res, " at pages\\enterpriseDetails\\enterpriseInfo.vue:348");_this.bookList = res.data.data.pageBooks;} });} else if (index == 2) {console.log('222', " at pages\\enterpriseDetails\\enterpriseInfo.vue:354");uni.request({ url: 'http://192.168.0.210:9999/book/book/page', method: 'POST', data: this.requiredJournal, header: { 'content-type': 'application/json' }, success: function success(res) {console.log(res.data.data.pageBooks, " at pages\\enterpriseDetails\\enterpriseInfo.vue:363");_this.journalList = res.data.data.pageBooks;} });}}, toEnterprise: function toEnterprise() {uni.reLaunch({ url: '../index/enterprise/enterprise' });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14035,10 +14552,10 @@ define('pages/enterpriseDetails/enterpriseInfo.js',function(require, module, exp
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=template&id=e1961352& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -14067,10 +14584,10 @@ render._withStripped = true
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./enterpriseInfo.vue?vue&type=template&id=e1961352& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&");
+/* harmony import */ var _enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true&");
 /* harmony import */ var _enterpriseInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enterpriseInfo.vue?vue&type=script&lang=js& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=script&lang=js&");
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _enterpriseInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _enterpriseInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./enterpriseInfo.vue?vue&type=style&index=0&lang=css& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css&");
 /* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -14082,11 +14599,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _enterpriseInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "e1961352",
   null
   
 )
@@ -14114,35 +14631,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************************!*\
-  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************/
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseInfo.vue?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=style&index=0&id=e1961352&scoped=true&lang=css&");
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_style_index_0_id_e1961352_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&":
-/*!******************************************************************************************************************!*\
-  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=template&id=e1961352& ***!
-  \******************************************************************************************************************/
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true&":
+/*!******************************************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true& ***!
+  \******************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseInfo.vue?vue&type=template&id=e1961352& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue?vue&type=template&id=e1961352&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseInfo_vue_vue_type_template_id_e1961352_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -14151,6 +14668,205 @@ __webpack_require__.r(__webpack_exports__);
 },[["E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseInfo\"}","common/runtime","common/vendor"]]]);
 });
 require('pages/enterpriseDetails/enterpriseInfo.js');
+__wxRoute = 'pages/enterpriseDetails/enterpriseSearch';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/enterpriseDetails/enterpriseSearch.js';
+
+define('pages/enterpriseDetails/enterpriseSearch.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/enterpriseDetails/enterpriseSearch"],{
+
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      title: '社圈' };
+
+  },
+  methods: {
+    cancel: function cancel() {
+      uni.reLaunch({
+        url: '../index/enterprise/enterprise' });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=template&id=49c0abde&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=template&id=49c0abde& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue":
+/*!*************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./enterpriseSearch.vue?vue&type=template&id=49c0abde& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=template&id=49c0abde&");
+/* harmony import */ var _enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enterpriseSearch.vue?vue&type=script&lang=js& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./enterpriseSearch.vue?vue&type=style&index=0&lang=css& */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseSearch.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=script&lang=js&");
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseSearch.vue?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_1_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_6_oneOf_1_2_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=template&id=49c0abde&":
+/*!********************************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages/enterpriseDetails/enterpriseSearch.vue?vue&type=template&id=49c0abde& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./enterpriseSearch.vue?vue&type=template&id=49c0abde& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue?vue&type=template&id=49c0abde&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_D_windowsapp_HBuilderX_1_7_0_20190314_full_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_enterpriseSearch_vue_vue_type_template_id_49c0abde___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ })
+
+},[["E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseSearch\"}","common/runtime","common/vendor"]]]);
+});
+require('pages/enterpriseDetails/enterpriseSearch.js');
 __wxRoute = 'pages/index/my/my';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index/my/my.js';
 
 define('pages/index/my/my.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
@@ -14290,18 +15006,16 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   onLoad: function onLoad() {
   },
-  onReady: function onReady() {
-
-    uni.showToast({
-      title: this.userid,
-      duration: 2000,
-      icon: 'none' });
-
+  onShow: function onShow() {
     if (this.userid == null) {
       uni.redirectTo({
         url: '/pages/login/phoneLogin' });
 
     }
+  },
+  onReady: function onReady() {
+
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -15705,7 +16419,7 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
       }
       return str;
     },
-    passwordLogin: function passwordLogin() {
+    passwordLogin: function passwordLogin() {var _this = this;
       this.number = this.number + 1;
       this.getImgcode();
       if (this.phoneNumber == "" || this.phoneNumber == null) {
@@ -15741,14 +16455,15 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
         url: _common.onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password=' + this.password + '&&randomStr=' + this.passyzm,
         method: 'GET',
         success: function success(res) {
-          console.log(res, " at pages\\login\\login.vue:149");
+          //console.log(res);
           if (res.data.message == '登录成功') {
             uni.showToast({
               title: '登录成功!',
               duration: 1500,
               icon: 'none' });
 
-            // this.$store.dispatch("changeUserid",res.data.data);
+            _this.$store.dispatch("changeUserid", res.data.data.id);
+            console.log(res.data, " at pages\\login\\login.vue:157");
             uni.reLaunch({
               url: '../index/index/index' });
 
@@ -15911,15 +16626,7 @@ define('pages/login/logout.js',function(require, module, exports, window, docume
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -15929,17 +16636,60 @@ var _default =
 {
   data: function data() {
     return {
-      array: ['中国', '美国', '巴西', '日本'],
-      index: 0 };
+      dzcc: 'nihao 2020' };
 
   },
   computed: {},
 
   methods: {
-    bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为', e.target.value, " at pages\\login\\logout.vue:27");
-      this.index = e.target.value;
+    clickText: function clickText() {
+      // uni.chooseImage({
+      // 	success: (chooseImageRes) => {
+      // 		const tempFilePaths = chooseImageRes.tempFilePaths;
+      // 		uni.uploadFile({
+      // 			url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+      // 			filePath: tempFilePaths[0],
+      // 			name: 'file',
+      // 			formData: {
+      // 				'user': 'test'
+      // 			},
+      // 			success: (uploadFileRes) => {
+      // 				console.log(JSON.parse(uploadFileRes.data).data);
+      // 			}
+      // 		});
+      // 	}
+      // });
+      uni.chooseImage({
+        success: function success(chooseImageRes) {
+          var tempFilePaths = chooseImageRes.tempFilePaths;
+          var uploadTask = uni.uploadFile({
+            url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              'user': 'test' },
+
+            success: function success(uploadFileRes) {
+              console.log(uploadFileRes, " at pages\\login\\logout.vue:45");
+              console.log(uploadFileRes.data, " at pages\\login\\logout.vue:46");
+            } });
+
+
+          uploadTask.onProgressUpdate(function (res) {
+            console.log(res, " at pages\\login\\logout.vue:51");
+            console.log('上传进度' + res.progress, " at pages\\login\\logout.vue:52");
+            console.log('已经上传的数据长度' + res.totalBytesSent, " at pages\\login\\logout.vue:53");
+            console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend, " at pages\\login\\logout.vue:54");
+
+            // 测试条件，取消上传任务。
+            if (res.progress > 50) {
+              uploadTask.abort();
+            }
+          });
+        } });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -16111,17 +16861,26 @@ define('pages/login/register.js',function(require, module, exports, window, docu
 
 
 
+
 var _commonFunction = _interopRequireDefault(__webpack_require__(/*! @/common/commonFunction.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\commonFunction.js"));
-var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js");
+
+
+var _methods = __webpack_require__(/*! @/common/methods.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\methods.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+
+
+
 {
   data: function data() {
     return {
+      message: '',
       randomString: '',
       registerPhoneId: '',
       verifyNumber: '',
       phoneNumber: '',
       password: '',
       code: '',
+      reqStatus: '',
       countdown: '获取验证码',
       disabled: false,
       timestatus: false,
@@ -16137,56 +16896,80 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
   },
   onLoad: function onLoad() {
     this.randomString = _commonFunction.default.randomWord(false, 4);
-    console.log(this.randomString, " at pages\\login\\register.vue:84");
+    console.log(this.randomString, " at pages\\login\\register.vue:93");
   },
   methods: {
     login: function login() {
       uni.reLaunch({
-        url: './login' });
+        url: './phoneLogin' });
 
     },
-    registerPhone: function registerPhone() {
-
-    },
-    getCode: function getCode() {
+    getCode: function getCode() {var _this = this;
 
       var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
-
       if (regPhone.test(this.phoneNumber)) {
-
-        this.countdown = 10;
-        this.timestatus2 = false;
-        this.timestatus = true;
-        this.clear = setInterval(this.countDown, 1000);
-        this.countown_style.zIndex = -1;
+        // get('/auth/register', {
+        // 	'phone': this.phoneNumber,
+        // 	'randomStr': this.randomString
+        // }).then(res => {
+        // 	console.log(res)
+        // 	// let status = res.data.status.split('-')[1];
+        // 	// if (status == 'SUCCESS') {
+        // 	// 	this.reqStatus = true;
+        // 	// } else {
+        // 	// 	this.reqStatus = false;
+        // 	// }
+        // });
         uni.request({
-          url: _common.onlineURL + '/code/phone/register?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber,
+          url: _common.onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString,
           method: 'GET',
           success: function success(res) {
-            console.log(res, " at pages\\login\\register.vue:110");
-            if (res.data.message == '验证码已发送') {
-              // this.$router.push('/page/index/index/index');
-              // console.log('登录成功');
-              //  uni.navigateTo({
-              // 	url: '../index/index/index',
-              // }); 
-              // uni.reLaunch({
-              // 	url: '../index/index/index'
-              // });
-              uni.showToast({
-                title: '发送成功',
-                duration: 2000,
-                icon: 'success' });
+            console.log(res, " at pages\\login\\register.vue:121");
 
-              console.log('获取验证码成功', " at pages\\login\\register.vue:125");
+            _this.phoneStatus = res.data.status.split('-')[1];
+            console.log(_this.phoneStatus, " at pages\\login\\register.vue:124");
+            if (_this.phoneStatus == 'SUCCESS') {
+              _this.reqStatus = true;
             } else {
-              console.log('获取验证码失败', " at pages\\login\\register.vue:127");
+              _this.reqStatus = false;
             }
           } });
 
 
-      } else {
+        setTimeout(function () {
+          if (_this.reqStatus == true) {
+            _this.countdown = 60;
+            _this.timestatus2 = false;
+            _this.timestatus = true;
+            _this.clear = setInterval(_this.countDown, 1000);
+            _this.countown_style.zIndex = -1;
+            uni.request({
+              url: _common.onlineURL + '/code/phone/register?randomStr=' + _this.randomString + '&&phone=' + _this.phoneNumber,
+              method: 'GET',
+              success: function success(res) {
+                console.log(res, " at pages\\login\\register.vue:144");
+                if (res.data.message == '验证码已发送') {
+                  uni.showToast({
+                    title: '发送成功',
+                    duration: 2000,
+                    icon: 'success' });
 
+                  console.log('获取验证码成功', " at pages\\login\\register.vue:151");
+                } else {
+                  console.log('获取验证码失败', " at pages\\login\\register.vue:153");
+                }
+              } });
+
+          } else {
+            uni.showToast({
+              title: '手机号码已被使用',
+              duration: 2000,
+              icon: 'none' });
+
+          }
+        }, 1000);
+
+      } else {
         uni.showToast({
           title: '请输入正确的手机号码',
           duration: 2000,
@@ -16212,53 +16995,53 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
       }
     },
     // 验证码倒计时 end 
-    //注册
-    registerID: function registerID() {var _this = this;
+    // 注册
+    registerID: function registerID() {var _this2 = this;
 
       uni.request({
         url: _common.onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString,
         method: 'GET',
         success: function success(res) {
-          console.log(res, " at pages\\login\\register.vue:166");
+          console.log(res, " at pages\\login\\register.vue:199");
 
-          _this.phoneStatus = res.data.status.split('-')[1];
-          console.log(_this.phoneStatus, " at pages\\login\\register.vue:169");
+          _this2.phoneStatus = res.data.status.split('-')[1];
+          console.log(_this2.phoneStatus, " at pages\\login\\register.vue:202");
         } });
 
       uni.request({
         url: _common.onlineURL + '/auth/register?code=' + this.verifyNumber + '&&randomStr=' + this.randomString,
         method: 'GET',
         success: function success(res) {
-          console.log(res, " at pages\\login\\register.vue:176");
-          _this.verifyStatus = res.data.status.split('-')[1];
-          console.log(_this.verifyStatus, " at pages\\login\\register.vue:178");
+          console.log(res, " at pages\\login\\register.vue:209");
+          _this2.verifyStatus = res.data.status.split('-')[1];
+          console.log(_this2.verifyStatus, " at pages\\login\\register.vue:211");
         } });
 
       setTimeout(function () {
         //console.log(this)
-        console.log(_this.phoneStatus, " at pages\\login\\register.vue:183");
-        if (_this.phoneStatus == 'FAILED') {
+        console.log(_this2.phoneStatus, " at pages\\login\\register.vue:216");
+        if (_this2.phoneStatus == 'FAILED') {
           uni.showToast({
             title: '手机号码已被使用',
             duration: 2000,
             icon: 'none' });
 
           return false;
-        } else if (_this.phoneStatus == 'ERROR') {
+        } else if (_this2.phoneStatus == 'ERROR') {
           uni.showToast({
             title: '手机号码格式不正确',
             duration: 2000,
             icon: 'none' });
 
           return false;
-        } else if (_this.verifyStatus == 'FAILED') {
+        } else if (_this2.verifyStatus == 'FAILED') {
           uni.showToast({
             title: '验证码错误',
             duration: 2000,
             icon: 'none' });
 
           return false;
-        } else if (_this.verifyStatus == 'ERROR') {
+        } else if (_this2.verifyStatus == 'ERROR') {
           uni.showToast({
             title: '请输入验证码',
             duration: 2000,
@@ -16266,31 +17049,38 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
 
           return false;
         } else {
-          uni.request({
-            url: _common.onlineURL + '/auth/register?phone=' + _this.phoneNumber + '&&randomStr=' + _this.randomString + '&&password=' + _this.password,
-            method: 'GET',
-            success: function success(res) {
-              // let register = res.data.status;
-              // this.registerStatus = register.split('-')[1];
-              uni.showToast({
-                title: '注册成功',
-                duration: 2000,
-                icon: 'success' });
+          var regPwd = /^[a-z0-9A-Z]{6,14}$/;
+          if (regPwd.test(_this2.password)) {
+            uni.request({
+              url: _common.onlineURL + '/auth/register?phone=' + _this2.phoneNumber + '&&randomStr=' + _this2.randomString +
+              '&&password=' + _this2.password,
+              method: 'GET',
+              success: function success(res) {
+                // let register = res.data.status;
+                // this.registerStatus = register.split('-')[1];
+                uni.showToast({
+                  title: '注册成功',
+                  duration: 2000,
+                  icon: 'success' });
 
-              setTimeout(function () {
-                uni.reLaunch({
-                  url: '../index/index/index' });
+                setTimeout(function () {
+                  uni.reLaunch({
+                    url: '../index/index/index' });
 
-              }, 1000);
-            } });
+                }, 1000);
+              } });
+
+          } else {
+            uni.showToast({
+              title: '请输入正确的密码格式',
+              duration: 2000,
+              icon: 'none' });
+
+          }
 
 
         }
       }, 1000);
-
-
-
-
     } },
 
   components: {
@@ -16764,7 +17554,7 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
     getCode: function getCode() {
       var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
       if (regPhone.test(this.phoneNumber)) {
-        this.countdown = 5;
+        this.countdown = 60;
         this.timestatus_two = false;
         this.timestatus = true;
         this.clear = setInterval(this.countDown, 1000);
@@ -17146,7 +17936,7 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
     getCode: function getCode() {
       var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
       if (regPhone.test(this.phoneNumber)) {
-        this.countdown = 5;
+        this.countdown = 60;
         this.timestatus_two = false;
         this.timestatus = true;
         this.clear = setInterval(this.countDown, 1000);

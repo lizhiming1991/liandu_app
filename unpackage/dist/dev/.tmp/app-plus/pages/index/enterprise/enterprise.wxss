@@ -74,7 +74,13 @@ view.data-v-851ba170 {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.enterprise .select_label .label_one.data-v-851ba170, .enterprise .select_label .label_two.data-v-851ba170 {
+.enterprise .select_label .label_one.data-v-851ba170,
+.enterprise .select_label .label_two.data-v-851ba170 {
+  font-size: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -91,8 +97,9 @@ view.data-v-851ba170 {
 .select_label .label_two.data-v-851ba170 {
   margin-left: 41rpx;
 }
-.enterprise .select_label .label_one .xiala_icon.data-v-851ba170, .enterprise .select_label .label_two .xiala_icon.data-v-851ba170 {
-  margin-left: 24rpx;
+.enterprise .select_label .label_one .xiala_icon.data-v-851ba170,
+.enterprise .select_label .label_two .xiala_icon.data-v-851ba170 {
+  margin-left: 20rpx;
   width: 25rpx;
   height: 16rpx;
 }
@@ -167,7 +174,8 @@ view.data-v-851ba170 {
 .enterprise .enterprise_list .enterprise_details .enterprise_content .list_lable_text.data-v-851ba170 {
   margin-left: 13rpx;
 }
-.enterprise .enterprise_list .enterprise_details .enterprise_content .list_lable_one.data-v-851ba170, .enterprise .enterprise_list .enterprise_details .enterprise_content .list_lable_two.data-v-851ba170 {
+.enterprise .enterprise_list .enterprise_details .enterprise_content .list_lable_one.data-v-851ba170,
+.enterprise .enterprise_list .enterprise_details .enterprise_content .list_lable_two.data-v-851ba170 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;

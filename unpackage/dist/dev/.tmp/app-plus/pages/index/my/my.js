@@ -134,18 +134,16 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
   onLoad: function onLoad() {
   },
-  onReady: function onReady() {
-
-    uni.showToast({
-      title: this.userid,
-      duration: 2000,
-      icon: 'none' });
-
+  onShow: function onShow() {
     if (this.userid == null) {
       uni.redirectTo({
         url: '/pages/login/phoneLogin' });
 
     }
+  },
+  onReady: function onReady() {
+
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

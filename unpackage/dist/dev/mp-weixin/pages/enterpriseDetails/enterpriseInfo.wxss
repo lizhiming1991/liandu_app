@@ -261,6 +261,9 @@ page {
 	display: flex;
 	margin: 0 25rpx 0 29rpx;
 }
+.journal_content .list_content .content_list .book_cover_content .book_free{
+	width: ;
+}
 .journal_content .list_content .content_list .booK_cover_img {
 	display: -webkit-box;
 	display: -webkit-flex;

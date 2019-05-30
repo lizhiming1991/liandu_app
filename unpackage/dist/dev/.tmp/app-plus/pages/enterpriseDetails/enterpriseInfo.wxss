@@ -1,21 +1,437 @@
 
-view {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 公共组件 picker start */
+.journal_content .list_content .picker_style.data-v-e1961352{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex; 
+	-webkit-box-pack: end; 
+	-webkit-justify-content: flex-end; 
+	    -ms-flex-pack: end; 
+	        justify-content: flex-end;
+}
+.journal_content .list_content .picker_style .content_search.data-v-e1961352{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex; 
+	-webkit-box-pack: center; 
+	-webkit-justify-content: center; 
+	    -ms-flex-pack: center; 
+	        justify-content: center; 
+	-webkit-box-align: center; 
+	-webkit-align-items: center; 
+	    -ms-flex-align: center; 
+	        align-items: center; 
+	margin: 6rpx 24rpx 0 0;
+	width: 166rpx; 
+	height: 40rpx; 
+	color: #fff; 
+	font-size: 24rpx;
+	background: #01B18D;
+}
+.journal_content .list_content .picker_style .content_search .xiala_icon.data-v-e1961352{
+	margin-left: 20rpx;
+	width:26rpx; 
+	height:14rpx;
+}
+/* 公共组件 picker end */
+view.data-v-e1961352 {
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-page {
+page.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	background-image: url('http://192.168.0.210/attached/image/2019-images/20190527.png');
+	background-image: url('http://192.168.0.210/attached/image/20190530/20190530103654_ccuh.png');
 	background-repeat: no-repeat;
 	background-position-y: -250rpx;
 }
-.journal_content .search_lable {
+.journal_content .search_lable.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -23,14 +439,14 @@ page {
 	margin-top: 50rpx;
 	margin-bottom: 60rpx;
 }
-.journal_content .search_lable .clear_page {
+.journal_content .search_lable .clear_page.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-right: 27rpx;
 }
-.journal_content .search_lable .searc_icon {
+.journal_content .search_lable .searc_icon.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -39,7 +455,7 @@ page {
 	width: 50rpx;
 	height: 50rpx;
 }
-.journal_content .search_lable .clear_icon {
+.journal_content .search_lable .clear_icon.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -47,14 +463,14 @@ page {
 	width: 40rpx;
 	height: 40rpx;
 }
-.journal_content .title_content {
+.journal_content .title_content.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-bottom: 70rpx;
 }
-.journal_content .title_content .title_text {
+.journal_content .title_content .title_text.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -63,7 +479,7 @@ page {
 	color: #333;
 	font-size: 44rpx;
 }
-.journal_content .title_content .to_apply {
+.journal_content .title_content .to_apply.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -84,7 +500,7 @@ page {
 	border-radius: 4px;
 	background: rgba(255, 84, 108, 1);
 }
-.journal_content .enterprise_info {
+.journal_content .enterprise_info.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -95,7 +511,7 @@ page {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.journal_content .enterprise_info .info_content {
+.journal_content .enterprise_info .info_content.data-v-e1961352 {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -109,7 +525,7 @@ page {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
-.journal_content .enterprise_lable {
+.journal_content .enterprise_lable.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -126,7 +542,7 @@ page {
 	color: #666;
 	font-size: 26rpx;
 }
-.journal_content .enterprise_lable .detailas_lable {
+.journal_content .enterprise_lable .detailas_lable.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -139,7 +555,7 @@ page {
 	width: 22rpx;
 	height: 28rpx;
 }
-.journal_content .enterprise_lable .site_lable {
+.journal_content .enterprise_lable .site_lable.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -152,37 +568,36 @@ page {
 	width: 21rpx;
 	height: 27rpx;
 }
-.journal_content .enterprise_lable .detailas_text {
+.journal_content .enterprise_lable .detailas_text.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-left: 13rpx;
 }
-.journal_content .enterprise_lable .label_left {
+.journal_content .enterprise_lable .label_left.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-right: 48rpx;
 }
-.journal_content .enterprise_lable .label_right {
+.journal_content .enterprise_lable .label_right.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-right: 26rpx;
 }
-.list_subsection {
+.list_subsection.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin-left: -100rpx;
 }
-
 /* 图书列表 start*/
-.journal_content .list_content .content_list {
+.journal_content .list_content .content_list.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -192,13 +607,13 @@ page {
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
-	margin: 66rpx 0 0 22rpx;
+	margin: 32rpx 0 0 22rpx;
 	padding-bottom: 300rpx;
 	width: 704rpx;
 	background: #fff;
 	border-radius: 30rpx 30rpx 0px 0px;
 }
-.journal_content .list_content .content_list .book_cover_info {
+.journal_content .list_content .content_list .book_cover_info.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -210,7 +625,7 @@ page {
 	        flex-direction: column;
 	width: 431rpx;
 }
-.journal_content .list_content .content_list .book_info {
+.journal_content .list_content .content_list .book_info.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -218,7 +633,7 @@ page {
 	margin-top: 49rpx;
 	height: 299rpx;
 }
-.journal_content .list_content .content_list .book_title_content {
+.journal_content .list_content .content_list .book_title_content.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -229,7 +644,7 @@ page {
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.journal_content .list_content .content_list .book_title_content .book_title {
+.journal_content .list_content .content_list .book_title_content .book_title.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -237,7 +652,7 @@ page {
 	font-size: 33rpx;
 	color: #333;
 }
-.journal_content .list_content .content_list .book_title_content .book_price {
+.journal_content .list_content .content_list .book_title_content .book_price.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -254,14 +669,17 @@ page {
 	border-radius: 4px;
 	background: rgba(251, 221, 220, 1);
 }
-.journal_content .list_content .content_list .book_cover_content {
+.journal_content .list_content .content_list .book_cover_content.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	margin: 0 25rpx 0 29rpx;
 }
-.journal_content .list_content .content_list .booK_cover_img {
+.journal_content .list_content .content_list .book_cover_content .book_free.data-v-e1961352{
+	width: ;
+}
+.journal_content .list_content .content_list .booK_cover_img.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -270,7 +688,7 @@ page {
 	height: 299rpx;
 	border-radius: 4rpx;
 }
-.journal_content .list_content .content_list .book_author {
+.journal_content .list_content .content_list .book_author.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -279,7 +697,7 @@ page {
 	font-size: 27rpx;
 	color: #333;
 }
-.journal_content .list_content .content_list .book_brief_info {
+.journal_content .list_content .content_list .book_brief_info.data-v-e1961352 {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -293,11 +711,9 @@ page {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
 }
-
 /* 图书列表 end*/
-
 /* 杂志 start */
-.journal_content .list_content .journal_list {
+.journal_content .list_content .journal_list.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -316,7 +732,7 @@ page {
 
 	border-radius: 30rpx 30rpx 0px 0px;
 }
-.journal_content .list_content .journal_list .journal_cover {
+.journal_content .list_content .journal_list .journal_cover.data-v-e1961352 {
 	margin-bottom: 4rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -336,49 +752,47 @@ page {
 	height: 444rpx;
 	background: #fff;
 }
-.journal_content .list_content .journal_list .journal_cover:nth-child(2n-1) {
+.journal_content .list_content .journal_list .journal_cover.data-v-e1961352:nth-child(2n-1) {
 	margin-right: 4rpx;
 }
-.journal_content .list_content .journal_list .journal_cover:nth-child(1) {
+.journal_content .list_content .journal_list .journal_cover.data-v-e1961352:nth-child(1) {
 	border-radius: 30rpx 0rpx 0rpx 0rpx;
 }
-.journal_content .list_content .journal_list .journal_cover:nth-child(2) {
+.journal_content .list_content .journal_list .journal_cover.data-v-e1961352:nth-child(2) {
 	border-radius: 0rpx 30rpx 0rpx 0rpx;
 }
-.journal_content .list_content .journal_list .journal_cover .journal_cover_img {
+.journal_content .list_content .journal_list .journal_cover .journal_cover_img.data-v-e1961352 {
 	margin-top: 51rpx;
 	width: 184rpx;
 	height: 296rpx;
 }
-.journal_content .list_content .journal_list .journal_cover .journal_cover_title {
+.journal_content .list_content .journal_list .journal_cover .journal_cover_title.data-v-e1961352 {
 	color: #333;
 	font-size: 32rpx;
 }
-
 /* 杂志 end */
-
 /* 课程列表 start*/
-.journal_content .list_content .content_list .course_cover {
+.journal_content .list_content .content_list .course_cover.data-v-e1961352 {
 	margin-top: 33rpx;
 }
-.journal_content .list_content .course_content {
+.journal_content .list_content .course_content.data-v-e1961352 {
 	margin-left: 31rpx;
 	padding-bottom: 45rpx;
 	width: 643rpx;
 }
-.journal_content .list_content .content_list .course_cover_img {
+.journal_content .list_content .content_list .course_cover_img.data-v-e1961352 {
 	width: 643rpx;
 	height: 374rpx;
 }
-.journal_content .list_content .content_list .bottom_border {
+.journal_content .list_content .content_list .bottom_border.data-v-e1961352 {
 	border-bottom: 1px solid #eee;
 }
-.journal_content .list_content .course_content .course_title {
+.journal_content .list_content .course_content .course_title.data-v-e1961352 {
 	color: #333;
 	font-size: 30rpx;
 }
-.journal_content .list_content .content_list .course_teacher,
-.journal_content .list_content .content_list .course_times {
+.journal_content .list_content .content_list .course_teacher.data-v-e1961352,
+.journal_content .list_content .content_list .course_times.data-v-e1961352 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -388,17 +802,17 @@ page {
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.journal_content .list_content .content_list .course_teacher_icon {
+.journal_content .list_content .content_list .course_teacher_icon.data-v-e1961352 {
 	margin: 0 23rpx 0 0rpx;
 	width: 30rpx;
 	height: 30rpx;
 }
-.journal_content .list_content .content_list .course_times_icon {
+.journal_content .list_content .content_list .course_times_icon.data-v-e1961352 {
 	margin-right: 22rpx;
 	width: 36rpx;
 	height: 36rpx;
 }
-.journal_content .list_content .content_list .course_info {
+.journal_content .list_content .content_list .course_info.data-v-e1961352 {
 	margin-top: 39rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -414,14 +828,13 @@ page {
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.journal_content .list_content .content_list .course_time_date {
+.journal_content .list_content .content_list .course_time_date.data-v-e1961352 {
 	color: #888;
 	font-size: 26rpx;
 }
-.journal_content .list_content .content_list .course_teacher_name {
+.journal_content .list_content .content_list .course_teacher_name.data-v-e1961352 {
 	color: #888;
 	font-size: 26rpx;
 }
-
 /* 课程列表 end*/
 

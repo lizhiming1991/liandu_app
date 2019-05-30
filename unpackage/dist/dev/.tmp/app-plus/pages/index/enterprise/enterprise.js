@@ -76,6 +76,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js"); //
 //
 //
@@ -143,10 +154,67 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
 //
 //
 //
-var _default = { data: function data() {return { isVip: '', enterpriseList: [], list: [], trade: ['行业'], region: ['地区'], tradeIndex: 0, regionIndex: 0 };}, onLoad: function onLoad() {var _this = this;uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/trade/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:87");var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = res.data.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var data = _step.value;_this.trade.push(data);}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}} });uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/region/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:98");var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {for (var _iterator2 = res.data.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var data = _step2.value;console.log(data, " at pages\\index\\enterprise\\enterprise.vue:100");var area = data.split("市");if (area.length == 1) {_this.region.push(area[0]);} else if (area.length == 2) {_this.region.push(area[0] + '市');}} // this.region = res.data.data;
-        } catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}} });uni.request({ url: _common.onlineURL + '/enterprise/company/all?userId=1340', method: 'GET', success: function success(res) {_this.enterpriseList = res.data.data;console.log(_this.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:116");} });}, methods: { tradeChange: function tradeChange(e) {console.log(e, " at pages\\index\\enterprise\\enterprise.vue:122");console.log('1picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:123");this.tradeIndex = e.target.value;}, regionChange: function regionChange(e) {console.log('2picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:127");this.regionIndex = e.target.value;}, nextPage: function nextPage(e) {var enterpriseid = e.currentTarget.dataset.enterpriseid;var joinedState = e.currentTarget.dataset.joinedstate;if (joinedState === undefined || joinedState == undefined) {// console.log('123')
-        joinedState = 'notVip';} //console.log(joinedState)
-      uni.navigateTo({ url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { isVip: '', enterpriseList: [], trade: ['行业'], region: ['地区'], tradeIndex: 0, regionIndex: 0, targetValue: '', tradeValue: '' };}, onLoad: function onLoad() {var _this = this; //首次加载行业列表
+    uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/trade/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:102");var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {for (var _iterator = res.data.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var data = _step.value;_this.trade.push(data);}} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}} }); //首次加载地区列表
+    uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/region/all', method: 'GET', success: function success(res) {console.log(res.data.data, " at pages\\index\\enterprise\\enterprise.vue:114");var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {for (var _iterator2 = res.data.data[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var data = _step2.value;console.log(data, " at pages\\index\\enterprise\\enterprise.vue:116");var area = data.split("市");if (area.length == 1) {_this.region.push(area[0]);} else if (area.length == 2) {_this.region.push(area[0] + '市');}} // this.region = res.data.data;
+        } catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}} }); //首次加载列表数据
+    uni.request({ url: _common.onlineURL + '/enterprise/company/all?userId=1340', method: 'GET', success: function success(res) {_this.enterpriseList = res.data.data;console.log(_this.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:133");} });}, methods: { toApplyMember: function toApplyMember(e) {var enterpriseLid = e.currentTarget.dataset.enterpriselid;var enterpriseName = e.currentTarget.dataset.enterprisename;uni.navigateTo({ url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName=' + enterpriseName, success: function success(res) {} });}, tradeChange: function tradeChange(e) {var _this2 = this;console.log('1picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:148");this.tradeIndex = e.target.value;this.tradeValue = this.region[e.target.value];console.log(this.targetValue, " at pages\\index\\enterprise\\enterprise.vue:151");if (this.tradeValue != '地区') {uni.request({ url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340', method: 'GET', success: function success(res) {_this2.enterpriseList = res.data.data;} });} else {uni.request({
+          url: _common.onlineURL + '/enterprise/company/all?userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this2.enterpriseList = res.data.data;
+            console.log(_this2.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:167");
+          } });
+
+      }
+    },
+    regionChange: function regionChange(e) {var _this3 = this;
+      console.log('2picker发送选择改变，携带值为', e.target.value, " at pages\\index\\enterprise\\enterprise.vue:173");
+      this.regionIndex = e.target.value;
+      //console.log(this.region[e.target.value])
+      this.targetValue = this.region[e.target.value];
+      console.log(this.targetValue, " at pages\\index\\enterprise\\enterprise.vue:177");
+      if (this.targetValue != '地区') {
+        uni.request({
+          url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this3.enterpriseList = res.data.data;
+
+          } });
+
+      } else {
+        uni.request({
+          url: _common.onlineURL + '/enterprise/company/all?userId=1340',
+          method: 'GET',
+          success: function success(res) {
+            _this3.enterpriseList = res.data.data;
+            console.log(_this3.enterpriseList, " at pages\\index\\enterprise\\enterprise.vue:193");
+          } });
+
+      }
+    },
+    nextPage: function nextPage(e) {
+      var enterpriseid = e.currentTarget.dataset.enterpriseid;
+      var joinedState = e.currentTarget.dataset.joinedstate;
+      if (joinedState === undefined || joinedState == undefined) {
+        // console.log('123')
+        joinedState = 'notVip';
+      }
+      //console.log(joinedState)
+      uni.navigateTo({
+        url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
         success: function success(res) {} });
 
     } } };exports.default = _default;

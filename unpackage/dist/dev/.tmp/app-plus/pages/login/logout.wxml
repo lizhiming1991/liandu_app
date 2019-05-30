@@ -1,1 +1,1 @@
-<view bind:__l="__l"><view class="uni-list"><view class="uni-list-cell"><view class="uni-list-cell-db"><picker value="{{index}}" range="{{array}}" data-event-opts="{{[['change',[['bindPickerChange',['$event']]]]]}}" bindchange="__e"><view class="uni-input">{{array[index]}}</view></picker></view></view></view></view>
+<view bind:__l="__l"><view data-event-opts="{{[['tap',[['clickText',['$event']]]]]}}" bindtap="__e">上传文件</view><input type="text" value="{{dzcc}}" data-event-opts="{{[['input',[['__set_model',['$0','dzcc','$event',[]],['']]]]]}}" bindinput="__e"/></view>

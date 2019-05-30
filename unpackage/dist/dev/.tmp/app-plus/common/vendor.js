@@ -478,7 +478,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6552,7 +6552,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6573,14 +6573,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -6649,7 +6649,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -8886,10 +8886,7 @@ var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function randomWord(randomFlag, min, max) {
   var str = "",
   range = min,
-  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
+  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   if (randomFlag) {
     range = Math.round(Math.random() * (max - min)) + min;
   }
@@ -8945,16 +8942,29 @@ function get(url, params) {
       url: baseUrl + url,
       data: params,
       method: "GET",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data = _slicedToArray(
+      header: {
+        'content-type': 'application/json' } }).
+
+    then(function (data) {
+      console.log(data, " at common\\methods.js:26");var _data = _slicedToArray(
       data, 2),error = _data[0],suc = _data[1];
       var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+      if (suc.data.status == 200) {
         res.status = 200;
+      } else {
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        // 					res.status = 200;
+        // 
+        // 				}
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("FAILED") >= 0) {
+        // 					res.status = 400;
+        // 
+        // 				}
       }
+
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:31");
+      console.info(err, " at common\\methods.js:44");
       reject(err);
     });
   });
@@ -8967,7 +8977,9 @@ function post(url, params) {
       url: baseUrl + url,
       data: params,
       method: "POST",
-      header: { 'content-type': 'application/json' } }).
+      header: {
+        'content-type': 'application/json' } }).
+
     then(function (data) {var _data2 = _slicedToArray(
       data, 2),error = _data2[0],suc = _data2[1];
       var res = suc.data;
@@ -8976,7 +8988,7 @@ function post(url, params) {
       }
       resolve(res);
     }, function (err) {
-      console.info(err, " at common\\methods.js:53");
+      console.info(err, " at common\\methods.js:68");
       reject(err);
     });
   });
@@ -9095,6 +9107,23 @@ createPage(_applyMember.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _enterpriseInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseInfo.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_enterpriseInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseSearch\"}":
+/*!********************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2FenterpriseSearch"} ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _enterpriseSearch = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseSearch.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_enterpriseSearch.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
