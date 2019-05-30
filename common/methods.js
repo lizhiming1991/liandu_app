@@ -17,13 +17,14 @@ function obj2params(obj) {
 export function get(url,params){
   return new Promise((resolve,reject)=>{
     uni.request({
-		url: baseUrl+url,
-		data: params,
-		method:"GET",
-		header : {'content-type':'application/json'},
+			url: baseUrl+url,
+			data: params,
+			method:"GET",
+			header : {'content-type':'application/json'},
     }).then(data=>{
 			let [error,suc] = data;
 			let res = suc.data;
+			
 			if(suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS")>=0){
 				res.status = 200;
 			}

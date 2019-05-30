@@ -11,6 +11,7 @@
     "pages/books/bookList",
     "pages/books/bookDetails",
     "pages/books/readBook",
+    "pages/books/readBook2",
     "pages/magazine/magazine",
     "pages/video/video",
     "pages/audio/audio",

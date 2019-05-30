@@ -151,13 +151,12 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 
 
 
-
-    console.log(3, " at pages\\books\\bookList.vue:55");
+    console.log(3, " at pages\\books\\bookList.vue:54");
   },
   onLoad: function onLoad() {var _this = this;
     this.ImgUrl = _common.ImgUrl;
     this.getBooklist("", "", 1, 10);
-    console.log(1, " at pages\\books\\bookList.vue:60");
+    console.log(1, " at pages\\books\\bookList.vue:59");
     (0, _methods.get)("/book/book/category/all", {}).then(function (res) {
       if (res.status == 200) {
         _this.typeList = res.data;
@@ -181,11 +180,13 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
         "table_id": "",
         "resource_type": 1 }).
       then(function (res) {
-        console.log(res, " at pages\\books\\bookList.vue:84");
         if (res.status == 200) {
           _this2.bookList = res.data.pageBooks;
         }
       });
+    },
+    changeList: function changeList(id) {
+      this.getBooklist("", id, 1, 10);
     } },
 
   components: {

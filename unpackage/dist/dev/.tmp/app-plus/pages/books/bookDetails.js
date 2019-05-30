@@ -155,7 +155,8 @@ var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vu
       bookinfo: "",
       ImgUrl: "",
       allDiss: 0,
-      comList: [] };
+      comList: [],
+      bid: 0 };
 
   },
   computed: _objectSpread({},
@@ -165,8 +166,8 @@ var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vu
 
   onLoad: function onLoad(e) {var _this = this;
     this.ImgUrl = _common.ImgUrl;
-    console.log(e, " at pages\\books\\bookDetails.vue:68");
     var bid = e.id;
+    this.bid = e.id;
     (0, _methods.get)("/book/book/" + bid + "?associatorid=" + this.userid).then(function (res) {
       if (res.status == 200) {
         _this.bookinfo = res.data.bookinfo;
@@ -177,7 +178,6 @@ var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vu
       if (res.status == 200) {
         _this.allDiss = res.data.totalCommentNums;
         _this.comList = res.data.gradeList;
-        console.log(res, " at pages\\books\\bookDetails.vue:80");
       }
     });
 
@@ -188,12 +188,25 @@ var _common = __webpack_require__(/*! @/common/common.js */ "../../../../item-vu
         url: "pages/addComment/addComment" });
 
     },
-    goRead: function goRead() {
-      uni.navigateTo({
-        url: "/pages/books/readBook" });
+    goRead: function goRead(id) {
+      console.log(this.bid, " at pages\\books\\bookDetails.vue:92");
+      (0, _methods.get)("/book/book/getBookPath/" + this.bid, {}).then(function (res) {
+        console.log(res, " at pages\\books\\bookDetails.vue:94");
+        if (res.status == 200) {
+          if (res.data.type == 1) {
+            uni.navigateTo({
+              url: '/pages/books/readBook2?bookpath=' + res.data.path + '&total=' + res.data.totalCount });
 
+          } else {
+            uni.navigateTo({
+              url: "/pages/books/readBook?bookpath=" + res.data.path });
+
+          }
+        }
+      });
 
     } },
+
 
   components: {
     Header: Header,

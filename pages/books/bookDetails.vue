@@ -25,7 +25,7 @@
 		</view>
 		<view class="stars2">
 			<text class="score2">{{allDiss}}人点评过></text>
-			<text class="readers2" @tap="goRead">阅读此书></text>
+			<text class="readers2" @tap="goRead(bookinfo.id)">阅读此书></text>
 		</view>
 		<view class="userinfo">
 			<view class="b_title">作者简介</view>
@@ -55,7 +55,8 @@
 				bookinfo: "",
 				ImgUrl: "",
 				allDiss: 0,
-				comList: []
+				comList: [],
+				bid: 0
 			};
 		},
 		computed:{
@@ -65,8 +66,8 @@
 		},
 		onLoad(e){
 			this.ImgUrl = ImgUrl;
-			console.log(e)
 			let bid = e.id;
+			this.bid = e.id;
 			get("/book/book/"+bid+"?associatorid="+this.userid).then(res=>{
 				if(res.status == 200){
 					this.bookinfo = res.data.bookinfo;
@@ -77,7 +78,6 @@
 				if(res.status == 200){
 					this.allDiss = res.data.totalCommentNums;
 					this.comList = res.data.gradeList;
-					console.log(res)
 				}
 			})
 			
@@ -88,12 +88,25 @@
 					url:"pages/addComment/addComment"
 				})
 			},
-			goRead(){
-				uni.navigateTo({
-					url:"/pages/books/readBook"
+			goRead(id){
+				console.log(this.bid)
+				get("/book/book/getBookPath/"+this.bid,{}).then(res=>{
+					console.log(res)
+					if(res.status == 200){
+						if(res.data.type == 1){
+							uni.navigateTo({
+								url: '/pages/books/readBook2?bookpath='+res.data.path+'&total='+res.data.totalCount
+							});
+						}else{
+							uni.navigateTo({
+								url:"/pages/books/readBook?bookpath="+res.data.path
+							})
+						}
+					}
 				})
 				
-			}
+			},
+			
 		},
 		components:{
 			Header,

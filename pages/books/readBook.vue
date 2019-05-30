@@ -74,6 +74,7 @@
 	import ePub from 'epubjs/dist/epub.min.js'
 	import {ImgUrl} from '@/common/common.js'
 	import Header from '@/components/header/header.vue'
+	import {get,post} from '@/common/methods.js'
 	export default{
 		data(){
 			return {
@@ -85,7 +86,6 @@
 				navigation :"",
 				locations: "",
 				showmulu: false,
-				routes: "",
 				booktitle: "",
 				bookuser: "",
 				bookimg: "",
@@ -96,8 +96,7 @@
 			}
 		},
 		onLoad(e){
-			this.routes = this.$route.path+"/";
-			this.book = new ePub(ImgUrl +"/attached/image/20190125/20190125092735_nAQ4.epub");
+			this.book = new ePub(ImgUrl + e.bookpath);
 			this.rendition = this.book.renderTo('books', {
 				width: window.innerWidth-20,
 				height: window.innerHeight-100,
@@ -135,7 +134,6 @@
 			prevPage() {
 				if (this.rendition) {
 				  this.rendition.prev()
-				  console.log(this.rendition)
 				}
 			},
 			nextPage() {

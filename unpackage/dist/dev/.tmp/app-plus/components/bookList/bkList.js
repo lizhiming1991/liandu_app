@@ -155,6 +155,9 @@ var _default =
   methods: {
     goDetail: function goDetail(bid) {
       this.$emit("goDetail", { "id": bid });
+    },
+    changelist: function changelist(id) {
+      this.$emit("changelist", { "id": id });
     } },
 
   props: [

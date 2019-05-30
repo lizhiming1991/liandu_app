@@ -17,7 +17,7 @@
 			<swiper class="swiper lg_lunbo"  indicator-dots="true" autoplay="true" interval="3000" duration="300" >
 				
 			    <swiper-item v-for="(item,index) in picArr" :key="index">
-			    	<image class="lg_lb_pic swiper-item"  :src="imgurl+item.photo"  ></image>
+			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerror"  ></image>
 			    </swiper-item>
 			            
 			</swiper>
@@ -97,10 +97,10 @@
 			<view class="lg_mag_list">
 				<view class="lg_mag_part" v-for="(item,index) in magList1" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text v-show="item.ispay" class="lg_mag_pay">收费</text>
 						<text v-show="!item.ispublic" class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -108,10 +108,10 @@
 			<view class="lg_mag_list" v-if="magList2">
 				<view class="lg_mag_part" v-for="(item,index) in magList2" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -119,10 +119,10 @@
 			<view class="lg_mag_list" v-if="magList3">
 				<view class="lg_mag_part" v-for="(item,index) in magList3" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -135,7 +135,7 @@
 			<view class="lg_bk_cont">
 				<view class="lg_bk_list" v-for="(item,index) in bookList" :key="index">
 					<view class="lg_bk_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_bk_jx">精选</text>
 					</view>
 					<view class="lg_bk_pro">
@@ -210,10 +210,7 @@
 			this.imgurl = ImgUrl;
 		},
 		methods: {
-			imgerr(){
-				console.log(33)
-				return "/static/image/sta_zazhi.png";
-			}
+			
 			
 		},
 		components: {
@@ -470,8 +467,12 @@
 							top: 0;
 							display: inline-block;
 							width: 77upx;
-							height: 34upx;
+							height: 36upx;
 							background-color: #FF546C;
+							font-size: 25upx;
+							text-align: center;
+							line-height: 36upx;
+							color: #fff;
 						}
 					}
 					.lg_bk_pro{

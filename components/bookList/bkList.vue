@@ -10,23 +10,24 @@
 		<view class="tablist">
 			<view class="tabs">
 				<scroll-view ref="b_scroll" scroll-y="true" class="scroll-Y" >
-		            <view class="t_list" v-for="(item,index) in typedata" :key="index">{{item.name}}</view>
+					<view ref="taplist0" class="t_list checks" @tap="changelist('',-1)" key="-1">全部</view>
+		            <view ref="taplist" class="t_list" @tap="changelist(item.id,index)" v-for="(item,index) in typedata" :key="index">{{item.name}}</view>
 		        </scroll-view>
 			</view>
 			
 			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" >
 			   <view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
 			   	<view class="bk_img">
-			   		<image class="bk_pic" :src="ImgUrls+item.photo"></image>
+			   		<image class="bk_pic" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
 			   		<!-- <text class="bk_jx">精选</text> -->
 			   	</view>
 			   	<view class="bk_pro">
 			   		<view class="bk_name">
 			   			<text class="b_btitle">{{item.name}}</text>
-			   			<text class="col_red">会员专属</text>
+			   			<text class="col_red" v-if="item.ispay ==1 || item.ispublic == 0">{{gettext(item.ispay,item.ispublic)}}</text>
 			   		</view>
 			   		<view class="bk_username">{{item.authorname}}</view>
-			   		<view class="bk_text">这里写简介这里写简介这里写简介这里介这里写简介这里写简介这里写简介介这...</view>
+			   		<view class="bk_text">{{item.introduce}}</view>
 			   	</view>
 			   </view>
 			</scroll-view>
@@ -37,30 +38,60 @@
 </template>
 
 <script>
-	
+	// import {uniLoadMore} from '@dcloudio/uni-ui'
 	export default {
 		data (){
 			return{
-				
+				imgerror:""
 				
 			}
 		},
 		onLoad(){
+			
 		},
 		onShow(){
+			
 		},
 		onReady(){
-			console.log(this.bookdata)
 		},
 		methods:{
 			goDetail(bid){ 
 				this.$emit("goDetail",{"id":bid});
 			},
+			changelist(id,index){
+				if(index == -1){
+					this.$refs.taplist0.$el.className = "t_list checks";
+					this.$refs.taplist.map((v,i)=>{
+						this.$refs.taplist[i].$el.className = "t_list";
+					})			
+				}else{
+					this.$refs.taplist0.$el.className = "t_list";
+					this.$refs.taplist.map((v,i)=>{
+						if(i == index){
+							this.$refs.taplist[i].$el.className = "t_list checks";
+						}else{
+							this.$refs.taplist[i].$el.className = "t_list";
+						}
+					})			
+				}
+				
+				this.$emit("changelist",{"id":id});
+			},
+			gettext(ispay,ispub){
+				if(ispub == 0){
+					return "企业"
+				}else if(ispay == 1){
+					return "付费"	
+				}
+			}
+		},
+		components:{
+			// uniLoadMore
 		},
 		props:[
 			"bookdata",
 			"typedata",
-			"ImgUrls"
+			"ImgUrl"
 		]
 			
 	}
@@ -101,7 +132,12 @@
 			width: 176upx;
 			background-color: #F7F8FA;
 			.scroll-Y{
-				height: 1100upx;
+				height: 1200upx;
+			}
+			.checks{
+				color: #01B18D;
+				border-left: 6upx solid #01B18D;
+				box-sizing: border-box;
 			}
 			.t_list{
 				border-top: 1px solid #EEEEEE;
@@ -118,7 +154,7 @@
 		.booklist{
 			flex: 1;
 			padding: 20upx 0 0 40upx;
-			height: 1100upx;
+			height: 1200upx;
 			box-sizing: border-box;
 			.part{
 				margin-bottom: 46upx;
@@ -128,6 +164,10 @@
 				height: 231upx;
 				position: relative;
 				float: left;
+				.bk_pic{
+					width: 100%;
+					height: 100%;
+				}
 				.bk_jx{
 					position: absolute;
 					left: 0;
@@ -143,6 +183,7 @@
 				}
 			}
 			.bk_pro{
+				height: 231upx;
 				padding-left: 173upx;
 				.bk_name{
 					font-size: 26upx;
@@ -159,12 +200,12 @@
 						font-weight: 400;
 						display: inline-block;
 						width: 100upx;
-						height: 26upx;
+						height: 30upx;
 						font-size: 20upx;
 						color: #FF546C;
 						margin-left: 20upx;
 						background-color: #FBDDDC;
-						line-height: 26upx;
+						line-height: 30upx;
 						text-align: center;
 					}
 				}
@@ -183,10 +224,7 @@
 				}
 					
 			}
-			.bk_pic{
-				width: 100%;
-				height: 100%;
-			}
+			
 		}
 	}
 </style>
