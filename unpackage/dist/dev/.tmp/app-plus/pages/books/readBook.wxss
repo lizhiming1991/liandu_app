@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* add */
+/* 常用尺寸颜色变量 */
+.content.data-v-3818cc72 {
+  padding: 10rpx 20rpx 120rpx;
+  height: 100%;
+  background-color: #F6F4EC;
+}
+.content .eb_nav.data-v-3818cc72 {
+    height: 80rpx;
+    font-size: 30rpx;
+}
+.content .eb_nav .eb_bar.data-v-3818cc72 {
+      display: inline-block;
+      width: 100rpx;
+      text-align: center;
+      height: 60rpx;
+      line-height: 60rpx;
+      margin: 16rpx 30rpx 0 0;
+      -webkit-box-shadow: 0 0 10rpx #BBB;
+              box-shadow: 0 0 10rpx #BBB;
+}
+.content .eb_pages.data-v-3818cc72 {
+    font-size: 32rpx;
+    margin-top: 4rpx;
+}
+.content .eb_pages .eb_left.data-v-3818cc72 {
+      display: inline-block;
+      width: 180rpx;
+      text-align: center;
+      height: 60rpx;
+      line-height: 60rpx;
+      -webkit-box-shadow: 0 0 10rpx #BBB;
+              box-shadow: 0 0 10rpx #BBB;
+}
+.content .eb_pages .eb_right.data-v-3818cc72 {
+      display: inline-block;
+      width: 180rpx;
+      text-align: center;
+      height: 60rpx;
+      line-height: 60rpx;
+      -webkit-box-shadow: 0 0 10rpx #BBB;
+              box-shadow: 0 0 10rpx #BBB;
+      float: right;
+}
+.content #books.data-v-3818cc72 {
+    -webkit-box-shadow: 0 0 30rpx 0 #CCC;
+            box-shadow: 0 0 30rpx 0 #CCC;
+    background-color: #F6F4EC;
+    font-family: Simsun;
+}
+.content .muluList.data-v-3818cc72 {
+    padding: 20rpx;
+    position: fixed;
+    top: 80rpx;
+    left: 20rpx;
+    bottom: 20rpx;
+    z-index: 999;
+    right: 20rpx;
+    background-color: #fff;
+}
+.content .muluList .mulus.data-v-3818cc72 {
+      display: block;
+      width: 100%;
+      height: 60rpx;
+      font-size: 30rpx;
+      text-decoration: none;
+      color: #333;
+}
+.content .setupList.data-v-3818cc72 {
+    padding: 20rpx;
+    position: fixed;
+    top: 80rpx;
+    left: 20rpx;
+    right: 20rpx;
+    bottom: 40rpx;
+    z-index: 999;
+    background-color: #fff;
+}
+.content .setupList .s_title.data-v-3818cc72 {
+      font-size: 36rpx;
+}
+.content .setupList .s_closed.data-v-3818cc72 {
+      float: right;
+      width: 30rpx;
+      height: 30rpx;
+      margin-top: 10rpx;
+}
+.content .setupList .readTheme.data-v-3818cc72 {
+      margin-top: 50rpx;
+      height: 80rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+}
+.content .setupList .readTheme .s_head.data-v-3818cc72 {
+        font-size: 32rpx;
+        float: left;
+        margin-top: 10rpx;
+}
+.content .setupList .readTheme .s_zt.data-v-3818cc72 {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        display: inline-block;
+        width: 60rpx;
+        height: 60rpx;
+        border-radius: 50%;
+        position: relative;
+        -webkit-box-shadow: 0 4rpx 2rpx #BBB;
+                box-shadow: 0 4rpx 2rpx #BBB;
+        margin-right: 10rpx;
+}
+.content .setupList .readTheme .s_zt .f_color.data-v-3818cc72 {
+          display: none;
+          text-align: center;
+          font-size: 24rpx;
+          position: absolute;
+          top: -40rpx;
+          left: -8rpx;
+          width: 81rpx;
+          height: 40rpx;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAAaCAYAAAFgGyQFAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0Q0Y3OUFGMkQ3NkQxMUU0OERFRkI3REUxNjc2NzRCQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0Y3OUFGM0Q3NkQxMUU0OERFRkI3REUxNjc2NzRCQSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRDRjc5QUYwRDc2RDExRTQ4REVGQjdERTE2NzY3NEJBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDRjc5QUYxRDc2RDExRTQ4REVGQjdERTE2NzY3NEJBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U5tRUAAAAPRJREFUeNpivHnzpicDA8M2BiyACZcETBInYAFiRlySAAHECLTzPw45L3zGbiPfToAAwmcnXsDEQCYAafQmQ583QACR5VQmuvltkGvClwr+45IDCCCyUwddU9SoZQNqGSOJuA2qt41UvQABBEqNz4AMSRp76jkTHSwBAUmmYZcoRi0atWhgLHpBB3uespBRMsAqUEZSq2tSQTyploAAQIDRq1ClJ6BbAU5PIMnEMAzBqKdGPTXqqVFPjVxPPR9mfnoB8pQUGf1CYrESEP9As/QHVJxWdtK88r0PxKKgFiaspQnl3x/qeeoLEMsC8UQo/YXWFgIADKot4HijrR0AAAAASUVORK5CYII=) no-repeat;
+          background-size: 100%;
+}
+.content .setupList .readTheme .s_zt .f_check.data-v-3818cc72 {
+          display: none;
+          position: absolute;
+          left: 22rpx;
+          top: 24rpx;
+          width: 18rpx;
+          height: 14rpx;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAHCAYAAAGtnFf2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxNEE5Qzk1NUQ3NkQxMUU0QUY2NEMxMTREMEY4MkM3NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxNEE5Qzk1NkQ3NkQxMUU0QUY2NEMxMTREMEY4MkM3NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE0QTlDOTUzRDc2RDExRTRBRjY0QzExNEQwRjgyQzc0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjE0QTlDOTU0RDc2RDExRTRBRjY0QzExNEQwRjgyQzc0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+HTSE5AAAAGdJREFUeNpi+P//P8MZTcP/AAHECGIABBAjiMUABMbXzjECBBBYBASYGKAAIIAYQCIwDFIKVoHMgWGAAILrhQEmZM5ZLSOEFpzmAAQYhhlI2gWA1HswB91mmCkYJoEtRQWCQG9+gHEA9l5rWqdo558AAAAASUVORK5CYII=) no-repeat;
+}
+.content .setupList .readTheme .s_zt .f_choose.data-v-3818cc72 {
+          display: inline;
+}
+.content .setupList .readTheme .s_zt:hover .f_color.data-v-3818cc72 {
+        display: inline;
+}
+.content .setupList .readTheme .defaultBg.data-v-3818cc72 {
+        background-color: #F6F4EC;
+}
+.content .setupList .readTheme .green.data-v-3818cc72 {
+        background-color: #DBEED9;
+}
+.content .setupList .readTheme .yellow.data-v-3818cc72 {
+        background-color: #F1DEBD;
+}
+.content .setupList .readTheme .blue.data-v-3818cc72 {
+        background-color: #E8FDFE;
+}
+.content .setupList .readTheme .white.data-v-3818cc72 {
+        background-color: #F6F6F6;
+}
+.content .setupList .readTheme .gray.data-v-3818cc72 {
+        background-color: #DED6D6;
+}
+.content .setupList .readTheme .pink.data-v-3818cc72 {
+        background-color: #FDD9D9;
+}
+.content .setupList #fontFamilyBox.data-v-3818cc72 {
+      margin-top: 30rpx;
+}
+.content .setupList #fontFamilyBox .s_head.data-v-3818cc72 {
+        font-size: 32rpx;
+        float: left;
+        margin-top: 10rpx;
+}
+.content .setupList #fontFamilyBox .s_font.data-v-3818cc72 {
+        display: inline-block;
+        border: 1px solid #D9D9D9;
+        width: 106rpx;
+        height: 56rpx;
+        line-height: 56rpx;
+        -webkit-box-shadow: 0 2rpx 2rpx #ECECEC;
+                box-shadow: 0 2rpx 2rpx #ECECEC;
+        border-radius: 10rpx;
+        font-size: 26rpx;
+        text-align: center;
+        margin-right: 20rpx;
+}
+.content .setupList #fontFamilyBox .select.data-v-3818cc72 {
+        color: #CC2931;
+}
+.content .setupList #fontFamilyBox .songti.data-v-3818cc72 {
+        font-family: Simsun;
+}
+.content .setupList #fontFamilyBox .yahei.data-v-3818cc72 {
+        font-family: Microsoft YaHei;
+}
+.content .setupList #fontFamilyBox .kaishu.data-v-3818cc72 {
+        font-family: kaiti;
+}
+.content .setupList .fontSizes.data-v-3818cc72 {
+      height: 60rpx;
+      margin-top: 30rpx;
+      font-size: 32rpx;
+}
+.content .setupList .fontSizes .s_head.data-v-3818cc72 {
+        float: left;
+        margin-top: 4rpx;
+}
+.content .setupList .fontSizes .s_btn.data-v-3818cc72 {
+        display: inline-block;
+        width: 120rpx;
+        height: 52rpx;
+        text-align: center;
+        border: 1px solid #D9D9D9;
+        -webkit-box-shadow: 0 1px 0 #ECECEC;
+                box-shadow: 0 1px 0 #ECECEC;
+        border-radius: 10rpx;
+        margin-right: 10rpx;
+        line-height: 52rpx;
+}
+
