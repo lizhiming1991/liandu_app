@@ -8,7 +8,7 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		loginProvider: "",
 		openid: null,
-		userid: null,
+		userid: "",
 		title: "今日链读",
 		phone:"",
 		modifyRandomNumbers:"",

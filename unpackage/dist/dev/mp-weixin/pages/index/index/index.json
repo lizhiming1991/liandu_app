@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "icon": "/components/uni-icon/uni-icon"
-  }
-}

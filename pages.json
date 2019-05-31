@@ -20,18 +20,15 @@
         }
 		,{
 		    "path" : "pages/enterpriseDetails/applyMember",
-		    "style" : {
-			}
+		    "style" : {}
 		}
 		,{
 		    "path" : "pages/enterpriseDetails/submitted",
-		    "style" : {
-			}
+		    "style" : {}
 		}
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseInfo",
-		    "style" : {
-			}
+		    "style" : {}
 		} 
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseSearch",
@@ -40,18 +37,28 @@
 		} 
         ,{
             "path" : "pages/index/my/my",
-            "style" : {
-				"navigationBarTitleText": "我的"
-			}
+            "style" : {}
         }
         ,{
             "path" : "pages/searchIndex/searchIndex",
             "style" : {}
         }
         ,{
-            "path" : "pages/books/books",
+            "path" : "pages/books/bookList",
             "style" : {}
         }
+		,{
+		    "path" : "pages/books/bookDetails",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/books/readBook",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/books/readBook2",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/magazine/magazine",
             "style" : {}
@@ -65,19 +72,11 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/lives/lives",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/psychological/psychological",
             "style" : {}
         }
         ,{
             "path" : "pages/art_training/art_training",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/readings/readings",
             "style" : {}
         }
         ,{
@@ -104,7 +103,10 @@
 		    "path" : "pages/login/changePasswordVerification",
 		    "style" : {}
 		}
-
+        ,{
+            "path" : "pages/addComment/addComment",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

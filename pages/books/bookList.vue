@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<Header ref="b_head" :titles="title"></Header>
-		<bkList ref="list" :bookdata="bookList" :typedata="typeList" :ImgUrls="ImgUrl" @goDetail="goDetails"></bkList>
+		<bkList ref="list" @changelist="changeList" :bookdata="bookList" :typedata="typeList" :ImgUrl="ImgUrl" @goDetail="goDetails"></bkList>
 	</view>
 </template>
 
@@ -24,19 +24,19 @@
 			};
 		},
 		computed: {
+			...mapState([
+				"userid"
+			]),
 			// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO 
 			
 			 // #endif 
 			// #ifdef H5 
-			...mapState([
-				"userid"
-			]),
+			
 			 // #endif 
 			
 		
 		},
 		onShow(){
-			// this.$store.dispatch("changeTitle","图书");
 			console.log(2)
 		},
 		onReady(){
@@ -46,7 +46,6 @@
 			 
 			 // #endif 
 			// #ifdef H5 
-			console.log(this.$refs.list.$refs)
 				var h = window.innerHeight - this.$refs.b_head.$el.clientHeight - this.$refs.list.$refs.b_search.$el.clientHeight ;
 				this.$refs.list.$refs.b_scroll.$el.style.height = h+"px";
 				this.$refs.list.$refs.b_scrolls.$el.style.height = h+"px";
@@ -58,7 +57,7 @@
 			this.ImgUrl = ImgUrl;
 			this.getBooklist("","",1,10);
 			console.log(1)
-			get("/book//book/category/all",{}).then(res=>{
+			get("/book/book/category/all",{}).then(res=>{
 				if(res.status == 200){
 					this.typeList = res.data;
 				}
@@ -66,9 +65,9 @@
 			
 		},
 		methods:{
-			goDetails(){
+			goDetails(item){
 				uni.navigateTo({
-					url:"./bookDetails"
+					url:"./bookDetails?id="+item.id
 				})
 			},
 			getBooklist(content,tid,pagenum,pagesize){
@@ -81,11 +80,14 @@
 					"table_id": "",
 					"resource_type": 1
 				}).then((res)=>{
-					console.log(res)
+					console.log(res.data)
 					if(res.status == 200){
 						this.bookList = res.data.pageBooks;
 					}
 				})
+			},
+			changeList(data){
+				this.getBooklist("",data.id,1,10);
 			}
 		},
 		components:{

@@ -23,10 +23,17 @@
 
 <style>
 	/*每个页面公共css */
-
-  body{
-    padding-top: 100upx;
-  }
+	/* #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO */
+	body{
+	  padding-top: 100upx;
+	}
+	/* #endif */
+	/* #ifdef H5 */
+	body{
+	  /* padding-top: 20upx; */
+	}
+	/* #endif */
+  
   /* APP-PLUS || MP-WEIXIN || MP-BAIDU 
   *  MP-ALIPAY || MP-TOUTIAO || H5
   * 

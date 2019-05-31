@@ -17,7 +17,7 @@
 			<swiper class="swiper lg_lunbo"  indicator-dots="true" autoplay="true" interval="3000" duration="300" >
 				
 			    <swiper-item v-for="(item,index) in picArr" :key="index">
-			    	<image class="lg_lb_pic swiper-item"  :src="imgurl+item.photo"  ></image>
+			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerror"  ></image>
 			    </swiper-item>
 			            
 			</swiper>
@@ -25,9 +25,11 @@
 		<view class="lg_navbar">
 			<view class="lg_navbars">
 				<view class="lg_navbar_item">
-					<text class="lg_tname">书籍专栏</text>
-					<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
-					<text class="lg_line"></text>
+					<navigator url="/pages/books/bookList">
+						<text class="lg_tname">书籍专栏</text>
+						<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
+						<text class="lg_line"></text>
+					</navigator>
 				</view>
 				<view class="lg_navbar_item">
 					<text class="lg_tname">休闲杂志</text>
@@ -61,7 +63,7 @@
 		<view class="lg_hots">
 			<text class="lg_hots_title">热门专题</text>
 			<view class="lg_scrollbox">
-				<scroll-view  scroll-x="true" scroll-y="true" class="scroll-view_H lg_lt_scroll">
+				<scroll-view  scroll-x="true"  class="scroll-view_H lg_lt_scroll">
                     <view class="lg_lt_item">
 						<image class="lg_hots_pic" src="/static/image/sta_zhuanti.png"></image>
 						<text class="lg_hots_hot">HOT</text>
@@ -95,10 +97,10 @@
 			<view class="lg_mag_list">
 				<view class="lg_mag_part" v-for="(item,index) in magList1" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text v-show="item.ispay" class="lg_mag_pay">收费</text>
 						<text v-show="!item.ispublic" class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -106,10 +108,10 @@
 			<view class="lg_mag_list" v-if="magList2">
 				<view class="lg_mag_part" v-for="(item,index) in magList2" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -117,10 +119,10 @@
 			<view class="lg_mag_list" v-if="magList3">
 				<view class="lg_mag_part" v-for="(item,index) in magList3" :key="index">
 					<view class="lg_mag_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
-						<text class="lg_mag_dingyue">订阅</text>
+						<!-- <text class="lg_mag_dingyue">订阅</text> -->
 					</view>
 					<view class="lg_mag_name">{{item.name}}</view>
 				</view>
@@ -133,7 +135,7 @@
 			<view class="lg_bk_cont">
 				<view class="lg_bk_list" v-for="(item,index) in bookList" :key="index">
 					<view class="lg_bk_img">
-						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror" @error="imgerr"></image>
+						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_bk_jx">精选</text>
 					</view>
 					<view class="lg_bk_pro">
@@ -171,7 +173,7 @@
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad:function(e){
-			post('/book/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
+			post('/ad/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
 				if(res.status == 200){
 					this.picArr = res.data.picinfo;
 				}
@@ -208,10 +210,7 @@
 			this.imgurl = ImgUrl;
 		},
 		methods: {
-			imgerr(){
-				console.log(33)
-				return "/static/image/sta_zazhi.png";
-			}
+			
 			
 		},
 		components: {
@@ -319,8 +318,8 @@
 			.lg_scrollbox{
 				width: 100%;
 				height: 245upx;
-				// overflow: hidden;
-				// overflow-y: scroll;
+				overflow: hidden;
+				overflow-x: scroll;
 			}
 			.lg_lt_scroll{
 				height: 1245upx;
@@ -468,8 +467,12 @@
 							top: 0;
 							display: inline-block;
 							width: 77upx;
-							height: 34upx;
+							height: 36upx;
 							background-color: #FF546C;
+							font-size: 25upx;
+							text-align: center;
+							line-height: 36upx;
+							color: #fff;
 						}
 					}
 					.lg_bk_pro{

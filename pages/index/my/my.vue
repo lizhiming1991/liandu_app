@@ -123,8 +123,9 @@
 			])
 		},
 		onLoad(){
+			console.log(222)
 		},
-		onShow() {
+		onShow(){
 			if(this.userid == null){
 				uni.redirectTo({
 					url: '/pages/login/phoneLogin'
@@ -133,7 +134,6 @@
 		},
 		onReady(){
 			
-		
 		}
 	}
 </script>

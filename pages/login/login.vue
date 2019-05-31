@@ -153,8 +153,8 @@
 								duration: 1500,
 								icon: 'none'
 							});
-						this.$store.dispatch("changeUserid",res.data.data.id);
-						console.log(res.data)
+							this.$store.dispatch("changeUserid",res.data.data.id);
+							console.log(res.data)
 							uni.reLaunch({
 								url: '../index/index/index'
 							});

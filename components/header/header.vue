@@ -1,5 +1,5 @@
 <template>
-	<view class="header">
+	<view class="h_header">
 		<view class="h_back">
 			<!-- #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO-->
 			<navigator  open-type="navigateBack" :delta="number" class="h_goback">
@@ -85,7 +85,8 @@
 </script>
 
 <style lang="scss" scoped>
-	.header{
+	.h_header{
+		background-color: #fff;
 		padding: 0 40upx;
 		height: 100upx;
 		line-height: 100upx;
