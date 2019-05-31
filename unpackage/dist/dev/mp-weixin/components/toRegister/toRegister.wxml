@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-<view class="t0_register data-v-5c3c084e" style="flex-direction:column;flex:1;" bind:__l="__l"><view class="data-v-5c3c084e"><view style="flex:1;" class="data-v-5c3c084e"></view><view class="to_register data-v-5c3c084e"><navigator class="register_url data-v-5c3c084e" url="/pages/login/register">前往注册</navigator>></view></view></view>
-=======
-<<<<<<< HEAD
-<view class="t0_register data-v-5c3c084e" style="flex-direction:column;flex:1;" bind:__l="__l"><view class="data-v-5c3c084e"><view style="flex:1;" class="data-v-5c3c084e"></view><view class="to_register data-v-5c3c084e"><navigator class="register_url data-v-5c3c084e" url="/pages/login/register">前往注册</navigator>></view></view></view>
-=======
-<view class="t0_register data-v-b9fccc9c" style="flex-direction:column;flex:1;" bind:__l="__l"><view class="data-v-b9fccc9c"><view style="flex:1;" class="data-v-b9fccc9c"></view><view class="to_register data-v-b9fccc9c"><navigator class="register_url data-v-b9fccc9c" url="/pages/login/register">前往注册</navigator>></view></view></view>
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+<view class="t0_register data-v-a0d37f76" style="flex-direction:column;flex:1;" bind:__l="__l"><view class="data-v-a0d37f76"><view style="flex:1;" class="data-v-a0d37f76"></view><view class="to_register data-v-a0d37f76"><navigator class="register_url data-v-a0d37f76" url="/pages/login/register">前往注册</navigator>></view></view></view>

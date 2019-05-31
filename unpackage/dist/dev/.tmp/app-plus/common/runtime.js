@@ -102,11 +102,19 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
+<<<<<<< HEAD
 /******/ 		var cssChunks = {"components/uni-icon/uni-icon":1,"components/header/header":1,"components/uni-segmented-control/uni-segmented-control":1,"components/bookList/bkList":1,"components/comment/comment":1,"components/commentList/commentList":1,"components/YnComponents/ynGallery/ynGallery":1,"components/toRegister/toRegister":1,"components/YnComponents/ynTriangleBadge/ynTriangleBadge":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
 /******/ 				var href = "" + ({"components/uni-icon/uni-icon":"components/uni-icon/uni-icon","components/header/header":"components/header/header","components/uni-segmented-control/uni-segmented-control":"components/uni-segmented-control/uni-segmented-control","components/bookList/bkList":"components/bookList/bkList","components/comment/comment":"components/comment/comment","components/commentList/commentList":"components/commentList/commentList","components/YnComponents/ynGallery/ynGallery":"components/YnComponents/ynGallery/ynGallery","components/toRegister/toRegister":"components/toRegister/toRegister","components/YnComponents/ynTriangleBadge/ynTriangleBadge":"components/YnComponents/ynTriangleBadge/ynTriangleBadge"}[chunkId]||chunkId) + ".wxss";
+=======
+/******/ 		var cssChunks = {"components/uni-icon/uni-icon":1,"components/header/header":1,"components/uni-segmented-control/uni-segmented-control":1,"components/toRegister/toRegister":1};
+/******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
+/******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
+/******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
+/******/ 				var href = "" + ({"components/uni-icon/uni-icon":"components/uni-icon/uni-icon","components/header/header":"components/header/header","components/uni-segmented-control/uni-segmented-control":"components/uni-segmented-control/uni-segmented-control","components/toRegister/toRegister":"components/toRegister/toRegister"}[chunkId]||chunkId) + ".wxss";
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

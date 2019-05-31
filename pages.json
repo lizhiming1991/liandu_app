@@ -30,6 +30,11 @@
 		    "path" : "pages/enterpriseDetails/enterpriseInfo",
 		    "style" : {}
 		} 
+		,{
+		    "path" : "pages/enterpriseDetails/enterpriseSearch",
+		    "style" : {
+			}
+		} 
         ,{
             "path" : "pages/index/my/my",
             "style" : {}

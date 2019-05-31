@@ -1,13 +1,5 @@
 
-<<<<<<< HEAD
-view.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-view.data-v-352aad17 {
-=======
-view.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+view.data-v-919d98fa {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -18,97 +10,44 @@ view.data-v-11a4ef20 {
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-<<<<<<< HEAD
-.clearfloat.data-v-352aad17:after {
-=======
-<<<<<<< HEAD
-.clearfloat.data-v-352aad17:after {
-=======
-.clearfloat.data-v-11a4ef20:after {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.clearfloat.data-v-919d98fa:after {
 	display: block;
 	clear: both;
 	content: "";
 	visibility: hidden;
 	height: 0
 }
-<<<<<<< HEAD
-.register_content .phone_row.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .phone_row.data-v-352aad17 {
-=======
-.register_content .phone_row.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .phone_row.data-v-919d98fa {
 	position: relative;
 	width: 612rpx;
 	margin: 134rpx 0 0 66rpx;
 	padding-bottom: 14rpx;
 	border-bottom: 1px solid #eee;
 }
-<<<<<<< HEAD
-.register_content .phone_icon.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .phone_icon.data-v-352aad17 {
-=======
-.register_content .phone_icon.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .phone_icon.data-v-919d98fa {
 	position: absolute;
 	top: 0rpx;
 	left: 0;
 	width: 35rpx;
 	height: 49rpx;
 }
-<<<<<<< HEAD
-.register_content .register_title.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .register_title.data-v-352aad17 {
-=======
-.register_content .register_title.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .register_title.data-v-919d98fa {
 	display: inline-block;
 	margin-top: 238rpx;
 	margin-left: 65rpx;
 	font-size: 50rpx;
 	font-weight: 600;
 }
-<<<<<<< HEAD
-.register_content .verify_row.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .verify_row.data-v-352aad17 {
-=======
-.register_content .verify_row.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .verify_row.data-v-919d98fa {
 	width: 612rpx;
 	margin: 64rpx 0 0 66rpx;
 	padding-bottom: 14rpx;
 	border-bottom: 1px solid #eee;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-.register_content .verify_row .send_verify_content.data-v-352aad17 {
+.register_content .verify_row .send_verify_content.data-v-919d98fa {
 	color: #ccc;
 }
-.register_content .verify_row .send_verify.data-v-352aad17 {
-<<<<<<< HEAD
-=======
-=======
-.register_content .verify_row .send_verify_content.data-v-11a4ef20 {
-	color: #ccc;
-}
-.register_content .verify_row .send_verify.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .verify_row .send_verify.data-v-919d98fa {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	-webkit-box-pack: center;
@@ -125,15 +64,7 @@ view.data-v-11a4ef20 {
 	font-size: 24rpx;
 	border: 2rpx solid rgba(168, 167, 167, 1);
 }
-<<<<<<< HEAD
-.register_content .verify_row .acquire_verify.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .verify_row .acquire_verify.data-v-352aad17 {
-=======
-.register_content .verify_row .acquire_verify.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .verify_row .acquire_verify.data-v-919d98fa {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
@@ -148,50 +79,20 @@ view.data-v-11a4ef20 {
 	font-size: 24rpx;
 	background: #01b18d;
 }
-<<<<<<< HEAD
-.register_content .password_row.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .password_row.data-v-352aad17 {
-=======
-.register_content .password_row.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .password_row.data-v-919d98fa {
 	width: 612rpx;
 	margin: 64rpx 0 0 66rpx;
 	padding-bottom: 14rpx;
 	border-bottom: 1px solid #eee;
 }
-<<<<<<< HEAD
-.register_content .password_row .show_password.data-v-352aad17 {
+.register_content .password_row .show_password.data-v-919d98fa {
 	padding-top: 24rpx;
 }
-.register_content .password_row .show_password image.data-v-352aad17 {
+.register_content .password_row .show_password image.data-v-919d98fa {
 	width: 38rpx;
 	height: 14rpx;
 }
-.register_content .register_row.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .password_row .show_password.data-v-352aad17 {
-	padding-top: 24rpx;
-}
-.register_content .password_row .show_password image.data-v-352aad17 {
-	width: 38rpx;
-	height: 14rpx;
-}
-.register_content .register_row.data-v-352aad17 {
-=======
-.register_content .password_row .show_password.data-v-11a4ef20 {
-	padding-top: 24rpx;
-}
-.register_content .password_row .show_password image.data-v-11a4ef20 {
-	width: 38rpx;
-	height: 14rpx;
-}
-.register_content .register_row.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .register_row.data-v-919d98fa {
 	margin-left: 66rpx;
 	margin-top: 129rpx;
 	width: 610rpx;
@@ -203,15 +104,7 @@ view.data-v-11a4ef20 {
 	background: rgba(238, 238, 238, 1);
 	border-style: none;
 }
-<<<<<<< HEAD
-.register_content .to_login_row.data-v-352aad17 {
-=======
-<<<<<<< HEAD
-.register_content .to_login_row.data-v-352aad17 {
-=======
-.register_content .to_login_row.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
->>>>>>> master
+.register_content .to_login_row.data-v-919d98fa {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -224,25 +117,11 @@ view.data-v-11a4ef20 {
 	color: #888;
 	font-size: 22rpx;
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
-.register_content .direct_login .login_text.data-v-352aad17 {
+.register_content .direct_login .login_text.data-v-919d98fa {
 	margin-left: 10rpx;
 }
-.register_content .direct_login .login.data-v-352aad17 {
-<<<<<<< HEAD
+.register_content .direct_login .login.data-v-919d98fa {
 	margin-left: 10rpx;
-=======
-=======
-.register_content .direct_login .login_text.data-v-11a4ef20 {
-	margin-left: 10rpx;
-}
-.register_content .direct_login .login.data-v-11a4ef20 {
->>>>>>> d9bfb7838d9f7df89226a295043316a2695b816b
-	margin-left: 10rpx;
->>>>>>> master
 	color: #000;
 }
 

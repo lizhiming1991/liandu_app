@@ -1,53 +1,68 @@
 <template>
-	    <view>
-        <uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#4cd964"></uni-segmented-control>
-        <view class="content">
-            <view v-show="current === 0">
-                选项卡1的内容
-            </view>
-            <view v-show="current === 1">
-                选项卡2的内容
-            </view>
-            <view v-show="current === 2">
-                选项卡3的内容
-            </view>
-        </view>
-    </view>
+	<view>
+		<view @tap="clickText">上传文件</view>
+		<input type="text" v-model="dzcc" value="" />
+	</view>
 </template>
-
 <script>
-	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
-export default {
-    components: {uniSegmentedControl},
-    data() {
-        return {
-            items: ['选项卡1','选项卡2','选项卡3'],
-            current: 0
-        }
-    },
-		onLoad() {
-		uni.showModal({
-	    title: '提示',
-		confirmText:'免费申请',
-		cancelText:'我先看看',
-	    content: '为了更好的享受企业服务,请先申请为企业会员',
-	    success: function (res) {
-	        if (res.confirm) {
-	            console.log('用户点击确定');
-	        } else if (res.cancel) {
-	            console.log('用户点击取消');
-	        }
-	    }
-	});
-			},
-    methods: {
-        onClickItem(index) {
-            if (this.current !== index) {
-                this.current = index;
-            }
-        }
-    }
-}
+	export default {
+		data() {
+			return {
+				dzcc:'nihao 2020'
+			}
+		},
+		computed: {},
+
+		methods: {
+			clickText() {
+				// uni.chooseImage({
+				// 	success: (chooseImageRes) => {
+				// 		const tempFilePaths = chooseImageRes.tempFilePaths;
+				// 		uni.uploadFile({
+				// 			url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+				// 			filePath: tempFilePaths[0],
+				// 			name: 'file',
+				// 			formData: {
+				// 				'user': 'test'
+				// 			},
+				// 			success: (uploadFileRes) => {
+				// 				console.log(JSON.parse(uploadFileRes.data).data);
+				// 			}
+				// 		});
+				// 	}
+				// });
+				uni.chooseImage({
+					success: (chooseImageRes) => {
+						const tempFilePaths = chooseImageRes.tempFilePaths;
+						const uploadTask = uni.uploadFile({
+							url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+							filePath: tempFilePaths[0],
+							name: 'file',
+							formData: {
+								'user': 'test'
+							},
+							success: (uploadFileRes) => {
+								console.log(uploadFileRes)
+								console.log(uploadFileRes.data);
+							}
+						});
+
+						uploadTask.onProgressUpdate((res) => {
+							console.log(res)
+							console.log('上传进度' + res.progress);
+							console.log('已经上传的数据长度' + res.totalBytesSent);
+							console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+
+							// 测试条件，取消上传任务。
+							if (res.progress > 50) {
+								uploadTask.abort();
+							}
+						});
+					}
+				});
+			}
+		}
+	}
 </script>
 
 <style>

@@ -1,702 +1,5 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-/***/ "../../../../item-vue/liandu/liandu_app/common/common.js":
-/*!******************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/common/common.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.onlineURL = exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
-var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/common/commonFunction.js":
-/*!**************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/common/commonFunction.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function randomWord(randomFlag, min, max) {
-  var str = "",
-  range = min,
-  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-  if (randomFlag) {
-    range = Math.round(Math.random() * (max - min)) + min;
-  }
-  for (var i = 0; i < range; i++) {
-    var pos = Math.round(Math.random() * (arr.length - 1));
-    str += arr[pos];
-  }
-  return str;
-}var _default =
-{
-  randomWord: randomWord };exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/common/config.js":
-/*!******************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/common/config.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-<<<<<<< HEAD
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/common/methods.js":
-/*!*******************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/common/methods.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "../../../../item-vue/liandu/liandu_app/common/config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}
-var baseUrl = "http://192.168.0.210:9999";
-
-function obj2params(obj) {
-  var result = '';
-  var item;
-  for (item in obj) {
-    result += '&' + item + '=' + encodeURIComponent(obj[item]);
-  }
-  if (result) {
-    result = result.slice(1);
-  }
-  return result;
-}
-// 封装get方法
-function get(url, params) {
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: baseUrl + url,
-      data: params,
-      method: "GET",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data = _slicedToArray(
-      data, 2),error = _data[0],suc = _data[1];
-      var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
-        res.status = 200;
-      }
-      resolve(res);
-    }, function (err) {
-      console.info(err);
-      reject(err);
-    });
-  });
-}
-
-//封装post方法
-function post(url, params) {
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: baseUrl + url,
-      data: params,
-      method: "POST",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data2 = _slicedToArray(
-      data, 2),error = _data2[0],suc = _data2[1];
-      var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
-        res.status = 200;
-      }
-      resolve(res);
-    }, function (err) {
-      console.info(err);
-      reject(err);
-    });
-  });
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js":
-/*!*********************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../item-vue/liandu/liandu_app/App.vue"));
-
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../item-vue/liandu/liandu_app/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-=======
-
-/***/ }),
->>>>>>> master
-
-/***/ "../../../../item-vue/liandu/liandu_app/common/methods.js":
-/*!*******************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/common/methods.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "../../../../item-vue/liandu/liandu_app/common/config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}
-var baseUrl = "http://192.168.0.210:9999";
-
-function obj2params(obj) {
-  var result = '';
-  var item;
-  for (item in obj) {
-    result += '&' + item + '=' + encodeURIComponent(obj[item]);
-  }
-  if (result) {
-    result = result.slice(1);
-  }
-  return result;
-}
-// 封装get方法
-function get(url, params) {
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: baseUrl + url,
-      data: params,
-      method: "GET",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data = _slicedToArray(
-      data, 2),error = _data[0],suc = _data[1];
-      var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
-        res.status = 200;
-      }
-      resolve(res);
-    }, function (err) {
-      console.info(err);
-      reject(err);
-    });
-  });
-}
-
-//封装post方法
-function post(url, params) {
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: baseUrl + url,
-      data: params,
-      method: "POST",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data2 = _slicedToArray(
-      data, 2),error = _data2[0],suc = _data2[1];
-      var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
-        res.status = 200;
-      }
-      resolve(res);
-    }, function (err) {
-      console.info(err);
-      reject(err);
-    });
-  });
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js":
-/*!*********************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../item-vue/liandu/liandu_app/App.vue"));
-
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../item-vue/liandu/liandu_app/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-
-_vue.default.prototype.$store = _store.default;
-
-_vue.default.config.productionTip = false;
-
-_App.default.mpType = 'app';
-
-var app = new _vue.default(_objectSpread({
-  store: _store.default },
-_App.default));
-
-createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fart_training%2Fart_training\"}":
-/*!********************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fart_training%2Fart_training"} ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _art_training = _interopRequireDefault(__webpack_require__(/*! ./pages/art_training/art_training.vue */ "../../../../item-vue/liandu/liandu_app/pages/art_training/art_training.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_art_training.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Faudio%2Faudio\"}":
-/*!******************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Faudio%2Faudio"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _audio = _interopRequireDefault(__webpack_require__(/*! ./pages/audio/audio.vue */ "../../../../item-vue/liandu/liandu_app/pages/audio/audio.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_audio.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fbooks%2FbookDetails\"}":
-/*!************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fbooks%2FbookDetails"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bookDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/books/bookDetails.vue */ "../../../../item-vue/liandu/liandu_app/pages/books/bookDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bookDetails.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fbooks%2FbookList\"}":
-/*!*********************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fbooks%2FbookList"} ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bookList = _interopRequireDefault(__webpack_require__(/*! ./pages/books/bookList.vue */ "../../../../item-vue/liandu/liandu_app/pages/books/bookList.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bookList.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Findex%2Fenterprise%2Fenterprise\"}":
-/*!************************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Findex%2Fenterprise%2Fenterprise"} ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _enterprise = _interopRequireDefault(__webpack_require__(/*! ./pages/index/enterprise/enterprise.vue */ "../../../../item-vue/liandu/liandu_app/pages/index/enterprise/enterprise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_enterprise.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Findex%2Ffriendship%2Ffriendship\"}":
-/*!************************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Findex%2Ffriendship%2Ffriendship"} ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _friendship = _interopRequireDefault(__webpack_require__(/*! ./pages/index/friendship/friendship.vue */ "../../../../item-vue/liandu/liandu_app/pages/index/friendship/friendship.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_friendship.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Findex%2Findex%2Findex\"}":
-/*!**************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Findex%2Findex%2Findex"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index/index.vue */ "../../../../item-vue/liandu/liandu_app/pages/index/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_index.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Findex%2Fmy%2Fmy\"}":
-/*!********************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Findex%2Fmy%2Fmy"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _my = _interopRequireDefault(__webpack_require__(/*! ./pages/index/my/my.vue */ "../../../../item-vue/liandu/liandu_app/pages/index/my/my.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_my.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flives%2Flives\"}":
-/*!******************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flives%2Flives"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _lives = _interopRequireDefault(__webpack_require__(/*! ./pages/lives/lives.vue */ "../../../../item-vue/liandu/liandu_app/pages/lives/lives.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_lives.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2FchangePassword\"}":
-/*!***************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2FchangePassword"} ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/login/changePassword.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/changePassword.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changePassword.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2FchangePasswordVerification\"}":
-/*!***************************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2FchangePasswordVerification"} ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changePasswordVerification = _interopRequireDefault(__webpack_require__(/*! ./pages/login/changePasswordVerification.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/changePasswordVerification.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changePasswordVerification.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!******************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2Flogout\"}":
-/*!*******************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2Flogout"} ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _logout = _interopRequireDefault(__webpack_require__(/*! ./pages/login/logout.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/logout.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_logout.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2FphoneLogin\"}":
-/*!***********************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2FphoneLogin"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _phoneLogin = _interopRequireDefault(__webpack_require__(/*! ./pages/login/phoneLogin.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/phoneLogin.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_phoneLogin.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Flogin%2Fregister\"}":
-/*!*********************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ "../../../../item-vue/liandu/liandu_app/pages/login/register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_register.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fmagazine%2Fmagazine\"}":
-/*!************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fmagazine%2Fmagazine"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _magazine = _interopRequireDefault(__webpack_require__(/*! ./pages/magazine/magazine.vue */ "../../../../item-vue/liandu/liandu_app/pages/magazine/magazine.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_magazine.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fpsychological%2Fpsychological\"}":
-/*!**********************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fpsychological%2Fpsychological"} ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _psychological = _interopRequireDefault(__webpack_require__(/*! ./pages/psychological/psychological.vue */ "../../../../item-vue/liandu/liandu_app/pages/psychological/psychological.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_psychological.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Freadings%2Freadings\"}":
-/*!************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Freadings%2Freadings"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _readings = _interopRequireDefault(__webpack_require__(/*! ./pages/readings/readings.vue */ "../../../../item-vue/liandu/liandu_app/pages/readings/readings.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_readings.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2FsearchIndex%2FsearchIndex\"}":
-/*!******************************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2FsearchIndex%2FsearchIndex"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _searchIndex = _interopRequireDefault(__webpack_require__(/*! ./pages/searchIndex/searchIndex.vue */ "../../../../item-vue/liandu/liandu_app/pages/searchIndex/searchIndex.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_searchIndex.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/main.js?{\"page\":\"pages%2Fvideo%2Fvideo\"}":
-/*!******************************************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/main.js?{"page":"pages%2Fvideo%2Fvideo"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../item-vue/liandu/liandu_app/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _video = _interopRequireDefault(__webpack_require__(/*! ./pages/video/video.vue */ "../../../../item-vue/liandu/liandu_app/pages/video/video.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_video.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/pages.json":
-/*!************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/pages.json ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-pages-loader/lib/index.js):\nSyntaxError: Unexpected token < in JSON at position 3438\n    at JSON.parse (<anonymous>)\n    at parseJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\json.js:17:20)\n    at parsePagesJson (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-cli-shared\\lib\\pages.js:28:27)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index-new.js:34:21)\n    at Object.module.exports (D:\\tool-mulu\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\webpack-uni-pages-loader\\lib\\index.js:25:35)");
-
-/***/ }),
-
-/***/ "../../../../item-vue/liandu/liandu_app/store/index.js":
-/*!****************************************************!*\
-  !*** D:/item-vue/liandu/liandu_app/store/index.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
-
-_vue.default.use(_vuex.default);
-
-var store = new _vuex.default.Store({
-  state: {
-    hasLogin: false,
-    loginProvider: "",
-    openid: null,
-    userid: null,
-<<<<<<< HEAD
-    title: "今日链读" },
-=======
-    title: "今日链读",
-    phone: "",
-    modifyRandomNumbers: "" },
->>>>>>> master
-
-  mutations: {
-    login: function login(state, provider) {
-      state.hasLogin = true;
-      state.loginProvider = provider;
-    },
-    logout: function logout(state) {
-      state.hasLogin = false;
-      state.openid = null;
-    },
-    setOpenid: function setOpenid(state, openid) {
-      state.openid = openid;
-    },
-    updateUserid: function updateUserid(state, bool) {
-      state.userid = bool;
-    },
-    updateTitle: function updateTitle(state, bool) {
-      state.title = bool;
-<<<<<<< HEAD
-=======
-    },
-    modifyPhoneNumber: function modifyPhoneNumber(state, phone) {
-      state.phone = phone;
-    },
-    modifyRandomNumber: function modifyRandomNumber(state, modifyRandomNumbers) {
-      state.modifyRandomNumbers = modifyRandomNumbers;
->>>>>>> master
-    } },
-
-  actions: {
-    changeTitle: function changeTitle(context, bool) {
-      context.commit("updateTitle", bool);
-    },
-    changeUserid: function changeUserid(context, bool) {
-      context.commit("updateUserid", bool);
-    },
-<<<<<<< HEAD
-=======
-    modifyPhoneNumber: function modifyPhoneNumber(ctx, phone) {
-      ctx.commit('modifyPhoneNumber', phone);
-    },
-    modifyRandomNumber: function modifyRandomNumber(ctx, modifyRandomNumbers) {
-      ctx.commit('modifyRandomNumber', modifyRandomNumbers);
-    },
->>>>>>> master
-    // lazy loading openid
-    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                commit = _ref.commit,
-                state = _ref.state;_context.next = 3;return (
-
-                  new Promise(function (resolve, reject) {
-                    if (state.openid) {
-                      resolve(state.openid);
-                    } else {
-                      uni.login({
-                        success: function success(data) {
-                          commit('login');
-                          setTimeout(function () {//模拟异步请求服务器获取 openid
-                            var openid = '123456789';
-                            console.log('uni.request mock openid[' + openid + ']');
-                            commit('setOpenid', openid);
-                            resolve(openid);
-                          }, 1000);
-                        },
-                        fail: function fail(err) {
-                          console.log('uni.login 接口调用失败，将无法正常使用开放接口等服务', err);
-                          reject(err);
-                        } });
-
-                    }
-                  }));case 3:return _context.abrupt("return", _context.sent);case 4:case "end":return _context.stop();}}}, _callee, this);}));function getUserOpenId(_x) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() } });var _default =
-
-
-
-
-store;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/regenerator/index.js":
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
@@ -1172,7 +475,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7268,7 +6571,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7289,14 +6592,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7365,7 +6668,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -9575,6 +8878,649 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js":
+/*!*********************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/common/common.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.onlineURL = exports.ImgUrl = void 0;var ImgUrl = "http://sitadmin.dailyld.com";exports.ImgUrl = ImgUrl;
+var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\common\\commonFunction.js":
+/*!*****************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/common/commonFunction.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function randomWord(randomFlag, min, max) {
+  var str = "",
+  range = min,
+  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+  'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+  if (randomFlag) {
+    range = Math.round(Math.random() * (max - min)) + min;
+  }
+  for (var i = 0; i < range; i++) {
+    var pos = Math.round(Math.random() * (arr.length - 1));
+    str += arr[pos];
+  }
+  return str;
+}var _default =
+{
+  randomWord: randomWord };exports.default = _default;
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\common\\config.js":
+/*!*********************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/common/config.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\common\\methods.js":
+/*!**********************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/common/methods.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.get = get;exports.post = post;var config = _interopRequireWildcard(__webpack_require__(/*! @/common/config.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\config.js"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}
+var baseUrl = "http://192.168.0.210:9999";
+
+function obj2params(obj) {
+  var result = '';
+  var item;
+  for (item in obj) {
+    result += '&' + item + '=' + encodeURIComponent(obj[item]);
+  }
+  if (result) {
+    result = result.slice(1);
+  }
+  return result;
+}
+// 封装get方法
+function get(url, params) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: baseUrl + url,
+      data: params,
+      method: "GET",
+      header: { 'content-type': 'application/json' } }).
+    then(function (data) {var _data = _slicedToArray(
+      data, 2),error = _data[0],suc = _data[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
+      resolve(res);
+    }, function (err) {
+      console.info(err);
+      reject(err);
+    });
+  });
+}
+
+//封装post方法
+function post(url, params) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: baseUrl + url,
+      data: params,
+      method: "POST",
+      header: { 'content-type': 'application/json' } }).
+    then(function (data) {var _data2 = _slicedToArray(
+      data, 2),error = _data2[0],suc = _data2[1];
+      var res = suc.data;
+      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        res.status = 200;
+      }
+      resolve(res);
+    }, function (err) {
+      console.info(err);
+      reject(err);
+    });
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js":
+/*!************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "E:\\Desktop\\liandu_app\\liandu_app\\App.vue"));
+
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "E:\\Desktop\\liandu_app\\liandu_app\\store\\index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+_vue.default.prototype.$store = _store.default;
+
+_vue.default.config.productionTip = false;
+
+_App.default.mpType = 'app';
+
+var app = new _vue.default(_objectSpread({
+  store: _store.default },
+_App.default));
+
+createApp(app).$mount();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Fart_training%2Fart_training\"}":
+/*!***********************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Fart_training%2Fart_training"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _art_training = _interopRequireDefault(__webpack_require__(/*! ./pages/art_training/art_training.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\art_training\\art_training.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_art_training.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Faudio%2Faudio\"}":
+/*!*********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Faudio%2Faudio"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _audio = _interopRequireDefault(__webpack_require__(/*! ./pages/audio/audio.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\audio\\audio.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_audio.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Fbooks%2Fbooks\"}":
+/*!*********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Fbooks%2Fbooks"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _books = _interopRequireDefault(__webpack_require__(/*! ./pages/books/books.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\books\\books.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_books.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FapplyMember\"}":
+/*!***************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2FapplyMember"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _applyMember = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/applyMember.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\applyMember.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_applyMember.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseInfo\"}":
+/*!******************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2FenterpriseInfo"} ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _enterpriseInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseInfo.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_enterpriseInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2FenterpriseSearch\"}":
+/*!********************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2FenterpriseSearch"} ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _enterpriseSearch = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/enterpriseSearch.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\enterpriseSearch.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_enterpriseSearch.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FenterpriseDetails%2Fsubmitted\"}":
+/*!*************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FenterpriseDetails%2Fsubmitted"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _submitted = _interopRequireDefault(__webpack_require__(/*! ./pages/enterpriseDetails/submitted.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\enterpriseDetails\\submitted.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_submitted.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Findex%2Fenterprise%2Fenterprise\"}":
+/*!***************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Findex%2Fenterprise%2Fenterprise"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _enterprise = _interopRequireDefault(__webpack_require__(/*! ./pages/index/enterprise/enterprise.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\index\\enterprise\\enterprise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_enterprise.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Findex%2Ffriendship%2Ffriendship\"}":
+/*!***************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Findex%2Ffriendship%2Ffriendship"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _friendship = _interopRequireDefault(__webpack_require__(/*! ./pages/index/friendship/friendship.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\index\\friendship\\friendship.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_friendship.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Findex%2Findex%2Findex\"}":
+/*!*****************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Findex%2Findex%2Findex"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index/index.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\index\\index\\index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_index.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Findex%2Fmy%2Fmy\"}":
+/*!***********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Findex%2Fmy%2Fmy"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _my = _interopRequireDefault(__webpack_require__(/*! ./pages/index/my/my.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\index\\my\\my.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_my.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flives%2Flives\"}":
+/*!*********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flives%2Flives"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _lives = _interopRequireDefault(__webpack_require__(/*! ./pages/lives/lives.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\lives\\lives.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_lives.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2FchangePassword\"}":
+/*!******************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2FchangePassword"} ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/login/changePassword.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\changePassword.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changePassword.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2FchangePasswordVerification\"}":
+/*!******************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2FchangePasswordVerification"} ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _changePasswordVerification = _interopRequireDefault(__webpack_require__(/*! ./pages/login/changePasswordVerification.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\changePasswordVerification.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changePasswordVerification.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
+/*!*********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2Flogout\"}":
+/*!**********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2Flogout"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _logout = _interopRequireDefault(__webpack_require__(/*! ./pages/login/logout.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\logout.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_logout.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2FphoneLogin\"}":
+/*!**************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2FphoneLogin"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _phoneLogin = _interopRequireDefault(__webpack_require__(/*! ./pages/login/phoneLogin.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\phoneLogin.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_phoneLogin.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Flogin%2Fregister\"}":
+/*!************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\login\\register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_register.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Fmagazine%2Fmagazine\"}":
+/*!***************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Fmagazine%2Fmagazine"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _magazine = _interopRequireDefault(__webpack_require__(/*! ./pages/magazine/magazine.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\magazine\\magazine.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_magazine.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Fpsychological%2Fpsychological\"}":
+/*!*************************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Fpsychological%2Fpsychological"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _psychological = _interopRequireDefault(__webpack_require__(/*! ./pages/psychological/psychological.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\psychological\\psychological.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_psychological.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Freadings%2Freadings\"}":
+/*!***************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Freadings%2Freadings"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _readings = _interopRequireDefault(__webpack_require__(/*! ./pages/readings/readings.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\readings\\readings.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_readings.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2FsearchIndex%2FsearchIndex\"}":
+/*!*********************************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2FsearchIndex%2FsearchIndex"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _searchIndex = _interopRequireDefault(__webpack_require__(/*! ./pages/searchIndex/searchIndex.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\searchIndex\\searchIndex.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_searchIndex.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\main.js?{\"page\":\"pages%2Fvideo%2Fvideo\"}":
+/*!*********************************************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/main.js?{"page":"pages%2Fvideo%2Fvideo"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _video = _interopRequireDefault(__webpack_require__(/*! ./pages/video/video.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\pages\\video\\video.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_video.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\pages.json":
+/*!***************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/pages.json ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "E:\\Desktop\\liandu_app\\liandu_app\\store\\index.js":
+/*!*******************************************************!*\
+  !*** E:/Desktop/liandu_app/liandu_app/store/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+
+_vue.default.use(_vuex.default);
+
+var store = new _vuex.default.Store({
+  state: {
+    hasLogin: false,
+    loginProvider: "",
+    openid: null,
+    userid: null,
+    title: "今日链读",
+    phone: "",
+    modifyRandomNumbers: "" },
+
+  mutations: {
+    setOpenid: function setOpenid(state, openid) {
+      state.openid = openid;
+    },
+    updateUserid: function updateUserid(state, bool) {
+      state.userid = bool;
+    },
+    updateTitle: function updateTitle(state, bool) {
+      state.title = bool;
+    },
+    modifyPhoneNumber: function modifyPhoneNumber(state, phone) {
+      state.phone = phone;
+    },
+    modifyRandomNumber: function modifyRandomNumber(state, modifyRandomNumbers) {
+      state.modifyRandomNumbers = modifyRandomNumbers;
+    } },
+
+  actions: {
+    changeTitle: function changeTitle(context, bool) {
+      context.commit("updateTitle", bool);
+    },
+    changeUserid: function changeUserid(context, bool) {
+      context.commit("updateUserid", bool);
+    },
+    modifyPhoneNumber: function modifyPhoneNumber(ctx, phone) {
+      ctx.commit('modifyPhoneNumber', phone);
+    },
+    modifyRandomNumber: function modifyRandomNumber(ctx, modifyRandomNumbers) {
+      ctx.commit('modifyRandomNumber', modifyRandomNumbers);
+    },
+    // lazy loading openid
+    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                commit = _ref.commit,
+                state = _ref.state;_context.next = 3;return (
+
+                  new Promise(function (resolve, reject) {
+                    if (state.openid) {
+                      resolve(state.openid);
+                    } else {
+                      uni.login({
+                        success: function success(data) {
+                          commit('login');
+                          setTimeout(function () {//模拟异步请求服务器获取 openid
+                            var openid = '123456789';
+                            console.log('uni.request mock openid[' + openid + ']');
+                            commit('setOpenid', openid);
+                            resolve(openid);
+                          }, 1000);
+                        },
+                        fail: function fail(err) {
+                          console.log('uni.login 接口调用失败，将无法正常使用开放接口等服务', err);
+                          reject(err);
+                        } });
+
+                    }
+                  }));case 3:return _context.abrupt("return", _context.sent);case 4:case "end":return _context.stop();}}}, _callee, this);}));function getUserOpenId(_x) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() } });var _default =
+
+
+
+
+store;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ })
 

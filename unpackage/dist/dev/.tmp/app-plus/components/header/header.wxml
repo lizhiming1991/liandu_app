@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <view class="h_header data-v-fc78d10e" bind:__l="__l"><view class="h_back data-v-fc78d10e"><navigator class="h_goback data-v-fc78d10e" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-fc78d10e" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-fc78d10e" bindtap="__e">{{titles}}</view><view class="h_more data-v-fc78d10e"></view></view>
+=======
+<view class="header data-v-11edf036" bind:__l="__l"><view class="h_back data-v-11edf036"><navigator class="h_goback data-v-11edf036" open-type="navigateBack" delta="{{number}}"><image class="h_img data-v-11edf036" src="../../static/images/icon_back.png"></image></navigator></view><view data-event-opts="{{[['tap',[['showname']]]]}}" class="h_title data-v-11edf036" bindtap="__e">{{titles}}</view><view class="h_more data-v-11edf036"></view></view>
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc

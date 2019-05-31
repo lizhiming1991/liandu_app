@@ -26,8 +26,12 @@
 /* 文章场景相关 */
 /* add */
 /* 常用尺寸颜色变量 */
+<<<<<<< HEAD
 .h_header.data-v-fc78d10e {
   background-color: #fff;
+=======
+.header.data-v-11edf036 {
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc
   padding: 0 40rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -36,12 +40,17 @@
   display: -ms-flexbox;
   display: flex;
 }
+<<<<<<< HEAD
 .h_header .h_back.data-v-fc78d10e {
+=======
+.header .h_back.data-v-11edf036 {
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
 }
+<<<<<<< HEAD
 .h_header .h_back .h_img.data-v-fc78d10e {
       width: 20rpx;
       height: 37rpx;
@@ -51,13 +60,28 @@
       height: 37rpx;
 }
 .h_header .h_title.data-v-fc78d10e {
+=======
+.header .h_back .h_img.data-v-11edf036 {
+      width: 20rpx;
+      height: 37rpx;
+}
+.header .h_back .h_goback.data-v-11edf036 {
+      width: 20rpx;
+      height: 37rpx;
+}
+.header .h_title.data-v-11edf036 {
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
     text-align: center;
 }
+<<<<<<< HEAD
 .h_header .h_more.data-v-fc78d10e {
+=======
+.header .h_more.data-v-11edf036 {
+>>>>>>> a1e9c72763db1485a960cde8d3b61023d80803cc
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;

@@ -146,7 +146,7 @@
 					url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
 					method: 'GET',
 					success: res => {
-						console.log(res);
+						//console.log(res);
 						if (res.data.message == '登录成功') {
 							uni.showToast({
 								title: '登录成功!',
@@ -154,6 +154,7 @@
 								icon: 'none'
 							});
 							this.$store.dispatch("changeUserid",res.data.data.id);
+							console.log(res.data)
 							uni.reLaunch({
 								url: '../index/index/index'
 							});

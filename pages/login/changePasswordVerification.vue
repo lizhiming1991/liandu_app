@@ -11,7 +11,7 @@
 				<input class="register_accout" type="number" v-model="phoneNumber" style="padding-left:80upx; font-size: 30upx;"
 				 maxlength="11" placeholder="请输入手机号码" />
 				<view>
-					<image class="phone_icon" src="/static/image/phone_icon.png" mode=""></image>
+					<image class="phone_icon" src="/static/images/shouji.png" mode=""></image>
 				</view>
 			</view>
 			<view class="input_row verify_box" style="display: flex;">
@@ -89,7 +89,7 @@
 			getCode() {
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
 				if (regPhone.test(this.phoneNumber)) {
-					this.countdown = 5;
+					this.countdown = 60;
 					this.timestatus_two = false;
 					this.timestatus = true;
 					this.clear = setInterval(this.countDown, 1000);

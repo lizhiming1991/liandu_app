@@ -8,7 +8,7 @@
 			<view>会员申请已提交,请耐心等待企业审核</view>
 		</view>
 		<view class="success_button_content">
-			<view class="success_button">关闭</view>
+			<view class="success_button" @tap="close">关闭</view>
 		</view>
 	</view>
 
@@ -26,7 +26,11 @@
 	
 		},
 		methods: {
-	
+			close() {
+				uni.reLaunch({
+					url: '../index/enterprise/enterprise'
+				});
+			}
 		},
 		components: {
 			Header
