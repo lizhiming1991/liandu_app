@@ -283,7 +283,9 @@
 					content: '为了更好的享受企业服务，请先申请为企业会员',
 					success: function(res) {
 						if (res.confirm) {
-							console.log('用户点击确定');
+							uni.navigateTo({
+								url: './applyMember'
+							})
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}
