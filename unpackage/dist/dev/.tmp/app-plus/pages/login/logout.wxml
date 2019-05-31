@@ -1,1 +1,1 @@
-<view bind:__l="__l"><view data-event-opts="{{[['tap',[['clickText',['$event']]]]]}}" bindtap="__e">上传文件</view><input type="text" value="{{dzcc}}" data-event-opts="{{[['input',[['__set_model',['$0','dzcc','$event',[]],['']]]]]}}" bindinput="__e"/></view>
+<view bind:__l="__l"><not-found></not-found></view>

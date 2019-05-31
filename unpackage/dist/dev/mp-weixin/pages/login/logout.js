@@ -8,35 +8,77 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var notFound = function notFound() {return __webpack_require__.e(/*! import() | components/notFound/notFoundContetn */ "components/notFound/notFoundContetn").then(__webpack_require__.bind(null, /*! @/components/notFound/notFoundContetn.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\notFound\\notFoundContetn.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
-      array: ['中国', '美国', '巴西', '日本'],
-      index: 0 };
+      dzcc: 'nihao 2020' };
 
   },
   computed: {},
+  components: {
+    notFound: notFound },
 
   methods: {
-    bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为', e.target.value);
-      this.index = e.target.value;
+    clickText: function clickText() {
+      // uni.chooseImage({
+      // 	success: (chooseImageRes) => {
+      // 		const tempFilePaths = chooseImageRes.tempFilePaths;
+      // 		uni.uploadFile({
+      // 			url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+      // 			filePath: tempFilePaths[0],
+      // 			name: 'file',
+      // 			formData: {
+      // 				'user': 'test'
+      // 			},
+      // 			success: (uploadFileRes) => {
+      // 				console.log(JSON.parse(uploadFileRes.data).data);
+      // 			}
+      // 		});
+      // 	}
+      // });
+      uni.chooseImage({
+        success: function success(chooseImageRes) {
+          var tempFilePaths = chooseImageRes.tempFilePaths;
+          var uploadTask = uni.uploadFile({
+            url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+            filePath: tempFilePaths[0],
+            name: 'file',
+            formData: {
+              'user': 'test' },
+
+            success: function success(uploadFileRes) {
+              console.log(uploadFileRes);
+              console.log(uploadFileRes.data);
+            } });
+
+
+          uploadTask.onProgressUpdate(function (res) {
+            console.log(res);
+            console.log('上传进度' + res.progress);
+            console.log('已经上传的数据长度' + res.totalBytesSent);
+            console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+
+            // 测试条件，取消上传任务。
+            if (res.progress > 50) {
+              uploadTask.abort();
+            }
+          });
+        } });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

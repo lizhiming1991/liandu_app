@@ -8905,10 +8905,7 @@ var onlineURL = "http://192.168.0.185:9999";exports.onlineURL = onlineURL;
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function randomWord(randomFlag, min, max) {
   var str = "",
   range = min,
-  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
+  arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   if (randomFlag) {
     range = Math.round(Math.random() * (max - min)) + min;
   }
@@ -8964,13 +8961,26 @@ function get(url, params) {
       url: baseUrl + url,
       data: params,
       method: "GET",
-      header: { 'content-type': 'application/json' } }).
-    then(function (data) {var _data = _slicedToArray(
+      header: {
+        'content-type': 'application/json' } }).
+
+    then(function (data) {
+      console.log(data);var _data = _slicedToArray(
       data, 2),error = _data[0],suc = _data[1];
       var res = suc.data;
-      if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+      if (suc.data.status == 200) {
         res.status = 200;
+      } else {
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+        // 					res.status = 200;
+        // 
+        // 				}
+        // 				if (suc.statusCode == 200 && suc.data.status.indexOf("FAILED") >= 0) {
+        // 					res.status = 400;
+        // 
+        // 				}
       }
+
       resolve(res);
     }, function (err) {
       console.info(err);
@@ -8986,7 +8996,9 @@ function post(url, params) {
       url: baseUrl + url,
       data: params,
       method: "POST",
-      header: { 'content-type': 'application/json' } }).
+      header: {
+        'content-type': 'application/json' } }).
+
     then(function (data) {var _data2 = _slicedToArray(
       data, 2),error = _data2[0],suc = _data2[1];
       var res = suc.data;

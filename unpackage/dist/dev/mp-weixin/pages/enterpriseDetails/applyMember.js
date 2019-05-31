@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -57,23 +57,174 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+var _methods = __webpack_require__(/*! @/common/methods.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\methods.js");
+var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu_app\\liandu_app\\common\\common.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Header = function Header() {return __webpack_require__.e(/*! import() | components/header/header */ "components/header/header").then(__webpack_require__.bind(null, /*! @/components/header/header.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\header\\header.vue"));};var _default =
 
 
 
 {
   data: function data() {
-    return {};
-
+    return {
+      enterpriseName: '',
+      cold: '',
+      name: '',
+      workNumber: '',
+      dept: '',
+      imageList: [], //保存图片路径集合
+      imageLength: 1, //限制图片张数
+      sourceTypeIndex: 2, //添加方式限制
+      sizeTypeIndex: 2, //图片尺寸限制
+      imgPath: '',
+      sourceType: [
+      ['camera'], //拍照
+      ['album'], //相册
+      ['camera', 'album'] //拍照或相册
+      ],
+      sizeType: [
+      ['compressed'], //压缩
+      ['original'], //原图
+      ['compressed', 'original'] //压缩或原图
+      ] };
 
   },
-  onLoad: function onLoad() {
+  computed: _objectSpread({},
+  (0, _vuex.mapState)([
+  "userid"])),
 
+
+  onLoad: function onLoad(e) {
+    this.enterpriseName = e.enterpriseName;
+    this.cold = e.enterpriseLid;
+    console.log(this.enterpriseName);
   },
   methods: {
     apply: function apply() {
-      uni.reLaunch({
-        url: './submitted' });
+      var requiredInfo = {
+        "associatorid": this.userid,
+        "coId": this.cold,
+        "name": this.name,
+        "dept": this.dept,
+        "code": this.workNumber,
+        "path": this.imgPath };
 
+      var namereg = /^[\u4e00-\u9fa5 ]{2,20}$/;
+      if (!namereg.test(this.name)) {
+        uni.showToast({
+          title: '真实姓名格式不正确',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.name == '') {
+        uni.showToast({
+          title: '真实姓名不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.workNumber == '') {
+        uni.showToast({
+          title: '工作证件不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.dept == '') {
+        uni.showToast({
+          title: '部门不能为空',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.imgPath == '') {
+        uni.showToast({
+          title: '请上传证件',
+          duration: 2000,
+          icon: 'none' });
+
+      } else if (this.userid == null) {
+        uni.showToast({
+          title: '请先登录',
+          duration: 2000,
+          icon: 'none' });
+
+      } else {
+        uni.request({
+          url: _common.onlineURL + '/enterprise/associator-company/add',
+          method: 'POST',
+          data: requiredInfo,
+          // header: {
+          // 	'content-type': 'application/json'
+          // },
+          success: function success(res) {
+            console.log(res);
+            uni.reLaunch({
+              url: './submitted' });
+
+          } });
+
+
+      }
+
+
+    },
+    //选择图片
+    chooseImage: function () {var _chooseImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                uni.chooseImage({
+                  sourceType: this.sourceType[this.sourceTypeIndex],
+
+                  sizeType: this.sizeType[this.sizeTypeIndex],
+
+                  count: this.imageLength - this.imageList.length,
+                  success: function success(res) {
+                    console.log(res);
+                    _this.imageList = _this.imageList.concat(res.tempFilePaths);
+                    uni.uploadFile({
+                      url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+                      filePath: _this.imageList[0],
+                      name: 'file',
+                      formData: {
+                        'user': 'test' },
+
+                      success: function success(uploadFileRes) {
+                        console.log(JSON.parse(uploadFileRes.data).data);
+                        _this.imgPath = JSON.parse(uploadFileRes.data).data;
+                      } });
+
+                  } });case 1:case "end":return _context.stop();}}}, _callee, this);}));function chooseImage() {return _chooseImage.apply(this, arguments);}return chooseImage;}(),
+
+
+    //预览图片
+    previewImage: function previewImage(e) {
+      var current = e.target.dataset.src;
+      uni.previewImage({
+        current: current,
+        urls: this.imageList });
+
+    },
+    //删除图片
+    deleteImage: function deleteImage(e) {
+      var index = e.target.dataset.index;
+      var that = this;
+      var images = that.imageList;
+      images.splice(index, 1);
+      that.imageList = images;
+      this.imgPath = '';
     } },
 
   components: {

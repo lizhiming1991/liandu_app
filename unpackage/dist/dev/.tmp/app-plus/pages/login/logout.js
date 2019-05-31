@@ -8,13 +8,18 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var notFound = function notFound() {return __webpack_require__.e(/*! import() | components/notFound/notFoundContetn */ "components/notFound/notFoundContetn").then(__webpack_require__.bind(null, /*! @/components/notFound/notFoundContetn.vue */ "E:\\Desktop\\liandu_app\\liandu_app\\components\\notFound\\notFoundContetn.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
@@ -22,6 +27,8 @@ var _default =
 
   },
   computed: {},
+  components: {
+    notFound: notFound },
 
   methods: {
     clickText: function clickText() {
@@ -52,16 +59,16 @@ var _default =
               'user': 'test' },
 
             success: function success(uploadFileRes) {
-              console.log(uploadFileRes, " at pages\\login\\logout.vue:45");
-              console.log(uploadFileRes.data, " at pages\\login\\logout.vue:46");
+              console.log(uploadFileRes, " at pages\\login\\logout.vue:52");
+              console.log(uploadFileRes.data, " at pages\\login\\logout.vue:53");
             } });
 
 
           uploadTask.onProgressUpdate(function (res) {
-            console.log(res, " at pages\\login\\logout.vue:51");
-            console.log('上传进度' + res.progress, " at pages\\login\\logout.vue:52");
-            console.log('已经上传的数据长度' + res.totalBytesSent, " at pages\\login\\logout.vue:53");
-            console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend, " at pages\\login\\logout.vue:54");
+            console.log(res, " at pages\\login\\logout.vue:58");
+            console.log('上传进度' + res.progress, " at pages\\login\\logout.vue:59");
+            console.log('已经上传的数据长度' + res.totalBytesSent, " at pages\\login\\logout.vue:60");
+            console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend, " at pages\\login\\logout.vue:61");
 
             // 测试条件，取消上传任务。
             if (res.progress > 50) {

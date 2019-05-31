@@ -1,10 +1,15 @@
 <template>
 	<view>
-		<view @tap="clickText">上传文件</view>
-		<input type="text" v-model="dzcc" value="" />
+		<!-- <view @tap="clickText">上传文件</view>
+		<input type="text" v-model="dzcc" value="" /> -->
+	
+			<not-found></not-found>
+		
+		
 	</view>
 </template>
 <script>
+	import notFound from '@/components/notFound/notFoundContetn.vue'
 	export default {
 		data() {
 			return {
@@ -12,7 +17,9 @@
 			}
 		},
 		computed: {},
-
+components: {
+			notFound
+		},
 		methods: {
 			clickText() {
 				// uni.chooseImage({

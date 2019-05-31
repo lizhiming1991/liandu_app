@@ -86,7 +86,7 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
     getCode: function getCode() {
       var regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
       if (regPhone.test(this.phoneNumber)) {
-        this.countdown = 5;
+        this.countdown = 60;
         this.timestatus_two = false;
         this.timestatus = true;
         this.clear = setInterval(this.countDown, 1000);

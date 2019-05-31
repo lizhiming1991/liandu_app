@@ -120,7 +120,7 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
       }
       return str;
     },
-    passwordLogin: function passwordLogin() {
+    passwordLogin: function passwordLogin() {var _this = this;
       this.number = this.number + 1;
       this.getImgcode();
       if (this.phoneNumber == "" || this.phoneNumber == null) {
@@ -156,14 +156,15 @@ var _common = __webpack_require__(/*! @/common/common.js */ "E:\\Desktop\\liandu
         url: _common.onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password=' + this.password + '&&randomStr=' + this.passyzm,
         method: 'GET',
         success: function success(res) {
-          console.log(res);
+          //console.log(res);
           if (res.data.message == '登录成功') {
             uni.showToast({
               title: '登录成功!',
               duration: 1500,
               icon: 'none' });
 
-            // this.$store.dispatch("changeUserid",res.data.data);
+            _this.$store.dispatch("changeUserid", res.data.data.id);
+            console.log(res.data);
             uni.reLaunch({
               url: '../index/index/index' });
 
