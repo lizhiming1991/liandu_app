@@ -69,7 +69,6 @@
 		},
 		onLoad() {
 			this.randomString = acquireString.randomWord(false, 4)
-			console.log(this.randomString);
 		},
 		methods: {
 			// 获取验证码

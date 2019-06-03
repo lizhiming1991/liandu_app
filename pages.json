@@ -103,10 +103,7 @@
 		    "path" : "pages/login/changePasswordVerification",
 		    "style" : {}
 		}
-        ,{
-            "path" : "pages/addComment/addComment",
-            "style" : {}
-        }
+        
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

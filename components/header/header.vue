@@ -20,7 +20,7 @@
 	export default{
 		data(){
 			return{
-				
+				number:1
 			}
 		},
 		onLoad(){

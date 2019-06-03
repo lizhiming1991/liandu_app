@@ -9,7 +9,6 @@ const store = new Vuex.Store({
 		loginProvider: "",
 		openid: null,
 		userid: "",
-		title: "今日链读",
 		phone:"",
 		modifyRandomNumbers:"",
 	},

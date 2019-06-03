@@ -29,9 +29,18 @@
 	}
 	/* #endif */
 	/* #ifdef H5 */
-	body{
-	  /* padding-top: 20upx; */
-	}
+	/* 确认框 */
+	/* uni.showModal({
+		title: '提示',
+		content: '这是一个模态弹窗',
+		success: function (res) {
+			if (res.confirm) {
+				console.log('用户点击确定');
+			} else if (res.cancel) {
+				console.log('用户点击取消');
+			}
+		}
+	}); */
 	/* #endif */
   
   /* APP-PLUS || MP-WEIXIN || MP-BAIDU 

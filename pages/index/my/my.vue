@@ -123,13 +123,16 @@
 			])
 		},
 		onLoad(){
-			console.log(222)
+			
 		},
 		onShow(){
-			if(this.userid == null){
-				uni.redirectTo({
+			console.log(this.userid)
+			if(this.userid == ""){
+				uni.navigateTo({
 					url: '/pages/login/phoneLogin'
 				});
+			}else{
+				console.log("ismy")
 			}
 		},
 		onReady(){

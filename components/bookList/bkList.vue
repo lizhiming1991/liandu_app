@@ -1,12 +1,5 @@
 <template>
 	<view>
-		<view class="b_search" ref="b_search">
-			<view class="b_box">
-				<input class="b_input" type="text" placeholder="图书名称或关键字"/>
-				<image class="b_searchimg" src="../../static/images/icon_search_small.png"></image>
-			</view>
-			
-		</view>
 		<view class="tablist">
 			<view class="tabs">
 				<scroll-view ref="b_scroll" scroll-y="true" class="scroll-Y" >
@@ -15,7 +8,7 @@
 		        </scroll-view>
 			</view>
 			
-			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" >
+			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" @scrolltolower="getMore">
 			   <view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
 			   	<view class="bk_img">
 			   		<image class="bk_pic" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
@@ -83,6 +76,9 @@
 				}else if(ispay == 1){
 					return "付费"	
 				}
+			},
+			getMore(){
+				this.$emit("getMorebook",{});
 			}
 		},
 		components:{
@@ -98,34 +94,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.b_search{
-		width: 100%;
-		height: 90upx;
-		background-color: #EEEEEE;
-		display: flex;
-		padding: 17upx 30upx;
-		box-sizing: border-box;
-		.b_box{
-			flex: 1;
-			position: relative;
-			.b_searchimg{
-				width: 22upx;
-				height: 24upx;
-				position: absolute;
-				left: 24upx;
-				top: 16upx;
-			}
-			.b_input{
-				width: 100%;
-				height: 56upx;
-				background-color: #fff;
-				border-radius: 28upx;
-				padding-left: 68upx;
-				box-sizing: border-box;
-				font-size: 24upx;
-			}
-		}
-	}
+	
 	.tablist{
 		display: flex;
 		.tabs{

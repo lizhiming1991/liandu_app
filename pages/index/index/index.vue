@@ -172,12 +172,13 @@
 				m_length: 3,
 			}
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
-		onLoad:function(e){
+		onLoad(e){
+			this.imgurl = ImgUrl;
+			
 			post('/ad/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
 				if(res.status == 200){
 					this.picArr = res.data.picinfo;
 				}
-				
 			},err=>{
 				//异步错误处理
 			});	
@@ -203,11 +204,9 @@
 		},
 		
 		onShow(){
-			console.log(11)
 		},
 		onReady(){
-			console.log(22)
-			this.imgurl = ImgUrl;
+			
 		},
 		methods: {
 			

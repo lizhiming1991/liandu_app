@@ -1,5 +1,5 @@
 <template>
-	<view class="contents">
+	<view class="b_contents">
 		<view class="c_box">
 			<view class="c_father">
 				<input type="text" disabled placeholder="发表评论..." class="c_input" @tap="showComment">
@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.contents{
+	.b_contents{
 		position: fixed;
 		bottom: 0;
 		left: 0;

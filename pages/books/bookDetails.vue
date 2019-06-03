@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<!-- 顶部公用组件 -->
+		<!-- 头部公用组件 -->
 		<Header :titles="title"></Header>
 		
 		<view class="header">
@@ -8,7 +8,7 @@
 				<image class="userphoto" :src="ImgUrl+(bookinfo.photo?bookinfo.photo:'')"></image>
 			</view>
 			<view class="right">
-				<view class="title">{{bookinfo.name}} <text class="svip">申请会员</text></view>
+				<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> <text class="svip" @tap="gotoqiye">申请会员</text></view>
 				<view class="username">{{bookinfo.authorname}}</view>
 				<view class="introduce">{{bookinfo.introduce}}</view>
 			</view>
@@ -36,8 +36,10 @@
 		
 		<!-- 评论列表 -->
 		<CommentList :itemData="comList" :allNum="allDiss" :ImgUrl="ImgUrl"></CommentList>
-		<!-- 发表评论 -->
-		<Comment @showComment="showComments"></Comment>
+		<!-- 评论入口组件 -->
+		<Comment @showComment="showComments" ></Comment>
+		<!-- 发表评论组件 -->
+		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
 	</view>
 </template>
 
@@ -45,6 +47,7 @@
 	import Header from '@/components/header/header.vue'
 	import Comment from '@/components/comment/comment.vue'
 	import CommentList from '@/components/commentList/commentList.vue'
+	import addComment from '@/components/addComment/addComment.vue'
 	import {mapState} from 'vuex'
 	import {get,post} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
@@ -56,7 +59,8 @@
 				ImgUrl: "",
 				allDiss: 0,
 				comList: [],
-				bid: 0
+				bid: 0,
+				isshow: false,
 			};
 		},
 		computed:{
@@ -74,19 +78,37 @@
 				}
 				// console.log(res)
 			})
-			get("/book/book/comment/"+bid+"?associatorid="+this.userid).then(res=>{
-				if(res.status == 200){
-					this.allDiss = res.data.totalCommentNums;
-					this.comList = res.data.gradeList;
-				}
-			})
+			this.getDisscusslist();
 			
 		},
 		methods:{
-			showComments(){
-				uni.navigateTo({
-					url:"pages/addComment/addComment"
+			getDisscusslist(){
+				get("/book/book/comment/"+this.bid+"?associatorid="+this.userid).then(res=>{
+					if(res.status == 200){
+						this.allDiss = res.data.totalCommentNums;
+						this.comList = res.data.gradeList;
+					}
 				})
+			},
+			showComments(){
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以评论哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				this.isshow = true;
+			},
+			hideComment(){
+				this.isshow = false;
+			},
+			gotoqiye(){
+				uni.navigateTo({
+					url:"/pages/enterpriseDetails/applyMember?enterpriseName="+""+"&enterpriseLid="+""
+				})
+				
 			},
 			goRead(id){
 				console.log(this.bid)
@@ -106,12 +128,34 @@
 				})
 				
 			},
+			addComments(obj){
+				post("/book/book/makeComment",{
+					associatorid: this.userid,
+					bookid: this.bid,
+					score: obj.score,
+					state: obj.readstate,
+					content: obj.textarea,
+					tag: obj.tags
+				}).then(res=>{
+					if(res.status == 200){
+						this.getDisscusslist();
+					}else{
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: 'none'
+						});
+					}
+					console.log(res)
+				})
+			}
 			
 		},
 		components:{
 			Header,
 			Comment,
-			CommentList
+			CommentList,
+			addComment
 		}
 	}
 </script>
@@ -135,14 +179,25 @@
 		}
 		.right{
 			flex: 1;
-			padding-left: 30upx;
+			padding-left: 24upx;
 			.title{
-				font-size: 38upx;
+				width: 100%;
+				position: relative;
+				.bk_titles{
+					width: 300upx;
+					font-size: 35upx;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					display: inline-block;
+				}
 				.svip{
-					float: right;
+					position: absolute;
+					right: 0;
+					top: 0;
 					font-size: 28upx;
 					display: inline-block;
-					width: 200upx;
+					width: 160upx;
 					height: 58upx;
 					background-color: #FF546C;
 					text-align: center;
