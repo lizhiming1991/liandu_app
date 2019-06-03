@@ -9,7 +9,7 @@
 				<image class="b_searchimg" src="../../static/images/icon_search_small.png"></image>
 			</view>
 		</view>
-		
+		<!-- <uniBadge>aaa</uniBadge> -->
 		<!-- 书籍列表组件 -->
 		<bkList ref="list"
 			@changelist="changeList"
@@ -28,6 +28,7 @@
 	import bkList from '@/components/bookList/bkList.vue'
 	import {ImgUrl} from '@/common/common.js'
 	import { mapState } from 'vuex'
+	// import {uniBadge} from '@dcloudio/uni-ui'
 	export default {
 		data() {
 			return {
@@ -97,10 +98,11 @@
 						"resource_type": 1
 					}).then((res)=>{
 						if(res.status == 200){
+							if(res.data.bookNums < this.pageNum*this.pageSize){
+								this.hasmore = false;
+							}
 							if(this.isfirst){
-								if(res.data.bookNums < this.pageNum*this.pageSize){
-									this.hasmore = false;
-								}
+								
 								console.log(res.data)
 								this.bookList = res.data.pageBooks;
 								this.isfirst = false;
@@ -122,7 +124,8 @@
 		},
 		components:{
 			Header,
-			bkList
+			bkList,
+			// uniBadge
 		}
 	}
 </script>

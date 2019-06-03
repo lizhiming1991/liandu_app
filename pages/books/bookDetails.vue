@@ -76,7 +76,7 @@
 				if(res.status == 200){
 					this.bookinfo = res.data.bookinfo;
 				}
-				// console.log(res)
+				console.log(res)
 			})
 			this.getDisscusslist();
 			
