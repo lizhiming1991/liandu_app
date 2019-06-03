@@ -71,12 +71,12 @@
 				</view>
 			</view>
 		</block>
-		<navigator url="../../login/logout">logut</navigator>
 		
 	</view>
 </template>
 
 <script>
+	import {get,post} from '@/common/methods.js';
 	import {
 		onlineURL
 	} from '@/common/common.js';
@@ -94,19 +94,31 @@
 			};
 		},
 		onLoad() {
-			//首次加载行业列表
-			uni.request({
-				url: onlineURL + '/enterprise/company/trade/all',
-				method: 'GET',
-				success: (res) => {
-					console.log(res.data.data);
-					for (let data of res.data.data) {
-						this.trade.push(data);
-					}
-
+			get('/enterprise/company/trade/all').then(res=>{
+				console.log(res);
+				for (let data of res.data) {
+					this.trade.push(data);
 				}
 			});
+			//首次加载行业列表
+// 			uni.request({
+// 				url: onlineURL + '/enterprise/company/trade/all',
+// 				method: 'GET',
+// 				success: (res) => {
+// 					console.log(res.data.data);
+// 					for (let data of res.data.data) {
+// 						this.trade.push(data);
+// 					}
+// 
+// 				}
+// 			});
 			//首次加载地区列表
+			// get('/enterprise/company/trade/all').then(res=>{
+			// 	console.log(res);
+			// 	for (let data of res.data) {
+			// 		this.trade.push(data);
+			// 	}
+			// });
 			uni.request({
 				url: onlineURL + '/enterprise/company/region/all',
 				method: 'GET',

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "header": "/components/header/header",
-    "comment": "/components/comment/comment",
-    "comment-list": "/components/commentList/commentList"
-  }
-}
