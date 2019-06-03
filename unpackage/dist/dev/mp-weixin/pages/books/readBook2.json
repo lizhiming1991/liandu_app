@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "yn-gallery": "/components/YnComponents/ynGallery/ynGallery",
+    "header": "/components/header/header"
+  }
+}

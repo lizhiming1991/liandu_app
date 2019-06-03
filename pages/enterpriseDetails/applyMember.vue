@@ -104,7 +104,7 @@
 		onLoad(e) {
 			this.enterpriseName = e.enterpriseName;
 			this.cold = e.enterpriseLid;
-			console.log(this.enterpriseName);
+			//console.log(this.enterpriseName);
 		},
 		methods: {
 			apply() {
@@ -170,8 +170,6 @@
 						
 					});
 				}
-				
-				
 			},
 			//选择图片
 			chooseImage: async function() {
@@ -185,7 +183,7 @@
 							console.log(res);
 							this.imageList = this.imageList.concat(res.tempFilePaths);
 							uni.uploadFile({
-								url: 'http://192.168.0.185:9999/enterprise/associator-company/upload',
+								url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
 								filePath: this.imageList[0],
 								name: 'file',
 								formData: {

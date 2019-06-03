@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
+		returnData:"1111111111",
 		hasLogin: false,
 		loginProvider: "",
 		openid: null,
@@ -14,6 +15,9 @@ const store = new Vuex.Store({
 		modifyRandomNumbers:"",
 	},
 	mutations: {
+		addInfo(state,editData) {
+			state.returnData = editData;
+		},
 		setOpenid(state, openid) {
 			state.openid = openid
 		},
@@ -31,6 +35,9 @@ const store = new Vuex.Store({
 		}
 	},
 	actions: {
+		addInfo(ctx, editData){
+			ctx.commit('addInfo',editData)
+		},
 		changeTitle(context,bool){
 			context.commit("updateTitle",bool);
 		},

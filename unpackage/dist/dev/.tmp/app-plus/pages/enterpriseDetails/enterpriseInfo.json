@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "titleNView": {
+    "buttons": [
+      {
+        "type": "none",
+        "text": "发布",
+        "color": "red",
+        "float": "right",
+        "fontSize": "14px"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-segmented-control": "/components/uni-segmented-control/uni-segmented-control",
+    "edit": "/components/wjx-edit/wjx-edit"
+  }
+}

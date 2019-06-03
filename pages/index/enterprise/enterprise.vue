@@ -1,5 +1,5 @@
 <template>
-	<view class="enterprise" style="">
+	<view class="enterprise">
 		<view class="enterprise_title" style="">
 			<view class="title_text">企业</view>
 			<view class="title_sousuo">
@@ -96,7 +96,7 @@
 		onLoad() {
 			//首次加载行业列表
 			uni.request({
-				url: 'http://192.168.0.185:9999/enterprise/company/trade/all',
+				url: onlineURL + '/enterprise/company/trade/all',
 				method: 'GET',
 				success: (res) => {
 					console.log(res.data.data);
@@ -108,7 +108,7 @@
 			});
 			//首次加载地区列表
 			uni.request({
-				url: 'http://192.168.0.185:9999/enterprise/company/region/all',
+				url: onlineURL + '/enterprise/company/region/all',
 				method: 'GET',
 				success: (res) => {
 					console.log(res.data.data);
@@ -151,7 +151,7 @@
 				console.log(this.targetValue)
 				if (this.tradeValue != '地区') {
 					uni.request({
-						url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340',
+						url: onlineURL + '/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340',
 						method: 'GET',
 						success: (res) => {
 							this.enterpriseList = res.data.data;
@@ -177,7 +177,7 @@
 				console.log(this.targetValue)
 				if (this.targetValue != '地区') {
 					uni.request({
-						url: 'http://192.168.0.185:9999/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
+						url: onlineURL + '/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
 						method: 'GET',
 						success: (res) => {
 							this.enterpriseList = res.data.data;
@@ -221,6 +221,7 @@
 	.enterprise {
 		flex-direction: column;
 		flex: 1;
+		margin-top: 40upx;
 	}
 
 	.enterprise .enterprise_title {

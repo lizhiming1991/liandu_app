@@ -1,0 +1,2 @@
+setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"scroll-Y.",[1],"data-v-528fc466::-webkit-scrollbar { display: none; }\n.",[1],"content.",[1],"data-v-528fc466 { padding-bottom: ",[0,100],"; }\n",],undefined,{path:"./pages/books/bookList.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/books/bookList.wxml') } }));
