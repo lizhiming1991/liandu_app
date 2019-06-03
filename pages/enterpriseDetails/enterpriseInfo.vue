@@ -9,40 +9,42 @@
 				<image @tap="toEnterprise" class="clear_icon" src="/static/images/icon_cha.png" mode=""></image>
 			</view>
 		</view>
+		<block>
 		<view class="title_content">
-			<view class="title_text">首都艺术家协会1</view>
+			<view class="title_text">{{enteroriseList.name}}</view>
 			<view style="flex: 1;"></view>
-			<view class="to_apply">申请会员</view>
+			<view class="to_apply" v-if=" isVip == 'notVip'">申请会员</view>
+			<view class="under_review" v-else-if=" isVip == 'init'">会员审核中</view>
+			<view class="vip_added" v-else-if=" isVip == 'pass'">已加入</view>
 		</view>
 		<view class="enterprise_info">
 			<view class="info_content">
-				简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+				{{enteroriseList.cont}}
 			</view>
 		</view>
 		<view class="enterprise_lable">
 			<view style="flex: 1;"></view>
 			<view class="label_left">
-				<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">艺术培训</text>
+				<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
 			</view>
 			<view class="label_right">
-				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">北京</text>
+				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.address}}</text>
 			</view>
 		</view>
+		</block>
 		<uni-segmented-control style="justify-content: center;" :current="current" activeColor="#01B18D" :values="items"
 		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
-			
 			<view v-show="current === 0">
-				<view style="margin: 200upx 200upx; font-size: 28upx;">
-					暂无内容,开发中..
+				<view class="content" style="margin-top: 50upx;">
+					<edit  ref="edit" :call="call" placeText="写点什么吧..."></edit>
 				</view>
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
 				<!-- Picker 公共组件 start -->
-				<view class="picker_style" >
+				<view class="picker_style">
 					<view class="content_search">
-						
 						<view class="uni-list">
 							<view class="uni-list-cell">
 								<view class="uni-list-cell-db">
@@ -59,7 +61,7 @@
 				
 				<view class="content_list">
 					<block v-for="(item,index) in bookList" :key="index">
-						<view class="book_info">
+						<view class="book_info" @tap="to_bookDetails" :data-id='item.id'>
 							<view class="book_cover_content">
 								<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
 							</view>
@@ -81,7 +83,6 @@
 									{{item.introduce}}
 								</view>
 							</view>
-							
 						</view>
 					</block>
 				</view>
@@ -228,14 +229,37 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex';
 	import {get,post} from '@/common/methods.js';
-	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
+	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue";
+	import edit from '@/components/wjx-edit/wjx-edit.vue';
 	export default {
 		components: {
-			uniSegmentedControl
+			uniSegmentedControl,
+			edit
+		},
+	
+		onNavigationBarButtonTap: function(e) {
+			// var that = this;  
+			// 子组件的data
+			// var editData = this.$refs.edit.submit(); 
+			 // this.editData = this.$refs.edit.submit(); 
+		//	console.log(editData)
+			
+			// console.log("内容为" + JSON.stringify(this.editData.editItems));
+			
+			var that = this;  
+			//子组件的data
+			var editData = this.$refs.edit.submit(); 
+			
+			console.log("内容为" + JSON.stringify(editData.editItems));
 		},
 		data() {
 			return {
+				editData:'',
+				title: 'Hello',
+				enteroriseList: [],
+				isVip:'',
 				bookArray: ['上传时间','阅读量'],
 				journaArray: ['上架时间','阅读量'],
 				courseArray: ['上架时间','阅读量'],
@@ -249,21 +273,34 @@
 				requiredBooks: {
 					"page_index": 1,
 					"page_size": 10,
-					"table_id": "13",
+					"table_id": "",
+					"tp": "2",
 					"sort": "createtime"
 				},
 				requiredJournal: {
 					"page_index": 1,
 					"page_size": 10,
-					"table_id": "13",
+					"table_id": "",
+					"tp": "2",
 					"resource_type": 2,
 					"sort": "createtime"
 				}
 			}
 		},
+		computed: {
+			...mapState([
+				"userid",
+				"returnData"
+			]),
+		},
 		onLoad(e) {
-			let isVip = e.joinedState;
-			if (isVip == 'init') {
+		
+			uni.setNavigationBarTitle({
+				title:''
+			});
+			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
+			this.isVip = e.joinedState;
+			if (this.isVip == 'init') {
 				uni.showModal({
 					title: '提示',
 					showCancel: false,
@@ -275,7 +312,7 @@
 						}
 					}
 				});
-			} else if (isVip == 'notVip') {
+			} else if (this.isVip == 'notVip') {
 				uni.showModal({
 					title: '提示',
 					confirmText: '免费申请',
@@ -291,12 +328,30 @@
 						}
 					}
 				});
-			} else if (isVip == 'pass') {
+			} else if (this.isVip == 'pass') {
 				console.log('hello vip')
 			}
+			get('/enterprise/company/'+this.requiredBooks.table_id,{'userId' : this.userid}).then(res=>{
+				console.log(res.data);
+				this.enteroriseList = res.data;
+			})
 
 		},
+		
 		methods: {
+			call() {
+				console.log("d方法")
+						var editData = this.$refs.edit.submit(); 
+						
+						var a= JSON.stringify(editData .editItems)
+						console.log("内容为" + a);
+						uni.showToast({
+							title: a,
+							duration: 2000,
+							icon: 'none',
+						});
+			
+			},
 			bookSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
@@ -307,7 +362,6 @@
 				}
 				post('/book/book/page',this.requiredBooks).then(res=>{
 					console.log(res);
-					
 				},err=>{
 					//异步错误处理
 				});	
@@ -370,39 +424,45 @@
 						});
 				}
 			},
+			
 			toEnterprise() {
 				uni.reLaunch({
 					url: '../index/enterprise/enterprise'
 				});
-			}
+			},
+			
+			to_bookDetails(e) {
+				console.log(e);
+				let	bookId = e.currentTarget.dataset.id;
+				uni.navigateTo({
+					
+				 url: '../books/bookDetails?id='+bookId
+				})
+			},
+			
 		}
 	}
 </script>
 
 <style scoped>
-	/* 公共组件 picker start */
-	.journal_content .list_content .picker_style{
-		display: flex; 
-		justify-content: flex-end;
+		.vip_added {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 37upx 19upx 0 0;
+		width: 236upx;
+		height: 58upx;
+		font-size: 28upx;
+		color: #fff;
+		border-radius: 4upx;
+		background: rgba(1, 177, 141, 1);
 	}
-	.journal_content .list_content .picker_style .content_search{
-		display: flex; 
-		justify-content: center; 
-		align-items: center; 
-		margin: 6upx 24upx 0 0;
-		width: 166upx; 
-		height: 40upx; 
-		color: #fff; 
-		font-size: 24upx;
-		background: #01B18D; 
+	.under_review {
+		margin: 49upx 53upx 0 0;
+		width: 236upx;
+		color: #01B18D;
+		font-size: 28upx;
 	}
-	.journal_content .list_content .picker_style .content_search .xiala_icon{
-		margin-left: 20upx;
-		width:26upx; 
-		height:14upx;
-	}
-	/* 公共组件 picker end */
-	
 	view {
 		flex-direction: row;
 	}
@@ -717,4 +777,26 @@
 
 
 	/* 课程列表 end*/
+		/* 公共组件 picker start */
+	.journal_content .list_content .picker_style{
+		display: flex; 
+		justify-content: flex-end;
+	}
+	.journal_content .list_content .picker_style .content_search{
+		display: flex; 
+		justify-content: center; 
+		align-items: center; 
+		margin: 6upx 24upx 0 0;
+		width: 166upx; 
+		height: 40upx; 
+		color: #fff; 
+		font-size: 24upx;
+		background: #01B18D; 
+	}
+	.journal_content .list_content .picker_style .content_search .xiala_icon{
+		margin-left: 20upx;
+		width:26upx; 
+		height:14upx;
+	}
+	/* 公共组件 picker end */
 </style>

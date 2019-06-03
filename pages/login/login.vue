@@ -39,6 +39,7 @@
 	import Header from '@/components/header/header.vue'
 	import toRegister from '@/components/toRegister/toRegister.vue'
 	import {mapState} from 'vuex'
+	import acquireString from '@/common/commonFunction.js'
 	import {get} from '@/common/methods.js'
 	import { onlineURL } from '@/common/common.js';
 	
@@ -48,7 +49,6 @@
 				phoneNumber: '',
 				password: '',
 				passyzm: '',
-				chars: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
 				number: 0,
 				yzmstr:'',
 				imagePath:''
@@ -64,7 +64,7 @@
 		},
 		onLoad() {
 			this.getImgcode();
-			this.yzmstr = this.randomWord(false,4);
+			this.yzmstr = acquireString.randomWord(false, 4)
 		},
 		onReady(){
 			
@@ -86,29 +86,13 @@
 			},
 			getImgcode(){
 				var yzm = this.yzmstr;
-				this.imagePath = "http://192.168.0.185:9999/code/image?randomStr="+yzm;
+				this.imagePath = onlineURL + "/code/image?randomStr="+yzm;
 				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
 					
 				// #endif 
-					// #ifdef H5 
+				// #ifdef H5 
 					
-					 // #endif 
-			},
-			randomWord(randomFlag, min, max) {
-				let str = "",
-					range = min,
-					arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-						'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-						'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-					];
-				if (randomFlag) {
-					range = Math.round(Math.random() * (max - min)) + min;
-				}
-				for (let i = 0; i < range; i++) {
-					let pos = Math.round(Math.random() * (arr.length - 1));
-					str += arr[pos];
-				}
-				return str;
+				// #endif 
 			},
 			passwordLogin() {
 				this.number = this.number +1;

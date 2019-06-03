@@ -1,6 +1,6 @@
 <template>
 	<view class="register_content">
-		<Search></Search>
+		<Header></Header>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-	import Search from '@/components/header/header.vue';
+	import Header from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import acquireString from '@/common/commonFunction.js';
 	import {
@@ -216,7 +216,7 @@
 			}
 		},
 		components: {
-			Search,
+			Header,
 			toRegister
 		}
 	}

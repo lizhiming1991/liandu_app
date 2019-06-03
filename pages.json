@@ -28,7 +28,22 @@
 		}
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseInfo",
-		    "style" : {}
+		   "style": {
+		   	"navigationBarTitleText": "uni-app",
+		   	 "app-plus" : {
+		   	    "titleNView" : {
+		   	        "buttons" : [
+		   	            {
+		   	                "type" : "none",
+		   	                "text" : "发布",
+		   	                "color" : "red",
+		   	                "float" : "right",
+		   	                "fontSize" : "14px"
+		   	            }
+		   	        ]
+		   	    }
+		   	}
+		   }
 		} 
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseSearch",
