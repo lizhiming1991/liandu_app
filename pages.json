@@ -68,10 +68,6 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/psychological/psychological",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/login/login",
             "style" : {}
         }
