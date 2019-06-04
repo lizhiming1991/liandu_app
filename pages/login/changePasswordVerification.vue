@@ -9,7 +9,7 @@
 			<text class="register_title">忘记密码</text>
 			<view class="input_row phone_number">
 				<input class="register_accout" type="number" v-model="phoneNumber" style="padding-left:80upx; font-size: 30upx;"
-				 maxlength="11" placeholder="请输入手机号码" />
+				 maxlength="11" placeholder="请输入手机号码"/>
 				<view>
 					<image class="phone_icon" src="/static/images/shouji.png" mode=""></image>
 				</view>
@@ -43,6 +43,8 @@
 	import Header from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import acquireString from '@/common/commonFunction.js';
+	import { get } from '@/common/methods.js';
+	import {mapState} from 'vuex'
 	import {
 		onlineURL
 	} from '@/common/common.js';
@@ -52,7 +54,7 @@
 				verifyStatus:'',
 				phoneStatus:'',
 				verifyNumber: '',
-				phoneNumber: '',
+				phoneNumber: '18136085708',
 				code: '',
 				countdown: '获取验证码',
 				disabled: false,
@@ -66,42 +68,47 @@
 					// 	border:''
 					// 	// border: 1px solid rgba(168, 167, 167, 1);
 				},
-				requiredPhone: {
-					"phone": '',
-					"randomStr": ""
-				},
-				requiredCode:{
-					"code": '',
-					"randomStr": ""
-				},
+				randomString: '',
 				sendNextPage: ''
 			}
 		},
 		onLoad() {
-			this.requiredPhone.randomStr = this.requiredCode.randomStr = acquireString.randomWord(false, 4)
-			
-			setTimeout(()=>{
-				console.log(this.requiredPhone.randomStr)
-			},100)
+			this.randomString = acquireString.randomWord(false, 11);
+		},
+		computed: {
+			...mapState([
+				"phone"
+			])
 		},
 		methods: {
-			// 获取input内容
-			getCode() {
+			async getCode() {
+				
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
 				if (regPhone.test(this.phoneNumber)) {
-					this.countdown = 60;
-					this.timestatus_two = false;
-					this.timestatus = true;
-					this.clear = setInterval(this.countDown, 1000);
-					uni.request({
-						url: onlineURL + '/code/phone/register?randomStr=' + this.requiredPhone.randomStr + '&&phone=' + this.phoneNumber,
-						method: 'GET',
-						success: res => {
-							//console.log(res);
-
+					await get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
+						console.log(res);
+						if(res.status == 200){
+							this.countdown = 60;
+							this.timestatus_two = false;
+							this.timestatus = true;
+							this.clear = setInterval(this.countDown, 1000);
+							get ('/code/phone/resetpsd?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res=>{
+								console.log(res);
+							});
+							return true;
 						}
+						else{
+							uni.showToast({
+								title: res.message,
+								duration: 1500,
+								icon: 'none'
+							});
+						}
+						
 					});
-				}else{
+					
+				} else {
+			
 					uni.showToast({
 						title: '请输入正确的手机号码',
 						duration: 2000,
@@ -125,94 +132,29 @@
 				}
 			},
 			next(e) {
-				// this.sendNextPage =  this.phoneNumber + '&' + this.requiredPhone.randomStr;
 				
-			this.requiredPhone.phone = this.phoneNumber;
-			this.requiredCode.code = this.verifyNumber; 
-			
-				uni.request({
-					url: onlineURL + '/auth/password/reset',
-					method: 'PUT',
-					data: this.requiredPhone,
-					header: {
-						'content-type': 'application/json'
-					},
-					success: res => {
-						//console.log(res)
-						this.phoneStatus = res.data.status.split('-')[1];
+				get('/check/code?code='+this.verifyNumber+'&&randomStr='+this.randomString, {}).then(res=>{
+					if(res.status==200){
+					
 						
+						setTimeout(() => {
+							this.$store.dispatch("modifyPhoneNumber", this.phoneNumber);
+							// this.phone = this.phoneNumber;
+							console.log("下一步:"+this.phone);
+							uni.navigateTo({
+								url: './changePassword' ,
+								
+							});
+						}, 800);
+					}
+					else{
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: 'none',
+						});
 					}
 				});
-				uni.request({
-					url: onlineURL + '/auth/password/reset',
-					method: 'PUT',
-					data: this.requiredCode,
-					header: {
-						'content-type': 'application/json'
-					},
-					success: res => {
-						console.log(res)
-						this.verifyStatus = res.data.status.split('-')[1];
-						console.log(this.verifyStatus)
-					}
-				});
-				setTimeout(()=>{
-					// var nextid=  e.currentTarget.dataset.nextid;
-					if(this.phoneStatus == 'FAILED'){
-						uni.showToast({
-							title: '账号不存在',
-							duration: 2000,
-							icon: 'none',
-						});
-					}else if(this.phoneStatus == 'ERROR'){
-						console.log(this.phoneStatus)
-						uni.showToast({
-							title: '请输入账号',
-							duration: 2000,
-							icon: 'none',
-						});
-					}else if(this.verifyStatus == 'FAILED'){
-						uni.showToast({
-							title: '验证码错误',
-							duration: 2000,
-							icon: 'none',
-						});
-					}else if(this.verifyStatus == 'ERROR'){
-						uni.showToast({
-							title: '请输入验证码',
-							duration: 2000,
-							icon: 'none',
-						});
-					}else{
-						
-						this.$store.dispatch('modifyPhoneNumber',this.phoneNumber)
-						this.$store.dispatch('modifyRandomNumber',this.requiredPhone.randomStr)
-						console.log("下一步")
-						// this.sendNextPage.phone = this.phoneNumber;
-						// this.sendNextPage.verifyNumber = this.requiredPhone.randomStr;
-						uni.navigateTo({
-							url: './changePassword' ,
-							
-						});
-					}
-				},1000);
-				
-				// uni.request({
-				// 	url: onlineURL+'/auth/login?token=' + this.phoneNumber + '&&randomStr=' + this.randomString,
-				// 	method: 'GET',
-				// 	success: res => {
-				// 		this.phoneStatus = res.data.status.split('-')[1];
-				// 		//console.log(res);
-				// 	}
-				// });
-				// uni.request({
-				// 	url: onlineURL+'/code/check/code?code=' + this.verifyNumber + '&&randomStr=' + this.randomString,
-				// 	method: 'GET',
-				// 	success: res => {
-				// 		this.verifyStatus = res.data.status.split('-')[1];
-				// 		console.log(res);
-				// 	}
-				// });
 			}
 		},
 		components: {

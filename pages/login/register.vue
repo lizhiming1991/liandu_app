@@ -4,7 +4,7 @@
 		<view class="phone_row">
 			<view style="flex: 1;">
 				<input class="register_accout" v-model="phoneNumber" type="number" style="padding-left:80upx; font-size: 30upx;"
-				 maxlength="11" placeholder="请输入手机号码" />
+				 maxlength="11" placeholder="请输入手机号码"/>
 			</view>
 			<view>
 				<image class="phone_icon" width="" src="/static/images/shouji.png" mode=""></image>
@@ -57,6 +57,7 @@
 <script>
 	import Search from '@/components/header/header.vue';
 	import acquireString from '@/common/commonFunction.js';
+	import md5 from 'js-md5';
 	import {
 		onlineURL
 	} from '@/common/common.js';
@@ -98,71 +99,36 @@
 					url: './phoneLogin'
 				});
 			},
-			getCode() {
-
+			async getCode() {
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
 				if (regPhone.test(this.phoneNumber)) {
-					// get('/auth/register', {
-					// 	'phone': this.phoneNumber,
-					// 	'randomStr': this.randomString
-					// }).then(res => {
-					// 	console.log(res)
-					// 	// let status = res.data.status.split('-')[1];
-					// 	// if (status == 'SUCCESS') {
-					// 	// 	this.reqStatus = true;
-					// 	// } else {
-					// 	// 	this.reqStatus = false;
-					// 	// }
-					// });
-					uni.request({
-						url: onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString,
-						method: 'GET',
-						success: res => {
-							console.log(res)
-					
-							this.phoneStatus = res.data.status.split('-')[1];
-							console.log(this.phoneStatus)
-								if (this.phoneStatus == 'SUCCESS') {
-									this.reqStatus = true;
-								} else {
-									this.reqStatus = false;
-								}
-						}
-					});
-					
-					setTimeout(() => {
-						if (this.reqStatus == true) {
+					//1：验证手机号是否已被注册
+					await get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
+						console.log(res);
+						if(res.status != 200){
+							//未被注册
 							this.countdown = 60;
-							this.timestatus2 = false;
+							this.timestatus_two = false;
 							this.timestatus = true;
 							this.clear = setInterval(this.countDown, 1000);
-							this.countown_style.zIndex = -1;
-							uni.request({
-								url: onlineURL + '/code/phone/register?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber,
-								method: 'GET',
-								success: res => {
-									console.log(res);
-									if (res.data.message == '验证码已发送') {
-										uni.showToast({
-											title: '发送成功',
-											duration: 2000,
-											icon: 'success',
-										});
-										console.log('获取验证码成功');
-									} else {
-										console.log('获取验证码失败');
-									}
-								}
+							get ('/code/phone/regist?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res=>{
+								uni.showToast({
+									title:'验证码已发送',
+									duration:1500,
+									icon:'success'
+								})
 							});
-						} else {
+							return true;
+						}
+						else{
 							uni.showToast({
-								title: '手机号码已被使用',
-								duration: 2000,
-								icon: 'none',
+								title: res.message,
+								duration: 1500,
+								icon: 'none'
 							});
 						}
-					}, 1000);
-
+						
+					});
 				} else {
 					uni.showToast({
 						title: '请输入正确的手机号码',
@@ -190,78 +156,59 @@
 			},
 			// 验证码倒计时 end 
 			// 注册
-			registerID() {
-
-				uni.request({
-					url: onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString,
-					method: 'GET',
-					success: res => {
-						console.log(res)
-
-						this.phoneStatus = res.data.status.split('-')[1];
-						console.log(this.phoneStatus)
-					}
-				});
-				uni.request({
-					url: onlineURL + '/auth/register?code=' + this.verifyNumber + '&&randomStr=' + this.randomString,
-					method: 'GET',
-					success: res => {
-						console.log(res)
-						this.verifyStatus = res.data.status.split('-')[1];
-						console.log(this.verifyStatus)
-					}
-				});
-				setTimeout(() => {
-					//console.log(this)
-					console.log(this.phoneStatus)
-					if (this.phoneStatus == 'FAILED') {
-						uni.showToast({
-							title: '手机号码已被使用',
-							duration: 2000,
-							icon: 'none',
-						});
-						return false;
-					} else if (this.phoneStatus == 'ERROR') {
-						uni.showToast({
-							title: '手机号码格式不正确',
-							duration: 2000,
-							icon: 'none',
-						});
-						return false;
-					} else if (this.verifyStatus == 'FAILED') {
-						uni.showToast({
-							title: '验证码错误',
-							duration: 2000,
-							icon: 'none',
-						});
-						return false;
-					} else if (this.verifyStatus == 'ERROR') {
-						uni.showToast({
-							title: '请输入验证码',
-							duration: 2000,
-							icon: 'none',
-						});
-						return false;
-					} else {
+			async registerID() {
+				if(this.phoneNumber == null || this.phoneNumber==''){
+					uni.showToast({
+						title: '请输入手机号码',
+						duration: 2000,
+						icon: 'none',
+					});
+					return false;
+				}
+				if(this.verifyNumber == null || this.verifyNumber==''){
+					uni.showToast({
+						title: '请输入验证码',
+						duration: 2000,
+						icon: 'none',
+					});
+					return false;
+				}
+				if(this.password == null || this.password==''){
+					uni.showToast({
+						title: '请输入密码',
+						duration: 2000,
+						icon: 'none',
+					});
+					return false;
+				}
+				await get('/check/code?code='+this.verifyNumber+'&&randomStr='+this.randomString, {}).then(res=>{
+					if(res.status==200){
+						
 						let regPwd = /^[a-z0-9A-Z]{6,14}$/;
 						if (regPwd.test(this.password)) {
-							uni.request({
-								url: onlineURL + '/auth/register?phone=' + this.phoneNumber + '&&randomStr=' + this.randomString +
-									'&&password=' + this.password,
-								method: 'GET',
-								success: res => {
-									// let register = res.data.status;
-									// this.registerStatus = register.split('-')[1];
+							post('/user/regist', {"phone":this.phoneNumber, "password": md5(this.password)}).then(res=>{
+								if(res.status==200){
 									uni.showToast({
-										title: '注册成功',
+										title: res.message,
 										duration: 2000,
 										icon: 'success',
+									});
+									get('/user/account/' + this.phoneNumber).then(res => {
+										console.log(res);
+										this.$store.dispatch("changeUserid", res.data.id);
 									});
 									setTimeout(() => {
 										uni.reLaunch({
 											url: '../index/index/index'
 										});
 									}, 1000);
+								}
+								else{
+									uni.showToast({
+										title: res.message,
+										duration: 2000,
+										icon: 'none',
+									});
 								}
 							});
 						} else {
@@ -271,10 +218,17 @@
 								icon: 'none',
 							});
 						}
-
-
 					}
-				}, 1000)
+					else{
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: 'none',
+						});
+					}
+				});
+				
+				
 			}
 		},
 		components: {

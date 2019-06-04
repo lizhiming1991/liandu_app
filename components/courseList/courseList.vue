@@ -1,15 +1,18 @@
 <template>
-	<view class="">
+	<view class="list_content">
 		<block v-for="(item,index) in courseList" :key="index">
 			<view class="bottom_border">
 				<view class="course_content" style="flex-direction: column;">
-					<view class="course_cover">
-						<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-						<view class="member_icon">会员</view>
+					<view @tap="to_details(item.id)">
+						<view class="course_cover">
+							<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
+							<view class="member_icon">会员{{item.id}}</view>
+						</view>
+						<view class="course_title">
+							{{item.courseName}}
+						</view>
 					</view>
-					<view class="course_title">
-						{{item.courseName}}
-					</view>
+					
 					<view class="course_info">
 						<view class="course_teacher">
 							<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
@@ -33,15 +36,15 @@
 		],
 		data() {
 			return {
-				
+					
 			}
 		},
 		onLoad() {
-			console.log(111)
-			console.log(courseList)
 		},
 		methods: {
-			
+			to_details(cid) {
+				this.$emit('toDetails',{'lld':cid})
+			}
 		},
 	}
 </script>
