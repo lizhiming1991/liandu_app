@@ -71,11 +71,12 @@
 				</view>
 			</view>
 		</block>
-		
+		<navigator url="../../login/logout">To logout</navigator>
 	</view>
 </template>
 
 <script>
+	import {mapState} from 'vuex';
 	import {get,post} from '@/common/methods.js';
 	import {
 		onlineURL
@@ -92,6 +93,11 @@
 				targetValue: '',
 				tradeValue:''
 			};
+		},
+		computed: {
+			...mapState([
+				"userid"
+			]),
 		},
 		onLoad() {
 			get('/enterprise/company/trade/all').then(res=>{
@@ -113,38 +119,23 @@
 // 				}
 // 			});
 			//首次加载地区列表
-			// get('/enterprise/company/trade/all').then(res=>{
-			// 	console.log(res);
-			// 	for (let data of res.data) {
-			// 		this.trade.push(data);
-			// 	}
-			// });
-			uni.request({
-				url: onlineURL + '/enterprise/company/region/all',
-				method: 'GET',
-				success: (res) => {
-					console.log(res.data.data);
-					for (let data of res.data.data) {
-						console.log(data)
-						let area = data.split("市");
-						if (area.length == 1) {
-							this.region.push(area[0])
-						} else if (area.length == 2) {
-							this.region.push(area[0] + '市')
-						}
+			get('/enterprise/company/region/all').then(res=>{
+				console.log(res);
+				for (let data of res.data) {
+					console.log(data)
+					let area = data.split("市");
+					if (area.length == 1) {
+						this.region.push(area[0])
+					} else if (area.length == 2) {
+						this.region.push(area[0] + '市')
 					}
-					// this.region = res.data.data;
 				}
 			});
 			//首次加载列表数据
-			uni.request({
-				url: onlineURL + '/enterprise/company/all?userId=1340',
-				method: 'GET',
-				success: (res) => {
-					this.enterpriseList = res.data.data;
-					console.log(this.enterpriseList);
-				}
-			});
+			get('/enterprise/company/all',{'userId': this.userid }).then(res=>{
+				console.log(res)
+				this.enterpriseList = res.data
+				});
 		},
 		methods: {
 			toApplyMember: function(e) {
@@ -162,23 +153,29 @@
 				this.tradeValue = this.region[e.target.value]
 				console.log(this.targetValue)
 				if (this.tradeValue != '地区') {
-					uni.request({
-						url: onlineURL + '/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340',
-						method: 'GET',
-						success: (res) => {
-							this.enterpriseList = res.data.data;
-				
-						}
-					});
+					get('/enterprise/company/all/region',{'region':this.tradeValue,'userId':this.userid}).then(res=>{
+							this.enterpriseList = res.data
+						});
+				// 	uni.request({
+				// 		url: onlineURL + '/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340',
+				// 		method: 'GET',
+				// 		success: (res) => {
+				// 			this.enterpriseList = res.data.data;
+				// 
+				// 		}
+				// 	});
 				} else {
-					uni.request({
-						url: onlineURL + '/enterprise/company/all?userId=1340',
-						method: 'GET',
-						success: (res) => {
-							this.enterpriseList = res.data.data;
-							console.log(this.enterpriseList);
-						}
+					get('/enterprise/company/all',{ 'userId': this.userid}).then(res=>{
+						this.enterpriseList = res.data;
 					});
+					// uni.request({
+					// 	url: onlineURL + '/enterprise/company/all?userId=1340',
+					// 	method: 'GET',
+					// 	success: (res) => {
+					// 		this.enterpriseList = res.data.data;
+					// 		console.log(this.enterpriseList);
+					// 	}
+					// });
 				}
 			},
 			regionChange: function(e) {
@@ -188,23 +185,29 @@
 				this.targetValue = this.region[e.target.value]
 				console.log(this.targetValue)
 				if (this.targetValue != '地区') {
-					uni.request({
-						url: onlineURL + '/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
-						method: 'GET',
-						success: (res) => {
-							this.enterpriseList = res.data.data;
-
-						}
-					});
+					get('/enterprise/company/all/region',{'region': this.targetValue,'userId': this.userid}).then(res=>{
+						this.enterpriseList = res.data;
+						});
+					
+// 					uni.request({
+// 						url: onlineURL + '/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
+// 						method: 'GET',
+// 						success: (res) => {
+// 							this.enterpriseList = res.data.data;
+// 						}
+// 					});
 				} else {
-					uni.request({
-						url: onlineURL + '/enterprise/company/all?userId=1340',
-						method: 'GET',
-						success: (res) => {
-							this.enterpriseList = res.data.data;
-							console.log(this.enterpriseList);
-						}
-					});
+					get('/enterprise/company/all',{ 'userId': this.userid }).then(res=>{
+							this.enterpriseList = res.data;
+						});
+					// uni.request({
+					// 	url: onlineURL + '/enterprise/company/all?userId=1340',
+					// 	method: 'GET',
+					// 	success: (res) => {
+					// 		this.enterpriseList = res.data.data;
+					// 		console.log(this.enterpriseList);
+					// 	}
+					// });
 				}
 			},
 			nextPage(e) {

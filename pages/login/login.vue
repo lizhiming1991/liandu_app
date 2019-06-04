@@ -71,18 +71,31 @@
 		},
 		methods: {
 			checkphone(){//18136085708 123456
-				uni.request({
-					url: onlineURL + '/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
-					method:'GET',
-					success: (res)=>{
+				get('/auth/login',{'token':this.phoneNumber,'randomStr': this.yzmstr }).then(res=>{
+					if(res.message == '账号存在'){
+						return false
+					}else{
 						uni.showToast({
-							title: res.data.message,
+							title: res.message,
 							duration: 1500,
 							icon: 'none'
 						});
-						
 					}
-				})
+					console.log(res)
+					
+				});
+				// uni.request({
+				// 	url: onlineURL + '/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
+				// 	method:'GET',
+				// 	success: (res)=>{
+				// 		uni.showToast({
+				// 			title: res.data.message,
+				// 			duration: 1500,
+				// 			icon: 'none'
+				// 		});
+				// 		
+				// 	}
+				// })
 			},
 			getImgcode(){
 				var yzm = this.yzmstr;
@@ -126,32 +139,55 @@
 				}else{
 					this.passyzm = this.yzmstr;
 				}
-				uni.request({
-					url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
-					method: 'GET',
-					success: res => {
-						//console.log(res);
-						if (res.data.message == '登录成功') {
-							uni.showToast({
-								title: '登录成功!',
-								duration: 1500,
-								icon: 'none'
-							});
-							this.$store.dispatch("changeUserid",res.data.data.id);
-							console.log(res.data)
-							uni.reLaunch({
-								url: '../index/index/index'
-							});
-							
-						} else {
-							uni.showToast({
-								title: '密码错误',
-								duration: 2000,
-								icon: 'none',
-							});
-						}
+				
+				get('/auth/login',{'token':this.phoneNumber,'password': this.password, 'randomStr': this.passyzm }).then(res=>{
+					if (res.message == '登录成功') {
+						uni.showToast({
+							title: '登录成功!',
+							duration: 1500,
+							icon: 'none'
+						});
+						this.$store.dispatch("changeUserid",res.data.id);
+						uni.reLaunch({
+							url: '../index/index/index'
+						});
+						
+					} else {
+						uni.showToast({
+							title: '密码错误',
+							duration: 2000,
+							icon: 'none',
+						});
 					}
+					console.log(res.message)
 				});
+						
+				// uni.request({
+				// 	url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
+				// 	method: 'GET',
+				// 	success: res => {
+				// 		//console.log(res);
+				// 		if (res.data.message == '登录成功') {
+				// 			uni.showToast({
+				// 				title: '登录成功!',
+				// 				duration: 1500,
+				// 				icon: 'none'
+				// 			});
+				// 			this.$store.dispatch("changeUserid",res.data.data.id);
+				// 			console.log(res.data)
+				// 			uni.reLaunch({
+				// 				url: '../index/index/index'
+				// 			});
+				// 			
+				// 		} else {
+				// 			uni.showToast({
+				// 				title: '密码错误',
+				// 				duration: 2000,
+				// 				icon: 'none',
+				// 			});
+				// 		}
+				// 	}
+				// });
 			}
 		},
 		components: {

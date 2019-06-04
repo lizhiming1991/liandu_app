@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { onlineURL } from '@/common/common.js';
 import {mapState} from 'vuex';
 export default {
 	name: 'uni-edit',
@@ -132,19 +133,28 @@ export default {
 							value:temp[0],
 							progress:0
 						})
-											
+										
+						// uni.uploadFile({
+						// 	url: onlineURL + '/enterprise/associator-company/upload',
+						// 	filePath: this.imageList[0],
+						// 	name: 'file',
+						// 	formData: {
+						// 		'user': 'test'
+						// 	},
+						// 	success: (uploadFileRes) => {
+						// 		console.log(JSON.parse(uploadFileRes.data).data);
+						// 		this.imgPath = JSON.parse(uploadFileRes.data).data;
+						// 	}
+						// });					
 						//图片上传至服务器
 						var uploadTask = uni.uploadFile({
-								url: 'http://demo.com/upload', //仅为示例，非真实的接口地址,需要替换成自己的接口地址
+								url: onlineURL + '/enterprise/associator-company/upload', 
 								filePath: temp[0],
 								name: 'sendImg',
 								success: (e) => {
 									var data = JSON.parse(e.data);
 									that.$set(that.editItems[result - 1],'value',data.pic_path);
-								},
-								complete: (e) => {
-									// uni.hideLoading()
-								} 
+								}
 						});
 						
 						

@@ -154,21 +154,26 @@
 						icon: 'none',
 					});
 				}else{
-					uni.request({
-						url: onlineURL + '/enterprise/associator-company/add',
-						method: 'POST',
-						data: requiredInfo,
-						// header: {
-						// 	'content-type': 'application/json'
-						// },
-						success: res => {
-							console.log(res);
+					post('/enterprise/associator-company/add',requiredInfo).then(res=>{
 							uni.reLaunch({
 								url: './submitted'
 							});
-						},
-						
-					});
+						});	
+					// uni.request({
+					// 	url: onlineURL + '/enterprise/associator-company/add',
+					// 	method: 'POST',
+					// 	data: requiredInfo,
+					// 	// header: {
+					// 	// 	'content-type': 'application/json'
+					// 	// },
+					// 	success: res => {
+					// 		console.log(res);
+					// 		uni.reLaunch({
+					// 			url: './submitted'
+					// 		});
+					// 	},
+					// 	
+					// });
 				}
 			},
 			//选择图片
@@ -180,16 +185,17 @@
 						// #endif
 						count: this.imageLength - this.imageList.length,
 						success: (res) => {
-							console.log(res);
+							//console.log(res);
 							this.imageList = this.imageList.concat(res.tempFilePaths);
 							uni.uploadFile({
-								url: 'http://192.168.0.210:9999/enterprise/associator-company/upload',
+								url: onlineURL + '/enterprise/associator-company/upload',
 								filePath: this.imageList[0],
 								name: 'file',
 								formData: {
 									'user': 'test'
 								},
 								success: (uploadFileRes) => {
+									console.log('111')
 									console.log(JSON.parse(uploadFileRes.data).data);
 									this.imgPath = JSON.parse(uploadFileRes.data).data;
 								}

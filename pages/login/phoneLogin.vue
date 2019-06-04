@@ -44,6 +44,7 @@
 </template>
 
 <script>
+	import {get} from '@/common/methods.js';
 	import Search from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import acquireString from '@/common/commonFunction.js'
@@ -165,31 +166,15 @@
 						duration: 2000,
 						icon: 'success',
 						});
+					get('/user/account/'+this.phoneNumber).then(res=>{
+						 this.$store.dispatch("changeUserid",res.data.id);
+					});
+						
 						setTimeout(()=>{
 							uni.reLaunch({
 								url: '../index/index/index'
 							});
-						},1000);
-						// uni.request({
-						// 	url: onlineURL+'/auth/login?token=' + this.phoneNumber+'&&password=' + '&&randomStr=' + this.randomString,
-						// 	method: 'GET',
-						// 	success: res => {
-						// 		console.log(res);
-						// 		// if (res.data.message == '登录成功') {
-						// 		// 	uni.reLaunch({
-						// 		// 		url: '../index/index/index'
-						// 		// 	});
-						// 		// 	console.log('登录成功');
-						// 		// } else {
-						// 		// 	uni.showToast({
-						// 		// 		title: '密码错误',
-						// 		// 		duration: 2000,
-						// 		// 		icon: 'none',
-						// 		// 	});
-						// 		// 	console.log('登录失败');
-						// 		// }
-						// 	}
-						// });
+						},800);
 					}
 				},1000);
 				// if(this.phoneStatus == 'ERROR'){

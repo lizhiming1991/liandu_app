@@ -28,7 +28,7 @@
 				<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
 			</view>
 			<view class="label_right">
-				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.address}}</text>
+				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region}}</text>
 			</view>
 		</view>
 		</block>
@@ -36,9 +36,7 @@
 		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
 			<view v-show="current === 0">
-				<view class="content" style="margin-top: 50upx;">
-					<edit  ref="edit" :call="call" placeText="写点什么吧..."></edit>
-				</view>
+				
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
@@ -85,6 +83,7 @@
 							</view>
 						</view>
 					</block>
+					<not-found v-if="bookList==''"></not-found>
 				</view>
 			</view>
 			<!-- 图书列表 end -->
@@ -118,6 +117,7 @@
 							</view>
 						</view>
 					</block>
+					<not-found v-if="journalList==''"></not-found>
 				</view>
 			</view>
 			<!-- 杂志列表 end-->
@@ -141,86 +141,30 @@
 				</view>
 				<!-- Picker 公共组件 end -->
 				<view class="content_list">
-					<view class="bottom_border">
-						<view class="course_content" style="flex-direction: column;">
-							<view class="course_cover">
-								<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-							</view>
-							<view class="course_title">
-								课程名称课程名称课程名称
-							</view>
-							<view class="course_info">
-								<view class="course_teacher">
-									<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
-									<text class="course_teacher_name">李老师</text>
+					<block v-for="(item,index) in courseList" :key="index">
+						<view class="bottom_border">
+							<view class="course_content" style="flex-direction: column;">
+								<view class="course_cover">
+									<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
+									<view class="member_icon">会员</view>
 								</view>
-								<view class="course_times">
-									<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
-									<text class="course_time_date">2019/1/1-2019/2/2</text>
+								<view class="course_title">
+									{{item.courseName}}
 								</view>
-							</view>
-						</view>
-					</view>
-					<view class="bottom_border">
-						<view class="course_content" style="flex-direction: column;">
-							<view class="course_cover">
-								<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-							</view>
-							<view class="course_title">
-								课程名称课程名称课程名称
-							</view>
-							<view class="course_info">
-								<view class="course_teacher">
-									<image src="/static/images/pic_my.png" class="course_teacher_icon" mode=""></image>
-									<text class="course_teacher_name">李老师</text>
-								</view>
-								<view class="course_times">
-									<image src="/static/images/pic_my.png" mode="" class="course_times_icon"></image>
-									<text class="course_time_date">2019/1/1-2019/2/2</text>
+								<view class="course_info">
+									<view class="course_teacher">
+										<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
+										<text class="course_teacher_name">{{item.teacherName}}</text>
+									</view>
+									<view class="course_times">
+										<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
+										<text class="course_time_date">{{item.updateTime.split('T')[0]}}</text>
+									</view>
 								</view>
 							</view>
 						</view>
-					</view>
-					<view class="bottom_border">
-						<view class="course_content" style="flex-direction: column;">
-							<view class="course_cover">
-								<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-							</view>
-							<view class="course_title">
-								课程名称课程名称课程名称
-							</view>
-							<view class="course_info">
-								<view class="course_teacher">
-									<image src="/static/images/pic_my.png" class="course_teacher_icon" mode=""></image>
-									<text class="course_teacher_name">李老师</text>
-								</view>
-								<view class="course_times">
-									<image src="/static/images/pic_my.png" mode="" class="course_times_icon"></image>
-									<text class="course_time_date">2019/1/1-2019/2/2</text>
-								</view>
-							</view>
-						</view>
-					</view>
-					<view class="bottom_border">
-						<view class="course_content" style="flex-direction: column;">
-							<view class="course_cover">
-								<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-							</view>
-							<view class="course_title">
-								课程名称课程名称课程名称
-							</view>
-							<view class="course_info">
-								<view class="course_teacher">
-									<image src="/static/images/pic_my.png" class="course_teacher_icon" mode=""></image>
-									<text class="course_teacher_name">李老师</text>
-								</view>
-								<view class="course_times">
-									<image src="/static/images/pic_my.png" mode="" class="course_times_icon"></image>
-									<text class="course_time_date">2019/1/1-2019/2/2</text>
-								</view>
-							</view>
-						</view>
-					</view>
+					</block>
+					<not-found v-if="courseList==''"></not-found>
 				</view>
 			</view>
 			<!-- 课程列表 end -->
@@ -229,6 +173,7 @@
 </template>
 
 <script>
+	import notFound from '@/components/notFound/notFoundContetn.vue'
 	import {mapState} from 'vuex';
 	import {get,post} from '@/common/methods.js';
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue";
@@ -236,26 +181,12 @@
 	export default {
 		components: {
 			uniSegmentedControl,
-			edit
-		},
-	
-		onNavigationBarButtonTap: function(e) {
-			// var that = this;  
-			// 子组件的data
-			// var editData = this.$refs.edit.submit(); 
-			 // this.editData = this.$refs.edit.submit(); 
-		//	console.log(editData)
-			
-			// console.log("内容为" + JSON.stringify(this.editData.editItems));
-			
-			var that = this;  
-			//子组件的data
-			var editData = this.$refs.edit.submit(); 
-			
-			console.log("内容为" + JSON.stringify(editData.editItems));
+			edit,
+			notFound 
 		},
 		data() {
 			return {
+				resData:'',
 				editData:'',
 				title: 'Hello',
 				enteroriseList: [],
@@ -268,6 +199,7 @@
 				courseIndex: 0,
 				bookList: [],
 				journalList: [],
+				courseList:[],
 				items: ['主页', '图书', '杂志', '课程'],
 				current: 0,
 				requiredBooks: {
@@ -289,15 +221,17 @@
 		},
 		computed: {
 			...mapState([
-				"userid",
-				"returnData"
+				"userid"
 			]),
 		},
 		onLoad(e) {
-		
-			uni.setNavigationBarTitle({
-				title:''
+			get('/enterprise/company/13?userId=1340').then(res=>{
+				console.log(res.data.richText)
+				// this.resData = res.data.richText
 			});
+			// uni.setNavigationBarTitle({
+			// 	title:''
+			// });
 			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
 			this.isVip = e.joinedState;
 			if (this.isVip == 'init') {
@@ -331,27 +265,13 @@
 			} else if (this.isVip == 'pass') {
 				console.log('hello vip')
 			}
-			get('/enterprise/company/'+this.requiredBooks.table_id,{'userId' : this.userid}).then(res=>{
+			get('/enterprise/company/' + this.requiredBooks.table_id,{'userId' : this.userid}).then(res=>{
 				console.log(res.data);
 				this.enteroriseList = res.data;
 			})
-
 		},
 		
 		methods: {
-			call() {
-				console.log("d方法")
-						var editData = this.$refs.edit.submit(); 
-						
-						var a= JSON.stringify(editData .editItems)
-						console.log("内容为" + a);
-						uni.showToast({
-							title: a,
-							duration: 2000,
-							icon: 'none',
-						});
-			
-			},
 			bookSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
@@ -393,6 +313,9 @@
 				}
 				if (index == 1) {
 					console.log('111')
+					// post('/book/book/page',this.requiredBooks).then(res=>{
+					// 	this.bookList = res.data.pageBooks;
+					// });	
 					uni.request({
 						url: 'http://192.168.0.210:9999/book/book/page',
 						method: 'POST',
@@ -408,6 +331,10 @@
 					});
 				}else if(index == 2){
 						console.log('222')
+						// post('/book/book/page',this.requiredJournal).then(res=>{
+						// 	this.journalList = res.data.pageBooks;
+						// });	
+						
 						uni.request({
 							url: 'http://192.168.0.210:9999/book/book/page',
 							method: 'POST',
@@ -422,6 +349,13 @@
 							},
 						
 						});
+				}else if(index == 3){
+					console.log(123)
+					get('/course/all',{'providerId':this.requiredBooks.table_id}).then(res=>{
+						console.log(res.data)
+						this.courseList = res.data
+						
+				});
 				}
 			},
 			
@@ -469,7 +403,7 @@
 
 	page {
 		display: flex;
-		background-image: url('http://192.168.0.210/attached/image/20190530/20190530103654_ccuh.png');
+		background-image: url('http://192.168.0.210/attached/image/ceshi/1.png');
 		background-repeat: no-repeat;
 		background-position-y: -250upx;
 	}
@@ -637,9 +571,6 @@
 		display: flex;
 		margin: 0 25upx 0 29upx;
 	}
-	.journal_content .list_content .content_list .book_cover_content .book_free{
-		width: ;
-	}
 	.journal_content .list_content .content_list .booK_cover_img {
 		display: flex;
 		width: 184upx;
@@ -774,7 +705,19 @@
 		color: #888;
 		font-size: 26upx;
 	}
-
+	.journal_content .list_content .content_list .member_icon{
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		width:95upx;
+		height:44upx;
+		font-size:27upx;
+		color: #fff;
+		background: #FF546C;
+	}
 
 	/* 课程列表 end*/
 		/* 公共组件 picker start */
@@ -797,6 +740,10 @@
 		margin-left: 20upx;
 		width:26upx; 
 		height:14upx;
+	}
+	
+	.journal_content .list_content .content_list .course_cover{
+		position: relative;
 	}
 	/* 公共组件 picker end */
 </style>

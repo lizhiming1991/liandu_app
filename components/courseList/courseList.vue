@@ -1,0 +1,122 @@
+<template>
+	<view class="">
+		<block v-for="(item,index) in courseList" :key="index">
+			<view class="bottom_border">
+				<view class="course_content" style="flex-direction: column;">
+					<view class="course_cover">
+						<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
+						<view class="member_icon">会员</view>
+					</view>
+					<view class="course_title">
+						{{item.courseName}}
+					</view>
+					<view class="course_info">
+						<view class="course_teacher">
+							<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
+							<text class="course_teacher_name">{{item.teacherName}}</text>
+						</view>
+						<view class="course_times">
+							<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
+							<text class="course_time_date">{{item.updateTime.split('T')[0]}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</template>
+
+<script>
+	export default {
+		props:[
+			"courseList"
+		],
+		data() {
+			return {
+				
+			}
+		},
+		onLoad() {
+			console.log(111)
+			console.log(courseList)
+		},
+		methods: {
+			
+		},
+	}
+</script>
+
+<style scoped>
+	
+	.course_content {
+		margin-left: 31upx;
+		padding-bottom: 45upx;
+		width: 643upx;
+	
+	}
+	.course_cover{
+		position: relative;
+		margin-top: 31upx;
+	}
+	.course_cover_img {
+		width: 643upx;
+		height: 374upx;
+	}
+	
+	.bottom_border {
+		border-bottom: 1px solid #eee;
+	}
+	
+	.course_content .course_title {
+		color: #333;
+		font-size: 30upx;
+	}
+	
+	.course_teacher,
+	.course_times {
+		display: flex;
+		align-items: center;
+	}
+	
+	.course_teacher_icon {
+		margin: 0 23upx 0 0upx;
+		width: 30upx;
+		height: 30upx;
+	}
+	
+	.course_times_icon {
+		margin-right: 22upx;
+		width: 36upx;
+		height: 36upx;
+	}
+	
+	.course_info {
+		margin-top: 39upx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.course_time_date {
+		color: #888;
+		font-size: 26upx;
+	}
+	
+	.course_teacher_name {
+		color: #888;
+		font-size: 26upx;
+	}
+	.member_icon{
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		width:95upx;
+		height:44upx;
+		font-size:27upx;
+		color: #fff;
+		background: #FF546C;
+	}
+</style>
