@@ -91,10 +91,6 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/art_training/art_training",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/login/login",
             "style" : {}
         }
@@ -118,7 +114,14 @@
 		    "path" : "pages/login/changePasswordVerification",
 		    "style" : {}
 		}
-        
+        ,{
+            "path" : "pages/course/course",
+            "style" : {}
+        }
+		,{
+		    "path" : "pages/course/courseDetails",
+		    "style" : {}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

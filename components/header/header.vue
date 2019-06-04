@@ -86,6 +86,7 @@
 
 <style lang="scss" scoped>
 	.h_header{
+		width: 100%;
 		background-color: #fff;
 		padding: 0 40upx;
 		height: 100upx;

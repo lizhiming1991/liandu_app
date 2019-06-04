@@ -1,5 +1,5 @@
 <template>
-	<view class="contents">
+	<view class="contents" v-if="showall">
 		<view class="m_top">
 			<view class="m_head">
 				<image class="m_photo" src="../../../static/image/userphoto.jpeg"></image>
@@ -114,7 +114,7 @@
 	export default {
 		data() {
 			return {
-				
+				showall: false
 			};
 		},
 		computed: {
@@ -124,19 +124,20 @@
 		},
 		onLoad(){
 			
+			
 		},
 		onShow(){
-			console.log(this.userid)
-			if(this.userid == ""){
-				uni.navigateTo({
-					url: '/pages/login/phoneLogin'
-				});
-			}else{
-				console.log("ismy")
-			}
+			
 		},
 		onReady(){
-			
+			if(this.userid == "" || this.userid == undefined || this.userid == "undefined"){
+				console.log(33)
+				uni.redirectTo({
+					url: '/pages/login/phoneLogin',
+				});
+			}else{
+				this.showall = true;
+			}
 		}
 	}
 </script>

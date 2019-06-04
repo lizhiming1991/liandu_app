@@ -35,9 +35,9 @@
 		</view>
 		
 		<!-- 评论列表 -->
-		<CommentList :itemData="comList" :allNum="allDiss" :ImgUrl="ImgUrl"></CommentList>
+		<CommentList :itemData="comList"  :allNum="allDiss" :ImgUrl="ImgUrl" @addreply="addreply" @changepraised="changepraise"></CommentList>
 		<!-- 评论入口组件 -->
-		<Comment @showComment="showComments" ></Comment>
+		<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
 		<!-- 发表评论组件 -->
 		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
 	</view>
@@ -49,7 +49,7 @@
 	import CommentList from '@/components/commentList/commentList.vue'
 	import addComment from '@/components/addComment/addComment.vue'
 	import {mapState} from 'vuex'
-	import {get,post} from '@/common/methods.js'
+	import {get,post,deletes} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
 	export default {
 		data() {
@@ -61,6 +61,13 @@
 				comList: [],
 				bid: 0,
 				isshow: false,
+				scid: 0,
+				dzid: 0,
+				sharedata:{
+					"dz": 0,
+					"fx": 0,
+					"sc": 0
+				}
 			};
 		},
 		computed:{
@@ -75,8 +82,13 @@
 			get("/book/book/"+bid+"?associatorid="+this.userid).then(res=>{
 				if(res.status == 200){
 					this.bookinfo = res.data.bookinfo;
+					this.scid = res.data.isPraiseAndFavorite.isFavorite;
+					this.dzid = res.data.isPraiseAndFavorite.isPraise;
+					this.sharedata.dz = this.bookinfo.praise;
+					this.sharedata.fx = this.bookinfo.share;
+					this.sharedata.sc = this.bookinfo.collect;
+					console.log(res.data)
 				}
-				console.log(res)
 			})
 			this.getDisscusslist();
 			
@@ -111,7 +123,6 @@
 				
 			},
 			goRead(id){
-				console.log(this.bid)
 				get("/book/book/getBookPath/"+this.bid,{}).then(res=>{
 					console.log(res)
 					if(res.status == 200){
@@ -148,6 +159,146 @@
 					}
 					console.log(res)
 				})
+			},
+			addreply(item){
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以回复哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				post("/book/comment/reply",{
+					content: item.text,
+					tableId: item.id,
+					operationUser: this.userid,
+					tableName: "book_grade"
+				}).then(res=>{
+					if(res.status == 200){
+						this.getDisscusslist();
+						uni.showToast({
+							title: "发表回复成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+						console.log(res)
+					}
+					
+				})
+			},
+			changepraise(item){
+				console.log(item)
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以点赞哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(item.id == 0){
+					post("/social/praise",{
+						associatorid: this.userid,
+						dataid: item.pid,
+						tablename: "book_grade"
+					}).then(res=>{
+						this.getDisscusslist();
+						uni.showToast({
+							title: "评论点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/praise",{
+						id: item.id
+					}).then(res=>{
+						this.getDisscusslist();
+						uni.showToast({
+							title: "取消点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}
+				
+			},
+			changeDZ(){
+				console.log(this.dzid)
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以点赞哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.dzid == 0){
+					post("/social/praise",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.dzid = res.data;
+						this.sharedata.dz = this.sharedata.dz +1;
+						uni.showToast({
+							title: "点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/praise",{
+						id: this.dzid
+					}).then(res=>{
+						this.dzid = 0;
+						this.sharedata.dz = this.sharedata.dz -1;
+						uni.showToast({
+							title: "取消点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}
+			},
+			changeSC(){
+				console.log(this.scid)
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以收藏哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.scid == 0){
+					post("/social/favorite",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.scid = res.data;
+						this.sharedata.sc = this.sharedata.sc +1;
+						uni.showToast({
+							title: "收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/favorite",{
+						id: this.scid
+					}).then(res=>{
+						this.scid = 0;
+						this.sharedata.sc = this.sharedata.sc -1;
+						uni.showToast({
+							title: "取消收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}
 			}
 			
 		},

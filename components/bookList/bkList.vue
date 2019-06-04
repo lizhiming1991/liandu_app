@@ -9,20 +9,21 @@
 			</view>
 			
 			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" @scrolltolower="getMore">
-			   <view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
-			   	<view class="bk_img">
-			   		<image class="bk_pic" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
-			   		<!-- <text class="bk_jx">精选</text> -->
-			   	</view>
-			   	<view class="bk_pro">
-			   		<view class="bk_name">
-			   			<text class="b_btitle">{{item.name}}</text>
-			   			<text class="col_red" v-if="item.ispay ==1 || item.ispublic == 0">{{gettext(item.ispay,item.ispublic)}}</text>
-			   		</view>
-			   		<view class="bk_username">{{item.authorname}}</view>
-			   		<view class="bk_text">{{item.introduce}}</view>
-			   	</view>
-			   </view>
+				<view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
+					<view class="bk_img">
+						<image class="bk_pic" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
+						<!-- <text class="bk_jx">精选</text> -->
+					</view>
+					<view class="bk_pro">
+						<view class="bk_name">
+							<text class="b_btitle">{{item.name}}</text>
+							<text class="col_red" v-if="item.ispay ==1 || item.ispublic == 0">{{gettext(item.ispay,item.ispublic)}}</text>
+						</view>
+						<view class="bk_username">{{item.authorname}}</view>
+						<view class="bk_text">{{item.introduce}}</view>
+					</view>				
+				</view>
+				<!-- <uniLoadMore :status="messages" ></uniLoadMore> -->
 			</scroll-view>
 			
 		</view>
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-	// import {uniLoadMore} from '@dcloudio/uni-ui'
+	// import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
 	export default {
 		data (){
 			return{
@@ -87,7 +88,8 @@
 		props:[
 			"bookdata",
 			"typedata",
-			"ImgUrl"
+			"ImgUrl",
+			// "messages"
 		]
 			
 	}

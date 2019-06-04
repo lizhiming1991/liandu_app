@@ -4,9 +4,10 @@
 			<view class="c_father">
 				<input type="text" disabled placeholder="发表评论..." class="c_input" @tap="showComment">
 			</view>
-			<view class="c_icons"><image class="c_pic" src="../../static/images/icon_mdz.png"></image> 328</view>
-			<view class="c_icons"><image class="c_pic" src="../../static/images/icon_mfx.png"></image> 328</view>
-			<view class="c_icons"><image class="c_pic" src="../../static/images/icon_msc.png"></image> 328</view>
+			
+			<view class="c_icons" @tap="changeDZ"><image class="c_pic" :src="'../../static/images/icon_mdz'+(dzid == 0?'.png':'2.png')"></image>{{datas.dz}}</view>
+			<view class="c_icons"><image class="c_pic" :src="'../../static/images/icon_mfx'+(0 == 0?'.png':'.png')"></image>{{datas.fx}}</view>
+			<view class="c_icons" @tap="changeSC"><image class="c_pic" :src="'../../static/images/icon_msc'+(scid == 0?'.png':'2.png')"></image>{{datas.sc}}</view>
 		</view>
 	</view>
 </template>
@@ -16,8 +17,19 @@
 		methods:{
 			showComment(){
 				this.$emit("showComment",{})
-			}
-		}
+			},
+			changeDZ(){
+				this.$emit("changeDZ",{})
+			},
+			changeSC(){
+				this.$emit("changeSC",{})
+			},
+		},
+		props:[
+			"scid",
+			"dzid",
+			"datas"
+		]
 	}
 </script>
 

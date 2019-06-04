@@ -25,7 +25,7 @@
 		<view class="lg_navbar">
 			<view class="lg_navbars">
 				<view class="lg_navbar_item">
-					<navigator url="/pages/books/bookList">
+					<navigator url="/pages/books/bookList" class="lg_routelink">
 						<text class="lg_tname">书籍专栏</text>
 						<image class="lg_tpic" src="/static/images/icon_sjzl.png"></image>
 						<text class="lg_line"></text>
@@ -54,9 +54,11 @@
 					<text class="lg_line"></text>
 				</view>
 				<view class="lg_navbar_item">
-					<text class="lg_tname">敬请期待</text>
-					<image class="lg_tpic" src="/static/images/icon_jqqd.png"></image>
-					<text class="lg_line"></text>
+					<navigator url="/pages/course/course" class="lg_routelink">
+						<text class="lg_tname">敬请期待</text>
+						<image class="lg_tpic" src="/static/images/icon_jqqd.png"></image>
+						<text class="lg_line"></text>
+					</navigator>
 				</view>
 			</view>
 		</view>
@@ -272,6 +274,10 @@
 					box-sizing: border-box;
 					padding-left: 14upx;
 					position: relative;
+					.lg_routelink{
+						width: 100%;
+						height: 100%;
+					}
 					.lg_tname{
 						display: inline-block;
 						font-size: 30upx;

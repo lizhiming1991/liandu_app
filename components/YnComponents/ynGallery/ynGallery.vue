@@ -164,9 +164,9 @@
 		watch: {
 			async images() {
 				var that = this;
-				console.log('watch监控到images属性变化');
+				// console.log('watch监控到images属性变化');
 				this.screencenterpos = parseInt(uni.upx2px(750) / 2);
-				console.log("屏幕中点pos位置:" + this.screencenterpos + 'px');
+				// console.log("屏幕中点pos位置:" + this.screencenterpos + 'px');
 				this.upDataScrollviewLayout(this.activeviewindex);
 			},
 		},
@@ -258,7 +258,7 @@
 			// 当为0的时候,当前焦点图放到了最大
 			// 当为正的时候,与右边的index 进行互斥放大和缩小      
 			upDataScrollviewLayout(activeindex) {
-				console.log('检测到 initScrollviewLayout');
+				// console.log('检测到 initScrollviewLayout');
 				var that = this;
 
 				this.upbkcolor = false;

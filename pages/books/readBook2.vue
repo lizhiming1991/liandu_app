@@ -56,7 +56,7 @@
 		},
 		methods:{
 			onclickimg(item){
-				console.log(item)
+				// console.log(item)
 			}
 			
 		},

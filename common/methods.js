@@ -1,5 +1,5 @@
 import * as config from '@/common/config.js'
-const baseUrl = "http://192.168.0.134:9999"
+const baseUrl = "http://192.168.0.210:9999"
 // const baseUrl = "http://localhost:9999"
 
 function obj2params(obj) {
@@ -44,6 +44,30 @@ export function post(url, params) {
 			url: baseUrl + url,
 			data: params,
 			method: "POST",
+			header: {
+				'content-type': 'application/json'
+			},
+		}).then(data => {
+			let [error, suc] = data;
+			let res = suc.data;
+			if (suc.statusCode == 200 && suc.data.status.indexOf("SUCCESS") >= 0) {
+				res.status = 200;
+			}
+			resolve(res);
+		}, err => {
+			console.info(err);
+			reject(err);
+		})
+	})
+}
+
+//封装delete方法
+export function deletes(url, params) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			url: baseUrl + url,
+			data: params,
+			method: "DELETE",
 			header: {
 				'content-type': 'application/json'
 			},

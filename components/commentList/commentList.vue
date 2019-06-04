@@ -4,7 +4,7 @@
 			<text class="d_number">({{allNum}}条)</text>
 		</view>
 		<view class="lists">
-			<view class="list" v-for="(item,index2) in itemData" :key="index2">
+			<view class="list" v-for="(item,index) in itemData" :key="index">
 				<view class="p_left">
 					<image class="u_pic" :src="item.photo?(ImgUrl+item.photo):'../../static/image/sta_userphoto.png'"></image>
 				</view>
@@ -21,7 +21,7 @@
 					</view>
 					<view class="part2">
 						<text class="tag0">{{showReadState(item.state)}}</text>
-						<text class="tag" v-for="(val,index) in item.tagList" :key="index">{{val.tag}}</text>
+						<text class="tag" v-for="(val,index2) in item.tagList" :key="index2">{{val.tag}}</text>
 					</view>
 					<view class="part3">
 						{{item.content}}
@@ -29,15 +29,16 @@
 					<view class="part4">
 						<text>{{item.createtime}}</text>
 						<view class="shows">
-							<text>回复({{item.commmentNums}})</text>
+							<text @tap="showalert(index)">回复({{item.commmentNums}})</text>
 							<view class="s_dz">
-								<image class="dz_pic" src="../../static/images/iocn_dz.png"></image> 0
+								<image class="dz_pic" @tap="changepraise(item.isPraise,item.id)" :src="'../../static/images/icon_'+(item.isPraise == 0?'dz.png':'dz2.png')"></image> 
+								{{item.commentLikeNums}}
 							</view>
 						</view>
 					</view>
-					<view class="part5">
-						<input class="p_input" type="text" :placeholder="'回复:@'+item.loginname">
-						<text class="p_btn">回复</text>
+					<view class="part5" v-if="shownum == index">
+						<input class="p_input" v-model="content" type="text" :placeholder="'回复:@'+item.loginname">
+						<text class="p_btn" @tap="addaply(item.id)">回复</text>
 					</view>
 					<view class="part6" v-if="item.commmentNums != 0">
 						<view class="replylist" v-for="(val,index3) in item.commentList" :key="index3"><text class="r_name">{{val.loginname}} :</text>{{val.content}}</view>
@@ -52,7 +53,8 @@
 	export  default {
 		data() {
 			return {
-				
+				shownum: -1,
+				content:""
 			}
 		},
 		methods:{
@@ -66,12 +68,28 @@
 				if(state == "isread"){
 					return "在看"
 				}
+			},
+			showalert(index){
+				if(index == this.shownum){
+					this.shownum = -1;
+				}else{
+					this.shownum = index;
+				}
+				
+			},
+			addaply(pid){
+				this.$emit("addreply",{"id":pid,"text":this.content});
+				this.shownum = -1;
+				this.content = "";
+			},
+			changepraise(did,pid){
+				this.$emit("changepraised",{"id": did,"pid":pid});
 			}
 		},
 		props:[
 			"itemData",
 			"allNum",
-			"ImgUrl"
+			"ImgUrl",
 		]
 	}
 </script>
@@ -155,7 +173,7 @@
 					}
 					.part4{
 						color: #999;
-						font-size: 22upx;
+						font-size: 24upx;
 						margin-top: 40upx;
 						padding-bottom: 38upx;
 						.shows{
@@ -172,7 +190,6 @@
 						}
 					}
 					.part5{
-						display: none;
 						padding-bottom: 40upx;
 						.p_input{
 							width: 100%;

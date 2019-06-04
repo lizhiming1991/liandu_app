@@ -9,7 +9,6 @@
 				<image class="b_searchimg" src="../../static/images/icon_search_small.png"></image>
 			</view>
 		</view>
-		<!-- <uniBadge>aaa</uniBadge> -->
 		<!-- 书籍列表组件 -->
 		<bkList ref="list"
 			@changelist="changeList"
@@ -18,6 +17,7 @@
 			:ImgUrl="ImgUrl"
 			@goDetail="goDetails"
 			@getMorebook="getMore"
+			
 		></bkList>
 	</view>
 </template>
@@ -28,7 +28,7 @@
 	import bkList from '@/components/bookList/bkList.vue'
 	import {ImgUrl} from '@/common/common.js'
 	import { mapState } from 'vuex'
-	// import {uniBadge} from '@dcloudio/uni-ui'
+	
 	export default {
 		data() {
 			return {
@@ -41,6 +41,8 @@
 				title: "图书",
 				isfirst: true,
 				hasmore: true,
+				typeid: "",
+				// message: "loading" //more loading noMore
 			};
 		},
 		computed: {
@@ -54,9 +56,15 @@
 			
 			 // #endif 
 		},
+		watch:{
+			bookList(){
+				handler:(val)=> {}
+				deep:true;
+			}
+		},
 		onLoad(){
 			this.ImgUrl = ImgUrl;
-			this.getBooklist("","",1,10);
+			this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
 			console.log(1)
 			get("/book/book/category/all",{}).then(res=>{
 				if(res.status == 200){
@@ -98,34 +106,46 @@
 						"resource_type": 1
 					}).then((res)=>{
 						if(res.status == 200){
+							// console.log(res.data);
 							if(res.data.bookNums < this.pageNum*this.pageSize){
 								this.hasmore = false;
 							}
 							if(this.isfirst){
-								
-								console.log(res.data)
 								this.bookList = res.data.pageBooks;
 								this.isfirst = false;
+								console.log(555)
 							}else{
-								
+								console.log(777)
+								this.bookList = [...this.bookList,...res.data.pageBooks];
 							}
-							
+							this.pageNum  = this.pageNum +1;
+							console.log(this.bookList)
 						}
 					})
+				}else{
+					uni.showToast({
+						title: "没有更多数据了!",
+						duration: 2000,
+						icon: 'none'
+					});
 				}
 				
 			},
 			changeList(data){
-				this.getBooklist("",data.id,1,10);
+				this.typeid = data.id;
+				this.pageNum =1;
+				this.isfirst = true;
+				this.hasmore = true;
+				this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
 			},
 			getMore(){
-				
+				this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
 			},
 		},
 		components:{
 			Header,
 			bkList,
-			// uniBadge
+		
 		}
 	}
 </script>
