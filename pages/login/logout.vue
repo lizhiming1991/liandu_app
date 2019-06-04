@@ -2,25 +2,38 @@
 	<view>
 		<!-- <view @tap="clickText">上传文件</view>
 		<input type="text" v-model="dzcc" value="" /> -->
-	
-			<not-found></not-found>
-		
-		
+		<view class="">
+			logout
+		</view>
+		<course-list :courseList="list" @toDetails="toDetails"></course-list>
+		<!-- <not-found></not-found> -->
 	</view>
 </template>
 <script>
 	import notFound from '@/components/notFound/notFoundContetn.vue'
+	import courseList from '@/components/courseList/courseList.vue'
 	export default {
 		data() {
 			return {
-				dzcc:'nihao 2020'
+				dzcc: 'nihao 2020',
+				list:[{"id":1,"courseName": '西游记1',"teacherName":"吴承恩1","updateTime":"2013-01-19T12:54:26"},
+				{"id":2,"courseName": '西游记2',"teacherName":"吴承恩2","updateTime":"2014-04-09T12:54:26"},
+				{"id":3,"courseName": '西游记3',"teacherName":"吴承恩3","updateTime":"2015-02-4T12:54:26"},
+				{"id":4,"courseName": '西游记4',"teacherName":"吴承恩4","updateTime":"2017-03-11T12:54:26"}
+				]
 			}
 		},
 		computed: {},
-components: {
-			notFound
+		components: {
+			notFound,
+			courseList
 		},
 		methods: {
+			toDetails() {
+				uni.navigateTo({
+					url: 'www.baidu.com'
+				});
+			},
 			clickText() {
 				// uni.chooseImage({
 				// 	success: (chooseImageRes) => {
