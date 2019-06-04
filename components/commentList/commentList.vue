@@ -31,7 +31,7 @@
 						<view class="shows">
 							<text @tap="showalert(index)">回复({{item.commmentNums}})</text>
 							<view class="s_dz">
-								<image class="dz_pic" @tap="changepraise(item.isPraise,item.id)" :src="'../../static/images/icon_'+(item.isPraise == 0?'dz.png':'dz2.png')"></image> 
+								<image class="dz_pic" @tap="changepraise(item.isPraise,item.id)" :src="'../../static/images/icon_dz'+(item.isPraise == 0?'.png':'2.png')"></image> 
 								{{item.commentLikeNums}}
 							</view>
 						</view>

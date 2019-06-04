@@ -11,7 +11,7 @@
 			<!-- #endif -->
 		</view>
 
-		<view class="h_title" @tap="showname()">{{titles}}</view>
+		<view class="h_title" >{{titles}}</view>
 		<view class="h_more"></view>
 	</view>
 </template>
@@ -72,9 +72,7 @@
 			goback(){
 				this.$router.go(-1);
 			},
-			showname(){
-				alert(this.titles)
-			}
+			
 		},
 		props:{
 			"titles":{
@@ -88,10 +86,11 @@
 	.h_header{
 		width: 100%;
 		background-color: #fff;
-		padding: 0 40upx;
+		padding: 0 50upx;
 		height: 100upx;
 		line-height: 100upx;
 		display: flex;
+		box-sizing: border-box;
 		.h_back{
 			flex: 1;
 			.h_img{

@@ -176,13 +176,10 @@
 		},//http://sitadmin.dailyld.com/attached/image/20190220/20190220162433_Vdp5.jpg
 		onLoad(e){
 			this.imgurl = ImgUrl;
-			
 			post('/ad/banner/query',{'type' : 1, 'terminal' : 2}).then(res=>{
 				if(res.status == 200){
 					this.picArr = res.data.picinfo;
 				}
-			},err=>{
-				//异步错误处理
 			});	
 			get('/book/recommend',{'book_length' : this.b_length, 'maganize_length' : this.m_length}).then(res=>{
 				if(res.status == 200){
@@ -206,6 +203,7 @@
 		},
 		
 		onShow(){
+			
 		},
 		onReady(){
 			

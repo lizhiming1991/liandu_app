@@ -1,22 +1,222 @@
 <template>
-	<view class="cr_details">
-		<Header class="cr_head"></Header>
+	<scroll-view class="cr_details">
 		<view class="cr_video">
+			<!-- #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO-->
+			<navigator  open-type="navigateBack" :delta="number" class="cr_backbox">
+				<image class="cr_back2" src="../../static/images/arrow-left.png"></image>
+			</navigator>
 			<video id="myVideo" src="../../static/image/video.mp4"  controls></video>
+			<!-- #endif -->
+			<!-- #ifdef H5 -->
+			<image class="cr_back" @tap="goback" src="../../static/images/arrow-left.png"></image>
+			<video id="myVideo" src="../../static/image/video.mp4"  controls></video>
+			<!-- #endif -->
 		</view>
-	</view>
+		<view class="cr_pro">
+			<text>阿甘正传</text>
+			<text class="cr_score">9分</text>
+			<view class="cr_read">848人已学</view>
+		</view>
+		<view class="taps">
+			<text :class="shownum==0?'tapbtn choose':'tapbtn'" @tap="changeType(0)">简介</text>
+			<text :class="shownum==1?'tapbtn choose':'tapbtn'" @tap="changeType(1)">目录</text>
+		</view>
+		<!-- 简介 -->
+		<view class="introduce" v-if="shownum == 0">
+			<view class="int_box">
+				<view class="t_pro">
+					<view class="t_kname">课程简介</view>
+					<view class="t_conent">这里是课程简介这里是课程简介这里是课程简介这里是
+				课程简介这里是课程简介这里是课程简介</view>
+				</view>
+				<view class="teacher">
+					<view class="t_kname">讲师</view>
+					<view class="t_img">
+						<image class="t_image" src="../../static/image/sta_userphoto.png"></image>
+					</view>
+					<view class="t_text">这里是讲师介绍这里是讲师介绍这里是讲师介绍这里是讲师介绍这里是讲师介绍</view>
+				</view>
+			</view>
+			<!-- 评论列表 -->
+			<CommentList :itemData="comList"  :allNum="allDiss" :ImgUrl="ImgUrl" @addreply="addreply" @changepraised="changepraise"></CommentList>
+		</view>
+		<!-- 目录 -->
+		<view class="mulu" v-if="shownum == 1">
+			<view class="mululist">
+				<image class="m_pic" src="../../static/images/cr_video_play.png"></image>
+				<text class="m_text">第一讲：你注意到我了吗？</text>
+				<image class="m_arrow" src="../../static/images/arr_right.png"></image>
+			</view>
+		</view>
+		<!-- 发表评论组件 -->
+		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
+		<!-- 点赞评论组件 -->
+		<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
+	</scroll-view>
 </template>
 
 <script>
-	import Header from '@/components/header/header.vue'
+	import Comment from '@/components/comment/comment.vue'
+	import {mapState} from 'vuex'
+	import {get,post,deletes} from '@/common/methods.js'
+	import addComment from '@/components/addComment/addComment.vue'
+	import {ImgUrl} from '@/common/common.js'
+	import CommentList from '@/components/commentList/commentList.vue'
 	export default {
 		data(){
 			return {
+				number: 1,
+				isshow: false,
+				scid: 0,
+				dzid: 0,
+				sharedata:{
+					"dz": 0,
+					"fx": 0,
+					"sc": 0
+				},
+				shownum: 0,
+				ImgUrl: "",
+				allDiss: 0,
+				comList: [],
+			}
+		},
+		computed:{
+			...mapState([
+				"userid"
+			])
+		},
+		onLoad(e){
+			this.ImgUrl = ImgUrl;
+		},
+		methods:{
+			goback(){
+				this.$router.go(-1);
+			},
+			changeType(num){
+				this.shownum = num;
+			},
+			showComments(){
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以评论哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				this.isshow = true;
+			},
+			hideComment(){
+				this.isshow = false;
+			},
+			addComments(obj){
+				/* post("/book/book/makeComment",{
+					associatorid: this.userid,
+					bookid: this.bid,
+					score: obj.score,
+					state: obj.readstate,
+					content: obj.textarea,
+					tag: obj.tags
+				}).then(res=>{
+					if(res.status == 200){
+						this.getDisscusslist();
+					}else{
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: 'none'
+						});
+					}
+					console.log(res)
+				}) */
+			},
+			addreply(){
 				
+			},
+			changepraise(){
+				
+			},
+			changeDZ(){
+				console.log(this.dzid)
+				/*if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以点赞哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.dzid == 0){
+					post("/social/praise",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.dzid = res.data;
+						this.sharedata.dz = this.sharedata.dz +1;
+						uni.showToast({
+							title: "点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/praise",{
+						id: this.dzid
+					}).then(res=>{
+						this.dzid = 0;
+						this.sharedata.dz = this.sharedata.dz -1;
+						uni.showToast({
+							title: "取消点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				} */
+			},
+			changeSC(){
+				console.log(this.scid)
+				/* if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以收藏哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.scid == 0){
+					post("/social/favorite",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.scid = res.data;
+						this.sharedata.sc = this.sharedata.sc +1;
+						uni.showToast({
+							title: "收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/favorite",{
+						id: this.scid
+					}).then(res=>{
+						this.scid = 0;
+						this.sharedata.sc = this.sharedata.sc -1;
+						uni.showToast({
+							title: "取消收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				} */
 			}
 		},
 		components: {
-			Header
+			Comment,
+			addComment,
+			CommentList
 		}
 	}
 	
@@ -24,19 +224,134 @@
 
 <style lang="scss" scoped>
 	.cr_details {
-		.cr_head{
-			position: fixed;
-			left: 0;
-			top: 0;
-			z-index: 9;
-			background-color: rgba(0,0,0,.9);
-		}
+		padding-bottom: 80upx;
 		.cr_video {
+			position: relative;
+			.cr_backbox{
+				display: inline-block;
+				position: absolute;
+				left: 30upx;
+				top: 120upx;
+				z-index: 1999999;
+				width: 48upx;
+				height: 48upx;
+				.cr_back2{
+					width: 48upx;
+					height: 48upx;
+				}
+			}
+			.cr_back{
+				position: absolute;
+				left: 30upx;
+				top: 20upx;
+				z-index: 8;
+				width: 48upx;
+				height: 48upx;
+			}
 			#myVideo {
 				width: 100%;
 				height: 470upx;
 			}
 		}
+		.cr_pro{
+			padding: 0 30upx;
+			font-size: 34upx;
+			color: #080808;
+			margin-top: 20upx;
+			.cr_score{
+				color: #FFC900;
+				margin-left: 20upx;
+			}
+			.cr_read{
+				text-align: right;
+				font-size: 24upx;
+				color: #888888;
+			}
+		}
+		.taps{
+			margin-top: 20upx;
+			border-top: 10upx solid #F7F8FA;
+			padding: 20upx 30upx 6upx;
+			.tapbtn{
+				font-size: 30upx;
+				color: #666;
+				margin-right: 40upx;
+			}
+			.choose{
+				font-size: 40upx;
+				color: #333;
+				border-bottom: 6upx solid #71D2BF;
+			}
+		}
 	}
-	
+	.mulu{
+		padding: 0 30upx;
+		margin-top: 10upx;
+		.mululist{
+			display: flex;
+			height: 110upx;
+			align-items: center;
+			margin-bottom: 10upx;
+			.m_pic{
+				width: 44upx;
+				height: 29upx;
+			}
+			.m_text{
+				flex: 1;
+				font-size: 30upx;
+				color: #333;
+				margin: 0 30upx;
+			}
+			.m_arrow{
+				width: 21upx;
+				height: 36upx;
+				
+			}
+		}
+	}
+	.introduce{
+		margin-top: 30upx;
+		.int_box{
+			padding: 0 30upx;
+			.t_pro{
+				margin-top: 10upx;
+				.t_kname{
+					font-size: 34upx;
+					font-weight: 700;
+					color: #333;
+				}
+				.t_conent{
+					margin-top: 20upx;
+					font-size: 28upx;
+					color: #666;
+					line-height: 1.5;
+				}
+			}
+			.teacher{
+				padding-bottom: 50upx;
+				margin-top: 40upx;
+				.t_kname{
+					font-size: 34upx;
+					font-weight: 700;
+					color: #333;
+				}
+				.t_img{
+					margin-top: 10upx;
+					display: flex;
+					justify-content: center;
+					.t_image{
+						width: 150upx;
+						height: 150upx;
+						border-radius: 50%;
+					}
+				}
+				.t_text{
+					margin-top: 20upx;
+					font-size: 28upx;
+					color: #666;
+					line-height: 1.5;
+				}
+			}
+		}
+	}
 </style>

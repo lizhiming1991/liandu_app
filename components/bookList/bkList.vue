@@ -3,8 +3,8 @@
 		<view class="tablist">
 			<view class="tabs">
 				<scroll-view ref="b_scroll" scroll-y="true" class="scroll-Y" >
-					<view ref="taplist0" class="t_list checks" @tap="changelist('',-1)" key="-1">全部</view>
-		            <view ref="taplist" class="t_list" @tap="changelist(item.id,index)" v-for="(item,index) in typedata" :key="index">{{item.name}}</view>
+					<view  :class="tapindex == -1?'t_list checks':'t_list'" @tap="changelist('',-1)" key="-1">全部</view>
+		            <view  :class="tapindex == index?'t_list checks':'t_list'" @tap="changelist(item.id,index)" v-for="(item,index) in typedata" :key="index">{{item.name}}</view>
 		        </scroll-view>
 			</view>
 			
@@ -36,7 +36,8 @@
 	export default {
 		data (){
 			return{
-				imgerror:""
+				imgerror:"",
+				tapindex: -1,
 				
 			}
 		},
@@ -53,22 +54,7 @@
 				this.$emit("goDetail",{"id":bid});
 			},
 			changelist(id,index){
-				if(index == -1){
-					this.$refs.taplist0.$el.className = "t_list checks";
-					this.$refs.taplist.map((v,i)=>{
-						this.$refs.taplist[i].$el.className = "t_list";
-					})			
-				}else{
-					this.$refs.taplist0.$el.className = "t_list";
-					this.$refs.taplist.map((v,i)=>{
-						if(i == index){
-							this.$refs.taplist[i].$el.className = "t_list checks";
-						}else{
-							this.$refs.taplist[i].$el.className = "t_list";
-						}
-					})			
-				}
-				
+				this.tapindex = index;
 				this.$emit("changelist",{"id":id});
 			},
 			gettext(ispay,ispub){
@@ -107,7 +93,7 @@
 			}
 			.checks{
 				color: #01B18D;
-				border-left: 6upx solid #01B18D;
+				border-left: 10upx solid #01B18D;
 				box-sizing: border-box;
 			}
 			.t_list{

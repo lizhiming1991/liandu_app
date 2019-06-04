@@ -19,6 +19,7 @@
 
 <script>
 	import Header from '@/components/header/header.vue'
+	import {get,post} from '@/common/methods.js'
 	export default {
 		data() {
 			return {
@@ -28,7 +29,11 @@
 			}
 			
 		},
-	
+		onLoad(){
+			get("/course/all",{}).then(res=>{
+				console.log(res)
+			})
+		},
 		components: {
 			Header
 		},

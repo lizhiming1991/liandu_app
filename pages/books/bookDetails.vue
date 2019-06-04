@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<scroll-view class="content">
 		<!-- 头部公用组件 -->
 		<Header :titles="title"></Header>
 		
@@ -36,11 +36,11 @@
 		
 		<!-- 评论列表 -->
 		<CommentList :itemData="comList"  :allNum="allDiss" :ImgUrl="ImgUrl" @addreply="addreply" @changepraised="changepraise"></CommentList>
-		<!-- 评论入口组件 -->
+		<!-- 评论点赞组件 -->
 		<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
 		<!-- 发表评论组件 -->
 		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
-	</view>
+	</scroll-view>
 </template>
 
 <script>
@@ -312,6 +312,11 @@
 </script>
 
 <style lang="scss" scoped>
+	::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		background-color: transparent;
+	} 
 	.content{
 		background-color: #F8F8F8;
 		font-size: 28upx;
