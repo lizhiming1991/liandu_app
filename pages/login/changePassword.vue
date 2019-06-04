@@ -17,13 +17,6 @@
 	    <view class="chang_password_box">
 	        <button class="chang_password_button" @tap="modification">确定</button>
 	    </view>
-		<!-- <view class="">
-			1:
-			<view class="">
-				{{this.$store.state.phone}}
-				{{this.$store.state.modifyRandomNumbers}}
-			</view>
-		</view> -->
 	</view>
 </template>
 
@@ -31,23 +24,24 @@
 	import Search from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import { onlineURL } from '@/common/common.js';
+	import { put } from '@/common/methods.js';
+	import {mapState} from 'vuex'
+	import md5 from 'js-md5';
 	 export default {
 	 	data() {
 	 		return {
 	 			newPassword:'',
-				newPasswordAgain:'',
-				requiredInfo:{
-					"phone": "", 
-					"newPSD": "", 
-					"randomStr": ""
-				}
+				newPasswordAgain:''
 	 		}
 	 	},
 	 	onLoad(e) {
 			//console.log(e.nextid)
-			this.requiredInfo.phone = this.$store.state.phone
-			this.requiredInfo.randomStr = this.$store.state.modifyRandomNumbers
 	 	},
+		computed: {
+			...mapState([
+				"phone"
+			])
+		},
 	 	methods: {
 			modification() {
 				if(this.newPassword == '' ){
@@ -72,28 +66,23 @@
 					});
 					return false;
 				}else{
-					this.requiredInfo.newPSD= this.newPassword;
-					uni.request({
-						url: onlineURL + '/auth/password/reset',
-						method: 'PUT',
-						data: this.requiredInfo,
-						header: {
-							'content-type': 'application/json'
-						},
-						success: res => {
-							console.log(res);
-							uni.showToast({
-								title: '修改成功',
-								duration: 2000,
-								icon: 'success',
-							});
+					console.log("phone:"+this.phone);
+					put('/user/password/reset', {"phone": this.phone, "newPSD": md5(this.newPassword)}).then(res=>{
+						let icon_type='none';
+						if(res.status==200){
+							icon_type = 'success';
+							
 							setTimeout(()=>{
 								uni.reLaunch({
 									url: '../index/index/index'
 								});
 							},1000);
-						},
-						
+						}
+						uni.showToast({
+							title: res.message,
+							duration: 2000,
+							icon: icon_type,
+						});
 					});
 				}
 			}

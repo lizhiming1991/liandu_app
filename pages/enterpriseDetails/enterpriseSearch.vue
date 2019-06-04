@@ -6,73 +6,111 @@
 			</view>
 			<view class="searc_cancel" @tap="cancel">取消</view>
 		</view>
-		<view class="search_record_content">
-			<view class="search_record">
-				<view class="record_title">
-					<image class="times_icon" src="/static/images/time_icon_2.png" mode=""></image> 历史搜索
+		<block v-if="isSearch < 10">
+			<view class="search_record_content">
+				<view class="search_record">
+					<view class="record_title">
+						<image class="times_icon" src="/static/images/time_icon_2.png" mode=""></image> 历史搜索
+					</view>
+					<image class="delete_button" src="/static/images/delete_icon.png" mode=""></image>
 				</view>
-				<!-- <image class="delete_button" src="/static/images/delete_icon.png" mode=""></image> -->
+				<view class="search_text_record">
+					<view class="search_text">公益</view>
+					<view class="search_text">公公益</view>
+					<view class="search_text">公益</view>
+					<view class="search_text">公公益</view>
+					<view class="search_text">公益益</view>
+					<view class="search_text">公益公益公</view>
+					<view class="search_text">公益益</view>
+				</view>
 			</view>
-			<view class="search_text_record">
-				<view class="search_text">公益</view>
-				<view class="search_text">公公益</view>
-				<view class="search_text">公益</view>
-				<view class="search_text">公公益</view>
-				<view class="search_text">公益益</view>
-				<view class="search_text">公益公益公</view>
-				<view class="search_text">公益益</view>
-			</view>
-		</view>
 			<view class="search_record_content search_hot">
-			<view class="search_record">
-				<view class="record_title">
-					<image class="times_icon" src="/static/images/hot_icon.png" mode=""></image> 热门搜索
+				<view class="search_record">
+					<view class="record_title">
+						<image class="times_icon" src="/static/images/hot_icon.png" mode=""></image> 热门搜索
+					</view>
+				</view>
+				<view class="search_text_record">
+					<view class="search_text">公益</view>
+					<view class="search_text">公益公益</view>
+					<view class="search_text">公益</view>
+					<view class="search_text">公益公益公益</view>
+					<view class="search_text">公益</view>
+					<view class="search_text">公益公益公益</view>
+					<view class="search_text">公益</view>
 				</view>
 			</view>
-			<view class="search_text_record">
-				<view class="search_text">公益</view>
-				<view class="search_text">公益公益</view>
-				<view class="search_text">公益</view>
-				<view class="search_text">公益公益公益</view>
-				<view class="search_text">公益</view>
-				<view class="search_text">公益公益公益</view>
-				<view class="search_text">公益</view>
-			</view>
-		</view>
-	<!-- 	<view class="not_found" >
-			 <view> 
-			 	<uni-segmented-control style="width: 310upx; margin-right: 410upx;" :current="current" activeColor="#01B18D" :values="items"
-			 	 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
-        <view class="content">
-						<view class="">
-							共有<text class="">3</text>条相关信息
+		</block>
+		<block v-if=" isSearch >10">
+			<view class="search_content">
+				<view>
+					<uni-segmented-control style="width: 310upx; margin-right: 410upx;" :current="current" activeColor="#01B18D"
+					 :values="items" @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
+					<view class="content">
+						<view class="search_info">
+							共有<text class="search_number">3</text>条相关信息
 						</view>
-            <view v-show="current === 0">
-                选项卡1的内容
-            </view>
-            <view v-show="current === 1">
-                选项卡2的内容
-            </view>
-            <view v-show="current === 2">
-                选项卡3的内容
-            </view>
-        </view>
-    </view>
-		</view> -->
+						<view v-show="current === 0">
+							<book-show></book-show>
+						</view>
+						<view v-show="current === 1">
+							<journal-list></journal-list>
+						</view>
+						<view v-show="current === 2">
+							<course-list :courseList="courseLists" @toDetails="toDetails"></course-list>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
 	</view>
 </template>
 
 <script>
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
+	import bookShow from "@/components/bookShow/bookShow.vue"
+	import courseList from "@/components/courseList/courseList.vue"
+	import journalList from "@/components/journalList/journalList.vue"
 	export default {
 		data() {
 			return {
+				isSearch: 1,
 				title: '社圈',
 				current: 0,
 				items: ['图书', '杂志', '课程'],
+				courseLists: [{
+						"id": 1,
+						"courseName": '西游记1',
+						"teacherName": "吴承恩1",
+						"updateTime": "2013-01-19T12:54:26"
+					},
+					{
+						"id": 2,
+						"courseName": '西游记2',
+						"teacherName": "吴承恩2",
+						"updateTime": "2014-04-09T12:54:26"
+					},
+					{
+						"id": 3,
+						"courseName": '西游记3',
+						"teacherName": "吴承恩3",
+						"updateTime": "2015-02-4T12:54:26"
+					},
+					{
+						"id": 4,
+						"courseName": '西游记4',
+						"teacherName": "吴承恩4",
+						"updateTime": "2017-03-11T12:54:26"
+					}
+				]
 			};
 		},
-		components: {uniSegmentedControl},
+		components: {
+			uniSegmentedControl,
+			bookShow,
+			courseList,
+			journalList
+		},
 		methods: {
 			cancel() {
 				uni.reLaunch({
@@ -84,11 +122,13 @@
 				if (this.current !== index) {
 					this.current = index;
 				}
-				if (index == 1) {
+				if (index == 0) {
 					console.log('111')
-				} else if (index == 2) {
+				} else if (index == 1) {
 					console.log('222')
 
+				} else if (index == 2) {
+					console.log('333')
 				}
 			},
 		}
@@ -96,10 +136,12 @@
 </script>
 
 <style>
-	
-
 	page {
 		background: rgba(247, 248, 250, 1);
+	}
+
+	view {
+		font-size: 28upx;
 	}
 
 	.serch_content {
@@ -141,6 +183,11 @@
 		display: flex;
 		font-size: 28upx;
 		margin-left: 26upx;
+	}
+
+	.serch_content .search_record {
+		display: flex;
+		justify-content: center;
 	}
 
 	.serch_content .search_record_content {
@@ -193,15 +240,21 @@
 		display: flex;
 		padding-bottom: 80%;
 	}
-/* not found start */
-	.serch_content .not_found {
-		
+
+	.serch_content .search_content {}
+
+	.serch_content .search_content .search_info {
+		margin-top: 40upx;
+		margin-left: 71upx;
+		font-size: 18upx;
 	}
-	.serch_content .not_found .search_result{
-		
+
+	.serch_content .search_content .search_number {
+		color: #E9534E;
+
 	}
-	
-	.serch_content .not_found .search_result .book_result{
-		
-	}
+
+	.serch_content .search_content .search_result {}
+
+	.serch_content .search_content .search_result .book_result {}
 </style>

@@ -16,7 +16,7 @@
 				 placeholder="请输入密码" />
 			</view>
 			<view class="input_row input_password" v-if="number>=3">
-				<input class="login_password" v-model="passyzm"  style="font-size: 30upx;" maxlength="16" placeholder="请输入验证码" />
+				<input class="login_password" v-model="passyzm"  style="font-size: 30upx;" maxlength="16" placeholder="请输入验证码"/>
 				<image :src="imagePath" id="passyzm"></image>
 	        </view>
 		</view>
@@ -42,6 +42,7 @@
 	import acquireString from '@/common/commonFunction.js'
 	import {get} from '@/common/methods.js'
 	import { onlineURL } from '@/common/common.js';
+	import md5 from 'js-md5';
 	
 	export default {
 		data() {
@@ -50,8 +51,10 @@
 				password: '',
 				passyzm: '',
 				number: 0,
-				yzmstr:'',
-				imagePath:''
+				randomString:'',
+				imagePath:'',
+				imageRandomStr: '',
+				canlogin: true
 			}
 		},
 		computed: {
@@ -63,43 +66,32 @@
 			}
 		},
 		onLoad() {
-			this.getImgcode();
-			this.yzmstr = acquireString.randomWord(false, 4)
+			this.randomString = acquireString.randomWord(false, 11);
 		},
 		onReady(){
 			
 		},
 		methods: {
-			checkphone(){//18136085708 123456
-				get('/auth/login',{'token':this.phoneNumber,'randomStr': this.yzmstr }).then(res=>{
-					if(res.message == '账号存在'){
-						return false
-					}else{
+			checkphone(){
+				get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
+					console.log(res);
+					if(res.status == 200){
+						return true;
+					}
+					else{
 						uni.showToast({
 							title: res.message,
 							duration: 1500,
 							icon: 'none'
 						});
 					}
-					console.log(res)
 					
 				});
-				// uni.request({
-				// 	url: onlineURL + '/auth/login?token=' + this.phoneNumber+'randomStr='+this.yzmstr,
-				// 	method:'GET',
-				// 	success: (res)=>{
-				// 		uni.showToast({
-				// 			title: res.data.message,
-				// 			duration: 1500,
-				// 			icon: 'none'
-				// 		});
-				// 		
-				// 	}
-				// })
 			},
 			getImgcode(){
-				var yzm = this.yzmstr;
-				this.imagePath = onlineURL + "/code/image?randomStr="+yzm;
+				this.imageRandomStr = acquireString.randomWord(false, 11);
+				this.imagePath = onlineURL + "/code/image?randomStr="+this.imageRandomStr;
+				console.log("image1:"+this.imageRandomStr);
 				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
 					
 				// #endif 
@@ -107,9 +99,9 @@
 					
 				// #endif 
 			},
-			passwordLogin() {
+			async passwordLogin() {
+				this.canlogin = true;
 				this.number = this.number +1;
-				this.getImgcode();
 				if(this.phoneNumber == "" || this.phoneNumber == null){
 					uni.showToast({
 						title: '用户名不能为空!',
@@ -130,64 +122,63 @@
 					// console.log(this.passyzm)
 					if(this.passyzm == "" || this.passyzm == null ){
 						uni.showToast({
-							title: '验证码不正确!',
+							title: '请输入验证码!',
 							duration: 1500,
 							icon: 'none'
 						});
 						return false;
 					}
-				}else{
-					this.passyzm = this.yzmstr;
+					console.log("image2:"+this.imageRandomStr)
+					await get('/check/code?code='+this.passyzm+'&&randomStr='+this.imageRandomStr,{}).then(res=>{
+						console.log(res);
+						console.log(res.status);
+						if(res.status != 200){
+							console.log("xxx");
+							uni.showToast({
+								title: res.message,
+								duration: 1500,
+								icon:'none'
+							});
+							this.canlogin= false;
+							this.getImgcode();
+							return false;
+						}
+						else{
+							get('/check/login-failed-times?randomStr='+this.randomString, {}).then(res=>{
+								console.log(res);
+							});
+						}
+					});
 				}
 				
-				get('/auth/login',{'token':this.phoneNumber,'password': this.password, 'randomStr': this.passyzm }).then(res=>{
-					if (res.message == '登录成功') {
-						uni.showToast({
-							title: '登录成功!',
-							duration: 1500,
-							icon: 'none'
-						});
-						this.$store.dispatch("changeUserid",res.data.id);
-						uni.reLaunch({
-							url: '../index/index/index'
-						});
-						
-					} else {
-						uni.showToast({
-							title: '密码错误',
-							duration: 2000,
-							icon: 'none',
-						});
-					}
-					console.log(res.message)
-				});
-						
-				// uni.request({
-				// 	url: onlineURL + '/auth/login?token=' + this.phoneNumber + '&&password='+ this.password+'&&randomStr=' + this.passyzm,
-				// 	method: 'GET',
-				// 	success: res => {
-				// 		//console.log(res);
-				// 		if (res.data.message == '登录成功') {
-				// 			uni.showToast({
-				// 				title: '登录成功!',
-				// 				duration: 1500,
-				// 				icon: 'none'
-				// 			});
-				// 			this.$store.dispatch("changeUserid",res.data.data.id);
-				// 			console.log(res.data)
-				// 			uni.reLaunch({
-				// 				url: '../index/index/index'
-				// 			});
-				// 			
-				// 		} else {
-				// 			uni.showToast({
-				// 				title: '密码错误',
-				// 				duration: 2000,
-				// 				icon: 'none',
-				// 			});
-				// 		}
-				// 	}
-				// });
+				
+				if(this.canlogin){
+					get('/user/login?account='+this.phoneNumber+'&&password='+md5(this.password)+'&&randomStr='+this.randomString,{}).then(res=>{
+					
+						console.log(res);
+						if (res.status == 200) {
+							uni.showToast({
+								title: '登录成功!',
+								duration: 1500,
+								icon: 'success'
+							});
+							console.log("id:");
+							console.log(res.data);
+							this.$store.dispatch("changeUserid",res.data);
+							uni.reLaunch({
+								url: '../index/index/index'
+							});
+							
+						} else {
+							uni.showToast({
+								title: res.message,
+								duration: 2000,
+								icon: 'none',
+							});
+							this.getImgcode();
+						}
+					});
+				}
 			}
 		},
 		components: {

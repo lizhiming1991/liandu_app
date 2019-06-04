@@ -10,33 +10,33 @@
 			</view>
 		</view>
 		<block>
-		<view class="title_content">
-			<view class="title_text">{{enteroriseList.name}}</view>
-			<view style="flex: 1;"></view>
-			<view class="to_apply" v-if=" isVip == 'notVip'">申请会员</view>
-			<view class="under_review" v-else-if=" isVip == 'init'">会员审核中</view>
-			<view class="vip_added" v-else-if=" isVip == 'pass'">已加入</view>
-		</view>
-		<view class="enterprise_info">
-			<view class="info_content">
-				{{enteroriseList.cont}}
+			<view class="title_content">
+				<view class="title_text">{{enteroriseList.name}}</view>
+				<view style="flex: 1;"></view>
+				<view class="to_apply" v-if=" isVip == 'notVip'">申请会员</view>
+				<view class="under_review" v-else-if=" isVip == 'init'">会员审核中</view>
+				<view class="vip_added" v-else-if=" isVip == 'pass'">已加入</view>
 			</view>
-		</view>
-		<view class="enterprise_lable">
-			<view style="flex: 1;"></view>
-			<view class="label_left">
-				<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
+			<view class="enterprise_info">
+				<view class="info_content">
+					{{enteroriseList.cont}}
+				</view>
 			</view>
-			<view class="label_right">
-				<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region}}</text>
+			<view class="enterprise_lable">
+				<view style="flex: 1;"></view>
+				<view class="label_left">
+					<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
+				</view>
+				<view class="label_right">
+					<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region}}</text>
+				</view>
 			</view>
-		</view>
 		</block>
 		<uni-segmented-control style="justify-content: center;" :current="current" activeColor="#01B18D" :values="items"
 		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
 			<view v-show="current === 0">
-				
+
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
@@ -56,7 +56,7 @@
 					</view>
 				</view>
 				<!-- Picker 公共组件 end -->
-				
+
 				<view class="content_list">
 					<block v-for="(item,index) in bookList" :key="index">
 						<view class="book_info" @tap="to_bookDetails" :data-id='item.id'>
@@ -68,7 +68,7 @@
 									<view class="book_title_content">
 										<view class="book_title">{{item.name}}</view>
 										<view class="book_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
-									<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
+										<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
 										<view class="book_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
 									</view>
 								</view>
@@ -90,9 +90,9 @@
 			<!-- 杂志列表 start -->
 			<view v-show="current === 2">
 				<!-- Picker 公共组件 start -->
-				<view class="picker_style" >
+				<view class="picker_style">
 					<view class="content_search">
-						
+
 						<view class="uni-list">
 							<view class="uni-list-cell">
 								<view class="uni-list-cell-db">
@@ -110,23 +110,31 @@
 					<block v-for="(item, index) in journalList" :key="index">
 						<view class="journal_cover">
 							<view>
-								<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+								<view class="img_box">
+									<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+									<!-- <view class="journal_price">￥9.9</view> -->
+								</view>
+								
+								<!-- <view class="book_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
+								<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
+								<view class="book_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view> -->
+								
 							</view>
 							<view class="journal_cover_title">
 								{{item.name}}
 							</view>
 						</view>
 					</block>
-					<not-found v-if="journalList==''"></not-found>
+					<not-found style="margin-top: -34upx;" v-if=" journalList=='' "></not-found>
 				</view>
 			</view>
 			<!-- 杂志列表 end-->
 			<!-- 课程列表 start -->
 			<view v-show="current === 3">
 				<!-- Picker 公共组件 start -->
-				<view class="picker_style" >
+				<view class="picker_style">
 					<view class="content_search">
-						
+
 						<view class="uni-list">
 							<view class="uni-list-cell">
 								<view class="uni-list-cell-db">
@@ -146,7 +154,8 @@
 							<view class="course_content" style="flex-direction: column;">
 								<view class="course_cover">
 									<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-									<view class="member_icon">会员</view>
+									<!-- <view class="member_icon">会员</view> -->
+									<!-- <view class="member_icon">￥999.9</view> -->
 								</view>
 								<view class="course_title">
 									{{item.courseName}}
@@ -164,7 +173,7 @@
 							</view>
 						</view>
 					</block>
-					<not-found v-if="courseList==''"></not-found>
+					<not-found v-if=" courseList == '' "></not-found>
 				</view>
 			</view>
 			<!-- 课程列表 end -->
@@ -174,32 +183,35 @@
 
 <script>
 	import notFound from '@/components/notFound/notFoundContetn.vue'
-	import {mapState} from 'vuex';
-	import {get,post} from '@/common/methods.js';
+	import {
+		mapState
+	} from 'vuex';
+	import {
+		get,
+		post
+	} from '@/common/methods.js';
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue";
-	import edit from '@/components/wjx-edit/wjx-edit.vue';
 	export default {
 		components: {
 			uniSegmentedControl,
-			edit,
-			notFound 
+			notFound
 		},
 		data() {
 			return {
-				resData:'',
-				editData:'',
+				resData: '',
+				editData: '',
 				title: 'Hello',
 				enteroriseList: [],
-				isVip:'',
-				bookArray: ['上传时间','阅读量'],
-				journaArray: ['上架时间','阅读量'],
-				courseArray: ['上架时间','阅读量'],
+				isVip: '',
+				bookArray: ['上传时间', '阅读量'],
+				journaArray: ['上架时间', '阅读量'],
+				courseArray: ['上架时间', '阅读量'],
 				bookIndex: 0,
 				journaIndex: 0,
 				courseIndex: 0,
 				bookList: [],
 				journalList: [],
-				courseList:[],
+				courseList: [],
 				items: ['主页', '图书', '杂志', '课程'],
 				current: 0,
 				requiredBooks: {
@@ -225,7 +237,7 @@
 			]),
 		},
 		onLoad(e) {
-			get('/enterprise/company/13?userId=1340').then(res=>{
+			get('/enterprise/company/13?userId=1340').then(res => {
 				console.log(res.data.richText)
 				// this.resData = res.data.richText
 			});
@@ -265,42 +277,44 @@
 			} else if (this.isVip == 'pass') {
 				console.log('hello vip')
 			}
-			get('/enterprise/company/' + this.requiredBooks.table_id,{'userId' : this.userid}).then(res=>{
+			get('/enterprise/company/' + this.requiredBooks.table_id, {
+				'userId': this.userid
+			}).then(res => {
 				console.log(res.data);
 				this.enteroriseList = res.data;
 			})
 		},
-		
+
 		methods: {
 			bookSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
-				if(e.target.value =='1' || e.target.value == 1){
+				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredBooks.sort = 'hit'
-				}else if(e.target.value =='0' || e.target.value == 0){
+				} else if (e.target.value == '0' || e.target.value == 0) {
 					this.requiredBooks.sort = 'createtime'
 				}
-				post('/book/book/page',this.requiredBooks).then(res=>{
+				post('/book/book/page', this.requiredBooks).then(res => {
 					console.log(res);
-				},err=>{
+				}, err => {
 					//异步错误处理
-				});	
-				
+				});
+
 			},
 			journaSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.journaIndex = e.target.value
-				if(e.target.value =='1' || e.target.value == 1){
+				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredJournal.sort = 'hit'
-				}else if(e.target.value =='0' || e.target.value == 0){
+				} else if (e.target.value == '0' || e.target.value == 0) {
 					this.requiredJournal.sort = 'createtime'
 				}
-				post('/book/book/page',this.requiredJournal).then(res=>{
+				post('/book/book/page', this.requiredJournal).then(res => {
 					console.log(res);
-					
-				},err=>{
+
+				}, err => {
 					//异步错误处理
-				});	
+				});
 			},
 			courseSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
@@ -329,57 +343,58 @@
 						},
 
 					});
-				}else if(index == 2){
-						console.log('222')
-						// post('/book/book/page',this.requiredJournal).then(res=>{
-						// 	this.journalList = res.data.pageBooks;
-						// });	
-						
-						uni.request({
-							url: 'http://192.168.0.210:9999/book/book/page',
-							method: 'POST',
-							data: this.requiredJournal,
-							header: {
-								'content-type': 'application/json'
-							},
-							success: res => {
-								console.log(res.data.data.pageBooks);
-								this.journalList = res.data.data.pageBooks;
-								
-							},
-						
-						});
-				}else if(index == 3){
+				} else if (index == 2) {
+					console.log('222')
+					// post('/book/book/page',this.requiredJournal).then(res=>{
+					// 	this.journalList = res.data.pageBooks;
+					// });	
+
+					uni.request({
+						url: 'http://192.168.0.210:9999/book/book/page',
+						method: 'POST',
+						data: this.requiredJournal,
+						header: {
+							'content-type': 'application/json'
+						},
+						success: res => {
+							console.log(res.data.data.pageBooks);
+							this.journalList = res.data.data.pageBooks;
+
+						},
+
+					});
+				} else if (index == 3) {
 					console.log(123)
-					get('/course/all',{'providerId':this.requiredBooks.table_id}).then(res=>{
+					get('/course/all', {
+						'providerId': this.requiredBooks.table_id
+					}).then(res => {
 						console.log(res.data)
 						this.courseList = res.data
-						
-				});
+					});
 				}
 			},
-			
+
 			toEnterprise() {
 				uni.reLaunch({
 					url: '../index/enterprise/enterprise'
 				});
 			},
-			
+
 			to_bookDetails(e) {
 				console.log(e);
-				let	bookId = e.currentTarget.dataset.id;
+				let bookId = e.currentTarget.dataset.id;
 				uni.navigateTo({
-					
-				 url: '../books/bookDetails?id='+bookId
+
+					url: '../books/bookDetails?id=' + bookId
 				})
 			},
-			
+
 		}
 	}
 </script>
 
 <style scoped>
-		.vip_added {
+	.vip_added {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -391,12 +406,14 @@
 		border-radius: 4upx;
 		background: rgba(1, 177, 141, 1);
 	}
+
 	.under_review {
 		margin: 49upx 53upx 0 0;
 		width: 236upx;
 		color: #01B18D;
 		font-size: 28upx;
 	}
+
 	view {
 		flex-direction: row;
 	}
@@ -571,6 +588,7 @@
 		display: flex;
 		margin: 0 25upx 0 29upx;
 	}
+
 	.journal_content .list_content .content_list .booK_cover_img {
 		display: flex;
 		width: 184upx;
@@ -620,7 +638,7 @@
 		height: 444upx;
 		background: #fff;
 	}
-
+	
 	.journal_content .list_content .journal_list .journal_cover:nth-child(2n-1) {
 		margin-right: 4upx;
 	}
@@ -634,7 +652,6 @@
 	}
 
 	.journal_content .list_content .journal_list .journal_cover .journal_cover_img {
-		margin-top: 51upx;
 		width: 184upx;
 		height: 296upx;
 	}
@@ -643,7 +660,25 @@
 		color: #333;
 		font-size: 32upx;
 	}
-
+	/* 是否付费 */
+	.journal_content .list_content .journal_list .journal_cover .img_box{
+		position: relative;
+		width:184upx; 
+		height:296upx; 
+		margin-top: 51upx;
+	}
+	.journal_content .list_content .journal_list .journal_price{
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height:32upx;
+		color: #fff;
+		font-size: 20upx;
+		background: #FF546C;
+	}
+	
 	/* 杂志 end */
 	/* 课程列表 start*/
 	.journal_content .list_content .content_list .course_cover {
@@ -705,45 +740,49 @@
 		color: #888;
 		font-size: 26upx;
 	}
-	.journal_content .list_content .content_list .member_icon{
+
+	.journal_content .list_content .content_list .member_icon {
 		position: absolute;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		padding: 0 16upx;
 		left: 0;
 		top: 0;
-		width:95upx;
-		height:44upx;
-		font-size:27upx;
+		height: 44upx;
+		font-size: 27upx;
 		color: #fff;
 		background: #FF546C;
 	}
 
 	/* 课程列表 end*/
-		/* 公共组件 picker start */
-	.journal_content .list_content .picker_style{
-		display: flex; 
+	/* 公共组件 picker start */
+	.journal_content .list_content .picker_style {
+		display: flex;
 		justify-content: flex-end;
 	}
-	.journal_content .list_content .picker_style .content_search{
-		display: flex; 
-		justify-content: center; 
-		align-items: center; 
+
+	.journal_content .list_content .picker_style .content_search {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		margin: 6upx 24upx 0 0;
-		width: 166upx; 
-		height: 40upx; 
-		color: #fff; 
+		width: 166upx;
+		height: 40upx;
+		color: #fff;
 		font-size: 24upx;
-		background: #01B18D; 
+		background: #01B18D;
 	}
-	.journal_content .list_content .picker_style .content_search .xiala_icon{
+
+	.journal_content .list_content .picker_style .content_search .xiala_icon {
 		margin-left: 20upx;
-		width:26upx; 
-		height:14upx;
+		width: 26upx;
+		height: 14upx;
 	}
-	
-	.journal_content .list_content .content_list .course_cover{
+
+	.journal_content .list_content .content_list .course_cover {
 		position: relative;
 	}
+
 	/* 公共组件 picker end */
 </style>
