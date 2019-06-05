@@ -2,7 +2,6 @@
 	<view class="index_content">
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
 		
-		
 		<view class="lg_head">
 			<text class="lg_title">首页</text>
 			<!-- #ifdef APP-PLUS -->
@@ -15,11 +14,9 @@
 		</view>
 		<view>
 			<swiper class="swiper lg_lunbo"  indicator-dots="true" autoplay="true" interval="3000" duration="300" >
-				
 			    <swiper-item v-for="(item,index) in picArr" :key="index">
 			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerror"  ></image>
 			    </swiper-item>
-			            
 			</swiper>
 		</view>
 		<view class="lg_navbar">
