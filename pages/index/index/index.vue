@@ -133,7 +133,7 @@
 			<view class="lg_bk_title">图书精选</view>
 			<view class="lg_bk_cont">
 				<view class="lg_bk_list" v-for="(item,index) in bookList" :key="index">
-					<view class="lg_bk_img">
+					<view class="lg_bk_img" @tap="goBookDetails(item)">
 						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_bk_jx">精选</text>
 					</view>
@@ -206,7 +206,11 @@
 			
 		},
 		methods: {
-			
+			goBookDetails(item){
+				uni.navigateTo({
+					url:"/pages/books/bookDetails?id="+item.id
+				})
+			},
 			
 		},
 		components: {
