@@ -1,6 +1,6 @@
 <template>
 	<view class="login_content">
-		<Header></Header>
+		<Header :titles="title"></Header>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -47,6 +47,7 @@
 	export default {
 		data() {
 			return {
+				title:'',
 				phoneNumber: '',
 				password: '',
 				passyzm: '',

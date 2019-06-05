@@ -1,6 +1,8 @@
 <template>
 	<view class="login_content">
-		<Search></Search>
+		<view class="back_button" @tap="to_homepage">
+			<image class="h_img" src="../../static/images/icon_back.png"></image>
+		</view>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -48,7 +50,6 @@
 	import {
 		get
 	} from '@/common/methods.js';
-	import Search from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import acquireString from '@/common/commonFunction.js'
 	import {
@@ -76,6 +77,11 @@
 			this.randomString = acquireString.randomWord(false, 4)
 		},
 		methods: {
+			to_homepage() {
+				uni.reLaunch({
+					url: '../index/index/index'
+				});
+			},
 			// 获取验证码
 			async getCode() {
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
@@ -157,7 +163,6 @@
 			}
 		},
 		components: {
-			Search,
 			toRegister
 		}
 	}
@@ -173,7 +178,15 @@
 		flex-direction: column;
 		flex: 1;
 	}
-
+	
+	.login_content .back_button{
+		width: 60upx;
+		padding: 30upx 0 0 30upx;
+	}
+	.login_content .h_img{
+		width: 20upx;
+		height: 37upx;
+	}
 	.login_content .welcome_speech_one {
 		margin-top: 154upx;
 	}

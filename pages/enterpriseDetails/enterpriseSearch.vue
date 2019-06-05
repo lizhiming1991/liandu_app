@@ -28,7 +28,8 @@
 					<view class="search_text">公益益</view>
 				</view>
 			</view>
-			<view class="search_record_content search_hot">
+			<hot-search :hot_record="hot_record"></hot-search>
+			<!-- <view class="search_record_content search_hot">
 				<view class="search_record">
 					<view class="record_title">
 						<image class="times_icon" src="/static/images/hot_icon.png" mode=""></image> 热门搜索
@@ -43,7 +44,7 @@
 					<view class="search_text">公益公益公益</view>
 					<view class="search_text">公益</view>
 				</view>
-			</view>
+			</view> -->
 		</block>
 		<block v-if=" isSearch >10">
 			<view class="search_content">
@@ -78,6 +79,7 @@
 	} from '@/common/methods.js';
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
 	import bookShow from "@/components/bookShow/bookShow.vue"
+	import hotSearch from "@/components/hotSearch/hotSearch.vue"
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
 	import {mapState} from 'vuex'
@@ -88,6 +90,7 @@
 				searchModule:'',
 				isSearch: 1,
 				title: '社圈',
+				hot_record:[],
 				current: 0,
 				items: ['图书', '杂志', '课程'],
 				courseLists: [{
@@ -126,11 +129,15 @@
 			uniSegmentedControl,
 			bookShow,
 			courseList,
-			journalList
+			journalList,
+			hotSearch
 		},
 		onLoad(e) {
 			console.log(e.type) 
-			this.searchModule = e.type
+			this.searchModule = e.type;
+			get('/search/querySearchHistory/'+this.searchModule,{'associatorid': this.userid}).then(res=>{
+				console.log(res)
+				});
 		},
 		methods: {
 			ceshi() {

@@ -1,6 +1,6 @@
 <template>
 	<view class="register_content">
-		<Header></Header>
+		<Header :titles="title"></Header>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -51,6 +51,7 @@
 	export default {
 		data() {
 			return {
+				title:'',
 				verifyStatus:'',
 				phoneStatus:'',
 				verifyNumber: '',

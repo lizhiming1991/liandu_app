@@ -5,8 +5,8 @@
 				<view class="course_content" style="flex-direction: column;">
 					<view @tap="to_details(item.id)">
 						<view class="course_cover">
-							<image class="course_cover_img" src="/static/image/kecheng.png" mode=""></image>
-							<view class="member_icon">会员{{item.id}}</view>
+							<image class="course_cover_img" src="/static/image/kecheng.png" mode="widthFix"></image>
+							<view class="member_icon">会员</view>
 						</view>
 						<view class="course_title">
 							{{item.courseName}}
@@ -52,18 +52,16 @@
 <style scoped>
 	
 	.course_content {
-		margin-left: 31upx;
+		padding: 0 50upx;
 		padding-bottom: 45upx;
-		width: 643upx;
-	
 	}
 	.course_cover{
+		width: 100%;
 		position: relative;
 		margin-top: 31upx;
 	}
 	.course_cover_img {
-		width: 643upx;
-		height: 374upx;
+		width: 100%;
 	}
 	
 	.bottom_border {
@@ -82,7 +80,7 @@
 	}
 	
 	.course_teacher_icon {
-		margin: 0 23upx 0 0upx;
+		margin: 0 23upx 0 0;
 		width: 30upx;
 		height: 30upx;
 	}
@@ -116,6 +114,7 @@
 		align-items: center;
 		left: 0;
 		top: 0;
+	
 		width:95upx;
 		height:44upx;
 		font-size:27upx;

@@ -1,10 +1,9 @@
 <template>
 	<view class="enterprise">
-		<view class="enterprise_title" style="">
+		<view class="enterprise_title">
 			<view class="title_text">企业</view>
 			<view class="title_sousuo">
 				<navigator url="../../enterpriseDetails/enterpriseSearch"><image class="sousuo_icon" src="/static/images/sousuo.png" mode=""></image></navigator>
-				
 			</view>
 		</view>
 		<view class="select_label">
@@ -49,14 +48,14 @@
 								{{item.name}}
 							</view>
 							<view class="enterprise_info">
-								{{item.cont}}
+								{{item.cont ==null ? "暂无简介" : item.cont}}
 							</view>
 							<view class="enterprise_content">
 								<view class="list_lable_one">
 									<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.trade}}</text>
 								</view>
-								<view class="list_lable_two">
-									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.address.split('市').length == 1 ? item.address.split('市')[0] : item.address.split('市')[0] + '市'}}</text>
+								<view class="list_lable_two" v-if="item.address != ''" style="">
+									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.region}}</text>
 								</view>
 							</view>
 						</view>
@@ -101,7 +100,7 @@
 		},
 		onLoad() {
 			get('/enterprise/company/trade/all').then(res=>{
-				console.log(res);
+				//console.log(res);
 				for (let data of res.data) {
 					this.trade.push(data);
 				}
@@ -120,9 +119,9 @@
 // 			});
 			//首次加载地区列表
 			get('/enterprise/company/region/all').then(res=>{
-				console.log(res);
+				//console.log(res);
 				for (let data of res.data) {
-					console.log(data)
+					//console.log(data)
 					let area = data.split("市");
 					if (area.length == 1) {
 						this.region.push(area[0])
@@ -141,17 +140,26 @@
 			toApplyMember: function(e) {
 				let enterpriseLid = e.currentTarget.dataset.enterpriselid;
 				let enterpriseName = e.currentTarget.dataset.enterprisename;
-				uni.navigateTo({
-					url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName='+enterpriseName,
-					success: res => {
-					}
-				});
+				if(this.userid != ''){
+					uni.navigateTo({
+						url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName='+enterpriseName,
+						success: res => {
+						}
+					});
+				}else{
+					uni.showToast({
+						title: '请先登录',
+						duration: 1500,
+						icon: 'none'
+					});
+				}
+				
 			},
 			tradeChange: function(e) {
-				console.log('1picker发送选择改变，携带值为', e.target.value)
+				//console.log('1picker发送选择改变，携带值为', e.target.value)
 				this.tradeIndex = e.target.value
 				this.tradeValue = this.region[e.target.value]
-				console.log(this.targetValue)
+				//console.log(this.targetValue)
 				if (this.tradeValue != '地区') {
 					get('/enterprise/company/all/region',{'region':this.tradeValue,'userId':this.userid}).then(res=>{
 							this.enterpriseList = res.data
@@ -179,11 +187,11 @@
 				}
 			},
 			regionChange: function(e) {
-				console.log('2picker发送选择改变，携带值为', e.target.value)
+				//console.log('2picker发送选择改变，携带值为', e.target.value)
 				this.regionIndex = e.target.value
 				//console.log(this.region[e.target.value])
 				this.targetValue = this.region[e.target.value]
-				console.log(this.targetValue)
+				//console.log(this.targetValue)
 				if (this.targetValue != '地区') {
 					get('/enterprise/company/all/region',{'region': this.targetValue,'userId': this.userid}).then(res=>{
 						this.enterpriseList = res.data;
@@ -230,12 +238,10 @@
 <style lang="scss" scoped>
 	view {
 		display: flex;
-		flex-direction: row;
 	}
 
 	.enterprise {
 		flex-direction: column;
-		flex: 1;
 		margin-top: 40upx;
 	}
 
@@ -327,12 +333,14 @@
 		margin-bottom: 24upx;
 		color: #333;
 		font-size: 36upx;
+		
 	}
 
 	.enterprise .enterprise_list .enterprise_details .enterprise_info {
 		font-size: 28upx;
 		color: #666;
 		overflow: hidden;
+		height: 71upx;
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
@@ -340,8 +348,7 @@
 	}
 
 	.enterprise .enterprise_list .enterprise_details .enterprise_content {
-		// justify-content: flex-start;
-		align-items: center;
+		width: 467upx;
 		color: #666;
 		font-size: 26upx;
 	}

@@ -1,6 +1,6 @@
 <template>
 	<view class="chang_password_content">
-		<Search></Search>
+		<Header :titles='title'></Header>
 		<view>
 			<view style="flex: 1;"></view>
 			<to-register></to-register>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-	import Search from '@/components/header/header.vue';
+	import Header from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import { onlineURL } from '@/common/common.js';
 	import { put } from '@/common/methods.js';
@@ -30,6 +30,7 @@
 	 export default {
 	 	data() {
 	 		return {
+				title:'',
 	 			newPassword:'',
 				newPasswordAgain:''
 	 		}
