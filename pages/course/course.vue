@@ -8,9 +8,7 @@
 		<view class="showlog" v-if="showlog">共<text class="col_red">{{numbers}}</text>条相关信息</view>
 		<view class="cr_list">
 			<view>
-				<navigator url="courseDetails">
-					<image src="../../static/image/kecheng.png"></image>
-				</navigator>
+				<courseList :courseList="itemdata" @toDetails="goDetails"></courseList>
 				
 			</view>
 		</view>
@@ -20,22 +18,34 @@
 <script>
 	import Header from '@/components/header/header.vue'
 	import {get,post} from '@/common/methods.js'
+	import courseList from '@/components/courseList/courseList.vue'
 	export default {
 		data() {
 			return {
 				title: "课程",
 				numbers: 1,
 				showlog: false,
+				itemdata:[]
 			}
 			
 		},
 		onLoad(){
 			get("/course/all",{}).then(res=>{
-				console.log(res)
+				if(res.status == 200){
+					this.itemdata = res.data;
+				}
 			})
 		},
+		methods:{
+			goDetails(data){
+				uni.navigateTo({
+					url:"courseDetails?id="+data.lld
+				})
+			}
+		},
 		components: {
-			Header
+			Header,
+			courseList
 		},
 	}
 </script>

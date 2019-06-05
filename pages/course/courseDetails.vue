@@ -5,15 +5,15 @@
 			<navigator  open-type="navigateBack" :delta="number" class="cr_backbox">
 				<image class="cr_back2" src="../../static/images/arrow-left.png"></image>
 			</navigator>
-			<video id="myVideo" src="../../static/image/video.mp4"  controls></video>
+			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls></video>
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
 			<image class="cr_back" @tap="goback" src="../../static/images/arrow-left.png"></image>
-			<video id="myVideo" src="../../static/image/video.mp4"  controls></video>
+			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls></video>
 			<!-- #endif -->
 		</view>
 		<view class="cr_pro">
-			<text>阿甘正传</text>
+			<text>{{itemInfo.courseName}}</text>
 			<text class="cr_score">9分</text>
 			<view class="cr_read">848人已学</view>
 		</view>
@@ -26,8 +26,7 @@
 			<view class="int_box">
 				<view class="t_pro">
 					<view class="t_kname">课程简介</view>
-					<view class="t_conent">这里是课程简介这里是课程简介这里是课程简介这里是
-				课程简介这里是课程简介这里是课程简介</view>
+					<view class="t_conent">{{itemInfo.description}}</view>
 				</view>
 				<view class="teacher">
 					<view class="t_kname">讲师</view>
@@ -42,9 +41,9 @@
 		</view>
 		<!-- 目录 -->
 		<view class="mulu" v-if="shownum == 1">
-			<view class="mululist">
-				<image class="m_pic" src="../../static/images/cr_video_play.png"></image>
-				<text class="m_text">第一讲：你注意到我了吗？</text>
+			<view class="mululist" v-for="(item,index) in itemList" :key="index">
+				<image mode="widthFix" class="m_pic" :src="'../../static/images/cr_video_'+(nowplay == index?'play.png':'static.png')"></image>
+				<text class="m_text">第一讲：{{item.lessonName}}</text>
 				<image class="m_arrow" src="../../static/images/arr_right.png"></image>
 			</view>
 		</view>
@@ -78,6 +77,11 @@
 				ImgUrl: "",
 				allDiss: 0,
 				comList: [],
+				kid: 0,
+				itemInfo: "",
+				itemList: [],
+				nowvideo: "",
+				nowplay: 0
 			}
 		},
 		computed:{
@@ -87,6 +91,25 @@
 		},
 		onLoad(e){
 			this.ImgUrl = ImgUrl;
+			this.kid = e.id;
+			get("/course/abundant",{
+				userId: this.userid,
+				courseId: this.kid
+			}).then(res=>{
+				if(res.status == 200){
+					this.itemInfo = res.data;
+				}
+				console.log(res)
+			})
+			get("/course/lesson/list",{
+				courseId: this.kid
+			}).then(res=>{
+				if(res.status == 200){
+					this.itemList = res.data;
+					this.nowvideo = res.data[0];
+				}
+				console.log(res)
+			})
 		},
 		methods:{
 			goback(){
@@ -294,7 +317,6 @@
 			margin-bottom: 10upx;
 			.m_pic{
 				width: 44upx;
-				height: 29upx;
 			}
 			.m_text{
 				flex: 1;
@@ -310,7 +332,7 @@
 		}
 	}
 	.introduce{
-		margin-top: 30upx;
+		margin-top: 50upx;
 		.int_box{
 			padding: 0 30upx;
 			.t_pro{
@@ -321,14 +343,15 @@
 					color: #333;
 				}
 				.t_conent{
-					margin-top: 20upx;
+					margin-top: 30upx;
 					font-size: 28upx;
 					color: #666;
 					line-height: 1.5;
 				}
 			}
 			.teacher{
-				padding-bottom: 50upx;
+				border-top: 2upx solid #EEEEEE; 
+				padding: 50upx 0;
 				margin-top: 40upx;
 				.t_kname{
 					font-size: 34upx;
@@ -346,7 +369,7 @@
 					}
 				}
 				.t_text{
-					margin-top: 20upx;
+					margin-top: 30upx;
 					font-size: 28upx;
 					color: #666;
 					line-height: 1.5;

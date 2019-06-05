@@ -98,7 +98,7 @@
 				height: 37upx;
 			}
 			.h_goback{
-				width: 20upx;
+				width: 50upx;
 				height: 37upx;
 			}
 		}
