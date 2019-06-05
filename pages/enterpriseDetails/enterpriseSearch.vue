@@ -1,8 +1,12 @@
 <template>
 	<view class="serch_content" style="flex-direction: column; flex: 1;">
+		<view class="" @tap="ceshi">
+			测试{{searchModule}}
+		</view>
 		<view class="search_box">
 			<view class="search_input">
-				<image class="search_icon" src="/static/images/search_icon.png" mode=""></image><input class="search_center" type="text">
+				<image class="search_icon" src="/static/images/search_icon.png" mode=""></image>
+				<input class="search_center" v-model="search_text" @confirm="search_input" confirm-type="search" type="text">
 			</view>
 			<view class="searc_cancel" @tap="cancel">取消</view>
 		</view>
@@ -63,17 +67,25 @@
 				</view>
 			</view>
 		</block>
+		
 	</view>
 </template>
 
 <script>
+	import {
+		get,
+		post
+	} from '@/common/methods.js';
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
 	import bookShow from "@/components/bookShow/bookShow.vue"
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
+	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
+				search_text:'',
+				searchModule:'',
 				isSearch: 1,
 				title: '社圈',
 				current: 0,
@@ -105,13 +117,35 @@
 				]
 			};
 		},
-		components: {
+		computed: {
+			...mapState([
+				"userid"
+			])
+		},
+		components: {                            
 			uniSegmentedControl,
 			bookShow,
 			courseList,
 			journalList
 		},
+		onLoad(e) {
+			console.log(e.type) 
+			this.searchModule = e.type
+		},
 		methods: {
+			ceshi() {
+				console.log(111)
+				console.log("123");
+				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
+						console.log(res)
+					});
+			},
+			// search_input() {
+			// 	console.log("123");
+			// 	post('/ad/banner/query',{ "searchKey":"西游记","searchModule":1,"operationUser":1410}).then(res=>{
+			// 			
+			// 		});	
+			// },
 			cancel() {
 				uni.reLaunch({
 					url: '../index/enterprise/enterprise'
@@ -240,8 +274,6 @@
 		display: flex;
 		padding-bottom: 80%;
 	}
-
-	.serch_content .search_content {}
 
 	.serch_content .search_content .search_info {
 		margin-top: 40upx;

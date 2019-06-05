@@ -2,7 +2,7 @@
 	<view class="journal_content" style="flex-direction: column; flex: 1;">
 		<view class="search_lable">
 			<view>
-				<image class="searc_icon" src="/static/images/sousuo.png" mode=""></image>
+				<image class="searc_icon" src="/static/images/sousuo.png" mode="" @tap="toSearch"></image>
 			</view>
 			<view style="flex: 1;"></view>
 			<view class="clear_page">
@@ -198,6 +198,7 @@
 		},
 		data() {
 			return {
+				searchType:'1',
 				resData: '',
 				editData: '',
 				title: 'Hello',
@@ -286,6 +287,11 @@
 		},
 
 		methods: {
+			toSearch() {
+				uni.navigateTo({
+					url:'./enterpriseSearch?type=' + this.searchType
+				})
+			},
 			bookSearchChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
@@ -325,8 +331,12 @@
 				if (this.current !== index) {
 					this.current = index;
 				}
-				if (index == 1) {
+				if (index == 0) {
+					console.log(33333333333333)
+					this.searchType = 1;
+				}else if (index == 1) {
 					console.log('111')
+					this.searchType = 2;
 					// post('/book/book/page',this.requiredBooks).then(res=>{
 					// 	this.bookList = res.data.pageBooks;
 					// });	
@@ -344,6 +354,7 @@
 
 					});
 				} else if (index == 2) {
+					this.searchType = 3;
 					console.log('222')
 					// post('/book/book/page',this.requiredJournal).then(res=>{
 					// 	this.journalList = res.data.pageBooks;
@@ -364,7 +375,8 @@
 
 					});
 				} else if (index == 3) {
-					console.log(123)
+					this.searchType = 4;
+					console.log('333')
 					get('/course/all', {
 						'providerId': this.requiredBooks.table_id
 					}).then(res => {
