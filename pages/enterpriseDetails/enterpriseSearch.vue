@@ -1,7 +1,7 @@
 <template>
 	<view class="serch_content" style="flex-direction: column; flex: 1;">
 		<view class="" @tap="ceshi">
-			测试{{searchModule}}
+			搜索按钮{{searchModule}}
 		</view>
 		<view class="search_box">
 			<view class="search_input">
@@ -10,43 +10,34 @@
 			</view>
 			<view class="searc_cancel" @tap="cancel">取消</view>
 		</view>
-		<block v-if="isSearch < 10">
-			<view class="search_record_content">
+		<block v-if="isSearch == ''">
+			<view class="search_record_content" v-if="owner_record != ''">
 				<view class="search_record">
 					<view class="record_title">
 						<image class="times_icon" src="/static/images/time_icon_2.png" mode=""></image> 历史搜索
 					</view>
-					<image class="delete_button" src="/static/images/delete_icon.png" mode=""></image>
+					<image class="delete_button" src="/static/images/delete_icon.png" @tap="deleteOwnerSearch" mode=""></image>
 				</view>
 				<view class="search_text_record">
-					<view class="search_text">公益</view>
-					<view class="search_text">公公益</view>
-					<view class="search_text">公益</view>
-					<view class="search_text">公公益</view>
-					<view class="search_text">公益益</view>
-					<view class="search_text">公益公益公</view>
-					<view class="search_text">公益益</view>
+					<block v-for="(item,index) in owner_record" :key="index">
+						<view class="search_text">{{item.searchKey}}</view>
+					</block>
 				</view>
 			</view>
-			<hot-search :hot_record="hot_record"></hot-search>
-			<!-- <view class="search_record_content search_hot">
+			<view class="search_record_content search_hot">
 				<view class="search_record">
 					<view class="record_title">
 						<image class="times_icon" src="/static/images/hot_icon.png" mode=""></image> 热门搜索
 					</view>
 				</view>
 				<view class="search_text_record">
-					<view class="search_text">公益</view>
-					<view class="search_text">公益公益</view>
-					<view class="search_text">公益</view>
-					<view class="search_text">公益公益公益</view>
-					<view class="search_text">公益</view>
-					<view class="search_text">公益公益公益</view>
-					<view class="search_text">公益</view>
+					<block v-for="(item,index) in hot_record" :key="index">
+					<view class="search_text">{{item.searchKey}}</view>
+					</block>
 				</view>
-			</view> -->
+			</view>
 		</block>
-		<block v-if=" isSearch >10">
+		<block v-if=" searchContent !=''">
 			<view class="search_content">
 				<view>
 					<uni-segmented-control style="width: 310upx; margin-right: 410upx;" :current="current" activeColor="#01B18D"
@@ -75,22 +66,24 @@
 <script>
 	import {
 		get,
-		post
+		post,
+		deletes
 	} from '@/common/methods.js';
 	import uniSegmentedControl from "@/components/uni-segmented-control/uni-segmented-control.vue"
 	import bookShow from "@/components/bookShow/bookShow.vue"
-	import hotSearch from "@/components/hotSearch/hotSearch.vue"
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
 	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
+				searchContent:'',
 				search_text:'',
 				searchModule:'',
-				isSearch: 1,
+				isSearch: '',
 				title: '社圈',
 				hot_record:[],
+				owner_record:[],
 				current: 0,
 				items: ['图书', '杂志', '课程'],
 				courseLists: [{
@@ -125,27 +118,44 @@
 				"userid"
 			])
 		},
-		components: {                            
+		components: {
 			uniSegmentedControl,
 			bookShow,
 			courseList,
 			journalList,
-			hotSearch
 		},
 		onLoad(e) {
 			console.log(e.type) 
 			this.searchModule = e.type;
 			get('/search/querySearchHistory/'+this.searchModule,{'associatorid': this.userid}).then(res=>{
-				console.log(res)
+				console.log(res.data.hotSearch)
+				this.hot_record = res.data.hotSearch;
+				this.owner_record= res.data.ownerSearch;
 				});
 		},
 		methods: {
+			deleteOwnerSearch() {
+				deletes('/search/deleteSearchHistory',{"searchModule" : this.searchModule, "operationUser" : this.userid}).then(res=>{
+					console.log(res)
+					this.owner_record = '';
+					
+				});	
+			},
 			ceshi() {
-				console.log(111)
 				console.log("123");
+				if(this.search_text != ''){
 				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
 						console.log(res)
 					});
+				this.isSearch = this.searchContent = 'search';
+					}else{
+						uni.showToast({
+							title: '搜索内容不能为空!',
+							duration: 1500,
+							icon: 'none'
+						});
+					}
+					
 			},
 			// search_input() {
 			// 	console.log("123");
@@ -271,6 +281,7 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 24upx;
+		margin-right: 24upx;
 		padding: 0 26upx;
 		height: 52upx;
 		border-radius: 26px;
@@ -279,7 +290,7 @@
 
 	.serch_content .search_hot {
 		display: flex;
-		padding-bottom: 80%;
+		height: 840upx;
 	}
 
 	.serch_content .search_content .search_info {

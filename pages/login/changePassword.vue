@@ -89,7 +89,7 @@
 			}
 	 	},
 		components: {
-			Search,
+			Header,
 			toRegister
 		}
 	 }

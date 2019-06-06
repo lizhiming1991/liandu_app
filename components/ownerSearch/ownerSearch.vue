@@ -1,13 +1,14 @@
 <template>
-	<view class="serch_content" style="flex-direction: column; flex: 1;">
-		<view class="search_record_content search_hot">
+	<view class="serch_content" style="flex-direction: column; flex: 1;" v-if="owner_record != ''">
+		<view class="search_record_content">
 			<view class="search_record">
 				<view class="record_title">
-					<image class="times_icon" src="/static/images/hot_icon.png" mode=""></image> 热门搜索
+					<image class="times_icon" src="/static/images/time_icon_2.png"></image> 历史搜索
 				</view>
+				<image class="delete_button" @tap="deleteOwnerSearch" src="/static/images/delete_icon.png" mode=""></image>
 			</view>
 			<view class="search_text_record">
-				<block  v-for="(item,index) in hot_record" :key="index">
+				<block v-for="(item, index) in owner_record" :key="index">
 					<view class="search_text">{{item.searchKey}}</view>
 				</block>
 			</view>
@@ -22,9 +23,14 @@
 				
 			}
 		},
-		methods:{},
+		methods: {
+			deleteOwnerSearch() {
+				console.log('123')
+				this.$emit('deleteOwnerRecord')
+			}
+		},
 		props:[
-			"hot_record"
+			"owner_record"
 		],
 	}
 </script>
@@ -41,8 +47,7 @@
 	.serch_content {
 		display: flex;
 	}
-	
-	
+		
 	.serch_content .search_record {
 		display: flex;
 		justify-content: center;
@@ -62,6 +67,13 @@
 		height: 29upx;
 	}
 	
+	.serch_content .search_record_content .delete_button {
+		display: flex;
+		margin-right: 43upx;
+		width: 28upx;
+		height: 37upx;
+	}
+	
 	.serch_content .search_record_content .record_title {
 		display: flex;
 		flex: 1;
@@ -72,9 +84,9 @@
 	.serch_content .search_record_content .search_text_record {
 		display: flex;
 		justify-content: space-between;
-		flex-wrap: wrap;
 		margin: 51upx 0 0 85upx;
 		width: 580upx;
+		flex-wrap: wrap;
 	}
 	
 	.serch_content .search_record_content .search_text {
@@ -86,10 +98,4 @@
 		border-radius: 26px;
 		background: rgba(247, 248, 250, 1);
 	}
-	
-	.serch_content .search_hot {
-		display: flex;
-		padding-bottom: 80%;
-	}
-	
 </style>

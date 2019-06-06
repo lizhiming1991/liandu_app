@@ -28,7 +28,8 @@
 		}
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseInfo",
-		   "style": {}
+		   "style": {
+		   }
 		} 
 		,{
 		    "path" : "pages/enterpriseDetails/enterpriseSearch",

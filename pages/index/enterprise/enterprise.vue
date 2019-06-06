@@ -70,7 +70,7 @@
 				</view>
 			</view>
 		</block>
-		<navigator url="../../login/logout">To logout</navigator>
+		<!-- <navigator url="../../login/logout">To logout</navigator> -->
 	</view>
 </template>
 
@@ -84,6 +84,7 @@
 		data() {
 			return {
 				isVip: '',
+				enterpriseName:'',
 				enterpriseList: [],
 				trade: ['行业'],
 				region: ['地区'],
@@ -139,10 +140,10 @@
 		methods: {
 			toApplyMember: function(e) {
 				let enterpriseLid = e.currentTarget.dataset.enterpriselid;
-				let enterpriseName = e.currentTarget.dataset.enterprisename;
+				this.enterpriseName = e.currentTarget.dataset.enterprisename;
 				if(this.userid != ''){
 					uni.navigateTo({
-						url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName='+enterpriseName,
+						url: '../../enterpriseDetails/applyMember?enterpriseLid=' + enterpriseLid + '&enterpriseName='+this.enterpriseName,
 						success: res => {
 						}
 					});
@@ -225,9 +226,9 @@
 					// console.log('123')
 					joinedState = 'notVip';
 				}
-				//console.log(joinedState)
-				uni.navigateTo({
-					url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState,
+				console.log(this.enterpriseName)
+				uni.navigateTo({  
+					url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState +'&enterpriseName='+this.enterpriseName,
 					success: res => {}
 				});
 			}

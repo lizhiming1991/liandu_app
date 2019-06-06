@@ -13,7 +13,7 @@
 			<view class="title_content">
 				<view class="title_text">{{enteroriseList.name}}</view>
 				<view style="flex: 1;"></view>
-				<view class="to_apply" v-if=" isVip == 'notVip'">申请会员</view>
+				<view class="to_apply" v-if=" isVip == 'notVip'" @tap="toMember">申请会员</view>
 				<view class="under_review" v-else-if=" isVip == 'init'">会员审核中</view>
 				<view class="vip_added" v-else-if=" isVip == 'pass'">已加入</view>
 			</view>
@@ -114,11 +114,11 @@
 									<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
 									<!-- <view class="journal_price">￥9.9</view> -->
 								</view>
-								
+
 								<!-- <view class="book_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
 								<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
 								<view class="book_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view> -->
-								
+
 							</view>
 							<view class="journal_cover_title">
 								{{item.name}}
@@ -198,7 +198,8 @@
 		},
 		data() {
 			return {
-				searchType:'1',
+				enteroriseName:'',
+				searchType: '1',
 				resData: '',
 				editData: '',
 				title: 'Hello',
@@ -238,8 +239,9 @@
 			]),
 		},
 		onLoad(e) {
+			
 			get('/enterprise/company/13?userId=1340').then(res => {
-				console.log(res.data.richText)
+				//console.log(res.data.richText)
 				// this.resData = res.data.richText
 			});
 			// uni.setNavigationBarTitle({
@@ -247,6 +249,8 @@
 			// });
 			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
 			this.isVip = e.joinedState;
+			// this.enteroriseName=;
+			console.log( e.enterpriseName)
 			if (this.isVip == 'init') {
 				uni.showModal({
 					title: '提示',
@@ -267,9 +271,11 @@
 					content: '为了更好的享受企业服务，请先申请为企业会员',
 					success: function(res) {
 						if (res.confirm) {
-							uni.navigateTo({
-								url: './applyMember'
-							})
+							setTimeout(() => {
+						uni.navigateTo({
+							url: './applyMember?enterpriseName=' + this.enteroriseName
+						})
+							}, 800);
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}
@@ -289,7 +295,12 @@
 		methods: {
 			toSearch() {
 				uni.navigateTo({
-					url:'./enterpriseSearch?type=' + this.searchType
+					url: './enterpriseSearch?type=' + this.searchType
+				})
+			},
+			toMember() {
+				uni.navigateTo({
+					url: './applyMember?enterpriseName=' + this.enteroriseList.name
 				})
 			},
 			bookSearchChange: function(e) {
@@ -334,7 +345,7 @@
 				if (index == 0) {
 					console.log(33333333333333)
 					this.searchType = 1;
-				}else if (index == 1) {
+				} else if (index == 1) {
 					console.log('111')
 					this.searchType = 2;
 					// post('/book/book/page',this.requiredBooks).then(res=>{
@@ -428,18 +439,19 @@
 
 	view {
 		flex-direction: row;
+
 	}
 
 	page {
-		display: flex;
 		background-image: url('http://192.168.0.210/attached/image/ceshi/1.png');
 		background-repeat: no-repeat;
 		background-position-y: -250upx;
+
+
 	}
 
 	.journal_content .search_lable {
 		display: flex;
-		margin-top: 50upx;
 		margin-bottom: 60upx;
 	}
 
@@ -650,7 +662,7 @@
 		height: 444upx;
 		background: #fff;
 	}
-	
+
 	.journal_content .list_content .journal_list .journal_cover:nth-child(2n-1) {
 		margin-right: 4upx;
 	}
@@ -672,25 +684,27 @@
 		color: #333;
 		font-size: 32upx;
 	}
+
 	/* 是否付费 */
-	.journal_content .list_content .journal_list .journal_cover .img_box{
+	.journal_content .list_content .journal_list .journal_cover .img_box {
 		position: relative;
-		width:184upx; 
-		height:296upx; 
+		width: 184upx;
+		height: 296upx;
 		margin-top: 51upx;
 	}
-	.journal_content .list_content .journal_list .journal_price{
+
+	.journal_content .list_content .journal_list .journal_price {
 		display: flex;
 		justify-content: center;
 		position: absolute;
 		left: 0;
 		top: 0;
-		height:32upx;
+		height: 32upx;
 		color: #fff;
 		font-size: 20upx;
 		background: #FF546C;
 	}
-	
+
 	/* 杂志 end */
 	/* 课程列表 start*/
 	.journal_content .list_content .content_list .course_cover {
