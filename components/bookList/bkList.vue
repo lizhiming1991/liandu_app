@@ -85,6 +85,7 @@
 	
 	.tablist{
 		display: flex;
+		overflow: hidden;
 		.tabs{
 			width: 176upx;
 			background-color: #F7F8FA;

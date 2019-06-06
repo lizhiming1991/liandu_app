@@ -14,8 +14,8 @@
 		</view>
 		<view class="cr_pro">
 			<text>{{itemInfo.courseName}}</text>
-			<text class="cr_score">9分</text>
-			<view class="cr_read">848人已学</view>
+			<text class="cr_score">{{itemInfo.score==0?'暂无评分!':itemInfo.score+'分'}}</text>
+			<view class="cr_read">{{itemInfo.hasLearned}}人已学</view>
 		</view>
 		<view class="taps">
 			<text :class="shownum==0?'tapbtn choose':'tapbtn'" @tap="changeType(0)">简介</text>
@@ -31,9 +31,9 @@
 				<view class="teacher">
 					<view class="t_kname">讲师</view>
 					<view class="t_img">
-						<image class="t_image" src="../../static/image/sta_userphoto.png"></image>
+						<image class="t_image" :src="ImgUrl+itemInfo.teacherPhoto"></image>
 					</view>
-					<view class="t_text">这里是讲师介绍这里是讲师介绍这里是讲师介绍这里是讲师介绍这里是讲师介绍</view>
+					<view class="t_text">{{itemInfo.teacherDescription}}</view>
 				</view>
 			</view>
 			<!-- 评论列表 -->
@@ -41,7 +41,7 @@
 		</view>
 		<!-- 目录 -->
 		<view class="mulu" v-if="shownum == 1">
-			<view class="mululist" v-for="(item,index) in itemList" :key="index">
+			<view class="mululist" v-for="(item,index) in itemList" :key="index" @tap="checkless(item,index)">
 				<image mode="widthFix" class="m_pic" :src="'../../static/images/cr_video_'+(nowplay == index?'play.png':'static.png')"></image>
 				<text class="m_text">第一讲：{{item.lessonName}}</text>
 				<image class="m_arrow" src="../../static/images/arr_right.png"></image>
@@ -93,13 +93,12 @@
 			this.ImgUrl = ImgUrl;
 			this.kid = e.id;
 			get("/course/abundant",{
-				userId: this.userid,
+				userId: 1348,
 				courseId: this.kid
 			}).then(res=>{
 				if(res.status == 200){
 					this.itemInfo = res.data;
 				}
-				console.log(res)
 			})
 			get("/course/lesson/list",{
 				courseId: this.kid
@@ -108,8 +107,8 @@
 					this.itemList = res.data;
 					this.nowvideo = res.data[0];
 				}
-				console.log(res)
 			})
+			this.getDisscusslist();
 		},
 		methods:{
 			goback(){
@@ -129,8 +128,23 @@
 				}
 				this.isshow = true;
 			},
+			checkless(item,index){
+				this.nowvideo = item;
+				this.nowplay = index;
+			},
 			hideComment(){
 				this.isshow = false;
+			},
+			getDisscusslist(){
+				get("/social/grade/all",{
+					sourceName:"course",
+					sourceId: this.kid
+				}).then(res=>{
+					if(res.status == 200){
+						this.comList = res.data;
+					}
+					console.log(res)
+				})
 			},
 			addComments(obj){
 				/* post("/book/book/makeComment",{
@@ -284,6 +298,7 @@
 			.cr_score{
 				color: #FFC900;
 				margin-left: 20upx;
+				font-size: 28upx;
 			}
 			.cr_read{
 				text-align: right;

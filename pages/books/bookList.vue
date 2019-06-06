@@ -152,7 +152,7 @@
 
 <style lang="scss" scoped>
 .c_content{
-	padding-bottom: 100upx;
+	
 }
 .b_search{
 		width: 100%;

@@ -6,11 +6,11 @@
 		<view class="lists">
 			<view class="list" v-for="(item,index) in itemData" :key="index">
 				<view class="p_left">
-					<image class="u_pic" :src="item.photo?(ImgUrl+item.photo):'../../static/image/sta_userphoto.png'"></image>
+					<image class="u_pic" :src="item.headphoto?(ImgUrl+item.headphoto):'../../static/image/sta_userphoto.png'"></image>
 				</view>
 				<view class="p_right">
 					<view class="part1">
-						<text class="p_name">{{item.loginname}}</text>
+						<text class="p_name">{{item.headname}}</text>
 						<view class="p_stars">
 							<image class="p_star" :src="'../../static/images/icon_star'+(item.score>=2?'2.png':'.png')"></image>
 							<image class="p_star" :src="'../../static/images/icon_star'+(item.score>=4?'2.png':'.png')"></image>
@@ -20,7 +20,7 @@
 						</view>
 					</view>
 					<view class="part2">
-						<text class="tag0">{{showReadState(item.state)}}</text>
+						<text class="tag0">{{showReadState(item.readstate)}}</text>
 						<text class="tag" v-for="(val,index2) in item.tagList" :key="index2">{{val.tag}}</text>
 					</view>
 					<view class="part3">
@@ -29,19 +29,19 @@
 					<view class="part4">
 						<text>{{item.createtime}}</text>
 						<view class="shows">
-							<text @tap="showalert(index)">回复({{item.commmentNums}})</text>
+							<text @tap="showalert(index)">回复({{item.commentNums}})</text>
 							<view class="s_dz">
-								<image class="dz_pic" @tap="changepraise(item.isPraise,item.id)" :src="'../../static/images/icon_dz'+(item.isPraise == 0?'.png':'2.png')"></image> 
+								<image class="dz_pic" @tap="changepraise(item.praiseid,item.id)" :src="'../../static/images/icon_dz'+(item.praiseid == 0?'.png':'2.png')"></image> 
 								{{item.commentLikeNums}}
 							</view>
 						</view>
 					</view>
 					<view class="part5" v-if="shownum == index">
-						<input class="p_input" v-model="content" type="text" :placeholder="'回复:@'+item.loginname">
+						<input class="p_input" v-model="content" type="text" :placeholder="'回复:@'+item.headname">
 						<text class="p_btn" @tap="addaply(item.id)">回复</text>
 					</view>
 					<view class="part6" v-if="item.commmentNums != 0">
-						<view class="replylist" v-for="(val,index3) in item.commentList" :key="index3"><text class="r_name">{{val.loginname}} :</text>{{val.content}}</view>
+						<view class="replylist" v-for="(val,index3) in item.replyList" :key="index3"><text class="r_name">{{val.loginname}} :</text>{{val.content}}</view>
 					</view>
 				</view>
 			</view>

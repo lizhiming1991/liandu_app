@@ -51,6 +51,7 @@
 	import {mapState} from 'vuex'
 	import {get,post,deletes} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
+	import DisscussItem from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -98,7 +99,12 @@
 				get("/book/book/comment/"+this.bid+"?associatorid="+this.userid).then(res=>{
 					if(res.status == 200){
 						this.allDiss = res.data.totalCommentNums;
-						this.comList = res.data.gradeList;
+						let Arr = [];
+						res.data.gradeList.map(item=>{
+						    const {associatorid,id,photo,loginname,score,state,content,createtime,commmentNums,isPraise,commentLikeNums,commentList,tagList} = item;
+						    Arr.push(new DisscussItem(associatorid,id,photo,loginname,score,state,content,createtime,commmentNums,isPraise,commentLikeNums,commentList,tagList))
+						});
+						this.comList = Arr;
 					}
 				})
 			},
@@ -117,9 +123,18 @@
 				this.isshow = false;
 			},
 			gotoqiye(){
-				uni.navigateTo({
-					url:"/pages/enterpriseDetails/applyMember?enterpriseName="+""+"&enterpriseLid="+""
-				})
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以申请!",
+						duration: 2000,
+						icon: 'none'
+					});
+				}else{
+					uni.navigateTo({
+						url:"/pages/enterpriseDetails/applyMember?enterpriseName="+""+"&enterpriseLid="+""
+					})
+				}
+				
 				
 			},
 			goRead(id){
