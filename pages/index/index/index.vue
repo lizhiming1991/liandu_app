@@ -29,9 +29,11 @@
 					</navigator>
 				</view>
 				<view class="lg_navbar_item">
-					<text class="lg_tname">休闲杂志</text>
-					<image class="lg_tpic" src="/static/images/icon_xxzz.png"></image>
-					<text class="lg_line"></text>
+					<navigator url="/pages/magazine/magazine" class="lg_routelink">
+						<text class="lg_tname">休闲杂志</text>
+						<image class="lg_tpic" src="/static/images/icon_xxzz.png"></image>
+						<text class="lg_line"></text>
+					</navigator>
 				</view>
 				<view class="lg_navbar_item">
 					<text class="lg_tname">音频专栏</text>
@@ -95,7 +97,7 @@
 			</view>
 			<view class="lg_mag_list">
 				<view class="lg_mag_part" v-for="(item,index) in magList1" :key="index">
-					<view class="lg_mag_img">
+					<view class="lg_mag_img" @tap="goMagazinDetails(item)">
 						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text v-show="item.ispay" class="lg_mag_pay">收费</text>
 						<text v-show="!item.ispublic" class="lg_mag_vip">会员</text>
@@ -106,7 +108,7 @@
 			</view>
 			<view class="lg_mag_list" v-if="magList2">
 				<view class="lg_mag_part" v-for="(item,index) in magList2" :key="index">
-					<view class="lg_mag_img">
+					<view class="lg_mag_img" @tap="goMagazinDetails(item)">
 						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
@@ -117,7 +119,7 @@
 			</view>
 			<view class="lg_mag_list" v-if="magList3">
 				<view class="lg_mag_part" v-for="(item,index) in magList3" :key="index">
-					<view class="lg_mag_img">
+					<view class="lg_mag_img" @tap="goMagazinDetails(item)">
 						<image class="lg_mag_pic" :src="item.photo?(imgurl+item.photo):imgerror"></image>
 						<text class="lg_mag_pay">收费</text>
 						<text class="lg_mag_vip">会员</text>
@@ -160,13 +162,12 @@
 		data() {
 			return {
 				picArr: [],
-				staPic: "/static/image/sta_lunbo.png",
 				magList1: [],
 				magList2: [],
 				magList3: [],
 				bookList: [],
 				imgurl: "",
-				imgerror: "/static/image/sta_zazhi.png",
+				imgerror: "/static/images/book_static.jpg",
 				b_length: 3,
 				m_length: 3,
 			}
@@ -211,6 +212,12 @@
 					url:"/pages/books/bookDetails?id="+item.id
 				})
 			},
+			goMagazinDetails(item){
+				uni.navigateTo({
+					url:"/pages/magazine/magazineDetails?id="+item.id
+				})
+			},
+			
 			
 		},
 		components: {

@@ -69,9 +69,7 @@
 		onLoad() {
 			this.randomString = acquireString.randomWord(false, 11);
 		},
-		onReady(){
-			
-		},
+		onReady(){},
 		methods: {
 			checkphone(){
 				get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
@@ -86,7 +84,6 @@
 							icon: 'none'
 						});
 					}
-					
 				});
 			},
 			getImgcode(){

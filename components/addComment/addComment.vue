@@ -13,7 +13,7 @@
         </view>
 		<view class="show_look">
 			<text class="s_look s_choose" ref="read_state0" @tap="changestate('unread',0)">想看</text>
-			<text class="s_look" ref="read_state1" @tap="changestate('isread',1)">在看</text>
+			<text class="s_look" ref="read_state1" @tap="changestate('is',1)">在看</text>
 			<text class="s_look" ref="read_state2" @tap="changestate('read',2)">看过</text>
 		</view>
 		<view class="p_tags">

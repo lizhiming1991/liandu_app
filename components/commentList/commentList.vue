@@ -32,7 +32,7 @@
 							<text @tap="showalert(index)">回复({{item.commentNums}})</text>
 							<view class="s_dz">
 								<image class="dz_pic" @tap="changepraise(item.praiseid,item.id)" :src="'../../static/images/icon_dz'+(item.praiseid == 0?'.png':'2.png')"></image> 
-								{{item.commentLikeNums}}
+								{{item.praiseNums}}
 							</view>
 						</view>
 					</view>
@@ -57,6 +57,7 @@
 				content:""
 			}
 		},
+		
 		methods:{
 			showReadState(state){
 				if(state == "read"){
@@ -65,7 +66,7 @@
 				if(state == "unread"){
 					return "想看"
 				}
-				if(state == "isread"){
+				if(state == "is"){
 					return "在看"
 				}
 			},

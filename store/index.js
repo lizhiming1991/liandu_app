@@ -9,7 +9,7 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		loginProvider: "",
 		openid: null,
-		userid: "",
+		userid: 1348,
 		phone:"",
 		modifyRandomNumbers:"",
 	},

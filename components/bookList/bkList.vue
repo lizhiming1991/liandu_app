@@ -36,7 +36,7 @@
 	export default {
 		data (){
 			return{
-				imgerror:"",
+				imgerror:"../../static/images/book_static.jpg",
 				tapindex: -1,
 				
 			}
