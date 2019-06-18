@@ -61,6 +61,7 @@
 	import addComment from '@/components/addComment/addComment.vue'
 	import {ImgUrl} from '@/common/common.js'
 	import CommentList from '@/components/commentList/commentList.vue'
+	import {DisscussItem} from '@/common/config.js'
 	export default {
 		data(){
 			return {
@@ -141,9 +142,15 @@
 					sourceId: this.kid
 				}).then(res=>{
 					if(res.status == 200){
-						this.comList = res.data;
+						
+						let Arr = [];
+						res.data.map(item=>{
+						    const {associatorId,id,userPhoto,userName,score,state,content,createTime,commentNums,isPraise,praises,comments,tagList} = item;
+						    Arr.push(new DisscussItem(associatorId,id,userPhoto,userName,score,state,content,createTime,commentNums,isPraise,praises,comments,tagList))
+						});
+						this.comList = Arr;
 					}
-					console.log(res)
+					// console.log(res)
 				})
 			},
 			addComments(obj){

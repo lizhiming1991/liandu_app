@@ -5,7 +5,7 @@
 		
 		<view class="header">
 			<view class="left">
-				<image class="userphoto" :src="ImgUrl+(bookinfo.photo?bookinfo.photo:'')"></image>
+				<image class="userphoto" :src="bookinfo.photo?(ImgUrl+bookinfo.photo):imgerror"></image>
 			</view>
 			<view class="right">
 				<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> <text class="svip" @tap="gotoqiye">申请会员</text></view>
@@ -51,11 +51,12 @@
 	import {mapState} from 'vuex'
 	import {get,post,deletes} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
-	import DisscussItem from '@/common/config.js'
+	import {DisscussItem} from '@/common/config.js'
 	export default {
 		data() {
 			return {
 				title: "",
+				imgerror:"../../static/images/book_static.jpg",
 				bookinfo: "",
 				ImgUrl: "",
 				allDiss: 0,
@@ -164,6 +165,11 @@
 					tag: obj.tags
 				}).then(res=>{
 					if(res.status == 200){
+						uni.showToast({
+							title: "发表评论成功!",
+							duration: 2000,
+							icon: 'none'
+						});
 						this.getDisscusslist();
 					}else{
 						uni.showToast({

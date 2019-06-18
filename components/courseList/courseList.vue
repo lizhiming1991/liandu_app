@@ -5,22 +5,20 @@
 				<view class="course_content" style="flex-direction: column;">
 					<view @tap="to_details(item.id)">
 						<view class="course_cover">
-							<image class="course_cover_img" src="/static/image/kecheng.png" mode="widthFix"></image>
+							<image class="course_cover_img"  :src="item.photo?(ImgUrl+item.photo):imgerror" mode="widthFix"></image>
 							<view class="member_icon">会员</view>
 						</view>
-						<view class="course_title">
-							{{item.courseName}}
-						</view>
+						<view class="course_title" v-html="item.title"></view>
 					</view>
 					
 					<view class="course_info">
 						<view class="course_teacher">
 							<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
-							<text class="course_teacher_name">{{item.teacherName}}</text>
+							<text class="course_teacher_name">{{item.authorname}}</text>
 						</view>
 						<view class="course_times">
 							<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
-							<text class="course_time_date">{{item.updateTime.split('T')[0]}}</text>
+							<text class="course_time_date">{{item.createtime.split('T')[0]}}</text>
 						</view>
 					</view>
 				</view>
@@ -32,11 +30,12 @@
 <script>
 	export default {
 		props:[
-			"courseList"
+			"courseList",
+			"ImgUrl"
 		],
 		data() {
 			return {
-					
+				imgerror:"../../static/image/kecheng.png",	
 			}
 		},
 		onLoad() {
@@ -59,8 +58,10 @@
 		width: 100%;
 		position: relative;
 		margin-top: 31upx;
+		height: 355upx;
+		overflow: hidden;
 	}
-	.course_cover_img {
+	.course_cover .course_cover_img {
 		width: 100%;
 	}
 	
@@ -71,6 +72,7 @@
 	.course_content .course_title {
 		color: #333;
 		font-size: 30upx;
+		margin-top: 20upx;
 	}
 	
 	.course_teacher,

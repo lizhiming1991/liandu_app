@@ -64,6 +64,10 @@
             "path" : "pages/magazine/magazine",
             "style" : {}
         }
+		 ,{
+		    "path" : "pages/magazine/magazineDetails",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/video/video",
             "style" : {}

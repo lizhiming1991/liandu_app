@@ -1,5 +1,5 @@
-export default class DisscussItem {
-	constructor(uid,id,headphoto,headname,score,readstate,content,createtime,commentNums,praiseid,commentLikeNums,replyList,tagList) {
+export  class DisscussItem {
+	constructor(uid,id,headphoto,headname,score,readstate,content,createtime,commentNums,praiseid,praiseNums,replyList,tagList) {
 		this.uid = uid;
 		this.id = id;
 		this.headphoto = headphoto;
@@ -10,8 +10,20 @@ export default class DisscussItem {
 		this.createtime = createtime;
 		this.commentNums = commentNums;
 		this.praiseid = praiseid;
-		this.commentLikeNums = commentLikeNums;
+		this.praiseNums = praiseNums;
 		this.replyList = replyList;
 		this.tagList = tagList;
+    }
+}
+export  class searchListItem {
+	constructor(id,authorphoto,authorname,photo,createtime,title,ispay,ispublic) {
+		this.id = id;
+		this.authorphoto = authorphoto;
+		this.authorname = authorname;
+		this.photo = photo;
+		this.createtime = createtime;
+		this.title = title;
+		this.ispay = ispay;
+		this.ispublic = ispublic;
     }
 }
