@@ -38,7 +38,7 @@
 		</view>
 		<block class="enterprise_list_content" v-for="(item , index) in enterpriseList" :key="index">
 			<view class="enterprise_list">
-				<view class="enterprise_list_center" @tap="nextPage" :data-enterpriseid="item.id" :data-joinedState="item.joinedState">
+				<view class="enterprise_list_center" @tap="nextPage" :data-enterpriseid="item.id" :data-entername="item.name" :data-joinedstate="item.joinedState">
 					<view class="list_img_box">
 						<image class="list_img" src="/static/image/qiye_left.png" mode=""></image>
 					</view>
@@ -106,6 +106,7 @@
 					this.trade.push(data);
 				}
 			});
+			console.log(this.userid)
 			//首次加载行业列表
 // 			uni.request({
 // 				url: onlineURL + '/enterprise/company/trade/all',
@@ -220,16 +221,17 @@
 				}
 			},
 			nextPage(e) {
+				console.log(e.currentTarget.dataset.entername)
+				let entername =e.currentTarget.dataset.entername;
 				let enterpriseid = e.currentTarget.dataset.enterpriseid;
 				let joinedState = e.currentTarget.dataset.joinedstate;
 				if (joinedState === undefined || joinedState == undefined) {
 					// console.log('123')
 					joinedState = 'notVip';
 				}
-				console.log(this.enterpriseName)
+				console.log("企业名称"+this.enterName)
 				uni.navigateTo({  
-					url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState +'&enterpriseName='+this.enterpriseName,
-					success: res => {}
+					url: '../../enterpriseDetails/enterpriseInfo?enterpriseid=' + enterpriseid + '&joinedState=' + joinedState +'&enterpriseName=' + entername
 				});
 			}
 		}

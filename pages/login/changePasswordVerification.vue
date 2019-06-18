@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		<view class="register_box">
-			<view class="register_button" @tap="next">下一步</view>
+			<view class="register_button" @tap="next" :style="dd">下一步</view>
 		</view>
 		<view class="direct_login">
 			<text>已有账号,<text class="login_text">直接</text></text>
@@ -51,6 +51,9 @@
 	export default {
 		data() {
 			return {
+				dd:{
+					background:""
+				},
 				title:'',
 				verifyStatus:'',
 				phoneStatus:'',
@@ -129,19 +132,16 @@
 					this.countdown = '重新获取';
 					this.countown_style.zIndex = 2;
 				} else {
-					--this.countdown;
+					-- this.countdown;
 				}
 			},
 			next(e) {
 				
 				get('/check/code?code='+this.verifyNumber+'&&randomStr='+this.randomString, {}).then(res=>{
 					if(res.status==200){
-					
 						
 						setTimeout(() => {
 							this.$store.dispatch("modifyPhoneNumber", this.phoneNumber);
-							// this.phone = this.phoneNumber;
-							console.log("下一步:"+this.phone);
 							uni.navigateTo({
 								url: './changePassword' ,
 								
@@ -225,7 +225,7 @@
 		font-size: 24upx;
 		width: 149upx;
 		height: 57upx;
-		background: rgba(113, 211, 191, 1);
+		background: #01b18d;
 		border-radius: 4upx;
 	}
 

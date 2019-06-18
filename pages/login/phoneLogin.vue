@@ -228,7 +228,7 @@
 		height: 57upx;
 		align-items: center;
 		justify-content: center;
-		background: rgba(113, 211, 191, 1);
+		background: #01b18d;
 		border-radius: 4upx;
 	}
 

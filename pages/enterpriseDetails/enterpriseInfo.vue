@@ -247,10 +247,11 @@
 			// uni.setNavigationBarTitle({
 			// 	title:''
 			// });
+			console.log(e.enterpriseName)
 			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
 			this.isVip = e.joinedState;
-			// this.enteroriseName=;
-			console.log( e.enterpriseName)
+			this.enteroriseName= e.enterpriseName;
+			// console.log( e.enterpriseName)
 			if (this.isVip == 'init') {
 				uni.showModal({
 					title: '提示',
@@ -269,17 +270,24 @@
 					confirmText: '免费申请',
 					cancelText: '我先看看',
 					content: '为了更好的享受企业服务，请先申请为企业会员',
-					success: function(res) {
+					success:res=> {
 						if (res.confirm) {
-							setTimeout(() => {
+							//console.log(this.enteroriseName)
+							
+							let enterName= this.enteroriseName
+						
 						uni.navigateTo({
-							url: './applyMember?enterpriseName=' + this.enteroriseName
+							
+							url: './applyMember?enterpriseName=' + enterName
 						})
-							}, 800);
+							
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}
-					}
+					},
+					
+					
+					
 				});
 			} else if (this.isVip == 'pass') {
 				console.log('hello vip')
@@ -439,17 +447,13 @@
 
 	view {
 		flex-direction: row;
-
+		
 	}
-
-	page {
-		background-image: url('http://192.168.0.210/attached/image/ceshi/1.png');
+	 .journal_content {
+		background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560697915634&di=327774b80dc35018e01ae400c0e3c35e&imgtype=0&src=http%3A%2F%2Fpic24.nipic.com%2F20121014%2F10812677_033641283191_2.jpg');
 		background-repeat: no-repeat;
 		background-position-y: -250upx;
-
-
 	}
-
 	.journal_content .search_lable {
 		display: flex;
 		margin-bottom: 60upx;

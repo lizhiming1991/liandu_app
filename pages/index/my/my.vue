@@ -7,7 +7,7 @@
 					<view class="username">测试账号</view>
 					<view class="infomation">介绍:一生只求潇潇洒洒这是我的个性签名</view>
 				</view>
-				<text class="setinfo">设置</text>
+				<text class="setinfo" @tap="toSetUp">设置</text>
 			</view>
 			<view class="m_info">
 				<view class="m_icon">
@@ -128,6 +128,13 @@
 		},
 		onShow(){
 			
+		},
+		methods: {
+			toSetUp() {
+				uni.navigateTo({
+					url:'/pages/account/setUp',
+				});
+			}
 		},
 		onReady(){
 			if(this.userid == "" || this.userid == undefined || this.userid == "undefined"){

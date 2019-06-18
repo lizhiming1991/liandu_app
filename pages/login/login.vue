@@ -12,7 +12,7 @@
 				 placeholder="请输入手机号码" @blur="checkphone()" />
 			</view>
 			<view class="input_row input_password">
-				<input class="login_password" v-model="password" password="true" style="font-size: 30upx;" maxlength="16"
+				<input class="login_password" v-model="password"  @blur="changeBg" password="true" style="font-size: 30upx;" maxlength="16"
 				 placeholder="请输入密码" />
 			</view>
 			<view class="input_row input_password" v-if="number>=3">
@@ -24,7 +24,7 @@
 			<navigator url="/pages/login/changePasswordVerification">忘记了?找回密码</navigator>
 		</view>
 		<view class="login_box">
-			<button class="login_button" @tap="passwordLogin">登录</button>
+			<button class="login_button" @tap="passwordLogin" :style="change_bg">登录</button>
 		</view>
 		<!-- <view class="action-row">
 	        <navigator url="">注册账号</navigator>
@@ -47,6 +47,9 @@
 	export default {
 		data() {
 			return {
+				change_bg:{
+					background:''
+				},
 				title:'',
 				phoneNumber: '',
 				password: '',
@@ -60,7 +63,7 @@
 		},
 		computed: {
 			...mapState([
-				"userid"
+				"userid" 
 			]),
 			numbers:function(){
 				return this.number
@@ -163,8 +166,6 @@
 								duration: 1500,
 								icon: 'success'
 							});
-							console.log("id:");
-							console.log(res.data);
 							this.$store.dispatch("changeUserid",res.data);
 							uni.reLaunch({
 								url: '../index/index/index'
@@ -180,6 +181,10 @@
 						}
 					});
 				}
+			},
+			changeBg() {
+				
+				console.log("123")
 			}
 		},
 		components: {

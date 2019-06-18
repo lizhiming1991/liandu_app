@@ -100,6 +100,15 @@
 		    "path" : "pages/course/courseDetails",
 		    "style" : {}
 		}
+		,{
+		    "path" : "pages/account/account",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/account/setUp",
+		    "style" : {
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

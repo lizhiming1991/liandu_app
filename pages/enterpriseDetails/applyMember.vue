@@ -102,6 +102,7 @@
 			]),
 		},
 		onLoad(e) {
+			console.log(e)
 			this.enterpriseName = e.enterpriseName;
 			this.cold = e.enterpriseLid;
 			//console.log(this.enterpriseName);

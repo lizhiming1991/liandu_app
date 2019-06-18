@@ -1,10 +1,10 @@
 <template>
 	<view class="register_content" style="flex-direction: column; flex: 1;">
-		<Search></Search>
+		<Header></Header>
 		<view class="phone_row">
 			<view style="flex: 1;">
 				<input class="register_accout" v-model="phoneNumber" type="number" style="padding-left:80upx; font-size: 30upx;"
-				 maxlength="11" placeholder="请输入手机号码"/>
+				 maxlength="11" placeholder="请输入手机号码" />
 			</view>
 			<view>
 				<image class="phone_icon" width="" src="/static/images/shouji.png" mode=""></image>
@@ -28,12 +28,14 @@
 		<view class="password_row">
 			<view style="flex: 1;">
 				<view class="input_row input_password">
-					<input class="register_password" v-model="password" style="font-size: 30upx;" password="true" maxlength="20"
-					 placeholder="密码长度6-20位" />
+					<input class="register_password" v-model="password" :type="passwordType" maxlength="20" placeholder="密码长度6-20位" />
 				</view>
 			</view>
-			<view class="show_password">
-				<image src="/static/images/yanjing.png" mode=""></image>
+			<view class="show_password" v-if="eye" @tap="pwd_ishow">
+				<image src="/static/images/yanjing.png"  mode=""></image>
+			</view>
+			<view class="show_password" v-else @tap="pwd_ishow">
+				<image src="/static/images/yanjing_2.png" mode=""></image>
 			</view>
 		</view>
 		<view class="register_row" style="justify-content: center;">
@@ -55,7 +57,7 @@
 </template>
 
 <script>
-	import Search from '@/components/header/header.vue';
+	import Header from '@/components/header/header.vue';
 	import acquireString from '@/common/commonFunction.js';
 	import md5 from 'js-md5';
 	import {
@@ -68,6 +70,8 @@
 	export default {
 		data() {
 			return {
+				eye: true,
+				passwordType: 'password',
 				message: '',
 				randomString: '',
 				registerPhoneId: '',
@@ -94,6 +98,17 @@
 			console.log(this.randomString);
 		},
 		methods: {
+			pwd_ishow() {
+				console.log('123')
+				console.log(this.eye)
+				if(this.eye == true){
+					this.eye = false
+					 this.passwordType = 'number'
+				}else{
+					this.eye = true
+					this.passwordType = 'password'
+				}
+			},
 			login() {
 				uni.reLaunch({
 					url: './phoneLogin'
@@ -103,31 +118,30 @@
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
 				if (regPhone.test(this.phoneNumber)) {
 					//1：验证手机号是否已被注册
-					await get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
+					await get('/user/check?phone=' + this.phoneNumber, {}).then(res => {
 						console.log(res);
-						if(res.status != 200){
+						if (res.status != 200) {
 							//未被注册
 							this.countdown = 60;
 							this.timestatus_two = false;
 							this.timestatus = true;
 							this.clear = setInterval(this.countDown, 1000);
-							get ('/code/phone/regist?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res=>{
+							get('/code/phone/regist?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res => {
 								uni.showToast({
-									title:'验证码已发送',
-									duration:1500,
-									icon:'success'
+									title: '验证码已发送',
+									duration: 1500,
+									icon: 'success'
 								})
 							});
 							return true;
-						}
-						else{
+						} else {
 							uni.showToast({
 								title: res.message,
 								duration: 1500,
 								icon: 'none'
 							});
 						}
-						
+
 					});
 				} else {
 					uni.showToast({
@@ -157,7 +171,7 @@
 			// 验证码倒计时 end 
 			// 注册
 			async registerID() {
-				if(this.phoneNumber == null || this.phoneNumber==''){
+				if (this.phoneNumber == null || this.phoneNumber == '') {
 					uni.showToast({
 						title: '请输入手机号码',
 						duration: 2000,
@@ -165,7 +179,7 @@
 					});
 					return false;
 				}
-				if(this.verifyNumber == null || this.verifyNumber==''){
+				if (this.verifyNumber == null || this.verifyNumber == '') {
 					uni.showToast({
 						title: '请输入验证码',
 						duration: 2000,
@@ -173,7 +187,7 @@
 					});
 					return false;
 				}
-				if(this.password == null || this.password==''){
+				if (this.password == null || this.password == '') {
 					uni.showToast({
 						title: '请输入密码',
 						duration: 2000,
@@ -181,13 +195,16 @@
 					});
 					return false;
 				}
-				await get('/check/code?code='+this.verifyNumber+'&&randomStr='+this.randomString, {}).then(res=>{
-					if(res.status==200){
-						
+				await get('/check/code?code=' + this.verifyNumber + '&&randomStr=' + this.randomString, {}).then(res => {
+					if (res.status == 200) {
+
 						let regPwd = /^[a-z0-9A-Z]{6,14}$/;
 						if (regPwd.test(this.password)) {
-							post('/user/regist', {"phone":this.phoneNumber, "password": md5(this.password)}).then(res=>{
-								if(res.status==200){
+							post('/user/regist', {
+								"phone": this.phoneNumber,
+								"password": md5(this.password)
+							}).then(res => {
+								if (res.status == 200) {
 									uni.showToast({
 										title: res.message,
 										duration: 2000,
@@ -202,8 +219,7 @@
 											url: '../index/index/index'
 										});
 									}, 1000);
-								}
-								else{
+								} else {
 									uni.showToast({
 										title: res.message,
 										duration: 2000,
@@ -218,8 +234,7 @@
 								icon: 'none',
 							});
 						}
-					}
-					else{
+					} else {
 						uni.showToast({
 							title: res.message,
 							duration: 2000,
@@ -227,12 +242,12 @@
 						});
 					}
 				});
-				
-				
+
+
 			}
 		},
 		components: {
-			Search
+			Header
 		}
 	}
 </script>
@@ -321,6 +336,12 @@
 	.register_content .password_row .show_password image {
 		width: 38upx;
 		height: 14upx;
+	}
+
+	.register_content .password_row .register_password {
+		font-size: 30upx;
+		border: none;
+		outline: none;
 	}
 
 	.register_content .register_row {
