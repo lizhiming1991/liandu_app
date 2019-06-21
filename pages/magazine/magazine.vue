@@ -73,7 +73,6 @@
 		onLoad(){
 			this.ImgUrl = ImgUrl;
 			this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
-			console.log(1)
 			get("/book/book/category/all",{}).then(res=>{
 				if(res.status == 200){
 					this.typeList = res.data;
@@ -81,9 +80,7 @@
 			})
 			
 		},
-		onShow(){
-			console.log(2)
-		},
+		
 		onReady(){
 			 // #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO 
 			 var h = wx.getSystemInfoSync().windowHeight;
@@ -94,7 +91,6 @@
 				this.$refs.list.$refs.b_scrolls.$el.style.height = h+"px";
 			 // #endif 
 			
-			console.log(3)
 		},
 		methods:{
 			goDetails(item){
@@ -122,7 +118,6 @@
 								})
 							}
 						}
-						console.log(res)
 					})
 				}else{
 					uni.navigateTo({
@@ -155,7 +150,6 @@
 						this.numbers = res.data.bookList.length;
 						this.bookList = res.data.bookList;
 					}
-					console.log(res)
 				})
 			},
 			getBooklist(content,tid,pagenum,pagesize){
@@ -177,9 +171,7 @@
 							if(this.isfirst){
 								this.bookList = res.data.pageBooks;
 								this.isfirst = false;
-								console.log(555)
 							}else{
-								console.log(777)
 								this.bookList = [...this.bookList,...res.data.pageBooks];
 							}
 							this.pageNum  = this.pageNum +1;
