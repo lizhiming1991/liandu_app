@@ -27,17 +27,17 @@ const store = new Vuex.Store({
 			state.title = bool;
 		},
 		modifyPhoneNumber(state, phone) {
-			state.phone = phone
+			state.phone = phone;
 		},
 		modifyRandomNumber(state,modifyRandomNumbers){
-			state.modifyRandomNumbers = modifyRandomNumbers
+			state.modifyRandomNumbers = modifyRandomNumbers;
 		}
 	},
 	actions: {
 		addInfo(ctx, editData){
 			ctx.commit('addInfo',editData)
 		},
-		changeTitle(context,bool){
+		changeTitle(context,bool){ 
 			context.commit("updateTitle",bool);
 		},
 		changeUserid(context,bool){

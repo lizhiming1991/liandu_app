@@ -9,7 +9,7 @@
 			</view>
 			
 			<scroll-view ref="b_scrolls" scroll-y="true"  class="booklist" @scrolltolower="getMore">
-				<view class="part" @tap="goDetail(item.id)" v-for="(item,index) in bookdata" :key="index">
+				<view class="part" @tap="goDetail(item)" v-for="(item,index) in bookdata" :key="index">
 					<view class="bk_img">
 						<image class="bk_pic" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
 						<!-- <text class="bk_jx">精选</text> -->
@@ -50,8 +50,8 @@
 		onReady(){
 		},
 		methods:{
-			goDetail(bid){ 
-				this.$emit("goDetail",{"id":bid});
+			goDetail(data){ 
+				this.$emit("goDetail",data);
 			},
 			changelist(id,index){
 				this.tapindex = index;

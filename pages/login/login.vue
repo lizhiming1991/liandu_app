@@ -72,8 +72,30 @@
 		},
 		onLoad() {
 			this.randomString = acquireString.randomWord(false, 11);
+			uni.getStorage({
+				key: 'userphone',
+				success: (res)=> {
+					if(res.data){
+						this.phoneNumber = res.data;
+					}
+				}	
+				
+			});
+			uni.getStorage({
+				key: 'userpassword',
+				success: (res)=> {
+					if(res.data){
+						this.password = res.data;
+					}
+				}
+			});
 		},
-		onReady(){},
+		onshow(){
+			
+		},
+		onReady(){
+			
+		},
 		methods: {
 			checkphone(){
 				get('/user/check?phone='+this.phoneNumber,{ }).then(res=>{
@@ -132,7 +154,6 @@
 					}
 					console.log("image2:"+this.imageRandomStr)
 					await get('/check/code?code='+this.passyzm+'&&randomStr='+this.imageRandomStr,{}).then(res=>{
-						console.log(res);
 						console.log(res.status);
 						if( res.status != 200 ){
 							
@@ -157,13 +178,27 @@
 				if(this.canlogin){
 					get('/user/login?account='+this.phoneNumber+'&&password='+md5(this.password)+'&&randomStr='+this.randomString,{}).then(res=>{
 					
-						console.log(res);
 						if (res.status == 200) {
 							uni.showToast({
 								title: '登录成功!',
 								duration: 1500,
 								icon: 'success'
 							});
+							uni.setStorage({
+								key: 'userphone',
+								data: this.phoneNumber,
+								success: function (res) {
+									
+								}
+							});
+							uni.setStorage({
+								key: 'userpassword',
+								data: this.password,
+								success: function (res) {
+									
+								}
+							});
+							console.log(res.data)
 							this.$store.dispatch("changeUserid",res.data);
 							uni.reLaunch({
 								url: '../index/index/index'

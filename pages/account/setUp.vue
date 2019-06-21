@@ -121,7 +121,7 @@
 					content: '退出登录之后,企业内容将无法观看',
 					success: (res)=> {
 					if (res.confirm) {
-						 this.$store.dispatch("changeUserid",'');
+						 this.$store.dispatch("changeUserid","");
 						setTimeout(() => {
 					uni.navigateTo({
 						url: '../login/phoneLogin'

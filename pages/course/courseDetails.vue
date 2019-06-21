@@ -94,7 +94,7 @@
 			this.ImgUrl = ImgUrl;
 			this.kid = e.id;
 			get("/course/abundant",{
-				userId: 1348,
+				userId: this.userid,
 				courseId: this.kid
 			}).then(res=>{
 				if(res.status == 200){
@@ -138,6 +138,7 @@
 			},
 			getDisscusslist(){
 				get("/social/grade/all",{
+					associatorId: this.userid,
 					sourceName:"course",
 					sourceId: this.kid
 				}).then(res=>{
