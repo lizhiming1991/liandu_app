@@ -450,7 +450,7 @@
 		
 	}
 	 .journal_content {
-		background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560697915634&di=327774b80dc35018e01ae400c0e3c35e&imgtype=0&src=http%3A%2F%2Fpic24.nipic.com%2F20121014%2F10812677_033641283191_2.jpg');
+		background-image: url('http://192.168.0.141/test.png');
 		background-repeat: no-repeat;
 		background-position-y: -250upx;
 	}

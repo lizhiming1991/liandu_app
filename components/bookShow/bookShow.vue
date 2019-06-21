@@ -1,34 +1,53 @@
 <template>
 	<view class="content_list">
-		<block>
-			<view class="book_info">
-				<view class="book_cover_content">
-					<image class="booK_cover_img" src="/static/image/tushu.png"></image>
+		<block v-for="(item , index) in bookList" :key="index">
+			<view class="book_info"  @tap="to_details(item.id)">
+				 <view class="book_cover_content">
+					<image class="booK_cover_img" :src="item.photo?(ImgUrl+item.photo):imgerror"></image>
+					
 				</view>
 				<view class="book_cover_info">
 					<view class="">
 						<view class="book_title_content">
-							<view class="book_title">西游记</view>
-							<!-- <view class="book_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
-						<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
-							<view class="book_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view> -->
+							<view class="book_title" v-html="item.name"></view>
+							
 						</view>
 					</view>
 					<view class="book_author">
 						<view class="">
-							吴承恩
+							{{ item.authorname }}
 						</view>
 					</view>
-					<view class="book_brief_info">
-						简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+					<view class="book_brief_info" v-html="item.introduce">
 					</view>
-				</view>
+				</view> 
 			</view>
 		</block>
+		<!-- <view class="book_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
+		<view class="book_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
+			<view class="book_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view> -->
 	</view>
 </template>
 
 <script>
+	export default {
+		data () {
+			return {
+				imgerror:"../../static/images/book_static.jpg",
+			}
+		},
+		props: [
+			"bookList",
+			"ImgUrl"
+		],
+		methods: {
+			to_details(cid) {
+				console.log("123")
+				console.log(this.ImgUrl)
+				this.$emit('toBookDetails',{'lld':cid})
+			}
+		}
+	}
 </script>
 
 <style scoped>

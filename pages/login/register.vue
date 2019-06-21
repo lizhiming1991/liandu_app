@@ -28,7 +28,7 @@
 		<view class="password_row">
 			<view style="flex: 1;">
 				<view class="input_row input_password">
-					<input class="register_password" v-model="password" :type="passwordType" maxlength="20" placeholder="密码长度6-20位" />
+					<input class="register_password" @focus="leaveInput" @blur="changeBg" v-model="password" :type="passwordType" maxlength="20" placeholder="密码长度6-20位" />
 				</view>
 			</view>
 			<view class="show_password" v-if="eye" @tap="pwd_ishow">
@@ -38,7 +38,7 @@
 				<image src="/static/images/yanjing_2.png" mode=""></image>
 			</view>
 		</view>
-		<view class="register_row" style="justify-content: center;">
+		<view :class="isChangeBg == true ? 'register_row' : 'register_row changeButtonBg' " style="justify-content: center;">
 			<view style="flex: 1; justify-content: center;" @tap="registerID">
 				<view class="register_box">
 					<view class="register_button">注册</view>
@@ -70,6 +70,7 @@
 	export default {
 		data() {
 			return {
+				isChangeBg: true,
 				eye: true,
 				passwordType: 'password',
 				message: '',
@@ -113,6 +114,16 @@
 				uni.reLaunch({
 					url: './phoneLogin'
 				});
+			},
+			leaveInput() {
+				if( this.phoneNumber != '' && this.verifyNumber != '' ){
+					this.isChangeBg = false
+				}
+			},
+			changeBg() {
+				if(this.password ==''){
+					this.isChangeBg = true
+				}
 			},
 			async getCode() {
 				let regPhone = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/;
@@ -257,7 +268,7 @@
 		display: flex;
 		flex-direction: row;
 	}
-
+	
 	.clearfloat:after {
 		display: block;
 		clear: both;
@@ -356,7 +367,10 @@
 		background: rgba(238, 238, 238, 1);
 		border-style: none;
 	}
-
+	.register_content .changeButtonBg{
+		color: #333;
+		background: #01b18d;
+	}
 	.register_content .to_login_row {
 		display: flex;
 		justify-content: center;

@@ -1,12 +1,11 @@
 <template>
 	<view class="journal_list">
-		<block>
-			<view class="journal_cover">
+		<block v-for="(item, index) in magazineList" :key="index">
+			<view class="journal_cover" @tap="to_details(item.id)">
 				<view>
-					<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+					<image class="journal_cover_img" :src="item.photo?(ImgUrl+item.photo):imgerror" mode=""></image>
 				</view>
-				<view class="journal_cover_title">
-					西游记
+				<view class="journal_cover_title" v-html="item.name">
 				</view>
 			</view>
 		</block>
@@ -14,6 +13,22 @@
 </template>
 
 <script>
+	export default {
+		data () {
+			return {
+				imgerror:"../../static/images/book_static.jpg",
+			}
+		},
+		props: [
+			"magazineList",
+			"ImgUrl"
+		],
+		methods: {
+			to_details(cid) {
+				this.$emit("toMagazineDetailas",{"lld": cid})
+			}
+		}
+	}
 </script>
 
 <style scoped>

@@ -16,7 +16,7 @@
 			</view>
 			<view class="input_row verify_box" style="display: flex;">
 				<view class="" style="display: flex flex;1">
-					<input class="phone_verify" style="font-size: 30upx;" v-model="verifyNumber" maxlength="6" placeholder="请输入验证码" />
+					<input class="phone_verify" @blur="changeBg" @focus="leaveInput" style="font-size: 30upx;" v-model="verifyNumber" maxlength="6" placeholder="请输入验证码" />
 				</view>
 				<view class="send_verify_content" style="display: flex;">
 					<view @tap="getCode" :disabled="disabled" class="acquire_verify" style="display: flex;" v-if="timestatus_two">
@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		<view class="register_box">
-			<view class="register_button" @tap="next" :style="dd">下一步</view>
+			<view :class="isChangeBg == true ? 'register_button' : 'register_button changeButtonBg'" class="" @tap="next">下一步</view>
 		</view>
 		<view class="direct_login">
 			<text>已有账号,<text class="login_text">直接</text></text>
@@ -51,9 +51,7 @@
 	export default {
 		data() {
 			return {
-				dd:{
-					background:""
-				},
+				isChangeBg: true,
 				title:'',
 				verifyStatus:'',
 				phoneStatus:'',
@@ -119,6 +117,16 @@
 						icon: 'none',
 					});
 					return false;
+				}
+			},
+			changeBg() {
+				if(this.verifyNumber ==''){
+					this.isChangeBg = true
+				}
+			},
+			leaveInput() {
+				if( this.phoneNumber != ''){
+					this.isChangeBg = false
 				}
 			},
 			countDown() {
@@ -259,7 +267,10 @@
 		background: rgba(238, 238, 238, 1);
 		border-style: none;
 	}
-
+	.register_content .register_box .changeButtonBg{
+		color: #333;
+		background: #01B18D;
+	}
 	.register_content .direct_login {
 		display: flex;
 		justify-content: center;
