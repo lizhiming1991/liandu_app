@@ -1,7 +1,7 @@
 <template>
 	<view class="serch_content" style="flex-direction: column; flex: 1;">
 		<view class="" @tap="ceshi">
-			搜索按钮{{searchModule}}
+			搜索按钮--类型:{{searchModule}}
 		</view>
 		<view class="search_box">
 			<view class="search_input">
@@ -20,7 +20,7 @@
 				</view>
 				<view class="search_text_record">
 					<block v-for="(item,index) in owner_record" :key="index">
-						<view class="search_text">{{item.searchKey}}</view>
+						<view class="search_text" @tap="toHistory(item.searchKey)">{{item.searchKey}}</view>
 					</block>
 				</view>
 			</view>
@@ -32,7 +32,7 @@
 				</view>
 				<view class="search_text_record">
 					<block v-for="(item,index) in hot_record" :key="index">
-					<view class="search_text">{{item.searchKey}}</view>
+					<view class="search_text" @tap="hotSearchContent(item.searchKey)">{{item.searchKey}}</view>
 					</block>
 				</view>
 			</view>
@@ -44,22 +44,25 @@
 					 :values="items" @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 					<view class="content">
 						<view class="search_info">
-							共有<text class="search_number">3</text>条相关信息
+							共有<text class="search_number">{{searchTotal}}</text>条相关信息
 						</view>
 						<view v-show="current === 0">
-							<book-show></book-show>
+							<book-show :bookList = "bookLists" v-if="bookShow" @toBookDetails="goBooKDetails" :ImgUrl="ImgUrl"></book-show>
+							<not-found :class="{notFoundShow:notFoundIsShow_a}" ></not-found>
 						</view>
 						<view v-show="current === 1">
-							<journal-list></journal-list>
+							<journal-list v-if="journalShow" :magazineList= "magazineLists" @toMagazineDetailas="goMagazineDetailas" :ImgUrl="ImgUrl"></journal-list>
+							 <not-found :class="{notFoundShow:notFoundIsShow_b}"></not-found>
 						</view>
 						<view v-show="current === 2">
-							<course-list :courseList="courseLists" @toDetails="toDetails"></course-list>
+							<courseList :courseList="courseLists" v-if="courseShow" @toDetails="goDetails" :ImgUrl="ImgUrl"></courseList>
+							<not-found :class="{notFoundShow:notFoundIsShow_c}"></not-found>
+							<!-- <course-list :courseList="courseLists" @toDetails="toDetails"></course-list> -->
 						</view>
 					</view>
 				</view>
 			</view>
 		</block>
-		
 	</view>
 </template>
 
@@ -73,46 +76,40 @@
 	import bookShow from "@/components/bookShow/bookShow.vue"
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
+	import notFound from "@/components/notFound/notFoundContetn.vue"
 	import {mapState} from 'vuex'
+	import {ImgUrl} from '@/common/common.js'
 	export default {
 		data() {
 			return {
-				searchContent:'',
-				search_text:'',
-				searchModule:'',
+				notFoundIsShow_a: true,
+				notFoundIsShow_b: true,
+				notFoundIsShow_c: true,
+				journalShow: true,
+				courseShow: true,
+				bookShow: true,
+				searchTotal: '',
+				searchContent: '',
+				search_text: '',
+				searchModule: '',
 				isSearch: '',
+				ImgUrl: '',
 				title: '社圈',
-				hot_record:[],
-				owner_record:[],
+				hot_record: [],
+				owner_record: [],
 				current: 0,
 				items: ['图书', '杂志', '课程'],
-				courseLists: [{
-						"id": 1,
-						"courseName": '西游记1',
-						"teacherName": "吴承恩1",
-						"updateTime": "2013-01-19T12:54:26"
-					},
-					{
-						"id": 2,
-						"courseName": '西游记2',
-						"teacherName": "吴承恩2",
-						"updateTime": "2014-04-09T12:54:26"
-					},
-					{
-						"id": 3,
-						"courseName": '西游记3',
-						"teacherName": "吴承恩3",
-						"updateTime": "2015-02-4T12:54:26"
-					},
-					{
-						"id": 4,
-						"courseName": '西游记4',
-						"teacherName": "吴承恩4",
-						"updateTime": "2017-03-11T12:54:26"
-					}
-				]
+				courseLists: [],
+				bookLists: [],
+				magazineLists: []
 			};
 		},
+		// watch:{
+		// 	itemdata(){
+		// 		handler:(val)=> {}
+		// 		deep:true;
+		// 	}
+		// },
 		computed: {
 			...mapState([
 				"userid"
@@ -123,50 +120,120 @@
 			bookShow,
 			courseList,
 			journalList,
+			notFound
 		},
 		onLoad(e) {
 			console.log(e.type) 
 			this.searchModule = e.type;
+			console.log("类型:"+ this.searchModule)
 			get('/search/querySearchHistory/'+this.searchModule,{'associatorid': this.userid}).then(res=>{
-				console.log(res.data.hotSearch)
+				//console.log(res.data.hotSearch)
 				this.hot_record = res.data.hotSearch;
 				this.owner_record= res.data.ownerSearch;
 				});
+			this.ImgUrl = ImgUrl;
 		},
 		methods: {
 			deleteOwnerSearch() {
 				deletes('/search/deleteSearchHistory',{"searchModule" : this.searchModule, "operationUser" : this.userid}).then(res=>{
-					console.log(res)
-					this.owner_record = '';
-					
+					this.owner_record = '';				
 				});	
 			},
+			shContent(searchM,searchK) {
+				post('/search/queryListOnSearch',{"searchModule" : searchM,"searchKey" : searchK}).then(res=>{
+					console.log(res)
+					this.searchTotal= res.data.magazineListSize + res.data.courseListSize + res.data.bookListSize
+					this.isSearch = this.searchContent = 'search';
+					if( res.data.bookList != '' ){
+						this.bookLists = res.data.bookList
+						console.log("111")
+						// this.isSearch = this.searchContent = 'search';
+						this.notFoundIsShow_a = true	
+						this.bookShow = true
+					}else{
+						console.log("222")
+						this.bookShow = false
+						this.notFoundIsShow_a = false		
+					}
+					if( res.data.magazineList != '' ){
+						this.magazineLists = res.data.magazineList
+						// this.isSearch = this.searchContent = 'search';
+						this.notFoundIsShow_b = true
+						this.journalShow = true
+					}else{
+						this.journalShow = false
+						this.notFoundIsShow_b = false	
+					}
+					if ( res.data.courseList != '' ){
+						this.courseLists = res.data.courseList
+						// this.isSearch = this.searchContent = 'search';
+						this.notFoundIsShow_c = true
+						this.courseShow = true
+					}else{
+						this.courseShow = false
+						this.notFoundIsShow_c = false	
+					}
+				});
+			},
 			ceshi() {
-				console.log("123");
 				if(this.search_text != ''){
 				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
-						console.log(res)
+						//console.log(res)
 					});
-				this.isSearch = this.searchContent = 'search';
+				    
+					this.shContent(this.searchModule,this.search_text)
 					}else{
 						uni.showToast({
 							title: '搜索内容不能为空!',
 							duration: 1500,
 							icon: 'none'
 						});
-					}
-					
+					}		
 			},
-			// search_input() {
-			// 	console.log("123");
-			// 	post('/ad/banner/query',{ "searchKey":"西游记","searchModule":1,"operationUser":1410}).then(res=>{
-			// 			
-			// 		});	
-			// },
-			cancel() {
-				uni.reLaunch({
-					url: '../index/enterprise/enterprise'
+			toHistory(key) {
+				this.shContent(this.searchModule, key)
+			},
+			hotSearchContent(key) {
+				console.log(key)
+				 this.shContent(this.searchModule, key)
+			},
+			goDetails(data) {
+				uni.navigateTo({
+					url:"courseDetails?id="+data.lld
 				})
+			},
+			goBooKDetails(data) {
+				// console.log(data.lld)
+				uni.navigateTo({
+					url:"bookDetails?id="+data.lld
+				})
+			},
+			goMagazineDetailas(data) {
+				// console.log("zazhi:123")
+				// console.log(data.lld)
+				uni.navigateTo({
+					url:"magazineDetails?id="+data.lld
+				})
+			},
+			search_input() {
+				if(this.search_text != ''){
+				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
+						//console.log(res)
+					});
+				    
+					this.shContent(this.searchModule,this.search_text)
+					}else{
+						uni.showToast({
+							title: '搜索内容不能为空!',
+							duration: 1500,
+							icon: 'none'
+						});
+					}	
+			},
+			cancel() {
+				
+					this.$router.go(-1);
+				
 			},
 			onClickItem(index) {
 				//console.log(index)
@@ -176,17 +243,17 @@
 				if (index == 0) {
 					console.log('111')
 				} else if (index == 1) {
-					console.log('222')
+					//console.log('222')
 
 				} else if (index == 2) {
-					console.log('333')
+					//console.log('333')
 				}
 			},
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: rgba(247, 248, 250, 1);
 	}
@@ -194,7 +261,18 @@
 	view {
 		font-size: 28upx;
 	}
-
+	.notFoundShow{
+		display: none;
+	}
+	.notFoundShow_a{
+		display: none;
+	}
+	.notFoundShow_b{
+		display: none;
+	}
+	.notFoundShow_c{
+		display: none;
+	}
 	.serch_content {
 		display: flex;
 	}

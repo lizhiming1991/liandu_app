@@ -21,7 +21,7 @@
 		</view>
 		<view class="verify_row">
 			<view class="input_row verify_box" style="flex: 1;">
-				<input class="phone_verify" v-model="verifyNumber" style="font-size: 30upx;" maxlength="6" placeholder="验证码" />
+				<input class="phone_verify" v-model="verifyNumber" style="font-size: 30upx;" maxlength="6" @blur="leaveInput" @focus="addButtonColor" placeholder="验证码" />
 				<!-- <view class="acquire_verify" @click="acquire_phone_verify" :style="countown_style">{{content}}</view> -->
 			</view>
 			<view class="send_verify_content">
@@ -33,9 +33,9 @@
 				</view>
 			</view>
 		</view>
-		<view>
+		<view>												
 			<view class="login_box">
-				<view class="login_button" @tap="login">登录</view>
+				<view :class = " isShowColor == true ? 'login_button'  : 'ButtonBgColor login_button' " @tap="login">登录</view>
 			</view>
 		</view>
 		<view class="password_login_box">
@@ -58,6 +58,7 @@
 	export default {
 		data() {
 			return {
+				isShowColor: true,
 				verifyStatus: '',
 				phoneStatus: '',
 				loginStatus: '',
@@ -81,6 +82,16 @@
 				uni.reLaunch({
 					url: '../index/index/index'
 				});
+			},
+			addButtonColor() {
+				if(this.phoneNumber != ''){
+					console.log(11)
+					this.isShowColor = false
+				}	
+			},
+			leaveInput(){
+				if(this.verifyNumber =='' )
+				this.isShowColor = true
 			},
 			// 获取验证码
 			async getCode() {
@@ -261,7 +272,10 @@
 		background: rgba(238, 238, 238, 1);
 		border-radius: 4upx;
 	}
-
+	.login_content .login_box .ButtonBgColor{
+		color: #333333;
+		background: #01b18d;
+	}
 	.login_content .password_login_box {
 		margin-top: 91upx;
 		justify-content: center;

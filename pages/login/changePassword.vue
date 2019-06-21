@@ -11,11 +11,11 @@
 				   <input class="chang_password_password" v-model="newPassword" password="true" style="font-size: 30upx;" maxlength="20" placeholder="请输入新密码" />
 	        </view>
 	        <view class="input_row input_password">
-				<input class="chang_password_password"  v-model="newPasswordAgain" password="true" style="font-size: 30upx;" maxlength="20" placeholder="请再次输入新密码" />
+				<input class="chang_password_password" @blur="changeBg" @focus="leaveInput" v-model="newPasswordAgain" password="true" style="font-size: 30upx;" maxlength="20" placeholder="请再次输入新密码" />
 	        </view>
 	    </view>
 	    <view class="chang_password_box">
-	        <button class="chang_password_button" @tap="modification">确定</button>
+	        <button :class=" isShowBg == true ? 'chang_password_button' : 'chang_password_button changeButtonBg'" @tap="modification">确定</button>
 	    </view>
 	</view>
 </template>
@@ -30,6 +30,7 @@
 	 export default {
 	 	data() {
 	 		return {
+				isShowBg: true,
 				title:'',
 	 			newPassword:'',
 				newPasswordAgain:''
@@ -45,6 +46,7 @@
 		},
 	 	methods: {
 			modification() {
+				let regPwd = /^[a-z0-9A-Z]{6,14}$/;
 				if(this.newPassword == '' ){
 					uni.showToast({
 						title: '密码不能为空',
@@ -59,18 +61,25 @@
 						icon: 'none',
 					});
 					return false;
-				}else if(this.newPassword != this.newPasswordAgain ){
+				}else if( this.newPassword != this.newPasswordAgain ){
 					uni.showToast({
 						title: '密码两次输入不一致',
 						duration: 2000,
 						icon: 'none',
 					});
 					return false;
+				}else if(!regPwd.test(this.newPassword)){
+						uni.showToast({
+							title: '请输入6-14位数字或者英文字符',
+							duration: 2000,
+							icon: 'none',
+						});
+						return false;
 				}else{
-					console.log("phone:"+this.phone);
+					console.log( "phone:"+this.phone );
 					put('/user/password/reset', {"phone": this.phone, "newPSD": md5(this.newPassword)}).then(res=>{
 						let icon_type='none';
-						if(res.status==200){
+						if( res.status==200 ){
 							icon_type = 'success';
 							
 							setTimeout(()=>{
@@ -85,6 +94,16 @@
 							icon: icon_type,
 						});
 					});
+				}
+			},
+			leaveInput() {
+				if(this.passwordAgain != '') {
+					this.isShowBg = false
+				}
+			},
+			changeBg() {
+				if(this.newPasswordAgain == ''){
+					this.isShowBg = true
 				}
 			}
 	 	},
@@ -134,5 +153,9 @@
 	border-radius:4px;
 	background:rgba(238,238,238,1);
 	border-style: none;
+}
+.chang_password_content .chang_password_box .changeButtonBg{
+	color: #333;
+	background: #01B18D;
 }
 </style>

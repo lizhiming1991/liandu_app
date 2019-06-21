@@ -14,11 +14,11 @@
 					<view class="course_info">
 						<view class="course_teacher">
 							<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
-							<text class="course_teacher_name">{{item.authorname}}</text>
+							<text class="course_teacher_name">{{item.tearchername}}</text>
 						</view>
 						<view class="course_times">
 							<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
-							<text class="course_time_date">{{item.createtime.split('T')[0]}}</text>
+							<text class="course_time_date">{{item.createtime.split(' ')[0]}}</text>
 						</view>
 					</view>
 				</view>

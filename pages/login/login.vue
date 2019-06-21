@@ -12,7 +12,7 @@
 				 placeholder="请输入手机号码" @blur="checkphone()" />
 			</view>
 			<view class="input_row input_password">
-				<input class="login_password" v-model="password"  @blur="changeBg" password="true" style="font-size: 30upx;" maxlength="16"
+				<input class="login_password" v-model="password" @focus="leaveInput" @blur="changeBg" password="true" style="font-size: 30upx;" maxlength="16"
 				 placeholder="请输入密码" />
 			</view>
 			<view class="input_row input_password" v-if="number>=3">
@@ -24,7 +24,7 @@
 			<navigator url="/pages/login/changePasswordVerification">忘记了?找回密码</navigator>
 		</view>
 		<view class="login_box">
-			<button class="login_button" @tap="passwordLogin" :style="change_bg">登录</button>
+			<button :class="isChangeBg == true ? 'login_button' : 'login_button changeBg' " @tap="passwordLogin" :style="change_bg">登录</button>
 		</view>
 		<!-- <view class="action-row">
 	        <navigator url="">注册账号</navigator>
@@ -47,6 +47,7 @@
 	export default {
 		data() {
 			return {
+				isChangeBg:true,
 				change_bg:{
 					background:''
 				},
@@ -133,8 +134,8 @@
 					await get('/check/code?code='+this.passyzm+'&&randomStr='+this.imageRandomStr,{}).then(res=>{
 						console.log(res);
 						console.log(res.status);
-						if(res.status != 200){
-							console.log("xxx");
+						if( res.status != 200 ){
+							
 							uni.showToast({
 								title: res.message,
 								duration: 1500,
@@ -180,8 +181,15 @@
 				}
 			},
 			changeBg() {
+				if(this.password ==''){
+					this.isChangeBg = true
+				}
+			},
+			leaveInput() {
+				if(this.phoneNumber !=''){
+					this.isChangeBg = false
+				}
 				
-				console.log("123")
 			}
 		},
 		components: {
@@ -258,5 +266,8 @@
 		border-radius: 4px;
 		background: rgba(238, 238, 238, 1);
 		border-style: none;
+	}
+	.login_content .login_box .changeBg{
+		background: #01b18d;
 	}
 </style>
