@@ -1,8 +1,8 @@
 <template>
 	<view class="serch_content" style="flex-direction: column; flex: 1;">
-		<view class="" @tap="ceshi">
+		<!-- <view class="" @tap="ceshi">
 			搜索按钮--类型:{{searchModule}}
-		</view>
+		</view> -->
 		<view class="search_box">
 			<view class="search_input">
 				<image class="search_icon" src="/static/images/search_icon.png" mode=""></image>
