@@ -120,10 +120,10 @@
 		computed: {
 			...mapState([
 				"userid"
-			])
+			]),
 		},
+	
 		onLoad(){
-			
 			
 		},
 		onShow(){
@@ -138,8 +138,8 @@
 		},
 		onReady(){
 			if(this.userid == "" || this.userid == undefined || this.userid == "undefined"){
-				console.log(33)
-				uni.redirectTo({
+				console.log(console.log("3"+this.userid))
+				uni.reLaunch({
 					url: '/pages/login/phoneLogin',
 				});
 			}else{

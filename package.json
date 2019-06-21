@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "epubjs": "^0.3.84",
-    "js-md5": "^0.7.3"
+    "js-md5": "^0.7.3",
+    "url-search-params-polyfill": "^6.0.0"
   }
 }

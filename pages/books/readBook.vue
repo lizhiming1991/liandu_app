@@ -71,6 +71,7 @@
 </template>
 
 <script>
+	import 'url-search-params-polyfill';
 	import ePub from 'epubjs/dist/epub.min.js'
 	import {ImgUrl} from '@/common/common.js'
 	import Header from '@/components/header/header.vue'
@@ -105,8 +106,8 @@
 			this.rendition.display()
 		},
 		onReady(){
-			this.rendition.themes.fontSize("18px");
-			this.rendition.themes.font("宋体");
+			// this.rendition.themes.fontSize("18px");
+			// this.rendition.themes.font("宋体");
 			this.book.ready.then(() => {
 				// 生成目录
 				this.navigation = this.book.navigation.toc

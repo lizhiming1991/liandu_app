@@ -5,20 +5,26 @@
 		
 		<view class="b_search" ref="b_search">
 			<view class="b_box">
-				<input class="b_input" type="text" placeholder="图书名称或关键字"/>
+				<input class="b_input" type="text" v-model="searchText" @confirm="goSearch" placeholder="杂志名称或关键字"/>
 				<image class="b_searchimg" src="../../static/images/icon_search_small.png"></image>
 			</view>
 		</view>
 		<!-- 书籍列表组件 -->
 		<bkList ref="list"
+			v-if="!isSearch"
 			@changelist="changeList"
 			:bookdata="bookList"
 			:typedata="typeList"
 			:ImgUrl="ImgUrl"
 			@goDetail="goDetails"
 			@getMorebook="getMore"
-			
 		></bkList>
+		<bookSearch v-if="isSearch"
+			:bookList="bookList"
+			:ImgUrl="ImgUrl"
+			:numbers="numbers"
+			@goDetails="goDetails"
+			></bookSearch>
 	</view>
 </template>
 
@@ -28,7 +34,7 @@
 	import bkList from '@/components/bookList/bkList.vue'
 	import {ImgUrl} from '@/common/common.js'
 	import { mapState } from 'vuex'
-	
+	import bookSearch from '@/components/bookSearch/bookSearch.vue'
 	export default {
 		data() {
 			return {
@@ -42,7 +48,9 @@
 				isfirst: true,
 				hasmore: true,
 				typeid: "",
-				// message: "loading" //more loading noMore
+				searchText: "",
+				isSearch: false,
+				numbers: 0,
 			};
 		},
 		computed: {
@@ -90,8 +98,64 @@
 		},
 		methods:{
 			goDetails(item){
-				uni.navigateTo({
-					url:"./magazineDetails?id="+item.id
+				if(item.tableId != 0){
+					if(this.userid == ""){
+						uni.showToast({
+							title: "登录后才可以申请企业!",
+							duration: 2000,
+							icon: 'none'
+						});
+						return;
+					}
+					post("/user/checkIsVip",{
+						"associatorid" : this.userid,
+						"companyid" : item.tableId
+					}).then(res=>{
+						if(res.status == 200){
+							if(res.data){
+								uni.navigateTo({
+									url:"./magazineDetails?id="+item.id
+								})
+							}else{
+								uni.navigateTo({
+									url: '/pages/enterpriseDetails/applyMember?enterpriseName=' + ""
+								})
+							}
+						}
+						console.log(res)
+					})
+				}else{
+					uni.navigateTo({
+						url:"./magazineDetails?id="+item.id
+					})
+				}
+				
+				
+			},
+			goSearch(){
+				if(this.searchText == ""){
+					uni.showToast({
+						title: "搜索内容不能为空!",
+						duration: 1500,
+						icon: 'none'
+					});
+					this.isSearch = false;
+					this.pageNum =1;
+					this.isfirst = true;
+					this.hasmore = true;
+					this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
+					return;
+				}
+				this.isSearch = true;
+				post("/search/queryListOnSearch",{
+					"searchModule" : 3,
+					"searchKey" : this.searchText
+				}).then(res=>{
+					if(res.status == 200){
+						this.numbers = res.data.bookList.length;
+						this.bookList = res.data.bookList;
+					}
+					console.log(res)
 				})
 			},
 			getBooklist(content,tid,pagenum,pagesize){
@@ -145,7 +209,7 @@
 		components:{
 			Header,
 			bkList,
-		
+			bookSearch
 		}
 	}
 </script>

@@ -11,7 +11,7 @@
 		</view>
 		<!-- 书籍列表组件 -->
 		<bkList ref="list" 
-		v-if="!isSearch"
+			v-if="!isSearch"
 			@changelist="changeList"
 			:bookdata="bookList"
 			:typedata="typeList"
@@ -73,16 +73,12 @@
 		onLoad(){
 			this.ImgUrl = ImgUrl;
 			this.getBooklist("",this.typeid,this.pageNum,this.pageSize);
-			console.log(1)
 			get("/book/book/category/all",{}).then(res=>{
 				if(res.status == 200){
 					this.typeList = res.data;
 				}
 			})
 			
-		},
-		onShow(){
-			console.log(2)
 		},
 		onReady(){
 			 // #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO 
@@ -94,13 +90,41 @@
 				this.$refs.list.$refs.b_scrolls.$el.style.height = h+"px";
 			 // #endif 
 			
-			console.log(3)
 		},
 		methods:{
 			goDetails(item){
-				uni.navigateTo({
-					url:"./bookDetails?id="+item.id
-				})
+				if(item.tableId != 0){
+					if(this.userid == ""){
+						uni.showToast({
+							title: "登录后才可以申请企业!",
+							duration: 2000,
+							icon: 'none'
+						});
+						return;
+					}
+					post("/user/checkIsVip",{
+						"associatorid" : this.userid,
+						"companyid" : item.tableId
+					}).then(res=>{
+						if(res.status == 200){
+							if(res.data){
+								uni.navigateTo({
+									url:"./bookDetails?id="+item.id
+								})
+							}else{
+								uni.navigateTo({
+									url: '/pages/enterpriseDetails/applyMember?enterpriseName=' + ""
+								})
+							}
+						}
+					})
+				}else{
+					uni.navigateTo({
+						url:"./bookDetails?id="+item.id
+					})
+				}
+				
+				
 			},
 			goSearch(){
 				if(this.searchText == ""){
@@ -147,13 +171,11 @@
 							if(this.isfirst){
 								this.bookList = res.data.pageBooks;
 								this.isfirst = false;
-								console.log(555)
 							}else{
 								console.log(777)
 								this.bookList = [...this.bookList,...res.data.pageBooks];
 							}
 							this.pageNum  = this.pageNum +1;
-							console.log(this.bookList)
 						}
 					})
 				}else{

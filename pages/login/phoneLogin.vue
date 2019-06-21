@@ -135,6 +135,7 @@
 			},
 			login() {
 				get('/check/code?code='+this.verifyNumber+'&&randomStr='+this.randomString, {}).then(res=>{
+					console.log(res)
 					if(res.status==200){
 						uni.showToast({
 							title: '登录成功',

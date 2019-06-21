@@ -8,7 +8,8 @@
 				<image class="userphoto" :src="bookinfo.photo?(ImgUrl+bookinfo.photo):imgerror"></image>
 			</view>
 			<view class="right">
-				<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> <text class="svip" @tap="gotoqiye">申请会员</text></view>
+				<!-- <text class="svip" @tap="gotoqiye">申请会员</text> -->
+				<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> </view>
 				<view class="username">{{bookinfo.authorname}}</view>
 				<view class="introduce">{{bookinfo.introduce}}</view>
 			</view>
@@ -40,6 +41,8 @@
 		<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
 		<!-- 发表评论组件 -->
 		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
+		<!-- 付费组件 -->
+		<QRCode :isshow="showpay" ref="QRCode" @closedCode="hideCode" :price="prices"></QRCode>
 	</scroll-view>
 </template>
 
@@ -48,6 +51,7 @@
 	import Comment from '@/components/comment/comment.vue'
 	import CommentList from '@/components/commentList/commentList.vue'
 	import addComment from '@/components/addComment/addComment.vue'
+	import QRCode from '@/components/qrCode/qrCode.vue'
 	import {mapState} from 'vuex'
 	import {get,post,deletes} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
@@ -69,7 +73,10 @@
 					"dz": 0,
 					"fx": 0,
 					"sc": 0
-				}
+				},
+				showpay: false,
+				prices: 0,
+				payState: false
 			};
 		},
 		computed:{
@@ -89,7 +96,12 @@
 					this.sharedata.dz = this.bookinfo.praise;
 					this.sharedata.fx = this.bookinfo.share;
 					this.sharedata.sc = this.bookinfo.collect;
-					console.log(res.data)
+					if(this.bookinfo.ispay == 1 && this.bookinfo.readStatu == false){
+						this.prices = res.data.bookinfo.price.toString();
+						this.payState = true;
+					}else{
+						this.payState = false;
+					}
 				}
 			})
 			this.getDisscusslist();
@@ -123,6 +135,16 @@
 			hideComment(){
 				this.isshow = false;
 			},
+			showpays(){
+				this.showpay = true;
+				setTimeout(()=>{
+					this.$refs.QRCode.createcode();
+				},200)
+				
+			},
+			hideCode(){
+				this.showpay = false;
+			},
 			gotoqiye(){
 				if(this.userid == ""){
 					uni.showToast({
@@ -139,6 +161,20 @@
 				
 			},
 			goRead(id){
+				if(this.payState){
+					uni.showModal({
+						title: '友情提示',
+						content: '该图书是付费内容,您需要先付费才能观看,是否付费?',
+						success: (res)=> {
+							if (res.confirm) {
+								this.showpays();
+							} else {
+								
+							}
+						}
+					});
+					return;
+				}
 				get("/book/book/getBookPath/"+this.bid,{}).then(res=>{
 					console.log(res)
 					if(res.status == 200){
@@ -327,7 +363,8 @@
 			Header,
 			Comment,
 			CommentList,
-			addComment
+			addComment,
+			QRCode 
 		}
 	}
 </script>
