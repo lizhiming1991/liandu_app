@@ -42,7 +42,7 @@
 		<!-- 发表评论组件 -->
 		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
 		<!-- 付费组件 -->
-		<QRCode :isshow="showpay" ref="QRCode" @closedCode="hideCode" :price="prices"></QRCode>
+		<QRCode :isshow="showpay" ref="QRCode" @closedCode="hideCode" :price="prices" :bid="bid"></QRCode>
 	</scroll-view>
 </template>
 
@@ -75,7 +75,7 @@
 					"sc": 0
 				},
 				showpay: false,
-				prices: 0,
+				prices: "0",
 				payState: false
 			};
 		},

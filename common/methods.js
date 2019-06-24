@@ -1,6 +1,6 @@
 import * as config from '@/common/config.js'
 const baseUrl = "http://192.168.0.210:9999"
-// const baseUrl = "http://192.168.0.190:9999"
+// const baseUrl = "https://app.dailyld.com/rufcAPI"
 
 function obj2params(obj) {
 	var result = '';
