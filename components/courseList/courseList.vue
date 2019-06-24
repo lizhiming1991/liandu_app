@@ -5,8 +5,10 @@
 				<view class="course_content" style="flex-direction: column;">
 					<view @tap="to_details(item.id)">
 						<view class="course_cover">
-							<image class="course_cover_img"  :src="item.photo?(ImgUrl+item.photo):imgerror" mode="widthFix"></image>
-							<view class="member_icon">会员</view>
+							<image class="course_cover_img" :src="item.photo?(ImgUrl+item.photo):imgerror" mode="widthFix"></image>
+							<view class="member_icon" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
+							<view class="member_icon" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
+							<view class="member_icon" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
 						</view>
 						<view class="course_title" v-html="item.title"></view>
 					</view>
@@ -14,7 +16,7 @@
 					<view class="course_info">
 						<view class="course_teacher">
 							<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
-							<text class="course_teacher_name">{{item.tearchername}}</text>
+							<text class="course_teacher_name">{{item.authorname}}</text>
 						</view>
 						<view class="course_times">
 							<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
@@ -35,7 +37,7 @@
 		],
 		data() {
 			return {
-				imgerror:"../../static/image/kecheng.png",	
+				imgerror:"../../static/images/course_static.jpg",	
 			}
 		},
 		onLoad() {
