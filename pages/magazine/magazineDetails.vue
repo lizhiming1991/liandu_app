@@ -75,7 +75,7 @@
 					"sc": 0
 				},
 				showpay: false,
-				prices: 0,
+				prices: "0",
 				payState: false
 			};
 		},
