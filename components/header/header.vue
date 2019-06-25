@@ -99,7 +99,7 @@
 			}
 			.h_goback{
 				width: 50upx;
-				height: 37upx;
+				height: 80upx;
 			}
 		}
 		.h_title{

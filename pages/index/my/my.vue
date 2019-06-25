@@ -186,9 +186,13 @@
 			}
 		}
 		.setinfo{
+			display: inline-block;
 			position: absolute;
 			right: 0;
 			top: -40upx;
+			width: 80upx;
+			height: 60upx;
+			text-align: center;
 			font-size: 30upx;
 		}
 	}

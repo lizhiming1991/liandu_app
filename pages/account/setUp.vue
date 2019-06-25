@@ -22,7 +22,7 @@
 			</view>
 		</view>
 		<Ledgement></Ledgement>
-		<view class="setup_option">
+		<view class="setup_option" @tap="toChangePhoneNumber">
 			<view class="setup_title">
 				手机号
 			</view>
@@ -32,7 +32,7 @@
 			</view>
 		</view>
 		<Ledgement></Ledgement>
-		<view class="setup_option">
+		<view class="setup_option" @tap="toChangeDescribe">
 			<view class="setup_title">
 				描述
 			</view>
@@ -42,8 +42,8 @@
 			</view>
 		</view>
 		<Ledgement></Ledgement>
-		<view class="setup_option">
-			<view class="setup_title">
+		<view class="setup_option" @tap="toChangePwd">
+			<view class="setup_title" >
 				修改密码
 			</view>
 			<view class="flex_layout"></view>
@@ -65,7 +65,7 @@
 			</view>
 		</view>
 		<Ledgement></Ledgement>
-		<view class="setup_option" @tap="toChangeDescribe">
+		<view class="setup_option">
 			<view class="setup_title">
 				关于
 			</view>
@@ -80,6 +80,7 @@
 				退出登录
 			</view>
 		</view>
+		<view class="content_bg_two" :style="{height: bottom_height}"></view>
 	</view>
 </template>
 
@@ -93,6 +94,7 @@
 		data() {
 			return {
 				titles: '账号管理',
+				bottom_height:''
 			};
 		},
 		components: {
@@ -105,13 +107,28 @@
 			])
 		},
 		onLoad() {
-
+			uni.getSystemInfo({
+				success: (res) => {
+					this.clientHeight = res.windowHeight;
+					this.bottom_height = res.windowHeight- 565 + 'px';
+				},
+			});
 
 		},
 		onShow() {
 
 		},
 		methods: {
+			toChangePwd(){
+				uni.navigateTo({
+					url: './changePwd'
+				})
+			},
+			toChangePhoneNumber() {
+				uni.navigateTo({
+					url: './changePhoneNumber'
+				});
+			},
 			toChangeDescribe() {
 				uni.navigateTo({
 					url: './changeDescribe'

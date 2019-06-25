@@ -16,7 +16,7 @@ export  class DisscussItem {
     }
 }
 export  class searchListItem {
-	constructor(id,authorphoto,authorname,photo,createtime,title,ispay,ispublic) {
+	constructor(id,authorphoto,authorname,photo,createtime,title,ispay,ispublic,price) {
 		this.id = id;
 		this.authorphoto = authorphoto;
 		this.authorname = authorname;
@@ -25,5 +25,6 @@ export  class searchListItem {
 		this.title = title;
 		this.ispay = ispay;
 		this.ispublic = ispublic;
+		this.price = price;
     }
 }

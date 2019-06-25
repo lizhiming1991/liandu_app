@@ -84,6 +84,7 @@
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
 	import notFound from "@/components/notFound/notFoundContetn.vue"
+	import {searchListItem} from '@/common/config.js'
 	import {
 		mapState
 	} from 'vuex'
@@ -161,7 +162,6 @@
 					"searchModule": this.searchModule,
 					"operationUser": this.userid
 				}).then(res => {
-					console.log(res)
 					this.owner_record = '';
 				});
 			},
@@ -193,7 +193,16 @@
 						this.notFoundIsShow_b = false
 					}
 					if (res.data.courseList != '') {
-						this.courseLists = res.data.courseList
+						let Arr = [];
+						res.data.courseList.map(item=>{
+							// console.log(item)
+								// constructor(id,authorphoto,authorname,photo,createtime,title,ispay,ispublic)
+											// id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic,
+						    // const {  description,   price,  } = item;
+							 const {  id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic, price } = item;
+						    Arr.push(new searchListItem( id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic, price ))
+						});
+						this.courseLists = Arr;
 						this.notFoundIsShow_c = true
 						this.courseShow = true
 					} else {
