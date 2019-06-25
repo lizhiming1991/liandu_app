@@ -8,7 +8,7 @@
 			
 			<!-- #endif -->
 			<view class="lg_right">
-				<image class="lg_search" src="/static/images/icon_search.png"></image>
+				<image @tap="toSearchPage" class="lg_search" src="/static/images/icon_search.png"></image>
 				<image class="lg_ewm" src="/static/images/icon_erweima.png"></image>
 			</view>
 		</view>
@@ -217,6 +217,11 @@
 					url:"/pages/magazine/magazineDetails?id="+item.id
 				})
 			},
+			toSearchPage() {
+				uni.navigateTo({
+					url: '../../enterpriseDetails/enterpriseSearch?type=all'
+				});
+			}
 			
 			
 		},

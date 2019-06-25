@@ -112,7 +112,23 @@
 		    "path" : "pages/account/setUp",
 		    "style" : {
 			}
+		},
+		{
+		    "path" : "pages/account/changeDescribe",
+		    "style" : {
+			}
+		},
+		{
+		    "path" : "pages/account/changePhoneNumber",
+		    "style" : {
+			}
+		},
+		{
+		    "path" : "pages/account/changePwd",
+		    "style" : {
+			}
 		}
+		
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -65,7 +65,7 @@
 			</view>
 		</view>
 		<Ledgement></Ledgement>
-		<view class="setup_option">
+		<view class="setup_option" @tap="toChangeDescribe">
 			<view class="setup_title">
 				关于
 			</view>
@@ -93,7 +93,6 @@
 		data() {
 			return {
 				titles: '账号管理',
-				sss:''
 			};
 		},
 		components: {
@@ -113,6 +112,11 @@
 
 		},
 		methods: {
+			toChangeDescribe() {
+				uni.navigateTo({
+					url: './changeDescribe'
+				});
+			},
 			logOut() {
 				uni.showModal({
 					title: '提示',

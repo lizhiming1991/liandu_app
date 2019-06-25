@@ -15,9 +15,9 @@
 				<input class="login_password" v-model="password" @focus="leaveInput" @blur="changeBg" password="true" style="font-size: 30upx;" maxlength="16"
 				 placeholder="请输入密码" />
 			</view>
-			<view class="input_row input_password" v-if="number>=3">
+			<view class="input_row input_password input_yzm" v-if="number>=3">
 				<input class="login_password" v-model="passyzm"  style="font-size: 30upx;" maxlength="16" placeholder="请输入验证码"/>
-				<image :src="imagePath" id="passyzm"></image>
+				<image :src="imagePath" id="passyzm" @tap="changeYzm"></image>
 	        </view>
 		</view>
 		<view class="find_password" style="display: flex; justify-content: flex-end;">
@@ -122,6 +122,10 @@
 				// #ifdef H5 
 					
 				// #endif 
+			},
+			changeYzm() {
+				console.log("图片")
+				this.getImgcode()
 			},
 			async passwordLogin() {
 				this.canlogin = true;
@@ -240,15 +244,16 @@
 	}
 	
 	#passyzm{
-		position: fixed;
-		right: 100upx;
-		bottom: 340upx;
+		position: absolute;
+		right: 0;
+		top: -30upx;
 		width: 200upx;
 		height: 100upx;
-		z-index: 100;
+		z-index: 999;
 	}
 	.login_content .input_group {
 		position: relative;
+		z-z-index: 1;
 	}
 
 	.login_content .input_group .login_title {
@@ -283,7 +288,9 @@
 	.login_content .input_group .input_password {
 		margin-top: 31upx;
 	}
-
+	.login_content .input_group .input_yzm{
+		position: relative;
+	}
 	.login_content .find_password {
 		display: flex;
 		justify-content: flex-end;

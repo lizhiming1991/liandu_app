@@ -1,14 +1,21 @@
 <template>
 	<view class="serch_content" style="flex-direction: column; flex: 1;">
-		<view class="" @tap="ceshi">
+		<!-- <view class="" @tap="ceshi">
 			搜索按钮--类型:{{searchModule}}
-		</view>
+		</view> -->
 		<view class="search_box">
 			<view class="search_input">
 				<image class="search_icon" src="/static/images/search_icon.png" mode=""></image>
 				<input class="search_center" v-model="search_text" @confirm="search_input" confirm-type="search" type="text">
 			</view>
+			<!-- #ifdef H5 -->
 			<view class="searc_cancel" @tap="cancel">取消</view>
+			<!-- #endif -->
+			<!-- #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO-->
+			<navigator open-type="navigateBack" :delta="number" class="h_goback">
+				取消
+			</navigator>
+			<!-- #endif -->
 		</view>
 		<block v-if="isSearch == ''">
 			<view class="search_record_content" v-if="owner_record != ''">
@@ -32,7 +39,7 @@
 				</view>
 				<view class="search_text_record">
 					<block v-for="(item,index) in hot_record" :key="index">
-					<view class="search_text" @tap="hotSearchContent(item.searchKey)">{{item.searchKey}}</view>
+						<view class="search_text" @tap="hotSearchContent(item.searchKey)">{{item.searchKey}}</view>
 					</block>
 				</view>
 			</view>
@@ -47,12 +54,12 @@
 							共有<text class="search_number">{{searchTotal}}</text>条相关信息
 						</view>
 						<view v-show="current === 0">
-							<book-show :bookList = "bookLists" v-if="bookShow" @toBookDetails="goBooKDetails" :ImgUrl="ImgUrl"></book-show>
-							<not-found :class="{notFoundShow:notFoundIsShow_a}" ></not-found>
+							<book-show :bookList="bookLists" v-if="bookShow" @toBookDetails="goBooKDetails" :ImgUrl="ImgUrl"></book-show>
+							<not-found :class="{notFoundShow:notFoundIsShow_a}"></not-found>
 						</view>
 						<view v-show="current === 1">
-							<journal-list v-if="journalShow" :magazineList= "magazineLists" @toMagazineDetailas="goMagazineDetailas" :ImgUrl="ImgUrl"></journal-list>
-							 <not-found :class="{notFoundShow:notFoundIsShow_b}"></not-found>
+							<journal-list v-if="journalShow" :magazineList="magazineLists" @toMagazineDetailas="goMagazineDetailas" :ImgUrl="ImgUrl"></journal-list>
+							<not-found :class="{notFoundShow:notFoundIsShow_b}"></not-found>
 						</view>
 						<view v-show="current === 2">
 							<courseList :courseList="courseLists" v-if="courseShow" @toDetails="goDetails" :ImgUrl="ImgUrl"></courseList>
@@ -77,11 +84,16 @@
 	import courseList from "@/components/courseList/courseList.vue"
 	import journalList from "@/components/journalList/journalList.vue"
 	import notFound from "@/components/notFound/notFoundContetn.vue"
-	import {mapState} from 'vuex'
-	import {ImgUrl} from '@/common/common.js'
+	import {
+		mapState
+	} from 'vuex'
+	import {
+		ImgUrl
+	} from '@/common/common.js'
 	export default {
 		data() {
 			return {
+				enteroriseID: '',
 				notFoundIsShow_a: true,
 				notFoundIsShow_b: true,
 				notFoundIsShow_c: true,
@@ -104,12 +116,6 @@
 				magazineLists: []
 			};
 		},
-		// watch:{
-		// 	itemdata(){
-		// 		handler:(val)=> {}
-		// 		deep:true;
-		// 	}
-		// },
 		computed: {
 			...mapState([
 				"userid"
@@ -123,131 +129,175 @@
 			notFound
 		},
 		onLoad(e) {
-			console.log(e.type) 
+			console.log(e)
 			this.searchModule = e.type;
-			console.log("类型:"+ this.searchModule)
-			get('/search/querySearchHistory/'+this.searchModule,{'associatorid': this.userid}).then(res=>{
-				//console.log(res.data.hotSearch)
-				this.hot_record = res.data.hotSearch;
-				this.owner_record= res.data.ownerSearch;
+			this.enteroriseID = e.enteroriseID;
+			if(this.searchModule == 'all'){
+				get('/search/querySearchHistory/1', {
+					'associatorid': this.userid
+				}).then(res => {
+					this.hot_record = res.data.hotSearch;
+					this.owner_record = res.data.ownerSearch;
 				});
+			}else{
+				get('/search/querySearchHistory/' + this.searchModule, {
+					'associatorid': this.userid
+				}).then(res => {
+					this.hot_record = res.data.hotSearch;
+					this.owner_record = res.data.ownerSearch;
+				});
+			}
+			
 			this.ImgUrl = ImgUrl;
+
+
 		},
 		methods: {
 			deleteOwnerSearch() {
-				deletes('/search/deleteSearchHistory',{"searchModule" : this.searchModule, "operationUser" : this.userid}).then(res=>{
-					this.owner_record = '';				
-				});	
-			},
-			shContent(searchM,searchK) {
-				post('/search/queryListOnSearch',{"searchModule" : searchM,"searchKey" : searchK}).then(res=>{
+				if(this.searchModule == 'all'){
+					this.searchModule = '1'
+				}
+				deletes('/search/deleteSearchHistory', {
+					"searchModule": this.searchModule,
+					"operationUser": this.userid
+				}).then(res => {
 					console.log(res)
-					this.searchTotal= res.data.magazineListSize + res.data.courseListSize + res.data.bookListSize
+					this.owner_record = '';
+				});
+			},
+			shContent(searchM, searchK, searchId) {
+				post('/search/queryListOnSearch', {
+					"searchModule": searchM,
+					"searchKey": searchK,
+					"companyId": searchId
+				}).then(res => {
+					console.log(res)
+					this.searchTotal = res.data.magazineListSize + res.data.courseListSize + res.data.bookListSize
 					this.isSearch = this.searchContent = 'search';
-					if( res.data.bookList != '' ){
+					if (res.data.bookList != '') {
 						this.bookLists = res.data.bookList
-						console.log("111")
 						// this.isSearch = this.searchContent = 'search';
-						this.notFoundIsShow_a = true	
+						this.notFoundIsShow_a = true
 						this.bookShow = true
-					}else{
-						console.log("222")
+					} else {
 						this.bookShow = false
-						this.notFoundIsShow_a = false		
+						this.notFoundIsShow_a = false
 					}
-					if( res.data.magazineList != '' ){
+					if (res.data.magazineList != '') {
 						this.magazineLists = res.data.magazineList
 						// this.isSearch = this.searchContent = 'search';
 						this.notFoundIsShow_b = true
 						this.journalShow = true
-					}else{
+					} else {
 						this.journalShow = false
-						this.notFoundIsShow_b = false	
+						this.notFoundIsShow_b = false
 					}
-					if ( res.data.courseList != '' ){
+					if (res.data.courseList != '') {
 						this.courseLists = res.data.courseList
-						// this.isSearch = this.searchContent = 'search';
 						this.notFoundIsShow_c = true
 						this.courseShow = true
-					}else{
+					} else {
 						this.courseShow = false
-						this.notFoundIsShow_c = false	
+						this.notFoundIsShow_c = false
 					}
 				});
 			},
-			ceshi() {
-				if(this.search_text != ''){
-				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
-						//console.log(res)
-					});
-				    
-					this.shContent(this.searchModule,this.search_text)
-					}else{
-						uni.showToast({
-							title: '搜索内容不能为空!',
-							duration: 1500,
-							icon: 'none'
+			search_input() {
+				if (this.search_text != '') {
+					//添加搜索记录
+					if (this.searchModule == 'all') {
+						post('/search/addSearchHistory', {
+							"searchKey": this.search_text,
+							"searchModule": 1,
+							"operationUser": this.userid
+						}).then(res => {
+							console.log(res)
 						});
-					}		
+					} else {
+						post('/search/addSearchHistory', {
+							"searchKey": this.search_text,
+							"searchModule": this.searchModule,
+							"operationUser": this.userid
+						}).then(res => {
+							console.log(res)
+						});
+					}
+					//按需调用搜索方法
+					if (this.searchModule !== 'all') {
+						console.log("00")
+						this.shContent(this.searchModule, this.search_text, this.enteroriseID)
+					} else {
+						console.log("00980")
+						this.shContent('1', this.search_text, '0')
+					}
+
+				} else {
+					uni.showToast({
+						title: '搜索内容不能为空!',
+						duration: 1500,
+						icon: 'none'
+					});
+				}
+
+
+			},
+			ceshi() {
+				if (this.search_text != '') {
+					post('/search/addSearchHistory', {
+						"searchKey": this.search_text,
+						"searchModule": this.searchModule,
+						"operationUser": this.userid
+					}).then(res => {});
+					this.shContent(this.searchModule, this.search_text, 0)
+				} else {
+					uni.showToast({
+						title: '搜索内容不能为空!',
+						duration: 1500,
+						icon: 'none'
+					});
+				}
 			},
 			toHistory(key) {
-				this.shContent(this.searchModule, key)
+				if (this.searchModule == 'all') {
+					this.shContent('1', key, '0')
+				}else{
+					this.shContent(this.searchModule, key, this.enteroriseID)
+					}
 			},
 			hotSearchContent(key) {
-				console.log(key)
-				 this.shContent(this.searchModule, key)
+				if (this.searchModule == 'all') {
+					this.shContent('1', key, '0')
+				}else{
+					this.shContent(this.searchModule, key, this.enteroriseID)
+					}
 			},
 			goDetails(data) {
 				uni.navigateTo({
-					url:"courseDetails?id="+data.lld
+					url: "courseDetails?id=" + data.lld
 				})
 			},
 			goBooKDetails(data) {
-				// console.log(data.lld)
 				uni.navigateTo({
-					url:"bookDetails?id="+data.lld
+					url: "bookDetails?id=" + data.lld
 				})
 			},
 			goMagazineDetailas(data) {
-				// console.log("zazhi:123")
-				// console.log(data.lld)
 				uni.navigateTo({
-					url:"magazineDetails?id="+data.lld
+					url: "magazineDetails?id=" + data.lld
 				})
 			},
-			search_input() {
-				if(this.search_text != ''){
-				post('/search/addSearchHistory',{ "searchKey":this.search_text,"searchModule":this.searchModule,"operationUser":this.userid}).then(res=>{
-						//console.log(res)
-					});
-				    
-					this.shContent(this.searchModule,this.search_text)
-					}else{
-						uni.showToast({
-							title: '搜索内容不能为空!',
-							duration: 1500,
-							icon: 'none'
-						});
-					}	
-			},
 			cancel() {
-				
-					this.$router.go(-1);
-				
+				this.$router.go(-1);
 			},
 			onClickItem(index) {
-				//console.log(index)
 				if (this.current !== index) {
 					this.current = index;
 				}
 				if (index == 0) {
 					console.log('111')
 				} else if (index == 1) {
-					//console.log('222')
 
-				} else if (index == 2) {
-					//console.log('333')
-				}
+				} else if (index == 2) {}
 			},
 		}
 	}
@@ -261,18 +311,23 @@
 	view {
 		font-size: 28upx;
 	}
-	.notFoundShow{
+
+	.notFoundShow {
 		display: none;
 	}
-	.notFoundShow_a{
+
+	.notFoundShow_a {
 		display: none;
 	}
-	.notFoundShow_b{
+
+	.notFoundShow_b {
 		display: none;
 	}
-	.notFoundShow_c{
+
+	.notFoundShow_c {
 		display: none;
 	}
+
 	.serch_content {
 		display: flex;
 	}

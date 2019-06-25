@@ -3,7 +3,8 @@
 		<view class="enterprise_title">
 			<view class="title_text">企业</view>
 			<view class="title_sousuo">
-				<navigator url="../../enterpriseDetails/enterpriseSearch"><image class="sousuo_icon" src="/static/images/sousuo.png" mode=""></image></navigator>
+				<image class="sousuo_icon" src="/static/images/sousuo.png" mode=""></image>
+				<!-- <navigator url="../../enterpriseDetails/enterpriseSearch"><image class="sousuo_icon" src="/static/images/sousuo.png" mode=""></image></navigator> -->
 			</view>
 		</view>
 		<view class="select_label">
