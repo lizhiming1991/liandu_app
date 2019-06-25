@@ -134,7 +134,7 @@
 	padding: 0 50upx;
 	
 	.qr_type{
-		margin-top: 50upx;
+		margin-top: 40upx;
 		overflow: hidden;
 		.qr_logo{
 			width: 360upx;
@@ -149,7 +149,7 @@
 	/* #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO */
 	.goBack{
 		height: 40upx;
-		margin-top: 120upx;
+		margin-top: 80upx;
 		.h_img{
 			width: 20upx;
 			height: 37upx;
@@ -178,7 +178,7 @@
 	/* #ifdef H5 */
 	.goBack{
 		height: 40upx;
-		margin-top: 40upx;
+		margin-top: 20upx;
 		.h_img{
 			width: 20upx;
 			height: 37upx;

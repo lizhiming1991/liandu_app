@@ -96,7 +96,7 @@
 
 <style lang="scss" scoped>
 .a_contents{
-	padding: 0 70upx;
+	padding: 0 60upx;
 	color: #333;
 	position: fixed;
 	top: 0;
@@ -108,7 +108,7 @@
 }
 .a_header{
 		background-color: #fff;
-		padding-top: 100upx;
+		padding-top: 40upx;
 		height: 100upx;
 		line-height: 100upx;
 		display: flex;

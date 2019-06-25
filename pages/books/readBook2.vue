@@ -85,8 +85,13 @@
 	height: 100%;
 	background-color: #eee;
 	padding-bottom: 400upx;
+	position: relative;
 	.lunbobox{
-		margin-top: 400upx;
+		margin-top: 50%;
+		transform: translateY(-20%);
+		-webkit-transform: translateY(-20%);
+		-moz-transform: translateY(-20%);
+		-ms-transform: translateY(-20%);
 	}
 }
 
