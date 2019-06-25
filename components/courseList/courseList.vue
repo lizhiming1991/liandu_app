@@ -20,7 +20,7 @@
 						</view>
 						<view class="course_times">
 							<image src="/static/images/time_icon_1.png" mode="" class="course_times_icon"></image>
-							<text class="course_time_date">{{item.createtime.split(' ')[0]}}</text>
+							<text class="course_time_date">{{item.createtime}}</text>
 						</view>
 					</view>
 				</view>

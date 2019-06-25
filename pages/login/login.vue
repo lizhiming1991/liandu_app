@@ -62,6 +62,10 @@
 				canlogin: true
 			}
 		},
+		components: {
+			Header,
+			toRegister
+		},
 		computed: {
 			...mapState([
 				"userid" 
@@ -230,10 +234,6 @@
 				}
 				
 			}
-		},
-		components: {
-			Header,
-			toRegister
 		}
 	}
 </script>

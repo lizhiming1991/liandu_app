@@ -53,8 +53,8 @@
 						this.shownone = false;
 						let Arr = [];
 						res.data.map(item=>{
-						    const {id,authorphoto,teacherName,coverPath,updateTime,courseName,ispay,ispublic} = item;
-						    Arr.push(new searchListItem(id,authorphoto,teacherName,coverPath,updateTime,courseName,ispay,ispublic))
+						    const {id,authorphoto,teacherName,coverPath,updateTime,courseName,ispay,ispublic,price} = item;
+						    Arr.push(new searchListItem(id,authorphoto,teacherName,coverPath,updateTime,courseName,ispay,ispublic,price))
 						});
 						this.itemdata = Arr;
 						if(Arr.length == 0){
@@ -88,7 +88,6 @@
 						});
 						this.itemdata = Arr;
 						this.numbers = Arr.length;
-						console.log(Arr)
 						if(this.numbers === 0){
 							this.shownone = true;
 						}else{
