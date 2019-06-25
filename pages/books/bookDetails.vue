@@ -119,6 +119,7 @@
 						    Arr.push(new DisscussItem(associatorid,id,photo,loginname,score,state,content,createtime,commmentNums,isPraise,commentLikeNums,commentList,tagList))
 						});
 						this.comList = Arr;
+						console.log(Arr)
 					}
 				})
 			},

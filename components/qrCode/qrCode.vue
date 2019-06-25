@@ -1,7 +1,7 @@
 <template>
 	<view class="qr_pay" v-show="isshow">
 		<view class="goBack">
-			<image  @tap="goFinish" class="h_img" src="../../static/images/icon_back.png"></image>
+			<image  @tap="goFinish2" class="h_img" src="../../static/images/icon_back.png"></image>
 		</view>
 		<view class="qr_type">
 			<image class="qr_logo" src="../../static/images/WePayLogo.png"></image>
@@ -54,19 +54,20 @@
 			qrUrl(data){
 				this.codeUrl = data;
 			},
+			goFinish2(){
+				this.$refs.qqcode._clearCode();
+				this.$emit("closedCode");
+			},
 			goFinish(){
 				uni.request({
-					url: 'https://app.dailyld.com/rufcAPI/wxpay/unifiedorder', //仅为示例，并非真实接口地址。
+					url: 'https://app.dailyld.com/rufcAPI/wxpay/unifiedorder?id=60&type=1&userid=adfaadf', //仅为示例，并非真实接口地址。
 					data: {
-						r: Math.random(),
-						id: 60,
-						type: 1,
-						userid: "adfaadf"
+						
 					},
 					method: "post",
 					success: (res) => {
-						console.log(res.data.stackTrace)
-						this.strinfo = res.data.stackTrace;
+						console.log(res)
+						this.strinfo = res.data;
 						uni.getProvider({
 							service: 'payment',
 							success: (res)=> {
