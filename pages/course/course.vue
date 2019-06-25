@@ -76,7 +76,8 @@
 				
 				post("/search/queryListOnSearch",{
 					"searchModule" : 4,
-					"searchKey" : this.searchText
+					"searchKey" : this.searchText,
+					"companyId" : 0
 				}).then(res=>{
 					if(res.status == 200){
 						this.showlog = true;

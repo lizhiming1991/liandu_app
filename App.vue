@@ -25,7 +25,7 @@
 	/*每个页面公共css */
 	/* #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO */
 	body{
-	  padding-top: 100upx;
+	  padding-top: 40upx;
 	  box-sizing: border-box;
 	}
 	/* #endif */

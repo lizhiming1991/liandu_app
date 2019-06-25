@@ -9,7 +9,7 @@
 			<!-- #endif -->
 			<view class="lg_right">
 				<image @tap="toSearchPage" class="lg_search" src="/static/images/icon_search.png"></image>
-				<image class="lg_ewm" src="/static/images/icon_erweima.png"></image>
+				<!-- <image class="lg_ewm" src="/static/images/icon_erweima.png"></image> -->
 			</view>
 		</view>
 		<view>
@@ -35,13 +35,16 @@
 						<text class="lg_line"></text>
 					</navigator>
 				</view>
+				
 				<view class="lg_navbar_item">
-					<text class="lg_tname">音频专栏</text>
-					<image class="lg_tpic" src="/static/images/icon_ypzl.png"></image>
-					<text class="lg_line"></text>
+					<navigator url="/pages/course/course" class="lg_routelink">
+						<text class="lg_tname">课程专栏</text>
+						<image class="lg_tpic" src="/static/images/icon_jqqd.png"></image>
+						<text class="lg_line"></text>
+					</navigator>
 				</view>
 			</view>
-			<view class="lg_navbars">
+			<!-- <view class="lg_navbars">
 				<view class="lg_navbar_item">
 					<text class="lg_tname">视频专栏</text>
 					<image class="lg_tpic" src="/static/images/icon_spzl.png"></image>
@@ -53,13 +56,11 @@
 					<text class="lg_line"></text>
 				</view>
 				<view class="lg_navbar_item">
-					<navigator url="/pages/course/course" class="lg_routelink">
-						<text class="lg_tname">敬请期待</text>
-						<image class="lg_tpic" src="/static/images/icon_jqqd.png"></image>
-						<text class="lg_line"></text>
-					</navigator>
+					<text class="lg_tname">音频专栏</text>
+					<image class="lg_tpic" src="/static/images/icon_ypzl.png"></image>
+					<text class="lg_line"></text>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="lg_hots">
 			<text class="lg_hots_title">热门专题</text>

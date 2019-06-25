@@ -40,7 +40,7 @@
 						<input class="p_input" v-model="content" type="text" :placeholder="'回复:@'+item.headname">
 						<text class="p_btn" @tap="addaply(item.id)">回复</text>
 					</view>
-					<view class="part6" v-if="item.commmentNums != 0">
+					<view class="part6" v-if="item.commentNums != 0">
 						<view class="replylist" v-for="(val,index3) in item.replyList" :key="index3"><text class="r_name">{{val.loginname}} :</text>{{val.content}}</view>
 					</view>
 				</view>

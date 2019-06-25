@@ -2,14 +2,20 @@
 	<scroll-view class="cr_details">
 		<view class="cr_video">
 			<!-- #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO-->
-			<navigator  open-type="navigateBack" :delta="number" class="cr_backbox">
-				<image class="cr_back2" src="../../static/images/arrow-left.png"></image>
-			</navigator>
-			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls></video>
+			
+			
+			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls>
+				<navigator  open-type="navigateBack" :delta="number" class="cr_backbox">
+					<cover-image class="cr_back2" src="../../static/images/arrow-left.png" @click="gobacks"></cover-image>
+				</navigator>
+			</video>
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
-			<image class="cr_back" @tap="goback" src="../../static/images/arrow-left.png"></image>
-			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls></video>
+			
+			<video id="myVideo" :poster="ImgUrl+itemInfo.coverPath" :src="ImgUrl+nowvideo.videoPath"  controls>
+				<cover-image class="cr_back" @click="goback" src="../../static/images/arrow-left.png">
+				</cover-image>
+			</video>
 			<!-- #endif -->
 		</view>
 		<view class="cr_pro">
@@ -115,6 +121,11 @@
 			goback(){
 				this.$router.go(-1);
 			},
+			gobacks(){
+				uni.navigateBack({
+					delta: 1
+				});
+			},
 			changeType(num){
 				this.shownum = num;
 			},
@@ -183,79 +194,11 @@
 			},
 			changeDZ(){
 				console.log(this.dzid)
-				/*if(this.userid == ""){
-					uni.showToast({
-						title: "登录后可以点赞哦!",
-						duration: 2000,
-						icon: 'none'
-					});
-					return;
-				}
-				if(this.dzid == 0){
-					post("/social/praise",{
-						associatorid: this.userid,
-						dataid: this.bid,
-						tablename: "book_book"
-					}).then(res=>{
-						this.dzid = res.data;
-						this.sharedata.dz = this.sharedata.dz +1;
-						uni.showToast({
-							title: "点赞成功!",
-							duration: 2000,
-							icon: 'none'
-						});
-					})
-				}else{
-					deletes("/social/praise",{
-						id: this.dzid
-					}).then(res=>{
-						this.dzid = 0;
-						this.sharedata.dz = this.sharedata.dz -1;
-						uni.showToast({
-							title: "取消点赞成功!",
-							duration: 2000,
-							icon: 'none'
-						});
-					})
-				} */
+				
 			},
 			changeSC(){
 				console.log(this.scid)
-				/* if(this.userid == ""){
-					uni.showToast({
-						title: "登录后可以收藏哦!",
-						duration: 2000,
-						icon: 'none'
-					});
-					return;
-				}
-				if(this.scid == 0){
-					post("/social/favorite",{
-						associatorid: this.userid,
-						dataid: this.bid,
-						tablename: "book_book"
-					}).then(res=>{
-						this.scid = res.data;
-						this.sharedata.sc = this.sharedata.sc +1;
-						uni.showToast({
-							title: "收藏成功!",
-							duration: 2000,
-							icon: 'none'
-						});
-					})
-				}else{
-					deletes("/social/favorite",{
-						id: this.scid
-					}).then(res=>{
-						this.scid = 0;
-						this.sharedata.sc = this.sharedata.sc -1;
-						uni.showToast({
-							title: "取消收藏成功!",
-							duration: 2000,
-							icon: 'none'
-						});
-					})
-				} */
+				
 			}
 		},
 		components: {
@@ -276,7 +219,7 @@
 				display: inline-block;
 				position: absolute;
 				left: 30upx;
-				top: 120upx;
+				top: 40upx;
 				z-index: 1999999;
 				width: 48upx;
 				height: 48upx;

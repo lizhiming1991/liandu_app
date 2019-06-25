@@ -12,9 +12,9 @@
                 <textarea v-model="textarea" class="texts" placeholder="这一刻，我的想法是……"/>
         </view>
 		<view class="show_look">
-			<text class="s_look s_choose" ref="read_state0" @tap="changestate('unread',0)">想看</text>
-			<text class="s_look" ref="read_state1" @tap="changestate('is',1)">在看</text>
-			<text class="s_look" ref="read_state2" @tap="changestate('read',2)">看过</text>
+			<text :class="lookstate == 0?'s_look s_choose':'s_look'" ref="read_state0" @tap="changestate('unread',0)">想看</text>
+			<text :class="lookstate == 1?'s_look s_choose':'s_look'" ref="read_state1" @tap="changestate('is',1)">在看</text>
+			<text :class="lookstate == 2?'s_look s_choose':'s_look'" ref="read_state2" @tap="changestate('read',2)">看过</text>
 		</view>
 		<view class="p_tags">
 			<view class="tags">标签 : <text class="t_zhushi">（多个标签用空格分格）</text></view>
@@ -42,22 +42,15 @@
 				textarea:"",
 				score: 0,
 				tags:"",
-				readstate: "unread"
+				readstate: "unread",
+				lookstate: 0
 				
 			};
 		},
 		methods:{
 			changestate(state,index){
 				this.readstate = state;
-				let list = this.$refs;
-				for(let i = 0;i<3;i++){
-					var name = "read_state"+i;
-					if(i == index){
-						list[name].$el.className = "s_look s_choose"
-					}else{
-						list[name].$el.className = "s_look"
-					}
-				}
+				this.lookstate = index;
 			},
 			clickstar(data){
 				this.score = data;
@@ -103,7 +96,7 @@
 
 <style lang="scss" scoped>
 .a_contents{
-	padding: 0 30upx;
+	padding: 0 60upx;
 	color: #333;
 	position: fixed;
 	top: 0;
@@ -115,7 +108,7 @@
 }
 .a_header{
 		background-color: #fff;
-		padding: 0 40upx;
+		padding-top: 40upx;
 		height: 100upx;
 		line-height: 100upx;
 		display: flex;

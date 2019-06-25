@@ -4,7 +4,7 @@
 			<view class="m_head">
 				<image class="m_photo" src="../../../static/image/userphoto.jpeg"></image>
 				<view class="m_pro">
-					<view class="username">测试账号</view>
+					<view class="username">今日链读</view>
 					<view class="infomation">介绍:一生只求潇潇洒洒这是我的个性签名</view>
 				</view>
 				<text class="setinfo" @tap="toSetUp">设置</text>
