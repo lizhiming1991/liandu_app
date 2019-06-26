@@ -99,30 +99,31 @@
 		},
 		onLoad(e){
 			this.ImgUrl = ImgUrl;
-			let bid = e.id;
 			this.bid = e.id;
-			get("/book/book/"+bid+"?associatorid="+this.userid).then(res=>{
-				if(res.status == 200){
-					this.bookinfo = res.data.bookinfo;
-					this.scid = res.data.isPraiseAndFavorite.isFavorite;
-					this.dzid = res.data.isPraiseAndFavorite.isPraise;
-					this.sharedata.dz = this.bookinfo.praise;
-					this.sharedata.fx = this.bookinfo.share;
-					this.sharedata.sc = this.bookinfo.collect;
-					this.loaded = true;
-					if(this.bookinfo.ispay == 1 && this.bookinfo.readStatu == false){
-						this.prices = res.data.bookinfo.price.toString();
-						this.payState = true;
-					}else{
-						this.payState = false;
-					}
-				}
-			})
+			this.getBookInfo();
 			this.getDisscusslist();
-			
 			
 		},
 		methods:{
+			getBookInfo(){
+				get("/book/book/"+this.bid+"?associatorid="+this.userid).then(res=>{
+					if(res.status == 200){
+						this.bookinfo = res.data.bookinfo;
+						this.scid = res.data.isPraiseAndFavorite.isFavorite;
+						this.dzid = res.data.isPraiseAndFavorite.isPraise;
+						this.sharedata.dz = this.bookinfo.praise;
+						this.sharedata.fx = this.bookinfo.share;
+						this.sharedata.sc = this.bookinfo.collect;
+						this.loaded = true;
+						if(this.bookinfo.ispay == 1 && this.bookinfo.readStatu == false){
+							this.prices = res.data.bookinfo.price.toString();
+							this.payState = true;
+						}else{
+							this.payState = false;
+						}
+					}
+				})
+			},
 			getDisscusslist(){
 				get("/book/book/comment/"+this.bid+"?associatorid="+this.userid).then(res=>{
 					if(res.status == 200){
@@ -190,33 +191,60 @@
 						content: '该图书是付费内容,您需要先付费才能观看,是否付费?',
 						success: (res)=> {
 							if (res.confirm) {
-								post("/wxpay/unifiedorder?id="+this.bid+"&type=1&userid="+this.userid).then(res=>{
-									console.log(res)
-									this.strinfo = res.data;
-									uni.getProvider({
-										service: 'payment',
-										success: (res)=> {
-											console.log(res)
-											if (~res.provider.indexOf('wxpay')) {
-												uni.requestPayment({
-													"provider": 'wxpay',
-													"timeStamp": "",
-													"nonceStr": "",
-													"package": "",
-													"signType":"MD5",
-													"orderInfo":JSON.stringify(this.strinfo),
-													
-													success: function (res) {
-														console.log('success:' + JSON.stringify(res));
-													},
-													fail: function (err) {
-														console.log('fail:' + JSON.stringify(err));
-													}
-												});
+								uni.request({
+									url: "https://apigateway.dailyld.com/pay/wx/unifiedorder?id="+this.bid+"&type=1&userid="+this.userid,
+									method:"post",
+									dataType: "json",
+									success:(res)=>{
+										console.log(res)
+										this.strinfo = res.data;
+										uni.getProvider({
+											service: 'payment',
+											success: (res)=> {
+												console.log(res)
+												if (~res.provider.indexOf('wxpay')) {
+													uni.requestPayment({
+														"provider": 'wxpay',
+														"timeStamp": "",
+														"nonceStr": "",
+														"package": "",
+														"signType":"MD5",
+														"orderInfo":JSON.stringify(this.strinfo),
+														success: function (res) {
+															uni.showToast({
+																title: "支付成功!",
+																duration: 2000,
+																icon: 'none'
+															});
+															uni.request({
+																url: "https://apigateway.dailyld.com/pay/result/book/buy",
+																data:{
+																	book_id: this.bid,
+																	price: this.prices,
+																	user_id: this.userid
+																},
+																method:"post",
+																dataType: "json",
+																success:(res)=>{
+																	
+																}
+															})
+															this.getBookInfo();
+														},
+														fail: function (err) {
+															uni.showToast({
+																title: "支付失败!",
+																duration: 2000,
+																icon: 'none'
+															});
+														}
+													});
+												}
 											}
-										}
-									})
+										})
+									}
 								})
+								
 								
 								// this.showpays();
 							} else {

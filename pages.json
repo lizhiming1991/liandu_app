@@ -127,6 +127,11 @@
 		    "path" : "pages/account/changePwd",
 		    "style" : {
 			}
+		},
+		{
+		    "path" : "pages/timetable/timeTable",
+		    "style" : {
+			}
 		}
 		
     ],
