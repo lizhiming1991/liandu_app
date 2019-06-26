@@ -20,7 +20,7 @@
 			<image class="qr_timg" src="../../static/images/show.png"></image>
 		</view>
 		<view class="qr_finish">
-			<text class="qr_wancheng" @tap="goFinish">去微信支付</text>
+			<text class="qr_wancheng" @tap="goFinish">完成支付</text>
 		</view>
 	</view>
 </template>
@@ -49,7 +49,7 @@
 			createcode(){
 				this.values = this.price;
 				this.$refs.qqcode._makeCode();
-				console.log(JSON.parse('{"errMsg":"requestPayment:fail:[payment微信:-1]General errors"}'))
+				// console.log(JSON.parse('{"errMsg":"requestPayment:fail:[payment微信:-1]General errors"}'))
 			},
 			qrUrl(data){
 				this.codeUrl = data;
@@ -59,44 +59,8 @@
 				this.$emit("closedCode");
 			},
 			goFinish(){
-				uni.request({
-					url: 'https://app.dailyld.com/rufcAPI/wxpay/unifiedorder?id=60&type=1&userid=adfaadf', //仅为示例，并非真实接口地址。
-					data: {
-						
-					},
-					method: "post",
-					success: (res) => {
-						console.log(res)
-						this.strinfo = res.data;
-						uni.getProvider({
-							service: 'payment',
-							success: (res)=> {
-								console.log(res)
-								if (~res.provider.indexOf('wxpay')) {
-									uni.requestPayment({
-										"provider": 'wxpay',
-										"timeStamp": "",
-										"nonceStr": "",
-										"package": "",
-										"signType":"MD5",
-										"orderInfo":JSON.stringify(this.strinfo),
-										
-										success: function (res) {
-											console.log('success:' + JSON.stringify(res));
-										},
-										fail: function (err) {
-											console.log('fail:' + JSON.stringify(err));
-										}
-									});
-								}
-							}
-						})
-					}
-				});
-				
-				/* this.$refs.qqcode._clearCode();
-				this.$emit("closedCode"); */
-				
+				this.$refs.qqcode._clearCode();
+				this.$emit("closedCode");
 				
 			},
 			

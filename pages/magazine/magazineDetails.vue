@@ -162,12 +162,48 @@
 			},
 			goRead(id){
 				if(this.payState){
+					if(this.userid == ""){
+						uni.showToast({
+							title: "登录后可以付费!",
+							duration: 2000,
+							icon: 'none'
+						});
+						return;
+					}
 					uni.showModal({
 						title: '友情提示',
-						content: '该图书是付费内容,您需要先付费才能观看,是否付费?',
+						content: '该杂志是付费内容,您需要先付费才能观看,是否付费?',
 						success: (res)=> {
 							if (res.confirm) {
-								this.showpays();
+								post("/wxpay/unifiedorder?id="+this.bid+"&type=1&userid="+this.userid).then(res=>{
+									console.log(res)
+									this.strinfo = res.data;
+									uni.getProvider({
+										service: 'payment',
+										success: (res)=> {
+											console.log(res)
+											if (~res.provider.indexOf('wxpay')) {
+												uni.requestPayment({
+													"provider": 'wxpay',
+													"timeStamp": "",
+													"nonceStr": "",
+													"package": "",
+													"signType":"MD5",
+													"orderInfo":JSON.stringify(this.strinfo),
+													
+													success: function (res) {
+														console.log('success:' + JSON.stringify(res));
+													},
+													fail: function (err) {
+														console.log('fail:' + JSON.stringify(err));
+													}
+												});
+											}
+										}
+									})
+								})
+								
+								// this.showpays();
 							} else {
 								
 							}

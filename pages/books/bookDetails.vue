@@ -1,48 +1,54 @@
 <template>
 	<scroll-view class="content">
-		<!-- 头部公用组件 -->
-		<Header :titles="title"></Header>
+		<view v-if="!loaded">
+			<mht-loader loadingType="satellite"></mht-loader>
+		</view>
+		<view v-if="loaded"> 
+			<!-- 头部公用组件 -->
+			<Header :titles="title"></Header>
+			
+			<view class="header">
+				<view class="left">
+					<image class="userphoto" :src="bookinfo.photo?(ImgUrl+bookinfo.photo):imgerror"></image>
+				</view>
+				<view class="right">
+					<!-- <text class="svip" @tap="gotoqiye">申请会员</text> -->
+					<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> </view>
+					<view class="username">{{bookinfo.authorname}}</view>
+					<view class="introduce">{{bookinfo.introduce}}</view>
+				</view>
+			</view>
+			<view class="stars">
+				<view class="score">{{bookinfo.score}}
+					<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=2?'2.png':'.png')"></image>
+					<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=4?'2.png':'.png')"></image>
+					<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=6?'2.png':'.png')"></image>
+					<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=8?'2.png':'.png')"></image>
+					<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=10?'2.png':'.png')"></image>
+				</view>
+				<text class="readers">{{bookinfo.hit}}</text>
+			</view>
+			<view class="stars2">
+				<text class="score2">{{allDiss}}人点评过></text>
+				<text class="readers2" @tap="goRead(bookinfo.id)">阅读此书></text>
+			</view>
+			<view class="userinfo">
+				<view class="b_title">作者简介</view>
+				<view class="b_content">
+					{{bookinfo.authorIntro?bookinfo.authorIntro:"暂无简介!" }}
+				</view>
+			</view>
+			
+			<!-- 评论列表 -->
+			<CommentList :itemData="comList"  :allNum="allDiss" :ImgUrl="ImgUrl" @addreply="addreply" @changepraised="changepraise"></CommentList>
+			<!-- 评论点赞组件 -->
+			<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
+			<!-- 发表评论组件 -->
+			<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
+			<!-- 付费组件 -->
+			<QRCode :isshow="showpay" ref="QRCode" @closedCode="hideCode" :price="prices" :bid="bid"></QRCode>
+		</view>
 		
-		<view class="header">
-			<view class="left">
-				<image class="userphoto" :src="bookinfo.photo?(ImgUrl+bookinfo.photo):imgerror"></image>
-			</view>
-			<view class="right">
-				<!-- <text class="svip" @tap="gotoqiye">申请会员</text> -->
-				<view class="title"><text class="bk_titles">{{bookinfo.name}}</text> </view>
-				<view class="username">{{bookinfo.authorname}}</view>
-				<view class="introduce">{{bookinfo.introduce}}</view>
-			</view>
-		</view>
-		<view class="stars">
-			<view class="score">{{bookinfo.score}}
-				<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=2?'2.png':'.png')"></image>
-				<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=4?'2.png':'.png')"></image>
-				<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=6?'2.png':'.png')"></image>
-				<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=8?'2.png':'.png')"></image>
-				<image class="i_star" :src="'../../static/images/icon_star'+(bookinfo.score>=10?'2.png':'.png')"></image>
-			</view>
-			<text class="readers">{{bookinfo.hit}}</text>
-		</view>
-		<view class="stars2">
-			<text class="score2">{{allDiss}}人点评过></text>
-			<text class="readers2" @tap="goRead(bookinfo.id)">阅读此书></text>
-		</view>
-		<view class="userinfo">
-			<view class="b_title">作者简介</view>
-			<view class="b_content">
-				{{bookinfo.authorIntro?bookinfo.authorIntro:"暂无简介!" }}
-			</view>
-		</view>
-		
-		<!-- 评论列表 -->
-		<CommentList :itemData="comList"  :allNum="allDiss" :ImgUrl="ImgUrl" @addreply="addreply" @changepraised="changepraise"></CommentList>
-		<!-- 评论点赞组件 -->
-		<Comment @showComment="showComments" :scid="scid" :dzid="dzid" :datas="sharedata" @changeDZ="changeDZ" @changeSC="changeSC"></Comment>
-		<!-- 发表评论组件 -->
-		<addComment @addComment="addComments" :shows="isshow" @hideComment="hideComment"></addComment>
-		<!-- 付费组件 -->
-		<QRCode :isshow="showpay" ref="QRCode" @closedCode="hideCode" :price="prices" :bid="bid"></QRCode>
 	</scroll-view>
 </template>
 
@@ -56,6 +62,7 @@
 	import {get,post,deletes} from '@/common/methods.js'
 	import {ImgUrl} from '@/common/common.js'
 	import {DisscussItem} from '@/common/config.js'
+	import mhtLoader from '@/components/mht-loader/mht-loader.vue'
 	export default {
 		data() {
 			return {
@@ -76,8 +83,14 @@
 				},
 				showpay: false,
 				prices: "0",
-				payState: false
+				payState: false,
+				loaded: false,
 			};
+		},
+		watch:{
+			loaded(){
+				
+			}
 		},
 		computed:{
 			...mapState([
@@ -96,6 +109,7 @@
 					this.sharedata.dz = this.bookinfo.praise;
 					this.sharedata.fx = this.bookinfo.share;
 					this.sharedata.sc = this.bookinfo.collect;
+					this.loaded = true;
 					if(this.bookinfo.ispay == 1 && this.bookinfo.readStatu == false){
 						this.prices = res.data.bookinfo.price.toString();
 						this.payState = true;
@@ -119,7 +133,6 @@
 						    Arr.push(new DisscussItem(associatorid,id,photo,loginname,score,state,content,createtime,commmentNums,isPraise,commentLikeNums,commentList,tagList))
 						});
 						this.comList = Arr;
-						console.log(Arr)
 					}
 				})
 			},
@@ -164,12 +177,48 @@
 			},
 			goRead(id){
 				if(this.payState){
+					if(this.userid == ""){
+						uni.showToast({
+							title: "登录后可以付费!",
+							duration: 2000,
+							icon: 'none'
+						});
+						return;
+					}
 					uni.showModal({
 						title: '友情提示',
 						content: '该图书是付费内容,您需要先付费才能观看,是否付费?',
 						success: (res)=> {
 							if (res.confirm) {
-								this.showpays();
+								post("/wxpay/unifiedorder?id="+this.bid+"&type=1&userid="+this.userid).then(res=>{
+									console.log(res)
+									this.strinfo = res.data;
+									uni.getProvider({
+										service: 'payment',
+										success: (res)=> {
+											console.log(res)
+											if (~res.provider.indexOf('wxpay')) {
+												uni.requestPayment({
+													"provider": 'wxpay',
+													"timeStamp": "",
+													"nonceStr": "",
+													"package": "",
+													"signType":"MD5",
+													"orderInfo":JSON.stringify(this.strinfo),
+													
+													success: function (res) {
+														console.log('success:' + JSON.stringify(res));
+													},
+													fail: function (err) {
+														console.log('fail:' + JSON.stringify(err));
+													}
+												});
+											}
+										}
+									})
+								})
+								
+								// this.showpays();
 							} else {
 								
 							}
@@ -216,7 +265,6 @@
 							icon: 'none'
 						});
 					}
-					console.log(res)
 				})
 			},
 			addreply(item){
@@ -241,7 +289,6 @@
 							duration: 2000,
 							icon: 'none'
 						});
-						console.log(res)
 					}
 					
 				})
@@ -366,7 +413,8 @@
 			Comment,
 			CommentList,
 			addComment,
-			QRCode
+			QRCode,
+			mhtLoader
 		}
 	}
 </script>
