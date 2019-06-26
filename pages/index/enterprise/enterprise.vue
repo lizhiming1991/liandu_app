@@ -41,7 +41,7 @@
 			<view class="enterprise_list">
 				<view class="enterprise_list_center" @tap="nextPage" :data-enterpriseid="item.id" :data-entername="item.name" :data-joinedstate="item.joinedState">
 					<view class="list_img_box">
-						<image class="list_img" src="/static/image/qiye_left.png" mode=""></image>
+						<image class="list_img"  :src="item.photo?(ImgUrl+item.photo):imgerror" mode=""></image>
 					</view>
 					<view class="enterprise_details">
 						<view class="" style="flex-direction:column;">
@@ -78,12 +78,15 @@
 <script>
 	import {mapState} from 'vuex';
 	import {get,post} from '@/common/methods.js';
+	
 	import {
-		onlineURL
+		onlineURL,
+		ImgUrl
 	} from '@/common/common.js';
 	export default {
 		data() {
 			return {
+				imgerror: '/static/images/enterprise_static.jpg',
 				isVip: '',
 				enterpriseName:'',
 				enterpriseList: [],

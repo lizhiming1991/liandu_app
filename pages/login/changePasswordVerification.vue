@@ -95,7 +95,6 @@
 							this.timestatus = true;
 							this.clear = setInterval(this.countDown, 1000);
 							get ('/code/phone/resetpsd?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res=>{
-								console.log(res);
 							});
 							return true;
 						}

@@ -1,13 +1,16 @@
 <template>
 	<view class="contents" v-if="showall">
-		<view class="m_top">
-			<view class="m_head">
-				<image class="m_photo" src="../../../static/image/userphoto.jpeg"></image>
-				<view class="m_pro">
-					<view class="username">今日链读</view>
-					<view class="infomation">介绍:一生只求潇潇洒洒这是我的个性签名</view>
+		<view class="m_top" >
+			<view class="header_bg">
+				<view class="m_head">
+					<image class="m_photo" src="../../../static/image/userphoto.jpeg"></image>
+					<view class="m_pro">
+						<view class="username">测试账号</view>
+						<view class="infomation">介绍:一生只求潇潇洒洒这就是我的个性签名</view>
+					</view>
+					<text class="setinfo" @tap="toSetUp">设置</text>
 				</view>
-				<text class="setinfo" @tap="toSetUp">设置</text>
+			
 			</view>
 			<view class="m_info">
 				<view class="m_icon">
@@ -24,7 +27,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="m_collection">
+		<!-- <view class="m_collection">
 			<view class="m_title">我的收藏</view>
 			<view class="m_colls">
 				<view class="m_list">
@@ -45,7 +48,7 @@
 				</view>
 			</view>
 			
-		</view>
+		</view> -->
 		<view class="m_type">
 			<view class="m_lists">
 				<view class="m_box">
@@ -159,6 +162,16 @@
 	background-color: #fff;
 	color: #333;
 	box-sizing: border-box;
+	.header_bg{
+		
+		position: relative;
+		top: -50upx;
+		margin-left: -30upx;
+		padding: 80upx 30upx 0 30upx;
+		width: 750upx;
+		box-sizing: border-box;
+		background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561522859740&di=42ef10d0478339604f827aaa0944d141&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F75%2F00%2F68g58PICefc_1024.jpg'); 
+	}
 	.m_head{
 		display: flex;
 		position: relative;
@@ -197,7 +210,7 @@
 		}
 	}
 	.m_info{
-		margin-top: 78upx;
+		margin-top: 28upx;
 		display: flex;
 		.m_icon{
 			flex: 1;

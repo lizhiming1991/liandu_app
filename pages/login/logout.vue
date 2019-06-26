@@ -63,16 +63,16 @@
 								'user': 'test'
 							},
 							success: (uploadFileRes) => {
-								console.log(uploadFileRes)
-								console.log(uploadFileRes.data);
+								// console.log(uploadFileRes)
+								// console.log(uploadFileRes.data);
 							}
 						});
 
 						uploadTask.onProgressUpdate((res) => {
-							console.log(res)
-							console.log('上传进度' + res.progress);
-							console.log('已经上传的数据长度' + res.totalBytesSent);
-							console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+							// console.log(res)
+							// console.log('上传进度' + res.progress);
+							// console.log('已经上传的数据长度' + res.totalBytesSent);
+							// console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
 
 							// 测试条件，取消上传任务。
 							if (res.progress > 50) {

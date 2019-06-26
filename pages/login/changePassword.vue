@@ -37,7 +37,6 @@
 	 		}
 	 	},
 	 	onLoad(e) {
-			//console.log(e.nextid)
 	 	},
 		computed: {
 			...mapState([
@@ -81,7 +80,6 @@
 						let icon_type='none';
 						if( res.status==200 ){
 							icon_type = 'success';
-							
 							setTimeout(()=>{
 								uni.reLaunch({
 									url: '../index/index/index'

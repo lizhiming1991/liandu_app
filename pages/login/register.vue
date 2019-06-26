@@ -170,7 +170,6 @@
 					this.disabled = false;
 					this.timestatus = false;
 					this.countdown = '获取验证码';
-
 					clearInterval(this.clear);
 					this.timestatus2 = true;
 					this.countdown = '重新获取';
@@ -208,7 +207,6 @@
 				}
 				await get('/check/code?code=' + this.verifyNumber + '&&randomStr=' + this.randomString, {}).then(res => {
 					if (res.status == 200) {
-
 						let regPwd = /^[a-z0-9A-Z]{6,14}$/;
 						if (regPwd.test(this.password)) {
 							post('/user/regist', {
@@ -253,8 +251,6 @@
 						});
 					}
 				});
-
-
 			}
 		},
 		components: {

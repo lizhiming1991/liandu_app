@@ -19,7 +19,7 @@
 			</view>
 			<view class="enterprise_info">
 				<view class="info_content">
-					{{enteroriseList.cont}}
+					{{enteroriseList.cont ==null ? "暂无简介" : enteroriseList.cont}}
 				</view>
 			</view>
 			<view class="enterprise_lable">
@@ -36,7 +36,9 @@
 		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
 			<view v-show="current === 0">
-
+				<view class="" style="height: 500px;">
+					
+				</view>
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
@@ -61,7 +63,7 @@
 					<block v-for="(item,index) in bookList" :key="index">
 						<view class="book_info" @tap="to_bookDetails" :data-id='item.id'>
 							<view class="book_cover_content">
-								<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
+								<image class="booK_cover_img" :src="item.photo?(imageUrl+item.photo):bookimgerror" mode=""></image>
 							</view>
 							<view class="book_cover_info">
 								<view class="">
@@ -108,18 +110,15 @@
 				<!-- Picker 公共组件 end -->
 				<view class="journal_list">
 					<block v-for="(item, index) in journalList" :key="index">
-						<view class="journal_cover">
+						<view class="journal_cover" @tap="goMagazinDetails(item.id)">
 							<view>
 								<view class="img_box">
-									<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+									<image class="journal_cover_img" :src="item.photo?(imageUrl+item.photo):bookimgerror" mode=""></image>
 									<!-- <view class="journal_price">￥9.9</view> -->
 									<view class="journal_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
 									<view class="journal_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
 									<view class="journal_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
 								</view>
-								
-								
-
 							</view>
 							<view class="journal_cover_title">
 								{{item.name}}
@@ -153,17 +152,17 @@
 					<block v-for="(item,index) in courseList" :key="index">
 						<view class="bottom_border">
 							<view class="course_content" style="flex-direction: column;">
+								<view @tap="goDetails(item.id)">
 								<view class="course_cover">
-									<image class="course_cover_img" :src="item.coverPath?(imageUrl+item.coverPath):courseimgerror" mode=""></image>
+									<image class="course_cover_img" :src="item.coverPath?(imageUrl+item.coverPath):courseimgerror" mode="aspectFill"></image>
 									<view class="member_icon" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
 									<view class="member_icon" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
-									<view class="member_icon" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
-									
-									
+									<view class="member_icon" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>		
 								</view>
 								<view class="course_title">
 									{{item.courseName}}
 								</view> 
+								</view>
 								<view class="course_info">
 									<view class="course_teacher">
 										<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
@@ -240,7 +239,6 @@
 				},
 				courseimgerror:"../../static/images/course_static.jpg",
 				bookimgerror:"../../static/images/book_static.jpg",
-				journaimgerror:"../../static/images/course_static.jpg",
 			}
 		},
 		computed: {
@@ -249,7 +247,6 @@
 			]),
 		},
 		onLoad(e) {
-			console.log(ImgUrl)
 			this.imageUrl = ImgUrl;
 			get('/enterprise/company/13?userId=1340').then(res => {
 			});
@@ -281,12 +278,11 @@
 							url: './applyMember?enterpriseName=' + enterName
 						})
 						} else if (res.cancel) {
-							console.log('用户点击取消');
+							// console.log('用户点击取消');
 						}
 					},
 				});
 			} else if (this.isVip == 'pass') {
-				console.log('hello vip')
 			}
 			get('/enterprise/company/' + this.requiredBooks.table_id, {
 				'userId': this.userid
@@ -307,7 +303,7 @@
 				})
 			},
 			bookSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
 				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredBooks.sort = 'hit'
@@ -315,13 +311,13 @@
 					this.requiredBooks.sort = 'createtime'
 				}
 				post('/book/book/page', this.requiredBooks).then(res => {
-					console.log(res);
+					// console.log(res);
 				}, err => {
-					//异步错误处理
+					console.log(err)
 				});
 			},
 			journaSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.journaIndex = e.target.value
 				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredJournal.sort = 'hit'
@@ -329,12 +325,11 @@
 					this.requiredJournal.sort = 'createtime'
 				}
 				post('/book/book/page', this.requiredJournal).then(res => {
-					console.log(res);
 				}, err => {
 				});
 			},
 			courseSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.courseIndex = e.target.value
 			},
 			onClickItem(index) {
@@ -345,46 +340,35 @@
 				if (index == 0) {
 					this.searchType = 1;
 				} else if (index == 1) {
-					console.log('111')
 					this.searchType = 2;
-					uni.request({
-						url: 'http://192.168.0.210:9999/book/book/page',
-						method: 'POST',
-						data: this.requiredBooks,
-						header: {
-							'content-type': 'application/json'
-						},
-						success: res => {
-							this.bookList = res.data.data.pageBooks;
-						},
-
-					});
+					post('/book/book/page',this.requiredBooks ).then(res=>{
+						this.bookList = res.data.pageBooks;
+						});	
 				} else if (index == 2) {
 					this.searchType = 3;
-					console.log('222')
-					uni.request({
-						url: 'http://192.168.0.210:9999/book/book/page',
-						method: 'POST',
-						data: this.requiredJournal,
-						header: {
-							'content-type': 'application/json'
-						},
-						success: res => {
-							console.log(res.data.data.pageBooks);
-							this.journalList = res.data.data.pageBooks;
-						},
-
-					});
+					
+					post('/book/book/page',this.requiredJournal).then(res=>{
+							this.journalList = res.data.pageBooks;
+						});	
 				} else if (index == 3) {
 					this.searchType = 4;
 					get('/course/all', {
 						'providerId': this.requiredBooks.table_id
 					}).then(res => {
-						console.log(res.data)
+						// console.log(res.data)
 						this.courseList = res.data
-						console.log(this.courseList)
 					});
 				}
+			},
+			goDetails(lld){
+				uni.navigateTo({
+					url:"../course/courseDetails?id=" + lld
+				})
+			},
+			goMagazinDetails(lld){
+				uni.navigateTo({
+					url:"../magazine/magazineDetails?id="+lld
+				})
 			},
 			toEnterprise() {
 				uni.reLaunch({
@@ -392,7 +376,6 @@
 				});
 			},
 			to_bookDetails(e) {
-				console.log(e);
 				let bookId = e.currentTarget.dataset.id;
 				uni.navigateTo({
 					url: '../books/bookDetails?id=' + bookId
@@ -403,32 +386,12 @@
 </script>
 
 <style scoped>
-	.vip_added {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 37upx 19upx 0 0;
-		width: 236upx;
-		height: 58upx;
-		font-size: 28upx;
-		color: #fff;
-		border-radius: 4upx;
-		background: rgba(1, 177, 141, 1);
-	}
-
-	.under_review {
-		margin: 49upx 53upx 0 0;
-		width: 236upx;
-		color: #01B18D;
-		font-size: 28upx;
-	}
-
 	view {
 		flex-direction: row;
-		
 	}
 	 .journal_content {
-		background-image: url('http://192.168.0.141/test.png');
+		padding-top: 50upx;
+		background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561522859740&di=42ef10d0478339604f827aaa0944d141&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F75%2F00%2F68g58PICefc_1024.jpg');
 		background-repeat: no-repeat;
 		background-position-y: -250upx;
 	}
@@ -793,4 +756,23 @@
 	}
 
 	/* 公共组件 picker end */
+	.vip_added {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 37upx 19upx 0 0;
+		width: 236upx;
+		height: 58upx;
+		font-size: 28upx;
+		color: #fff;
+		border-radius: 4upx;
+		background: rgba(1, 177, 141, 1);
+	}
+	
+	.under_review {
+		margin: 49upx 53upx 0 0;
+		width: 236upx;
+		color: #01B18D;
+		font-size: 28upx;
+	}
 </style>
