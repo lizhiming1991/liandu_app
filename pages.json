@@ -129,6 +129,11 @@
 			}
 		},
 		{
+		    "path" : "pages/timetable/timeTable",
+		    "style" : {
+			}
+		},
+		{
 		    "path" : "pages/timeTable/timeTableDetails",
 		    "style" : {
 			}

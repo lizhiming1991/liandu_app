@@ -50,6 +50,16 @@
 			
 		</view> -->
 		<view class="m_type">
+			
+			<navigator url="/pages/timetable/timeTable">
+				<view class="m_lists">
+					<view class="m_box">
+						<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>
+					</view>
+					<text class="m_names">我的课表</text>
+					<image class="m_right" src="../../../static/images/arr_right.png"></image>
+				</view>
+			</navigator>
 			<view class="m_lists">
 				<view class="m_box">
 					<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>
