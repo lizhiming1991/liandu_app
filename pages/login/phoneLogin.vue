@@ -105,7 +105,6 @@
 							this.timestatus = true;
 							this.clear = setInterval(this.countDown, 1000);
 							get ('/code/phone/login?randomStr=' + this.randomString + '&&phone=' + this.phoneNumber, {}).then(res=>{
-								console.log(res);
 							});
 							return true;
 						}
@@ -118,7 +117,6 @@
 						}
 						
 					});
-					
 				} else {
 
 					uni.showToast({
@@ -134,13 +132,11 @@
 					this.disabled = false;
 					this.timestatus = false;
 					this.countdown = '获取验证码';
-
 					clearInterval(this.clear);
 					this.timestatus_two = true;
 					this.countdown = '重新获取';
 					this.countown_style.zIndex = 2;
 				} else {
-
 					--this.countdown;
 				}
 			},
@@ -154,10 +150,8 @@
 							icon: 'success',
 						});
 						get('/user/account/' + this.phoneNumber).then(res => {
-							console.log(res);
 							this.$store.dispatch("changeUserid", res.data.id);
 						});
-						
 						setTimeout(() => {
 							uni.reLaunch({
 								url: '../index/index/index'

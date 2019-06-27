@@ -8,7 +8,7 @@
 			</view>
 			<view class="flex_layout"></view>
 			<view class="setup__photo">
-				<image class="setup_img" src="/static/image/userphoto.jpeg" mode=""></image>
+				<image class="setup_img" :src="userInfo.photo? (ImgUrl + userInfo.photo) : imgerror" mode=""></image>
 			</view>
 		</view>
 		<Ledgement></Ledgement>
@@ -87,6 +87,8 @@
 <script>
 	import Header from '@/components/header/header.vue';
 	import Ledgement from '@/components/ledgement/ledgement.vue';
+	import { ImgUrl} from '@/common/common.js'
+	import { get } from '@/common/methods.js'
 	import {
 		mapState
 	} from 'vuex';
@@ -94,7 +96,10 @@
 		data() {
 			return {
 				titles: '账号管理',
-				bottom_height:''
+				bottom_height:'',
+				userInfo: '',
+				imgerror: '../../static/images/my_user_static.png'
+				
 			};
 		},
 		components: {
@@ -113,12 +118,19 @@
 					this.bottom_height = res.windowHeight- 565 + 'px';
 				},
 			});
-
+			if( this.userid != '' && this.userid != null){
+				this.getUserInfo()
+			}
 		},
 		onShow() {
 
 		},
 		methods: {
+			getUserInfo() {
+				get('/user/id/' + this.userid).then(res=>{
+					this.userInfo = res.data
+				});
+			},
 			toChangePwd(){
 				uni.navigateTo({
 					url: './changePwd'

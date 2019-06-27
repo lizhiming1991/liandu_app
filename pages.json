@@ -132,6 +132,11 @@
 		    "path" : "pages/timetable/timeTable",
 		    "style" : {
 			}
+		},
+		{
+		    "path" : "pages/timetable/timeTableDetails",
+		    "style" : {
+			}
 		}
 		
     ],
