@@ -15,7 +15,7 @@
 		<view>
 			<swiper class="swiper lg_lunbo"  indicator-dots="true" autoplay="true" interval="3000" duration="300" >
 			    <swiper-item v-for="(item,index) in picArr" :key="index">
-			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerror"  ></image>
+			    	<image class="lg_lb_pic swiper-item"  :src="item.photo?(imgurl+item.photo):imgerrors"  ></image>
 			    </swiper-item>
 			</swiper>
 		</view>
@@ -168,6 +168,7 @@
 				magList3: [],
 				bookList: [],
 				imgurl: "",
+				imgerrors: "/static/image/sta_lunbo.png",
 				imgerror: "/static/images/book_static.jpg",
 				b_length: 3,
 				m_length: 3,
