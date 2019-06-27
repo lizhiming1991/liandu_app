@@ -48,7 +48,7 @@
 		},
 		methods:{
 			getAll(){
-				get("/course/all",{}).then(res=>{
+				get("/course/old/all",{}).then(res=>{
 					if(res.status == 200){
 						this.shownone = false;
 						let Arr = [];

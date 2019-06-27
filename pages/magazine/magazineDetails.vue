@@ -191,11 +191,33 @@
 													"signType":"MD5",
 													"orderInfo":JSON.stringify(this.strinfo),
 													
-													success: function (res) {
-														console.log('success:' + JSON.stringify(res));
+													success: (res)=> {
+														uni.showToast({
+															title: "支付成功!",
+															duration: 2000,
+															icon: 'none'
+														});
+														uni.request({
+															url: "https://apigateway.dailyld.com/pay/result/book/buy",
+															data:{
+																book_id: this.bid,
+																price: this.prices,
+																user_id: this.userid
+															},
+															method:"post",
+															dataType: "json",
+															success:(res)=>{
+																this.getBookInfo();
+																console.log(res)
+															}
+														})
 													},
 													fail: function (err) {
-														console.log('fail:' + JSON.stringify(err));
+														uni.showToast({
+															title: "支付失败!",
+															duration: 2000,
+															icon: 'none'
+														});
 													}
 												});
 											}

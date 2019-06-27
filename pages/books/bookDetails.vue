@@ -115,6 +115,7 @@
 						this.sharedata.fx = this.bookinfo.share;
 						this.sharedata.sc = this.bookinfo.collect;
 						this.loaded = true;
+						console.log(this.bookinfo)
 						if(this.bookinfo.ispay == 1 && this.bookinfo.readStatu == false){
 							this.prices = res.data.bookinfo.price.toString();
 							this.payState = true;
@@ -196,12 +197,12 @@
 									method:"post",
 									dataType: "json",
 									success:(res)=>{
-										console.log(res)
+										// console.log(res)
 										this.strinfo = res.data;
 										uni.getProvider({
 											service: 'payment',
 											success: (res)=> {
-												console.log(res)
+												// console.log(res)
 												if (~res.provider.indexOf('wxpay')) {
 													uni.requestPayment({
 														"provider": 'wxpay',
@@ -210,7 +211,7 @@
 														"package": "",
 														"signType":"MD5",
 														"orderInfo":JSON.stringify(this.strinfo),
-														success: function (res) {
+														success: (res)=> {
 															uni.showToast({
 																title: "支付成功!",
 																duration: 2000,
@@ -226,10 +227,11 @@
 																method:"post",
 																dataType: "json",
 																success:(res)=>{
-																	
+																	this.getBookInfo();
+																	console.log(res)
 																}
 															})
-															this.getBookInfo();
+															
 														},
 														fail: function (err) {
 															uni.showToast({
