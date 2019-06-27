@@ -130,7 +130,6 @@
 			notFound
 		},
 		onLoad(e) {
-			console.log(e)
 			this.searchModule = e.type;
 			this.enteroriseID = e.enteroriseID;
 			if(this.searchModule == 'all'){
@@ -148,10 +147,7 @@
 					this.owner_record = res.data.ownerSearch;
 				});
 			}
-			
 			this.ImgUrl = ImgUrl;
-
-
 		},
 		methods: {
 			deleteOwnerSearch() {
@@ -171,7 +167,6 @@
 					"searchKey": searchK,
 					"companyId": searchId
 				}).then(res => {
-					console.log(res)
 					this.searchTotal = res.data.magazineListSize + res.data.courseListSize + res.data.bookListSize
 					this.isSearch = this.searchContent = 'search';
 					if (res.data.bookList != '') {
@@ -185,7 +180,6 @@
 					}
 					if (res.data.magazineList != '') {
 						this.magazineLists = res.data.magazineList
-						// this.isSearch = this.searchContent = 'search';
 						this.notFoundIsShow_b = true
 						this.journalShow = true
 					} else {
@@ -195,10 +189,6 @@
 					if (res.data.courseList != '') {
 						let Arr = [];
 						res.data.courseList.map(item=>{
-							// console.log(item)
-								// constructor(id,authorphoto,authorname,photo,createtime,title,ispay,ispublic)
-											// id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic,
-						    // const {  description,   price,  } = item;
 							 const {  id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic, price } = item;
 						    Arr.push(new searchListItem( id, coverpath, tearchername, tearchphone, createtime, coursename, ispay, ispublic, price ))
 						});
@@ -220,7 +210,6 @@
 							"searchModule": 1,
 							"operationUser": this.userid
 						}).then(res => {
-							console.log(res)
 						});
 					} else {
 						post('/search/addSearchHistory', {
@@ -228,15 +217,12 @@
 							"searchModule": this.searchModule,
 							"operationUser": this.userid
 						}).then(res => {
-							console.log(res)
 						});
 					}
 					//按需调用搜索方法
 					if (this.searchModule !== 'all') {
-						console.log("00")
 						this.shContent(this.searchModule, this.search_text, this.enteroriseID)
 					} else {
-						console.log("00980")
 						this.shContent('1', this.search_text, '0')
 					}
 
@@ -247,8 +233,6 @@
 						icon: 'none'
 					});
 				}
-
-
 			},
 			ceshi() {
 				if (this.search_text != '') {

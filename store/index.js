@@ -9,11 +9,15 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		loginProvider: "",
 		openid: null,
-		userid: "",
-		phone:"",
-		modifyRandomNumbers:"",
+		userid: "1329",
+		phone: "",
+		phoneNumber: "",
+		modifyRandomNumbers:"", 
 	},
 	mutations: {
+		getPhoneNumber(state,phone){
+			state.phoneNumber = phone
+		},
 		addInfo(state,editData) {
 			state.returnData = editData;
 		},
@@ -34,6 +38,9 @@ const store = new Vuex.Store({
 		}
 	},
 	actions: {
+		changePhoneNumber(ctx, phone){
+			ctx.commit('getPhoneNumber',phone)
+		},
 		addInfo(ctx, editData){
 			ctx.commit('addInfo',editData)
 		},

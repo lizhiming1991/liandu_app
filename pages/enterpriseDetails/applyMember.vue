@@ -102,10 +102,8 @@
 			]),
 		},
 		onLoad(e) {
-			console.log(e)
 			this.enterpriseName = e.enterpriseName;
 			this.cold = e.enterpriseLid;
-			//console.log(this.enterpriseName);
 		},
 		methods: {
 			apply() {
@@ -160,21 +158,6 @@
 								url: './submitted'
 							});
 						});	
-					// uni.request({
-					// 	url: onlineURL + '/enterprise/associator-company/add',
-					// 	method: 'POST',
-					// 	data: requiredInfo,
-					// 	// header: {
-					// 	// 	'content-type': 'application/json'
-					// 	// },
-					// 	success: res => {
-					// 		console.log(res);
-					// 		uni.reLaunch({
-					// 			url: './submitted'
-					// 		});
-					// 	},
-					// 	
-					// });
 				}
 			},
 			//选择图片
@@ -186,7 +169,6 @@
 						// #endif
 						count: this.imageLength - this.imageList.length,
 						success: (res) => {
-							//console.log(res);
 							this.imageList = this.imageList.concat(res.tempFilePaths);
 							uni.uploadFile({
 								url: onlineURL + '/enterprise/associator-company/upload',
@@ -196,8 +178,7 @@
 									'user': 'test'
 								},
 								success: (uploadFileRes) => {
-									console.log('111')
-									console.log(JSON.parse(uploadFileRes.data).data);
+									// console.log(JSON.parse(uploadFileRes.data).data);
 									this.imgPath = JSON.parse(uploadFileRes.data).data;
 								}
 							});

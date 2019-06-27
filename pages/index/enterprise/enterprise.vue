@@ -41,7 +41,7 @@
 			<view class="enterprise_list">
 				<view class="enterprise_list_center" @tap="nextPage" :data-enterpriseid="item.id" :data-entername="item.name" :data-joinedstate="item.joinedState">
 					<view class="list_img_box">
-						<image class="list_img" src="/static/image/qiye_left.png" mode=""></image>
+						<image class="list_img"  :src="item.photo?(ImgUrl+item.photo):imgerror" mode=""></image>
 					</view>
 					<view class="enterprise_details">
 						<view class="" style="flex-direction:column;">
@@ -49,14 +49,15 @@
 								{{item.name}}
 							</view>
 							<view class="enterprise_info">
-								{{item.cont ==null ? "暂无简介" : item.cont}}
+								{{item.cont == null ? "暂无简介" : item.cont}}
 							</view>
 							<view class="enterprise_content">
 								<view class="list_lable_one">
-									<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.trade}}</text>
+									<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.trade == null ? "暂无行业信息" : item.trade}}</text>
 								</view>
 								<view class="list_lable_two" v-if="item.address != ''" style="">
-									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.region}}</text>
+									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.region}}</text> 
+									 <!-- == null ? "暂无地址信息" : item.region -->
 								</view>
 							</view>
 						</view>
@@ -78,12 +79,15 @@
 <script>
 	import {mapState} from 'vuex';
 	import {get,post} from '@/common/methods.js';
+	
 	import {
-		onlineURL
+		onlineURL,
+		ImgUrl
 	} from '@/common/common.js';
 	export default {
 		data() {
 			return {
+				imgerror: '/static/images/enterprise_static.jpg',
 				isVip: '',
 				enterpriseName:'',
 				enterpriseList: [],

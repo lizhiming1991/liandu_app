@@ -19,16 +19,16 @@
 			</view>
 			<view class="enterprise_info">
 				<view class="info_content">
-					{{enteroriseList.cont}}
+					{{enteroriseList.cont ==null ? "暂无简介" : enteroriseList.cont}}
 				</view>
 			</view>
 			<view class="enterprise_lable">
 				<view style="flex: 1;"></view>
 				<view class="label_left">
-					<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
+					<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade == null ? "暂无行业信息" : enteroriseList.trade }}</text>
 				</view>
 				<view class="label_right">
-					<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region}}</text>
+					<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region ==null ? "暂无地址信息" : enteroriseList.region}}</text>
 				</view>
 			</view>
 		</block>
@@ -36,7 +36,9 @@
 		 @clickItem="onClickItem" style-type="text" active-color="#4cd964"></uni-segmented-control>
 		<view class="list_content">
 			<view v-show="current === 0">
-
+				<view class="" style="height: 500px;">
+					
+				</view>
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
@@ -61,7 +63,7 @@
 					<block v-for="(item,index) in bookList" :key="index">
 						<view class="book_info" @tap="to_bookDetails" :data-id='item.id'>
 							<view class="book_cover_content">
-								<image class="booK_cover_img" src="/static/image/tushu.png" mode=""></image>
+								<image class="booK_cover_img" :src="item.photo?(imageUrl+item.photo):bookimgerror" mode=""></image>
 							</view>
 							<view class="book_cover_info">
 								<view class="">
@@ -108,18 +110,15 @@
 				<!-- Picker 公共组件 end -->
 				<view class="journal_list">
 					<block v-for="(item, index) in journalList" :key="index">
-						<view class="journal_cover">
+						<view class="journal_cover" @tap="goMagazinDetails(item.id)">
 							<view>
 								<view class="img_box">
-									<image class="journal_cover_img" src="/static/image/tushu.png" mode=""></image>
+									<image class="journal_cover_img" :src="item.photo?(imageUrl+item.photo):bookimgerror" mode=""></image>
 									<!-- <view class="journal_price">￥9.9</view> -->
 									<view class="journal_price" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
 									<view class="journal_price" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
 									<view class="journal_price" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
 								</view>
-								
-								
-
 							</view>
 							<view class="journal_cover_title">
 								{{item.name}}
@@ -153,17 +152,17 @@
 					<block v-for="(item,index) in courseList" :key="index">
 						<view class="bottom_border">
 							<view class="course_content" style="flex-direction: column;">
+								<view @tap="goDetails(item.id)">
 								<view class="course_cover">
-									<image class="course_cover_img" :src="item.coverPath?(imageUrl+item.coverPath):courseimgerror" mode=""></image>
+									<image class="course_cover_img" :src="item.coverPath?(imageUrl+item.coverPath):courseimgerror" mode="aspectFill"></image>
 									<view class="member_icon" v-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic!='0' || item.ispublic != 0)">￥{{item.price}}</view>
 									<view class="member_icon" v-else-if="(item.ispay == '1' || item.ispay == 1) && (item.ispublic0 == '0' || item.ispublic == 0) ">企业</view>
-									<view class="member_icon" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>
-									
-									
+									<view class="member_icon" v-else-if="(item.ispay != '1' || item.ispay != 1) && (item.ispublic=='0' || item.ispublic == 0)">企业</view>		
 								</view>
 								<view class="course_title">
 									{{item.courseName}}
 								</view> 
+								</view>
 								<view class="course_info">
 									<view class="course_teacher">
 										<image src="/static/images/laoshi.png" class="course_teacher_icon" mode=""></image>
@@ -212,7 +211,7 @@
 				title: 'Hello',
 				enteroriseList: [],
 				isVip: '',
-				bookArray: ['上传时间', '阅读量'],
+				bookArray: ['上架时间', '阅读量'],
 				journaArray: ['上架时间', '阅读量'],
 				courseArray: ['上架时间', '阅读量'],
 				bookIndex: 0,
@@ -238,9 +237,16 @@
 					"resource_type": 2,
 					"sort": "createtime"
 				},
+				requiredCourse: {
+					"page_index": 1,
+					"page_size": 10,
+					"table_id": "",
+					"tp": "2",
+					"resource_type": 2,
+					"sort": "createtime"
+				},
 				courseimgerror:"../../static/images/course_static.jpg",
 				bookimgerror:"../../static/images/book_static.jpg",
-				journaimgerror:"../../static/images/course_static.jpg",
 			}
 		},
 		computed: {
@@ -249,14 +255,12 @@
 			]),
 		},
 		onLoad(e) {
-			console.log(ImgUrl)
 			this.imageUrl = ImgUrl;
-			get('/enterprise/company/13?userId=1340').then(res => {
-			});
-			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
+			// get('/enterprise/company/13?userId=1340').then(res => {
+			// });
+			this.requiredBooks.table_id = this.requiredJournal.table_id = this.requiredCourse.table_id = e.enterpriseid
 			this.isVip = e.joinedState;
 			this.enteroriseName= e.enterpriseName;
-			// console.log( e.enterpriseName)
 			if (this.isVip == 'init') {
 				uni.showModal({
 					title: '提示',
@@ -281,12 +285,10 @@
 							url: './applyMember?enterpriseName=' + enterName
 						})
 						} else if (res.cancel) {
-							console.log('用户点击取消');
 						}
 					},
 				});
 			} else if (this.isVip == 'pass') {
-				console.log('hello vip')
 			}
 			get('/enterprise/company/' + this.requiredBooks.table_id, {
 				'userId': this.userid
@@ -307,7 +309,7 @@
 				})
 			},
 			bookSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.bookIndex = e.target.value
 				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredBooks.sort = 'hit'
@@ -315,13 +317,13 @@
 					this.requiredBooks.sort = 'createtime'
 				}
 				post('/book/book/page', this.requiredBooks).then(res => {
-					console.log(res);
+					// console.log(res);
 				}, err => {
-					//异步错误处理
+					console.log(err)
 				});
 			},
 			journaSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.journaIndex = e.target.value
 				if (e.target.value == '1' || e.target.value == 1) {
 					this.requiredJournal.sort = 'hit'
@@ -329,13 +331,21 @@
 					this.requiredJournal.sort = 'createtime'
 				}
 				post('/book/book/page', this.requiredJournal).then(res => {
-					console.log(res);
 				}, err => {
 				});
 			},
 			courseSearchChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
+				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.courseIndex = e.target.value
+				if (e.target.value == '1' || e.target.value == 1) {
+					this.requiredJournal.sort = 'hit'
+				} else if (e.target.value == '0' || e.target.value == 0) {
+					this.requiredJournal.sort = 'createtime'
+				}
+				console.log(e)
+				post('/book/book/page', this.requiredCourse).then(res => {
+				}, err => {
+				});
 			},
 			onClickItem(index) {
 				//console.log(index)
@@ -345,46 +355,34 @@
 				if (index == 0) {
 					this.searchType = 1;
 				} else if (index == 1) {
-					console.log('111')
 					this.searchType = 2;
-					uni.request({
-						url: 'http://192.168.0.210:9999/book/book/page',
-						method: 'POST',
-						data: this.requiredBooks,
-						header: {
-							'content-type': 'application/json'
-						},
-						success: res => {
-							this.bookList = res.data.data.pageBooks;
-						},
-
-					});
+					post('/book/book/page',this.requiredBooks ).then(res=>{
+						this.bookList = res.data.pageBooks;
+						});	
 				} else if (index == 2) {
 					this.searchType = 3;
-					console.log('222')
-					uni.request({
-						url: 'http://192.168.0.210:9999/book/book/page',
-						method: 'POST',
-						data: this.requiredJournal,
-						header: {
-							'content-type': 'application/json'
-						},
-						success: res => {
-							console.log(res.data.data.pageBooks);
-							this.journalList = res.data.data.pageBooks;
-						},
-
-					});
+					post('/book/book/page',this.requiredJournal).then(res=>{
+							this.journalList = res.data.pageBooks;
+						});	
 				} else if (index == 3) {
 					this.searchType = 4;
 					get('/course/all', {
 						'providerId': this.requiredBooks.table_id
 					}).then(res => {
-						console.log(res.data)
+						// console.log(res.data)
 						this.courseList = res.data
-						console.log(this.courseList)
 					});
 				}
+			},
+			goDetails(lld){
+				uni.navigateTo({
+					url:"../course/courseDetails?id=" + lld
+				})
+			},
+			goMagazinDetails(lld){
+				uni.navigateTo({
+					url:"../magazine/magazineDetails?id="+lld
+				})
 			},
 			toEnterprise() {
 				uni.reLaunch({
@@ -392,7 +390,6 @@
 				});
 			},
 			to_bookDetails(e) {
-				console.log(e);
 				let bookId = e.currentTarget.dataset.id;
 				uni.navigateTo({
 					url: '../books/bookDetails?id=' + bookId
@@ -403,34 +400,13 @@
 </script>
 
 <style scoped>
-	.vip_added {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 37upx 19upx 0 0;
-		width: 236upx;
-		height: 58upx;
-		font-size: 28upx;
-		color: #fff;
-		border-radius: 4upx;
-		background: rgba(1, 177, 141, 1);
-	}
-
-	.under_review {
-		margin: 49upx 53upx 0 0;
-		width: 236upx;
-		color: #01B18D;
-		font-size: 28upx;
-	}
-
 	view {
 		flex-direction: row;
-		
 	}
 	 .journal_content {
-		background-image: url('http://192.168.0.141/test.png');
-		background-repeat: no-repeat;
-		background-position-y: -250upx;
+		padding-top: 50upx;
+		background: url('http://192.168.0.141/test.png');
+		background-size: cover;
 	}
 	.journal_content .search_lable {
 		display: flex;
@@ -793,4 +769,23 @@
 	}
 
 	/* 公共组件 picker end */
+	.vip_added {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 37upx 19upx 0 0;
+		width: 236upx;
+		height: 58upx;
+		font-size: 28upx;
+		color: #fff;
+		border-radius: 4upx;
+		background: rgba(1, 177, 141, 1);
+	}
+	
+	.under_review {
+		margin: 49upx 53upx 0 0;
+		width: 236upx;
+		color: #01B18D;
+		font-size: 28upx;
+	}
 </style>

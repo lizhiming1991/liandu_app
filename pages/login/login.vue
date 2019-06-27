@@ -83,7 +83,6 @@
 						this.phoneNumber = res.data;
 					}
 				}	
-				
 			});
 			uni.getStorage({
 				key: 'userpassword',
@@ -119,12 +118,9 @@
 			getImgcode(){
 				this.imageRandomStr = acquireString.randomWord(false, 11);
 				this.imagePath = onlineURL + "/code/image?randomStr="+this.imageRandomStr;
-				console.log("image1:"+this.imageRandomStr);
 				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
-					
 				// #endif 
 				// #ifdef H5 
-					
 				// #endif 
 			},
 			changeYzm() {
@@ -162,9 +158,7 @@
 					}
 					console.log("image2:"+this.imageRandomStr)
 					await get('/check/code?code='+this.passyzm+'&&randomStr='+this.imageRandomStr,{}).then(res=>{
-						console.log(res.status);
 						if( res.status != 200 ){
-							
 							uni.showToast({
 								title: res.message,
 								duration: 1500,
@@ -176,7 +170,6 @@
 						}
 						else{
 							get('/check/login-failed-times?randomStr='+this.randomString, {}).then(res=>{
-								console.log(res);
 							});
 						}
 					});
@@ -196,18 +189,16 @@
 								key: 'userphone',
 								data: this.phoneNumber,
 								success: function (res) {
-									
 								}
 							});
 							uni.setStorage({
 								key: 'userpassword',
 								data: this.password,
 								success: function (res) {
-									
 								}
 							});
-							console.log(res.data)
 							this.$store.dispatch("changeUserid",res.data);
+							this.$store.dispatch("changePhoneNumber", this.phoneNumber)
 							uni.reLaunch({
 								url: '../index/index/index'
 							});
