@@ -112,9 +112,10 @@
 							let icon_type='none';
 							if( res.status==200 ){
 								icon_type = 'success';
+								this.$store.dispatch("changeUserid", '');
 								setTimeout(()=>{
 									uni.reLaunch({
-										url: '../index/index/index'
+										url: '../login/phoneLogin'
 									});
 								},1000);
 							}

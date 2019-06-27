@@ -12,7 +12,7 @@ const store = new Vuex.Store({
 		userid: "",
 		phone: "",
 		phoneNumber: "",
-		modifyRandomNumbers:"",
+		modifyRandomNumbers:"", 
 	},
 	mutations: {
 		getPhoneNumber(state,phone){

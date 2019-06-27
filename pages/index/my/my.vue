@@ -3,10 +3,10 @@
 		<view class="m_top" >
 			<view class="header_bg">
 				<view class="m_head">
-					<image class="m_photo" src="../../../static/image/userphoto.jpeg"></image>
+					<image class="m_photo" :src="userInfo.photo? (ImgUrl+userInfo.photo) : imgerror"></image>
 					<view class="m_pro">
-						<view class="username">测试账号</view>
-						<view class="infomation">介绍:一生只求潇潇洒洒这就是我的个性签名</view>
+						<view class="username">{{ userInfo.name}}</view>
+						<view class="infomation">{{userInfo.cont != null  ? userInfo.cont : '暂无简介'}}</view>
 					</view>
 					<text class="setinfo" @tap="toSetUp">设置</text>
 				</view>
@@ -14,15 +14,15 @@
 			</view>
 			<view class="m_info">
 				<view class="m_icon">
-					<view class="m_score">200</view>
+					<view class="m_score">{{ userInfo.por == null ? '0' : userInfo.por}}</view>
 					<text class="m_sname">积分</text>
 				</view>
 				<view class="m_icon">
-					<view class="m_score">200</view>
+					<view class="m_score">{{ userInfo.follow }}</view>
 					<text class="m_sname">关注</text>
 				</view>
 				<view class="m_icon">
-					<view class="m_score">200</view>
+					<view class="m_score">{{userInfo.fans}}</view>
 					<text class="m_sname">粉丝</text>
 				</view>
 			</view>
@@ -51,7 +51,7 @@
 		</view> -->
 		<view class="m_type">
 			
-			<navigator url="/pages/timetable/timeTable">
+			<navigator url="/pages/timeTable/timeTable">
 				<view class="m_lists">
 					<view class="m_box">
 						<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>
@@ -60,7 +60,7 @@
 					<image class="m_right" src="../../../static/images/arr_right.png"></image>
 				</view>
 			</navigator>
-			<view class="m_lists">
+			<!-- <view class="m_lists">
 				<view class="m_box">
 					<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>
 				</view>
@@ -73,7 +73,7 @@
 				</view>
 				<text class="m_names">我的订单</text>
 				<image class="m_right" src="../../../static/images/arr_right.png"></image>
-			</view>
+			</view> -->
 			<view class="m_lists">
 				<view class="m_box">
 					<image class="m_icons3" src="../../../static/images/my_icon3.png"></image>
@@ -88,15 +88,15 @@
 				<text class="m_names">我的课程</text>
 				<image class="m_right" src="../../../static/images/arr_right.png"></image>
 			</view>
-			<view class="m_lists">
+			<!-- <view class="m_lists">
 				<view class="m_box">
 					<image class="m_icons5" src="../../../static/images/my_icon5.png"></image>
 				</view>
 				<text class="m_names">我的活动</text>
 				<image class="m_right" src="../../../static/images/arr_right.png"></image>
-			</view>
+			</view> -->
 		</view>
-		<view class="m_type">
+		<!-- <view class="m_type">
 			<view class="m_lists">
 				<view class="m_box">
 					<image class="m_icons6" src="../../../static/images/my_icon6.png"></image>
@@ -118,16 +118,20 @@
 				<text class="m_names">我加入的企业</text>
 				<image class="m_right" src="../../../static/images/arr_right.png"></image>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import { mapState } from 'vuex'
+	import { get } from '@/common/methods.js'
+	import { ImgUrl} from '@/common/common.js'
 	export default {
 		data() {
 			return {
-				showall: false
+				showall: false,
+				userInfo: '',
+				imgerror: '../../../static/images/my_user_static.png'
 			};
 		},
 		computed: {
@@ -137,21 +141,31 @@
 		},
 	
 		onLoad(){
-			
+			if( this.userid != '' && this.userid != null){
+				this.getUserInfo()
+			}
 		},
+		
 		onShow(){
 			
 		},
 		methods: {
+			getUserInfo() {
+				get('/user/id/' + this.userid).then(res=>{
+					
+					this.userInfo = res.data
+					console.log(this.userInfo.card)
+				});
+			},
 			toSetUp() {
 				uni.navigateTo({
 					url:'/pages/account/setUp',
 				});
 			}
 		},
+		
 		onReady(){
 			if(this.userid == "" || this.userid == undefined || this.userid == "undefined"){
-				console.log(console.log("3"+this.userid))
 				uni.reLaunch({
 					url: '/pages/login/phoneLogin',
 				});
@@ -173,14 +187,14 @@
 	color: #333;
 	box-sizing: border-box;
 	.header_bg{
-		
 		position: relative;
 		top: -50upx;
 		margin-left: -30upx;
 		padding: 80upx 30upx 0 30upx;
 		width: 750upx;
 		box-sizing: border-box;
-		background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561522859740&di=42ef10d0478339604f827aaa0944d141&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F75%2F00%2F68g58PICefc_1024.jpg'); 
+		background: url('http://192.168.0.141/test1.png'); 
+		background-size: cover;
 	}
 	.m_head{
 		display: flex;

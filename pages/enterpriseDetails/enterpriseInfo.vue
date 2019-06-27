@@ -25,10 +25,10 @@
 			<view class="enterprise_lable">
 				<view style="flex: 1;"></view>
 				<view class="label_left">
-					<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade}}</text>
+					<image class="detailas_lable" src="/static/images/tag.png" mode=""></image><text class="detailas_text">{{enteroriseList.trade == null ? "暂无行业信息" : enteroriseList.trade }}</text>
 				</view>
 				<view class="label_right">
-					<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region}}</text>
+					<image class="site_lable" src="/static/images/zuobiao.png" mode=""></image><text class="detailas_text">{{enteroriseList.region ==null ? "暂无地址信息" : enteroriseList.region}}</text>
 				</view>
 			</view>
 		</block>
@@ -211,7 +211,7 @@
 				title: 'Hello',
 				enteroriseList: [],
 				isVip: '',
-				bookArray: ['上传时间', '阅读量'],
+				bookArray: ['上架时间', '阅读量'],
 				journaArray: ['上架时间', '阅读量'],
 				courseArray: ['上架时间', '阅读量'],
 				bookIndex: 0,
@@ -237,6 +237,14 @@
 					"resource_type": 2,
 					"sort": "createtime"
 				},
+				requiredCourse: {
+					"page_index": 1,
+					"page_size": 10,
+					"table_id": "",
+					"tp": "2",
+					"resource_type": 2,
+					"sort": "createtime"
+				},
 				courseimgerror:"../../static/images/course_static.jpg",
 				bookimgerror:"../../static/images/book_static.jpg",
 			}
@@ -248,12 +256,11 @@
 		},
 		onLoad(e) {
 			this.imageUrl = ImgUrl;
-			get('/enterprise/company/13?userId=1340').then(res => {
-			});
-			this.requiredBooks.table_id = this.requiredJournal.table_id = e.enterpriseid
+			// get('/enterprise/company/13?userId=1340').then(res => {
+			// });
+			this.requiredBooks.table_id = this.requiredJournal.table_id = this.requiredCourse.table_id = e.enterpriseid
 			this.isVip = e.joinedState;
 			this.enteroriseName= e.enterpriseName;
-			// console.log( e.enterpriseName)
 			if (this.isVip == 'init') {
 				uni.showModal({
 					title: '提示',
@@ -278,7 +285,6 @@
 							url: './applyMember?enterpriseName=' + enterName
 						})
 						} else if (res.cancel) {
-							// console.log('用户点击取消');
 						}
 					},
 				});
@@ -331,6 +337,15 @@
 			courseSearchChange: function(e) {
 				// console.log('picker发送选择改变，携带值为', e.target.value)
 				this.courseIndex = e.target.value
+				if (e.target.value == '1' || e.target.value == 1) {
+					this.requiredJournal.sort = 'hit'
+				} else if (e.target.value == '0' || e.target.value == 0) {
+					this.requiredJournal.sort = 'createtime'
+				}
+				console.log(e)
+				post('/book/book/page', this.requiredCourse).then(res => {
+				}, err => {
+				});
 			},
 			onClickItem(index) {
 				//console.log(index)
@@ -346,7 +361,6 @@
 						});	
 				} else if (index == 2) {
 					this.searchType = 3;
-					
 					post('/book/book/page',this.requiredJournal).then(res=>{
 							this.journalList = res.data.pageBooks;
 						});	
@@ -391,9 +405,8 @@
 	}
 	 .journal_content {
 		padding-top: 50upx;
-		background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561522859740&di=42ef10d0478339604f827aaa0944d141&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F75%2F00%2F68g58PICefc_1024.jpg');
-		background-repeat: no-repeat;
-		background-position-y: -250upx;
+		background: url('http://192.168.0.141/test.png');
+		background-size: cover;
 	}
 	.journal_content .search_lable {
 		display: flex;
