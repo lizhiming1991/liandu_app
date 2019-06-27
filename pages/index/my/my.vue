@@ -51,7 +51,7 @@
 		</view> -->
 		<view class="m_type">
 			
-			<navigator url="/pages/timeTable/timeTable">
+			<navigator url="/pages/timetable/timeTable">
 				<view class="m_lists">
 					<view class="m_box">
 						<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>

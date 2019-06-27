@@ -187,6 +187,7 @@
 	
 	.login_content .back_button{
 		width: 60upx;
+		height: 80upx;
 		padding: 30upx 0 0 30upx;
 	}
 	.login_content .h_img{

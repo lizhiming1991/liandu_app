@@ -82,7 +82,7 @@
 							icon_type = 'success';
 							setTimeout(()=>{
 								uni.reLaunch({
-									url: '../index/index/index'
+									url: './phoneLogin'
 								});
 							},1000);
 						}

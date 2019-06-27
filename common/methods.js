@@ -1,6 +1,6 @@
 import * as config from '@/common/config.js'
-const baseUrl = "http://192.168.0.210:9999"
-// const baseUrl = "https://apigateway.dailyld.com"
+// const baseUrl = "http://192.168.0.210:9999"
+const baseUrl = "https://apigateway.dailyld.com"
 
 function obj2params(obj) {
 	var result = '';

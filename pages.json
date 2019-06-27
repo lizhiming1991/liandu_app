@@ -129,12 +129,12 @@
 			}
 		},
 		{
-		    "path" : "pages/timeTable/timeTable",
+		    "path" : "pages/timetable/timeTable",
 		    "style" : {
 			}
 		},
 		{
-		    "path" : "pages/timeTable/timeTableDetails",
+		    "path" : "pages/timetable/timeTableDetails", 
 		    "style" : {
 			}
 		}
