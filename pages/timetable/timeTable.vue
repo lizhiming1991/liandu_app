@@ -120,13 +120,13 @@
 				};
 				this.currentpages = index;
 				this.nowpages = index;
-				console.log(arr)
+				// console.log(arr)
 				return arr;
 			}
 		},
 		methods:{
 			changeDate(num,date,index){
-				console.log(num,date,index)
+				// console.log(num,date,index)
 				if(index != this.nowpages){
 					this.nowpages = index;
 					this.getWeekdata();
