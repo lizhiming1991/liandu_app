@@ -17,8 +17,7 @@
         "modules" : {
             "Payment" : {},
             "Fingerprint" : {},
-            "VideoPlayer" : {},
-            "Messaging" : {}
+            "VideoPlayer" : {}
         },
         /* 模块配置 */
         "distribute" : {

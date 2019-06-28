@@ -20,7 +20,7 @@
 		</view>
 		<view class="cr_pro">
 			<text>{{itemInfo.courseName}}</text>
-			<text class="cr_score">{{itemInfo.score==0?'暂无评分!':itemInfo.score+'分'}}</text>
+			<text class="cr_score">{{itemInfo.score==null?'暂无评分!':itemInfo.score+'分'}}</text>
 			<view class="cr_read">{{itemInfo.hasLearned}}人已学</view>
 		</view>
 		<view class="taps">
