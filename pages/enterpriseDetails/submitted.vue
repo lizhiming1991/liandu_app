@@ -11,7 +11,6 @@
 			<view class="success_button" @tap="close">关闭</view>
 		</view>
 	</view>
-
 </template>
 
 <script>

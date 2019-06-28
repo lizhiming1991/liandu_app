@@ -191,7 +191,7 @@
 	import {
 		mapState
 	} from 'vuex';
-	import { ImgUrl} from '@/common/common.js'
+	import { ImgUrl } from '@/common/common.js'
 	import {
 		get,
 		post
