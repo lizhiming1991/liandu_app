@@ -52,9 +52,6 @@
 	} from '@/common/methods.js';
 	import toRegister from '@/components/toRegister/toRegister.vue';
 	import acquireString from '@/common/commonFunction.js'
-	import {
-		onlineURL
-	} from '@/common/common.js';
 	export default {
 		data() {
 			return {

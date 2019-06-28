@@ -23,7 +23,6 @@
 <script>
 	import Header from '@/components/header/header.vue';
 	import toRegister from '@/components/toRegister/toRegister.vue';
-	import { onlineURL } from '@/common/common.js';
 	import { put } from '@/common/methods.js';
 	import {mapState} from 'vuex'
 	import md5 from 'js-md5';

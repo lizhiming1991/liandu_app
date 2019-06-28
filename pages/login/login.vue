@@ -41,7 +41,7 @@
 	import {mapState} from 'vuex'
 	import acquireString from '@/common/commonFunction.js'
 	import {get} from '@/common/methods.js'
-	import { onlineURL } from '@/common/common.js';
+	import { ImgUrl } from '@/common/common.js';
 	import md5 from 'js-md5';
 	
 	export default {
@@ -117,7 +117,7 @@
 			},
 			getImgcode(){
 				this.imageRandomStr = acquireString.randomWord(false, 11);
-				this.imagePath = onlineURL + "/code/image?randomStr="+this.imageRandomStr;
+				this.imagePath = ImgUrl + "/code/image?randomStr="+this.imageRandomStr;
 				// #ifdef MP-WEIXIN || APP-PLUS || MP-BAIDU || MP-ALIPAY || MP-TOUTIAO  
 				// #endif 
 				// #ifdef H5 
