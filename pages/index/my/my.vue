@@ -3,7 +3,7 @@
 		<view class="m_top" >
 			<view class="header_bg">
 				<view class="m_head">
-					<image class="m_photo" :src="userInfo.photo? (ImgUrl+userInfo.photo) : imgerror"></image>
+					<image class="m_photo" :src=" photoImg != '' ? ( imageUrl + photoImg ) : imgerror"></image>
 					<view class="m_pro">
 						<view class="username">{{ userInfo.name}}</view>
 						<view class="infomation">{{userInfo.cont != null  ? userInfo.cont : '暂无简介'}}</view>
@@ -131,7 +131,9 @@
 			return {
 				showall: false,
 				userInfo: '',
-				imgerror: '../../../static/images/my_user_static.png'
+				imgerror: '../../../static/images/my_user_static.png',
+				photoImg: '',
+				imageUrl: ''
 			};
 		},
 		computed: {
@@ -141,6 +143,7 @@
 		},
 	
 		onLoad(){
+			this.imageUrl = ImgUrl
 			if( this.userid != '' && this.userid != null){
 				this.getUserInfo()
 			}
@@ -152,9 +155,9 @@
 		methods: {
 			getUserInfo() {
 				get('/user/id/' + this.userid).then(res=>{
-					
 					this.userInfo = res.data
-					console.log(this.userInfo.card)
+					console.log(this.userInfo.photo.split(':')[1])
+					this.photoImg = this.userInfo.photo.split(':')[1]
 				});
 			},
 			toSetUp() {

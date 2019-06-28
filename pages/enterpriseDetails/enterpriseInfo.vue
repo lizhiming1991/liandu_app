@@ -37,13 +37,13 @@
 		<view class="list_content">
 			<view v-show="current === 0">
 				<view class="" style="height: 500px;">
-					
+					<!-- <rich-text :nodes="strings"></rich-text> -->
 				</view>
 			</view>
 			<!-- 图书列表 start -->
 			<view v-show="current === 1">
 				<!-- Picker 公共组件 start -->
-				<view class="picker_style">
+				<view class="picker_style" >
 					<view class="content_search">
 						<view class="uni-list">
 							<view class="uni-list-cell">
@@ -58,7 +58,6 @@
 					</view>
 				</view>
 				<!-- Picker 公共组件 end -->
-
 				<view class="content_list">
 					<block v-for="(item,index) in bookList" :key="index">
 						<view class="book_info" @tap="to_bookDetails" :data-id='item.id'>
@@ -85,6 +84,7 @@
 							</view>
 						</view>
 					</block>
+					<view class="no_more" v-if="bookList.length != ''">没有更多图书信息了</view>
 					<not-found v-if="bookList==''"></not-found>
 				</view>
 			</view>
@@ -125,6 +125,7 @@
 							</view>
 						</view>
 					</block>
+					<view class="no_more" v-if="journalList.length != ''">没有更多杂志信息了</view>
 					<not-found style="margin-top: -34upx;" v-if=" journalList=='' "></not-found>
 				</view>
 			</view>
@@ -176,6 +177,7 @@
 							</view>
 						</view>
 					</block>
+					<view class="no_more" v-if="courseList.length != ''">没有更多课程信息了</view>
 					<not-found v-if=" courseList == '' "></not-found>
 				</view>
 			</view>
@@ -202,7 +204,8 @@
 		},
 		data() {
 			return {
-				imageUrl:'',
+				// strings: '<p>阿西吧<img src="/rufc/ueditor/jsp/upload/image/20190628/1561684734040081752.jpg" title="1561684734040081752.jpg" alt="1555034000(1).jpg"/></p>',
+				imageUrl: '',
 				enteroriseID: '',
 				enteroriseName:'',
 				searchType: '1',
@@ -255,6 +258,7 @@
 			]),
 		},
 		onLoad(e) {
+			console.log(e.enterpriseid)
 			this.imageUrl = ImgUrl;
 			// get('/enterprise/company/13?userId=1340').then(res => {
 			// });
@@ -296,8 +300,15 @@
 				this.enteroriseID = res.data.id
 				this.enteroriseList = res.data
 			})
+			get('/enterprise/company/' + e.enterpriseid, {
+				'userId': this.userid
+			}).then(res => {
+				// this.strings = res.data.richText
+				console.log(res.data.richText)
+			})
 		},
 		methods: {
+			
 			toSearch() {
 				uni.navigateTo({
 					url: './enterpriseSearch?type=' + this.searchType + '&enteroriseID=' + this.enteroriseID
@@ -521,6 +532,7 @@
 
 	/* 图书列表 start*/
 	.journal_content .list_content .content_list {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		margin: 32upx 0 0 22upx;
@@ -600,6 +612,7 @@
 	/* 图书列表 end*/
 	/* 杂志 start */
 	.journal_content .list_content .journal_list {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -787,5 +800,15 @@
 		width: 236upx;
 		color: #01B18D;
 		font-size: 28upx;
+	}
+	.no_more{
+		position: absolute;
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		margin: 40upx 0; 
+		width: 100%;
+		color: #ccc;
+		font-size: 32upx;
 	}
 </style>

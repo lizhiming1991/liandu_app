@@ -72,6 +72,7 @@
 				</view>
 			</view>
 		</block>
+		<view class="no_more" v-if="enterpriseList.length != ''">没有更多企业信息了</view>
 		<!-- <navigator url="../../login/logout">To logout</navigator> -->
 	</view>
 </template>
@@ -81,7 +82,6 @@
 	import {get,post} from '@/common/methods.js';
 	
 	import {
-		onlineURL,
 		ImgUrl
 	} from '@/common/common.js';
 	export default {
@@ -113,19 +113,6 @@
 					}
 				}
 			});
-			console.log(this.userid)
-			//首次加载行业列表
-// 			uni.request({
-// 				url: onlineURL + '/enterprise/company/trade/all',
-// 				method: 'GET',
-// 				success: (res) => {
-// 					console.log(res.data.data);
-// 					for (let data of res.data.data) {
-// 						this.trade.push(data);
-// 					}
-// 
-// 				}
-// 			});
 			//首次加载地区列表
 			get('/enterprise/company/region/all').then(res=>{
 				for (let data of res.data) {
@@ -375,5 +362,13 @@
 		font-size: 28upx;
 		border-radius: 4px;
 		background: #FF546C;
+	}
+	.no_more{
+		display: flex;
+		justify-content: center;
+		margin: 40upx 0; 
+		width: 100%;
+		color: #ccc;
+		font-size: 32upx;
 	}
 </style>

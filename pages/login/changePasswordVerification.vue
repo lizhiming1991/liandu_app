@@ -45,9 +45,6 @@
 	import acquireString from '@/common/commonFunction.js';
 	import { get } from '@/common/methods.js';
 	import {mapState} from 'vuex'
-	import {
-		onlineURL
-	} from '@/common/common.js';
 	export default {
 		data() {
 			return {
