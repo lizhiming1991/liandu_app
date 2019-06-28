@@ -51,7 +51,7 @@
 		</view> -->
 		<view class="m_type">
 			
-			<navigator url="/pages/timetable/timeTable">
+			<navigator url="/pages/timeList/timeList">
 				<view class="m_lists">
 					<view class="m_box">
 						<image class="m_icons1" src="../../../static/images/my_icon1.png"></image>
@@ -131,6 +131,7 @@
 			return {
 				showall: false,
 				userInfo: '',
+				ImgUrl:"",
 				imgerror: '../../../static/images/my_user_static.png'
 			};
 		},
@@ -141,6 +142,7 @@
 		},
 	
 		onLoad(){
+			this.ImgUrl = ImgUrl;
 			if( this.userid != '' && this.userid != null){
 				this.getUserInfo()
 			}

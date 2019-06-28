@@ -129,7 +129,7 @@
 			}
 		},
 		{
-		    "path" : "pages/timetable/timeTable",
+		    "path" : "pages/timeList/timeList",
 		    "style" : {
 			}
 		},
