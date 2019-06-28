@@ -137,14 +137,14 @@
 				})
 			},
 			toChangePhoneNumber() {
-				uni.navigateTo({
-					url: './changePhoneNumber'
-				});
+				// uni.navigateTo({
+				// 	url: './changePhoneNumber'
+				// });
 			},
 			toChangeDescribe() {
-				uni.navigateTo({
-					url: './changeDescribe'
-				});
+				// uni.navigateTo({
+				// 	url: './changeDescribe'
+				// });
 			},
 			logOut() {
 				uni.showModal({

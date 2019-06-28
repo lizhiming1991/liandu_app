@@ -55,9 +55,9 @@
 								<view class="list_lable_one">
 									<image src="/static/images/tag.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.trade == null ? "暂无行业信息" : item.trade}}</text>
 								</view>
-								<view class="list_lable_two" v-if="item.address != ''" style="">
-									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.region}}</text> 
-									 <!-- == null ? "暂无地址信息" : item.region -->
+									<!-- v-if="item.address != ''" -->
+								<view class="list_lable_two">
+									<image src="/static/images/zuobiao.png" style="width: 22upx; height: 28upx;" mode=""></image><text class="list_lable_text">{{item.region == null ? "暂无地址信息" : item.region}}</text> 
 								</view>
 							</view>
 						</view>
@@ -106,9 +106,11 @@
 		},
 		onLoad() {
 			get('/enterprise/company/trade/all').then(res=>{
-				//console.log(res);
+				console.log(res);
 				for (let data of res.data) {
+					if( data != null){
 					this.trade.push(data);
+					}
 				}
 			});
 			console.log(this.userid)
@@ -126,20 +128,19 @@
 // 			});
 			//首次加载地区列表
 			get('/enterprise/company/region/all').then(res=>{
-				//console.log(res);
 				for (let data of res.data) {
-					//console.log(data)
+					if( data != null){
 					let area = data.split("市");
 					if (area.length == 1) {
 						this.region.push(area[0])
 					} else if (area.length == 2) {
 						this.region.push(area[0] + '市')
 					}
+					}
 				}
 			});
 			//首次加载列表数据
 			get('/enterprise/company/all',{'userId': this.userid }).then(res=>{
-				console.log(res)
 				this.enterpriseList = res.data
 				});
 		},
@@ -171,26 +172,11 @@
 					get('/enterprise/company/all/region',{'region':this.tradeValue,'userId':this.userid}).then(res=>{
 							this.enterpriseList = res.data
 						});
-				// 	uni.request({
-				// 		url: onlineURL + '/enterprise/company/all/region?region=' + this.tradeValue + '&&userId=1340',
-				// 		method: 'GET',
-				// 		success: (res) => {
-				// 			this.enterpriseList = res.data.data;
-				// 
-				// 		}
-				// 	});
+				
 				} else {
 					get('/enterprise/company/all',{ 'userId': this.userid}).then(res=>{
 						this.enterpriseList = res.data;
 					});
-					// uni.request({
-					// 	url: onlineURL + '/enterprise/company/all?userId=1340',
-					// 	method: 'GET',
-					// 	success: (res) => {
-					// 		this.enterpriseList = res.data.data;
-					// 		console.log(this.enterpriseList);
-					// 	}
-					// });
 				}
 			},
 			regionChange: function(e) {
@@ -203,26 +189,10 @@
 					get('/enterprise/company/all/region',{'region': this.targetValue,'userId': this.userid}).then(res=>{
 						this.enterpriseList = res.data;
 						});
-					
-// 					uni.request({
-// 						url: onlineURL + '/enterprise/company/all/region?region=' + this.targetValue + '&&userId=1340',
-// 						method: 'GET',
-// 						success: (res) => {
-// 							this.enterpriseList = res.data.data;
-// 						}
-// 					});
 				} else {
 					get('/enterprise/company/all',{ 'userId': this.userid }).then(res=>{
 							this.enterpriseList = res.data;
 						});
-					// uni.request({
-					// 	url: onlineURL + '/enterprise/company/all?userId=1340',
-					// 	method: 'GET',
-					// 	success: (res) => {
-					// 		this.enterpriseList = res.data.data;
-					// 		console.log(this.enterpriseList);
-					// 	}
-					// });
 				}
 			},
 			nextPage(e) {
@@ -319,7 +289,6 @@
 	.enterprise>view:nth-child(3) {
 		padding-top: 50upx;
 		border-radius: 50upx 0px 0px 0px;
-		//border: 1px solid red;
 		box-shadow: -7px -8px 17px -7px rgba(108, 109, 110, 0.1);
 	}
 
@@ -341,7 +310,6 @@
 		margin-bottom: 24upx;
 		color: #333;
 		font-size: 36upx;
-		
 	}
 
 	.enterprise .enterprise_list .enterprise_details .enterprise_info {

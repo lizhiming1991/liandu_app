@@ -19,7 +19,7 @@
 			
 		</view>
 		<view class="assign_homework" >
-			{{assign_homework}}
+			{{ assign_homework }}
 		</view>
 	</view>
 </template>
@@ -33,11 +33,16 @@
 				assign_homework: '布置作业'
 			}
 		},
+		onLoad() {
+			this.getCourseInfo()
+		},
 		components: {
 			Header
 		},
 		methods: {
-			
+			getCourseInfo() {
+				
+			}
 		}
 		
 	}
