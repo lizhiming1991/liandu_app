@@ -6,7 +6,7 @@
 				<view class="sw_part">
 					<swiper class="swiper" :current="currentpages">
 					    <swiper-item v-for="(itemdata,index0) in  dateArr" :key="index0">
-					        <view :class="nowdate == item.date?'sw_dates checked':'sw_dates'" @tap="changeDate(item.indexs,item.date,item.currentpage)" v-for="(item,index) in itemdata" :key="index">
+					        <view :class="nowdate == item.date?'sw_dates checked':'sw_dates'" @tap.stop="changeDate(item.indexs,item.date,item.currentpage)" v-for="(item,index) in itemdata" :key="index">
 					        	<view class="sw_note">{{item.date}}</view>
 					        	<view class="sw_week">{{item.week}}</view>
 					        </view>
@@ -17,24 +17,27 @@
 			</view>
 		</view>
 		<view class="lesson_list">
-			<view class="lessons"  v-show="nowindex<= item.indexs" v-for="(item,index) in dateArr[currentpages]" :key="index">
+			<view class="lessons"  v-show="nowindex<= item.indexs" v-for="(item,index) in dateArr[nowpages]" :key="index">
 				<view class="lesson_date">{{nowyear}}年{{nowmonth}}月{{item.date}}日</view>
 				<view class="lesson_content">
-					<view class="ls_lists" v-if="weekArr[index].length!=0">
-						<view class="ls_left">
-							<view>{{getTime(weekArr[index].startTime)}}</view>
-							<view class="ls_span">至</view>
-							<view>{{getTime(weekArr[index].endTime)}}</view>
-						</view>
-						<view class="ls_center">
-							<text class="ls_line"></text>
-						</view>
-						<view class="ls_right">
-							<view class="ls_large">{{weekArr[index].courseName}}</view>
-							<view class="ls_span ls_spans">{{weekArr[index].theme}}</view>
-							<view>{{weekArr[index].teacherName}}</view>
+					<view v-if="weekArr[index].length!=0">
+						<view class="ls_lists"  v-for="(data,index0) in weekArr[index]" :key="index0" @tap="goDetails(data.id)">
+							<view class="ls_left">
+								<view>{{getTime(data.startTime)}}</view>
+								<view class="ls_span">至</view>
+								<view>{{getTime(data.endTime)}}</view>
+							</view>
+							<view class="ls_center">
+								<text class="ls_line"></text>
+							</view>
+							<view class="ls_right">
+								<view class="ls_large">{{data.courseName}}</view>
+								<view class="ls_span ls_spans">{{data.theme}}</view>
+								<view>{{data.teacherName}}</view>
+							</view>
 						</view>
 					</view>
+					
 					<view class="ls_none" v-if="weekArr[index].length==0">暂无课程</view>
 				</view>
 			</view>
@@ -45,6 +48,7 @@
 <script>
 	import Header from '@/components/header/header.vue'
 	import {get,post} from '@/common/methods.js'
+	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -56,7 +60,7 @@
 				wArr:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
 				nowindex: 3,
 				alldays: 30,
-				firstweek:"",
+				firstweek:0,
 				currentpages: 0,
 				nowpages:0,
 			}
@@ -88,13 +92,16 @@
 			
 		},
 		computed:{
+			...mapState([
+				"userid"
+			]),
 			dateArr(){
 				let arr = [];
 				let Arr =[];
 				let index = 0;
 				for(let i = 1;i<=this.alldays;i++){
 					if(this.getindex(this.firstweek+i-1) == 1){
-						if(i<this.nowdate){
+						if(i<=this.nowdate){
 							index = index+1;
 						}else{
 							index = index;
@@ -132,8 +139,8 @@
 		methods:{
 			changeDate(num,date,index){
 				// console.log(num,date,index)
+				this.nowpages = index;
 				if(index != this.nowpages){
-					this.nowpages = index;
 					this.getWeekdata();
 				}
 				this.nowindex = num;
@@ -142,7 +149,7 @@
 			getWeekdata(){
 				let data = this.nowyear+"-"+this.nowmonth+"-"+this.dateArr[this.nowpages][0].date;
 				get("/course/schedule",{
-					teacher_id: 1408,
+					teacher_id: this.userid,
 					start_time: data
 				}).then(res=>{
 					if(res.status == 200){
@@ -165,7 +172,12 @@
 				
 			},
 			getTime(time){
-				return time
+				return time.split("T")[1]
+			},
+			goDetails(id){
+				uni.navigateTo({
+					url:"/pages/timetable/timeTableDetails?id="+id
+				})
 			}
 		},
 		components:{
@@ -233,7 +245,7 @@
 					font-size: 42upx;
 				}
 				.ls_center{
-					margin-left: 20upx;
+					margin-left: 40upx;
 					width: 2upx;
 					height: 100upx;
 					margin-top: 28upx;
@@ -241,7 +253,7 @@
 				}
 				.ls_right{
 					flex: 3;
-					margin-left: 60upx;
+					margin-left: 50upx;
 					font-size: 28upx; 
 					.ls_large{
 						font-size: 36upx;
