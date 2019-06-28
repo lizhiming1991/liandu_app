@@ -166,15 +166,20 @@
 				})
 			},
 			addComments(obj){
-				/* post("/book/book/makeComment",{
+				post("/social/grade/makeComment",{
 					associatorid: this.userid,
-					bookid: this.bid,
+					course_id: this.kid,
 					score: obj.score,
 					state: obj.readstate,
 					content: obj.textarea,
 					tag: obj.tags
 				}).then(res=>{
 					if(res.status == 200){
+						uni.showToast({
+							title: "发表评论成功!",
+							duration: 2000,
+							icon: 'none'
+						});
 						this.getDisscusslist();
 					}else{
 						uni.showToast({
@@ -184,7 +189,7 @@
 						});
 					}
 					console.log(res)
-				}) */
+				})
 			},
 			addreply(){
 				
@@ -194,11 +199,79 @@
 			},
 			changeDZ(){
 				console.log(this.dzid)
-				
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以点赞哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.dzid == 0){
+					post("/social/praise",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.dzid = res.data;
+						this.sharedata.dz = this.sharedata.dz +1;
+						uni.showToast({
+							title: "点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/praise",{
+						id: this.dzid
+					}).then(res=>{
+						this.dzid = 0;
+						this.sharedata.dz = this.sharedata.dz -1;
+						uni.showToast({
+							title: "取消点赞成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}
 			},
 			changeSC(){
 				console.log(this.scid)
-				
+				if(this.userid == ""){
+					uni.showToast({
+						title: "登录后可以收藏哦!",
+						duration: 2000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.scid == 0){
+					post("/social/favorite",{
+						associatorid: this.userid,
+						dataid: this.bid,
+						tablename: "book_book"
+					}).then(res=>{
+						this.scid = res.data;
+						this.sharedata.sc = this.sharedata.sc +1;
+						uni.showToast({
+							title: "收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}else{
+					deletes("/social/favorite",{
+						id: this.scid
+					}).then(res=>{
+						this.scid = 0;
+						this.sharedata.sc = this.sharedata.sc -1;
+						uni.showToast({
+							title: "取消收藏成功!",
+							duration: 2000,
+							icon: 'none'
+						});
+					})
+				}
 			}
 		},
 		components: {
